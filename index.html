@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gigatop - Lokale KI für die Schweiz</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
+        header { background-color: #0f172a; color: white; padding: 20px; text-align: center; }
+        nav { background-color: #1e293b; padding: 10px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .hero { text-align: center; padding: 60px 20px; background-color: #ffffff; border-bottom: 1px solid #ddd; }
+        .hero h1 { font-size: 2.5em; color: #0f172a; margin-bottom: 10px; }
+        .hero p { font-size: 1.2em; color: #64748b; max-width: 700px; margin: 0 auto; }
+        .btn { display: inline-block; background-color: #3b82f6; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; }
+        .btn:hover { background-color: #2563eb; }
+        .cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
+        .card { background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 25px; width: 300px; flex: 1; max-width: 400px; }
+        .card h3 { color: #3b82f6; margin-top: 0; }
+        .price { font-size: 1.5em; font-weight: bold; color: #0f172a; margin: 10px 0; }
+        .price span { font-size: 0.8em; color: #666; font-weight: normal; }
+        .features { list-style: none; padding: 0; text-align: left; }
+        .features li { padding: 8px 0; border-bottom: 1px solid #eee; }
+        .features li::before { content: "✓"; color: green; margin-right: 10px; font-weight: bold; }
+        footer { background-color: #0f172a; color: #94a3b8; text-align: center; padding: 20px; margin-top: 50px; font-size: 0.9em; }
+        @media (max-width: 600px) { .hero h1 { font-size: 1.8em; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>GIGATOP</h2>
+    </header>
+
+    <nav>
+        <a href="#home">Start</a>
+        <a href="#services">Leistungen</a>
+        <a href="#about">Über uns</a>
+        <a href="#contact">Kontakt</a>
+    </nav>
+
+    <div class="hero" id="home">
+        <h1>Unternehmens-Intelligenz.<br>Lokal. Sicher. Swiss Made.</h1>
+        <p>Wir bringen KI in Ihren Serverraum – ohne Daten ins Ausland. Der <strong>Gigatop Service Agent</strong> hilft Ihnen, mit der modernsten Technologie der Schweiz, direkt vor Ort.</p>
+        <a href="#contact" class="btn">Jetzt Angebot anfordern</a>
+    </div>
+
+    <div class="container" id="services">
+        <h2 style="text-align: center; margin-top: 40px;">Unsere Pakete</h2>
+        <div class="cards">
+            <!-- Paket 1 -->
+            <div class="card">
+                <h3>Standard</h3>
+                <div class="price">CHF 2'900 <span>Einmalig</span></div>
+                <p style="font-size: 0.9em; color: #666;">Für Firmen mit eigener Hardware.</p>
+                <ul class="features">
+                    <li>Hardware-Analyse & Setup</li>
+<li>Der "Gigatop Agent"</li>
+                    <li>Import Ihrer Firmendaten</li>
+                    <li>Schulung für Ihr Team</li>
+                    <li>Datenschutz (DSG) konform</li>
+                </ul>
+            </div>
+
+            <!-- Paket 2 -->
+            <div class="card" style="border: 2px solid #3b82f6; transform: scale(1.02);">
+                <h3>All-Inclusive</h3>
+                <div class="price">CHF 950 <span>/ Monat</span></div>
+                <p style="font-size: 0.9em; color: #666;">Rundum-sorglos-Leasing.</p>
+                <ul class="features">
+                    <li><strong>Hardware inklusive</strong> (DGX-Koffer)</li>
+                    <li>24/7 Monitoring & Updates</li>
+                    <li>Support-Hotline</li>
+                    <li>Monatliche Reports</li>
+                    <li>Kein Risiko für Sie</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="about" style="margin-top: 50px;">
+        <h2>Warum Gigatop?</h2>
+        <p>Die meisten KI-Lösungen verschicken Ihre Geschäftsdaten in Clouds im Ausland. Wir bieten die Alternative: <strong>On-Premise KI</strong>. Alles bleibt in Ihrem Netzwerk. Wir sind ein Schweizer Startup, das maximale Datensicherheit mit modernster Hardware verbindet.</p>
+    </div>
+
+    <div class="container" id="contact" style="text-align: center; margin-bottom: 50px;">
+        <h2>Kontaktieren Sie uns</h2>
+        <p>Bereit für die Zukunft der KI? Schreiben Sie uns für ein unverbindliches Gespräch.</p>
+        <a href="mailto:fabio@gigatop.io" class="btn" style="background-color: #22c55e;">E-Mail: fabio@gigatop.io</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Gigatop – Fabio [Dein Nachname] | Switzerland</p>
+        <p>Haftungsausschluss: Wir übernehmen keine Gewähr für die Richtigkeit der Daten. <a href="#" style="color: #94a3b8;">Impressum</a></p>
+    </footer>
+
+</body>

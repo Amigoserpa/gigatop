@@ -43,6 +43,66 @@
         .btn-outline:hover { background: #D66B45; color: white; }
         .card-hover { transition: all 0.3s; }
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(16, 42, 51, 0.12); }
+    
+        /* === MODAL === */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(16, 42, 51, 0.85); backdrop-filter: blur(4px);
+            z-index: 9999; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: white; padding: 2rem; border-radius: 1.5rem;
+            width: 92%; max-width: 600px; max-height: 90vh; overflow-y: auto;
+            position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: scale(0.95); transition: transform 0.3s;
+        }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close {
+            position: absolute; top: 1rem; right: 1rem; background: #f0f0f0;
+            border-radius: 50%; width: 36px; height: 36px; border: none;
+            cursor: pointer; font-size: 1.2rem; color: #666;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-close:hover { background: #ddd; color: #333; }
+        .modal-title { font-size: 1.5rem; font-weight: bold; color: #102A33; margin-bottom: 0.5rem; }
+        .modal-subtitle { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-label { display: block; font-weight: 600; color: #102A33; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .form-label .optional { font-weight: 400; color: #999; font-size: 0.8rem; }
+        .form-input, .form-textarea, .form-select {
+            width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0;
+            border-radius: 0.75rem; font-size: 1rem; color: #333;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none; border-color: #D66B45; box-shadow: 0 0 0 3px rgba(214, 107, 69, 0.15);
+        }
+        .form-textarea { resize: vertical; min-height: 100px; }
+        .form-btn {
+            width: 100%; padding: 0.875rem; background: linear-gradient(135deg, #D66B45, #E8865A);
+            color: white; border: none; border-radius: 0.75rem; font-size: 1rem;
+            font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .form-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(214, 107, 69, 0.4); }
+        .form-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .form-success {
+            text-align: center; padding: 2rem 0;
+        }
+        .form-success h3 { font-size: 1.5rem; color: #78866B; margin-bottom: 1rem; }
+        .form-success p { color: #666; }
+        .form-success .check-icon {
+            width: 60px; height: 60px; background: #78866B; color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; margin: 0 auto 1rem;
+        }
+        .form-error {
+            background: #fee; border: 1px solid #fcc; color: #c00;
+            padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 1rem; font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -301,7 +361,7 @@
                     <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_0_f3">Auf meiner Station/Testumgebung</span></li>
                     <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_0_f4">Sofortiger Start Ihrer KI-Lösung</span></li>
                 </ul>
-                <button onclick="openContact()" class="w-full btn-primary text-white px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Jetzt anfragen</button>
+                <button onclick="openContact('KI-Workshop')" class="w-full btn-primary text-white px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Jetzt anfragen</button>
             </div>
             <div class="glass-card rounded-2xl p-6 card-hover">
                 <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="pricing_1_title">Starter</h3>
@@ -312,7 +372,7 @@
                     <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_1_f2">Passende Hardware wird geliefert</span></li>
                     <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_1_f3">Schulung & Support</span></li>
                 </ul>
-                <button onclick="openContact()" class="w-full btn-outline px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Anfragen</button>
+                <button onclick="openContact('Starter')" class="w-full btn-outline px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Anfragen</button>
             </div>
             <div class="glass-card rounded-2xl p-6 card-hover">
                 <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="pricing_3_title">Enterprise</h3>
@@ -324,7 +384,7 @@
                     <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f3">Dediziertes Team</span></li>
                     <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f4">SLA & Priority Support</span></li>
                 </ul>
-                <button onclick="openContact()" class="w-full btn-outline px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Kontakt aufnehmen</button>
+                <button onclick="openContact('Enterprise')" class="w-full btn-outline px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Kontakt aufnehmen</button>
             </div>
         </div>
     </div>
@@ -564,7 +624,214 @@ function calculateROI() {
     document.getElementById('roi_time').textContent = timeSaved.toLocaleString(lang === 'de' ? 'de-CH' : 'en-US') + ' Std.';
     document.getElementById('roi_proc').textContent = processesPerMonth;
 }
+
+
+
+// === CONTACT MODAL ===
+function openContact(packageName) {
+    var modal = document.getElementById('contactModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Set redirect URL to current page
+    document.getElementById('redirectUrl').value = window.location.href + '#thank-you';
+
+    // Pre-select package
+    if (packageName) {
+        document.getElementById('formPackage').value = packageName;
+        renderQuestions(packageName);
+    } else {
+        // Default: empty / let user choose
+        document.getElementById('formPackage').value = '';
+        renderQuestions('');
+    }
+
+    // Reset form state
+    document.getElementById('modalFormArea').style.display = 'block';
+    document.getElementById('modalSuccess').style.display = 'none';
+    document.getElementById('contactForm').reset();
+}
+
+function closeModal() {
+    var modal = document.getElementById('contactModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function renderQuestions(pkg) {
+    var container = document.getElementById('dynamicQuestions');
+    var title = document.getElementById('modalTitle');
+    var subtitle = document.getElementById('modalSubtitle');
+
+    var html = '';
+
+    if (pkg === 'KI-Workshop' || pkg === 'pricing_0') {
+        title.textContent = 'KI-Workshop anfragen';
+        subtitle.textContent = 'Wir bauen gemeinsam Ihren KI-Agenten — in nur 2 Stunden.';
+        html += `
+            <div class="form-group">
+                <label class="form-label">Was wollen Sie automatisieren?</label>
+                <textarea name="Use Case" class="form-textarea" required placeholder="Beschreiben Sie kurz Ihr Ziel, z.B. 'Automatische E-Mail-Beantwortung'..."></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Welche Tools / Programme nutzen Sie?</label>
+                <input type="text" name="Tools" class="form-input" placeholder="z.B. Outlook, Excel, CRM-System, Notion...">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Wann passt es Ihnen am besten?</label>
+                <select name="Terminvorliebe" class="form-select">
+                    <option value="">Bitte wählen...</option>
+                    <option value="Mo-Mi Vormittag">Montag - Mittwoch Vormittag</option>
+                    <option value="Mo-Mi Nachmittag">Montag - Mittwoch Nachmittag</option>
+                    <option value="Do-Fri Vormittag">Donnerstag - Freitag Vormittag</option>
+                    <option value="Do-Fri Nachmittag">Donnerstag - Freitag Nachmittag</option>
+                </select>
+            </div>
+        `;
+    } else if (pkg === 'Starter' || pkg === 'pricing_1') {
+        title.textContent = 'Starter-Paket anfragen';
+        subtitle.textContent = 'Eine einzelne KI-Anwendung für Ihren Einstieg. Bitte geben Sie uns eine gute Übersicht.';
+        html += `
+            <div class="form-group">
+                <label class="form-label">Firma / Organisation</label>
+                <input type="text" name="Firma" class="form-input" placeholder="Name Ihres Unternehmens">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Use Case - Beschreibung *</label>
+                <textarea name="Use Case" class="form-textarea" required placeholder="Welchen Prozess möchten Sie mit KI optimieren? Wie läuft es aktuell?"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Welche Daten liegen vor?</label>
+                <input type="text" name="Daten" class="form-input" placeholder="z.B. Excel-Tabellen, E-Mails, Dokumente, CRM-Exporte...">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Hardware-Anforderungen?</label>
+                <input type="text" name="Hardware" class="form-input" placeholder="z.B. kein Bedarf, eigener PC, neue Hardware nötig...">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Budgetrahmen</label>
+                <select name="Budget" class="form-select">
+                    <option value="">Bitte wählen...</option>
+                    <option value="Unter 3'000 CHF">Unter 3'000 CHF</option>
+                    <option value="3'000 - 7'000 CHF">3'000 - 7'000 CHF</option>
+                    <option value="7'000 - 15'000 CHF">7'000 - 15'000 CHF</option>
+                    <option value="Über 15'000 CHF">Über 15'000 CHF</option>
+                </select>
+            </div>
+        `;
+    } else {
+        // Enterprise
+        title.textContent = 'Enterprise-Lösung anfragen';
+        subtitle.textContent = 'Massgeschneiderte KI-Lösung für Ihr Unternehmen. Bitte teilen Sie uns mit, was Sie bewegt.';
+        html += `
+            <div class="form-group">
+                <label class="form-label">Firma / Organisation *</label>
+                <input type="text" name="Firma" class="form-input" required placeholder="Name Ihres Unternehmens">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Anzahl Mitarbeiter</label>
+                <input type="text" name="Mitarbeiter" class="form-input" placeholder="z.B. 25, 150, 500+">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Beschreiben Sie Ihr Ziel *</label>
+                <textarea name="Ziel" class="form-textarea" required placeholder="Was möchten Sie erreichen? Welche Bereiche sollen optimiert werden?"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Bestehende Systeme</label>
+                <input type="text" name="Systeme" class="form-input" placeholder="z.B. SAP, Microsoft 365, Salesforce, eigene Server...">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Priorität & Zeitraum</label>
+                <input type="text" name="Zeitrahmen" class="form-input" placeholder="z.B. Hoch / 2 Monate, Mittel / 3 Monate...">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Besondere Anforderungen</label>
+                <textarea name="Anforderungen" class="form-textarea" placeholder="Datenschutz, Zertifizierungen, Compliance, DGX-Station, etc."></textarea>
+            </div>
+        `;
+    }
+
+    container.innerHTML = html;
+}
+
+function submitForm(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    var form = document.getElementById('contactForm');
+    var data = new FormData(form);
+
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet...';
+
+    fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        document.getElementById('modalFormArea').style.display = 'none';
+        document.getElementById('modalSuccess').style.display = 'block';
+    })
+    .catch(error => {
+        document.getElementById('modalFormArea').innerHTML += '<div class="form-error">Etwas ist schiefgelaufen. Bitte senden Sie uns direkt eine E-Mail an top@gigatop.io</div>';
+        btn.disabled = false;
+        btn.textContent = 'Anfrage absenden →';
+    });
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+});
 </script>
+
+
+<!-- ========== CONTACT MODAL ========== -->
+<div id="contactModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div id="modalFormArea">
+            <div class="modal-title" id="modalTitle">Anfrage senden</div>
+            <div class="modal-subtitle" id="modalSubtitle">Füllen Sie das Formular aus — wir melden uns innerhalb von 24 Stunden.</div>
+            <form id="contactForm" onsubmit="submitForm(event)" action="https://formsubmit.co/top@gigatop.io" method="POST">
+                <!-- FormSubmit config -->
+                <input type="hidden" name="_subject" value="Neue Anfrage - Gigatop Website">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" id="redirectUrl">
+                <!-- Hidden package field -->
+                <input type="hidden" name="Package" id="formPackage">
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label class="form-label">Name *</label>
+                    <input type="text" name="Name" class="form-input" required placeholder="Ihr vollständiger Name">
+                </div>
+                <!-- Email -->
+                <div class="form-group">
+                    <label class="form-label">E-Mail *</label>
+                    <input type="email" name="Email" class="form-input" required placeholder="ihre@email.ch">
+                </div>
+                <!-- Phone -->
+                <div class="form-group">
+                    <label class="form-label">Telefon <span class="optional">(optional)</span></label>
+                    <input type="tel" name="Telefon" class="form-input" placeholder="+41 XX XXX XX XX">
+                </div>
+
+                <!-- Dynamic Questions Container -->
+                <div id="dynamicQuestions"></div>
+
+                <button type="submit" class="form-btn" id="submitBtn">Anfrage absenden →</button>
+            </form>
+        </div>
+        <!-- Success Message (hidden by default) -->
+        <div id="modalSuccess" class="form-success" style="display:none;">
+            <div class="check-icon">✓</div>
+            <h3>Vielen Dank!</h3>
+            <p>Ihre Anfrage wurde erfolgreich gesendet.<br>Wir melden uns schnellstmöglich bei Ihnen.</p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

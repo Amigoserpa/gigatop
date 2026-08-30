@@ -31,7 +31,9 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', system-ui, sans-serif; background-color: #F6F1E8; color: #102A33; }
         .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
-        .gradient-hero { background: linear-gradient(135deg, rgba(22, 74, 91, 0.92) 0%, rgba(16, 42, 51, 0.88) 50%, rgba(120, 134, 107, 0.85) 100%); }
+        .gradient-hero { background: linear-gradient(135deg, rgba(16, 42, 51, 0.85) 0%, rgba(23, 74, 91, 0.80) 40%, rgba(120, 134, 107, 0.75) 100%); }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.45) saturate(0.9); }
         .glass-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(214, 107, 69, 0.15); }
         .gradient-accent { background: linear-gradient(135deg, #D66B45 0%, #78866B 100%); }
         .gradient-deep { background: linear-gradient(135deg, #174A5B 0%, #102A33 100%); }
@@ -107,8 +109,12 @@
 </header>
 
 <!-- ========== HERO ========== -->
-<section class="relative min-h-screen flex items-center overflow-hidden" style="background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=30') center/cover no-repeat;">
-    <div class="absolute inset-0 gradient-hero"></div>
+<section class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Hero Background Image -->
+    <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80" alt="" loading="eager">
+    </div>
+    <div class="gradient-hero"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div class="max-w-3xl">
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
@@ -160,45 +166,70 @@
             <p class="text-navy/60 max-w-2xl mx-auto" data-i18n="uc_subtitle">Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
                 </div>
-                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc1_title">Sales & Wachstum</h3>
-                <p class="text-navy/60 text-sm mb-4" data-i18n="uc1_desc">Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.</p>
-                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                <div class="relative z-10">
+                    <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc1_title">Sales & Wachstum</h3>
+                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc1_desc">Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.</p>
+                    <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <div class="w-12 h-12 gradient-deep rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
                 </div>
-                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc2_title">Operations & Effizienz</h3>
-                <p class="text-navy/60 text-sm mb-4" data-i18n="uc2_desc">Automatisierung von Prozessen, Dokumentenmanagement und Workflows.</p>
-                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                <div class="relative z-10">
+                    <div class="w-12 h-12 gradient-deep rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc2_title">Operations & Effizienz</h3>
+                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc2_desc">Automatisierung von Prozessen, Dokumentenmanagement und Workflows.</p>
+                    <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
                 </div>
-                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc3_title">Kunden-Support</h3>
-                <p class="text-navy/60 text-sm mb-4" data-i18n="uc3_desc">KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.</p>
-                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                <div class="relative z-10">
+                    <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc3_title">Kunden-Support</h3>
+                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc3_desc">KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.</p>
+                    <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <div class="w-12 h-12 gradient-deep rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
                 </div>
-                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc4_title">Daten & Intelligence</h3>
-                <p class="text-navy/60 text-sm mb-4" data-i18n="uc4_desc">Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.</p>
-                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                <div class="relative z-10">
+                    <div class="w-12 h-12 gradient-deep rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc4_title">Daten & Intelligence</h3>
+                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc4_desc">Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.</p>
+                    <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afcab8eb5927?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
                 </div>
-                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc5_title">Finance & Controlling</h3>
-                <p class="text-navy/60 text-sm mb-4" data-i18n="uc5_desc">Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.</p>
-                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                <div class="relative z-10">
+                    <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc5_title">Finance & Controlling</h3>
+                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc5_desc">Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.</p>
+                    <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutz | Einzelfirma — Fabio Serpa — Private AI & Local AI Solutions</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: '#F6F1E8',
+            terracotta: '#D66B45',
+            navy: '#174A5B',
+            olive: '#78866B',
+            dark: '#102A33',
+            text: '#202725',
+            muted: '#5A645F'
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body { background-color: #F6F1E8; color: #202725; font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Manrope', sans-serif; }
+    .gradient-text { background: linear-gradient(90deg, #174A5B, #78866B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    [data-aos="fade-up"] { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    [data-aos="fade-up"].visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-sand/90 backdrop-blur-md border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center text-white font-bold font-display">G</div>
+          <span class="font-display font-bold text-xl tracking-tight text-dark">GIGATOP</span>
+        </div>
+        
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium text-muted hover:text-navy transition">Home</a>
+          <a href="index.html#use-cases" class="text-sm font-medium text-muted hover:text-navy transition">Use Cases</a>
+          <a href="impressum.html" class="text-sm font-medium text-muted hover:text-navy transition">Impressum</a>
+          <a href="datenschutz.html" class="text-sm font-semibold text-navy">Datenschutz</a>
+          <a href="agb.html" class="text-sm font-medium text-muted hover:text-navy transition">AGB</a>
+          <a href="index.html" class="bg-navy hover:bg-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold transition">Zurück zur Website</a>
+        </div>
+        
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-sand border-t border-stone-200 absolute w-full">
+      <div class="p-6 space-y-4">
+        <a href="index.html" class="block text-dark font-medium">Home</a>
+        <a href="index.html#use-cases" class="block text-dark font-medium">Use Cases</a>
+        <a href="impressum.html" class="block text-dark font-medium">Impressum</a>
+        <a href="datenschutz.html" class="block text-navy font-semibold">Datenschutz</a>
+        <a href="agb.html" class="block text-dark font-medium">AGB</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-12 lg:pt-40 lg:pb-16">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="fade-in">
+        <div class="inline-flex items-center gap-2 bg-navy/10 text-navy px-3 py-1 rounded-full text-xs font-bold mb-6 tracking-wide">
+          RECHTLICHE INFORMATIONEN
+        </div>
+        <h1 class="text-5xl lg:text-6xl font-bold text-dark leading-[1.1] mb-6 tracking-tight">
+          Datenschutz
+        </h1>
+        <p class="text-lg text-muted leading-relaxed">
+          Ihre Privatsphäre ist uns wichtig. Diese Datenschutzerklärung informiert Sie gemäss dem Schweizerischen Bundesgesetz über den Datenschutz (DSG, revidiert per 1. September 2023) über Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="pb-24">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="space-y-12">
+        
+        <!-- 1. Verantwortlicher -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">1. Verantwortlicher</h2>
+          <div class="space-y-2 text-muted">
+            <p><strong class="text-dark">Fabio Serpa</strong></p>
+            <p>Einzelfirma — Fabio Serpa</p>
+            <p>Hinterhöfenstrasse 8</p>
+            <p>6312 Steinhausen</p>
+            <p>Schweiz</p>
+            <p>E-Mail: <a href="mailto:top@gigatop.io" class="text-navy hover:underline">top@gigatop.io</a></p>
+          </div>
+        </div>
+
+        <!-- 2. Datenschutzbeauftragter -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">2. Datenschutzbeauftragter</h2>
+          <div class="space-y-2 text-muted">
+            <p>
+              Als Einzelfirma ist die GIGATOP — Fabio Serpa nicht verpflichtet, einen Datenschutzbeauftragten zu bestellen. Alle Anfragen bezüglich Datenschutz richten Sie bitte an:
+            </p>
+            <p><strong class="text-dark">Fabio Serpa</strong></p>
+            <p>E-Mail: <a href="mailto:top@gigatop.io" class="text-navy hover:underline">top@gigatop.io</a></p>
+          </div>
+        </div>
+
+        <!-- 3. Erhobene Daten -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">3. Erhobene personenbezogene Daten</h2>
+          <p class="text-muted mb-4">Wir erheben und verarbeiten personenbezogene Daten nur, soweit dies zur Verarbeitung eines Vertrags oder für die Erfüllung rechtlicher Pflichten erforderlich ist. Folgende Daten werden verarbeitet:</p>
+          <ul class="space-y-3 text-muted">
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Kontaktformular</strong>
+                <p class="text-sm mt-1">Name, E-Mail-Adresse, Telefonnummer, Nachrichteninhalt</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">E-Mail-Korrespondenz</strong>
+                <p class="text-sm mt-1">Absender, Empfänger, Datum, Inhalt der E-Mails</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Server-Logs</strong>
+                <p class="text-sm mt-1">IP-Adresse, Datum und Uhrzeit des Zugriffs, Browsertyp, Browser-Version, zugreifendes Betriebssystem, Referrer URL</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Cookies</strong>
+                <p class="text-sm mt-1">Technisch notwendige Cookies, Funktions-Cookies (Spracheinstellungen), Analyse-Cookies (anonymisiert)</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">AI Use Case Wizard</strong>
+                <p class="text-sm mt-1">Branche, Unternehmensgrösse, Department, Probleme, Datenquellen (nur zu Optimierungszwecken, keine Speicherung über Session hinaus)</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 4. Verarbeitungszwecke -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">4. Verarbeitungszwecke</h2>
+          <p class="text-muted mb-4">Wir verarbeiten Ihre personenbezogenen Daten zu folgenden Zwecken:</p>
+          <ul class="space-y-3 text-muted">
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Anfragebearbeitung</strong>
+                <p class="text-sm mt-1">Bearbeitung von Kontaktanfragen, Beratungsgesprächen und Aufträgen</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Website-Betrieb</strong>
+                <p class="text-sm mt-1">Sicherstellung des reibungslosen Betriebs der Website, technische Optimierung</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Rechtliche Pflichten</strong>
+                <p class="text-sm mt-1">Erfüllung gesetzlicher Aufbewahrungspflichten (Obligationenrecht, Steuerrecht)</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Verbesserung der Services</strong>
+                <p class="text-sm mt-1">Analyse der Nutzung, Optimierung von Inhalten und Funktionen</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 5. Rechtsgrundlagen -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">5. Rechtsgrundlagen</h2>
+          <p class="text-muted mb-4">Die Verarbeitung erfolgt auf Grundlage folgender Rechtsgrundlagen:</p>
+          <ul class="space-y-3 text-muted">
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Einwilligung (Art. 4 lit. a DSG)</strong>
+                <p class="text-sm mt-1">Bei Einwilligung des Betroffenen, z.B. für Marketing-E-Mails oder Analyse-Cookies</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Vertragserfüllung (Art. 31 Abs. 1 lit. a DSG)</strong>
+                <p class="text-sm mt-1">Erforderlich zur Durchführung vorvertraglicher Massnahmen oder zur Erfüllung eines Vertrags</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Berechtigtes Interesse (Art. 31 Abs. 2 DSG)</strong>
+                <p class="text-sm mt-1">Für technische Optimierung, Sicherheit und Weiterentwicklung unserer Services</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Gesetzliche Verpflichtung (Art. 31 Abs. 1 lit. b DSG)</strong>
+                <p class="text-sm mt-1">Zur Erfüllung gesetzlicher Pflichten (z.B. Buchführungs-, Steuerrechts)</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 6. Weitergabe -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">6. Weitergabe an Dritte</h2>
+          <p class="text-muted mb-4">Wir geben Ihre personenbezogenen Daten nur an Dritte weiter, wenn dies zur Vertragserfüllung erforderlich ist, eine gesetzliche Verpflichtung dies vorschreibt oder Sie eingewilligt haben. Folgende Dienstleister verarbeiten Daten im Auftrag:</p>
+          <ul class="space-y-3 text-muted">
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Webhosting & Infrastruktur</strong>
+                <p class="text-sm mt-1">Hosting-Provider (technisch notwendige Verarbeitung für Website-Betrieb)</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">E-Mail-Dienstleister</strong>
+                <p class="text-sm mt-1">Versand von E-Mails (z.B. FormSubmit, E-Mail-Marketing-Plattformen)</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Cloud-Dienste</strong>
+                <p class="text-sm mt-1">Speicherung und Verarbeitung auf Cloud-Servern ( ausschliesslich in der Schweiz/EU)</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Analyse-Dienste</strong>
+                <p class="text-sm mt-1">Webanalyse-Tools (anonymisiert, mit Opt-Out-Möglichkeit)</p>
+              </div>
+            </li>
+          </ul>
+          
+          <div class="mt-6 bg-sand/30 rounded-xl p-4 border border-stone-200">
+            <p class="text-sm text-muted">
+              <strong class="text-dark">Internationale Datenübermittlungen:</strong> 
+              Wir verwenden ausschliesslich Server in der Schweiz und EU. Falls Daten in Drittländer übermittelt werden, stellen wir sicher, dass ein angemessenes Datenschutzniveau gewährleistet ist (z.B. durch Standardvertragsklauseln oder Adequacy-Beschluss).
+            </p>
+          </div>
+        </div>
+
+        <!-- 7. Cookies -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">7. Cookies</h2>
+          <p class="text-muted mb-4">Unsere Website verwendet Cookies. Das sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden.</p>
+          
+          <h3 class="text-lg font-semibold text-dark mb-3">Notwendige Cookies</h3>
+          <p class="text-muted mb-4">Diese Cookies sind für den Betrieb der Website unbedingt erforderlich. Sie können diese nicht ablehnen.</p>
+          <ul class="space-y-2 text-muted mb-6">
+            <li class="flex items-start gap-2">
+              <div class="w-1.5 h-1.5 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <span>Spracheinstellung (DE/EN)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <div class="w-1.5 h-1.5 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <span>Sitzungs-Cookies (Login, Session-State)</span>
+            </li>
+          </ul>
+          
+          <h3 class="text-lg font-semibold text-dark mb-3">Funktions-Cookies</h3>
+          <p class="text-muted mb-4">Diese Cookies ermöglichen es uns, die Website benutzerfreundlicher zu gestalten.</p>
+          
+          <h3 class="text-lg font-semibold text-dark mb-3">Analyse-Cookies</h3>
+          <p class="text-muted mb-4">Wir verwenden nur anonymisierte Analyse-Cookies, die kein Tracking ermöglichen. Sie können diese jederzeit ablehnen.</p>
+          
+          <p class="text-sm text-muted mt-4">
+            <strong class="text-dark">Cookie-Einstellungen:</strong> Sie können Ihre Cookie-Präferenzen jederzeit über die Einstellungen Ihrer Internet-Browser ändern. Beachten Sie, dass die Deaktivierung von notwendigen Cookies die Funktionalität der Website beeinträchtigen kann.
+          </p>
+        </div>
+
+        <!-- 8. Betroffenenrechte -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">8. Ihre Rechte als betroffene Person</h2>
+          <p class="text-muted mb-4">Gemäss dem Schweizerischen Datenschutzgesetz (DSG) stehen Ihnen folgende Rechte zu:</p>
+          <ul class="space-y-3 text-muted">
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Recht auf Auskunft (Art. 25 DSG)</strong>
+                <p class="text-sm mt-1">Sie haben das Recht, Auskunft darüber zu erhalten, welche Daten wir über Sie verarbeiten.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Recht auf Berichtigung (Art. 26 DSG)</strong>
+                <p class="text-sm mt-1">Sie haben das Recht, unrichtige personenbezogene Daten berichtigen zu lassen.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Recht auf Löschung (Art. 27 DSG)</strong>
+                <p class="text-sm mt-1">Sie haben das Recht, die Löschung Ihrer Daten zu verlangen, sofern keine gesetzliche Aufbewahrungspflicht besteht.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Recht auf Einschränkung (Art. 28 DSG)</strong>
+                <p class="text-sm mt-1">Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer Daten zu verlangen.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Recht auf Widerspruch (Art. 29 DSG)</strong>
+                <p class="text-sm mt-1">Sie haben das Recht, der Verarbeitung Ihrer Daten jederzeit zu widersprechen, insbesondere für Direktwerbung.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Datenübertragbarkeit (Art. 30 DSG)</strong>
+                <p class="text-sm mt-1">Sie haben das Recht, Ihre Daten in einem maschinenlesbaren Format zu erhalten und an einen anderen Verantwortlichen zu übermitteln.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Widerruf der Einwilligung</strong>
+                <p class="text-sm mt-1">Sie können eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+              </div>
+            </li>
+          </ul>
+          
+          <p class="text-sm text-muted mt-6">
+            <strong class="text-dark">Kontakt:</strong> Bitte richten Sie Anfragen an unsere Datenschutzbeauftragte: <a href="mailto:datenschutz@gigatop.ch" class="text-navy hover:underline">datenschutz@gigatop.ch</a>
+          </p>
+        </div>
+
+        <!-- 9. Beschwerderecht -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">9. Beschwerderecht</h2>
+          <p class="text-muted mb-4">Sie haben das Recht, sich bei der zuständigen Datenschutzbehörde zu beschweren:</p>
+          <div class="bg-sand/30 rounded-xl p-6 border border-stone-200">
+            <h3 class="font-semibold text-dark mb-2">Beschwerdestelle für Datenschutz</h3>
+            <p class="text-muted text-sm">
+              Beschwerden können bei der kantonalen Beschwerdestelle für Datenschutz eingereicht werden. 
+              Für den Kanton Zug ist das Amt für Justiz zuständig.
+            </p>
+            <p class="text-muted text-sm mt-3">
+              <strong class="text-dark">Amt für Justiz, Kanton Zug</strong><br>
+              Musterstrasse 1<br>
+              6302 Zug<br>
+              Schweiz<br><br>
+              Tel.: +41 41 739 61 61<br>
+              Web: <a href="https://www.zug.ch/dsk" target="_blank" class="text-navy hover:underline">www.zug.ch/dsk</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- 10. Dauer -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">10. Dauer der Speicherung</h2>
+          <p class="text-muted mb-4">Wir speichern Ihre personenbezogenen Daten nur so lange, wie dies zur Erfüllung der oben genannten Zwecke erforderlich ist oder gesetzlich vorgeschrieben ist. Die Daten werden anschliessend gelöscht, sofern keine gesetzliche Aufbewahrungspflicht besteht.</p>
+          <ul class="space-y-3 text-muted">
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Kontaktdaten</strong>
+                <p class="text-sm mt-1">Speicherfrist: bis zum Widerruf der Einwilligung oder zur Erfüllung von Vertragszwecken</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Buchungs- und Rechnungsdaten</strong>
+                <p class="text-sm mt-1">Speicherfrist: 10 Jahre gemäss OR (Obligationenrecht)</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Steuerungsdaten</strong>
+                <p class="text-sm mt-1">Speicherfrist: 7 Jahre gemäss Steuerrecht</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <strong class="text-dark">Server-Logs</strong>
+                <p class="text-sm mt-1">Speicherfrist: 30 Tage (anonymisiert)</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 11. Änderungen -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">11. Änderungen dieser Datenschutzerklärung</h2>
+          <p class="text-muted">
+            Wir behalten uns vor, diese Datenschutzerklärung zu aktualisieren, um sie an geänderte Rechtslagen oder Änderungen in unserem Dienstleistungsangebot anzupassen. Eine Änderung dieser Datenschutzerklärung wird auf unserer Website veröffentlicht. Wir bitten Sie, die Datenschutzerklärung bei jedem Besuch unserer Website zu prüfen.
+          </p>
+        </div>
+
+        <!-- Letzte Aktualisierung -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <div class="text-sm text-muted">
+            <strong class="text-dark">Letzte Aktualisierung:</strong> 1. September 2026
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark/90 border-t border-stone-800 py-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h4 class="font-display font-bold text-lg mb-4 text-white">GIGATOP</h4>
+          <p class="text-sm text-muted">Private AI Solutions.</p>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-4 text-white">Navigation</h5>
+          <ul class="space-y-2 text-sm text-muted">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="index.html#use-cases" class="hover:text-white">Use Cases</a></li>
+            <li><a href="impressum.html" class="hover:text-white">Impressum</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-4 text-white">Legal</h5>
+          <ul class="space-y-2 text-sm text-muted">
+            <li><a href="impressum.html" class="hover:text-white">Impressum</a></li>
+            <li><a href="datenschutz.html" class="hover:text-white">Datenschutz</a></li>
+            <li><a href="agb.html" class="hover:text-white">AGB</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-4 text-white">Kontakt</h5>
+          <ul class="space-y-2 text-sm text-muted">
+            <li>top@gigatop.io</li>
+            <li>+41 41 123 45 67</li>
+            <li>Zug, Schweiz</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-stone-800 pt-6 text-center text-sm text-muted">
+        © 2026 Einzelfirma — Fabio Serpa. Alle Rechte vorbehalten.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('hidden');
+    }
+    
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.85) el.classList.add('visible');
+      });
+    });
+    window.dispatchEvent(new Event('scroll'));
+  </script>
+
+</body>
+</html>

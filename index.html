@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gigatop - Private AI & Local AI Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sand: '#F6F1E8',
+                        terracotta: '#D66B45',
+                        deepblue: '#174A5B',
+                        olive: '#78866B',
+                        navy: '#102A33',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; background-color: #F6F1E8; color: #102A33; }
+        .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+        .gradient-hero { background: linear-gradient(135deg, rgba(22, 74, 91, 0.92) 0%, rgba(16, 42, 51, 0.88) 50%, rgba(120, 134, 107, 0.85) 100%); }
+        .glass-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(214, 107, 69, 0.15); }
+        .gradient-accent { background: linear-gradient(135deg, #D66B45 0%, #78866B 100%); }
+        .gradient-deep { background: linear-gradient(135deg, #174A5B 0%, #102A33 100%); }
+        .btn-primary { background: linear-gradient(135deg, #D66B45 0%, #174A5B 100%); transition: all 0.3s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(214, 107, 69, 0.3); }
+        .btn-outline { border: 2px solid #D66B45; color: #D66B45; transition: all 0.3s; }
+        .btn-outline:hover { background: #D66B45; color: white; }
+        .card-hover { transition: all 0.3s; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(16, 42, 51, 0.12); }
+        .demo-chat { background: #ffffff; border-radius: 12px; min-height: 300px; }
+        .demo-message { padding: 12px 16px; margin: 8px 0; border-radius: 16px; max-width: 85%; }
+        .demo-user { background: #174A5B; color: white; margin-left: auto; }
+        .demo-ai { background: #F6F1E8; color: #102A33; }
+        .demo-presets { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+        .demo-preset { padding: 10px 14px; background: white; border: 1px solid #ddd; border-radius: 10px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; text-align: left; }
+        .demo-preset:hover { background: #174A5B; color: white; border-color: #174A5B; }
+        .credits-badge { background: linear-gradient(135deg, #D66B45, #78866B); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        input[type="range"] { -webkit-appearance: none; height: 6px; background: linear-gradient(90deg, #D66B45, #78866B); border-radius: 3px; outline: none; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: #174A5B; border-radius: 50%; cursor: pointer; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .typing { animation: pulse 1.5s infinite; }
+    </style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="fixed top-0 w-full z-50 transition-all duration-300" id="header">
+    <div class="bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 gradient-deep rounded-lg flex items-center justify-center">
+                        <span class="text-white font-display font-bold text-xl">G</span>
+                    </div>
+                    <span class="font-display font-bold text-xl text-navy">Gigatop</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#usecases" class="nav-link text-sm font-medium text-navy/70 hover:text-navy" data-i18n="nav_usecases">Use Cases</a>
+                    <a href="#demo" class="nav-link text-sm font-medium text-navy/70 hover:text-navy" data-i18n="nav_demo">AI Demo</a>
+                    <a href="#roi" class="nav-link text-sm font-medium text-navy/70 hover:text-navy" data-i18n="nav_roi">ROI Rechner</a>
+                    <a href="#pricing" class="nav-link text-sm font-medium text-navy/70 hover:text-navy" data-i18n="nav_pricing">Preise</a>
+                    <a href="#about" class="nav-link text-sm font-medium text-navy/70 hover:text-navy" data-i18n="nav_about">Über uns</a>
+                </nav>
+                <div class="flex items-center space-x-3">
+                    <select id="langSelect" onchange="setLang(this.value)" class="bg-sand border border-deepblue/20 rounded-lg px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-terracotta/50">
+                        <option value="de">🇨🇭 DE</option>
+                        <option value="en">🇬🇧 EN</option>
+                    </select>
+                    <button onclick="openWizard()" class="hidden sm:block btn-primary text-white px-5 py-2 rounded-lg text-sm font-semibold" data-i18n="nav_demo">
+                        AI Demo
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t">
+        <div class="px-4 py-4 space-y-3">
+            <a href="#usecases" onclick="toggleMobileMenu()" class="block py-2 text-navy/70 font-medium" data-i18n="nav_usecases">Use Cases</a>
+            <a href="#demo" onclick="toggleMobileMenu()" class="block py-2 text-navy/70 font-medium" data-i18n="nav_demo">AI Demo</a>
+            <a href="#roi" onclick="toggleMobileMenu()" class="block py-2 text-navy/70 font-medium" data-i18n="nav_roi">ROI Rechner</a>
+            <a href="#pricing" onclick="toggleMobileMenu()" class="block py-2 text-navy/70 font-medium" data-i18n="nav_pricing">Preise</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-navy/70 font-medium" data-i18n="nav_about">Über uns</a>
+            <button onclick="openWizard(); toggleMobileMenu();" class="w-full btn-primary text-white px-5 py-2.5 rounded-lg text-sm font-semibold" data-i18n="nav_demo">
+                AI Demo
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="relative min-h-screen flex items-center overflow-hidden" style="background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=30') center/cover no-repeat;">
+    <div class="absolute inset-0 gradient-hero"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                <span class="w-2 h-2 bg-terracotta rounded-full animate-pulse"></span>
+                <span class="text-white/90 text-sm font-medium" data-i18n="hero_badge">KI, die Ihr Unternehmen versteht</span>
+            </div>
+            <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6" data-i18n="hero_title">
+                Private AI-Lösungen für Schweizer Unternehmen
+            </h1>
+            <p class="text-lg sm:text-xl text-white/80 mb-8 leading-relaxed" data-i18n="hero_p1">
+                Wir bringen künstliche Intelligenz sicher in Ihr Unternehmen — lokal, datenschutzkonform und messbar.
+            </p>
+            <p class="text-base sm:text-lg text-white/70 mb-10 max-w-2xl" data-i18n="hero_p2">
+                Keine Cloud-Sensibilitäten. Keine Compliance-Risiken. Volle Kontrolle über Ihre Daten.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button onclick="openWizard()" class="btn-primary text-white px-8 py-4 rounded-xl text-lg font-semibold" data-i18n="hero_cta1">
+                    KI-Potenzial analysieren
+                </button>
+                <button onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})" class="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all" data-i18n="hero_cta2">
+                    Live Demo testen
+                </button>
+            </div>
+            <div class="mt-12 flex items-center gap-8 text-white/60">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-terracotta" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <span class="text-sm" data-i18n="hero_feat1">100% lokal & privat</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-terracotta" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <span class="text-sm" data-i18n="hero_feat2">Schweizer Datenschutz</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-terracotta" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <span class="text-sm" data-i18n="hero_feat3">Messbare Ergebnisse</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-0 w-full bg-[#F6F1E8] h-16 wave-divider"></div>
+</section>
+
+<!-- ========== USE CASES ========== -->
+<section id="usecases" class="py-20 bg-sand">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="inline-block bg-terracotta/10 text-terracotta px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-i18n="uc_badge">Anwendungsbereiche</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="uc_title">KI für Ihr Unternehmen</h2>
+            <p class="text-navy/60 max-w-2xl mx-auto" data-i18n="uc_subtitle">Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                </div>
+                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc1_title">Sales & Wachstum</h3>
+                <p class="text-navy/60 text-sm mb-4" data-i18n="uc1_desc">Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.</p>
+                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+            </div>
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <div class="w-12 h-12 gradient-deep rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc2_title">Operations & Effizienz</h3>
+                <p class="text-navy/60 text-sm mb-4" data-i18n="uc2_desc">Automatisierung von Prozessen, Dokumentenmanagement und Workflows.</p>
+                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+            </div>
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                </div>
+                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc3_title">Kunden-Support</h3>
+                <p class="text-navy/60 text-sm mb-4" data-i18n="uc3_desc">KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.</p>
+                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+            </div>
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <div class="w-12 h-12 gradient-deep rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+                </div>
+                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc4_title">Daten & Intelligence</h3>
+                <p class="text-navy/60 text-sm mb-4" data-i18n="uc4_desc">Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.</p>
+                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+            </div>
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc5_title">Finance & Controlling</h3>
+                <p class="text-navy/60 text-sm mb-4" data-i18n="uc5_desc">Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.</p>
+                <button onclick="openWizard()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== AI DEMO ========== -->
+<section id="demo" class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="inline-block bg-olive/10 text-olive px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-i18n="demo_badge">Kostenlos testen</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="demo_title">AI Demo testen</h2>
+            <p class="text-navy/60 max-w-2xl mx-auto" data-i18n="demo_subtitle">Probieren Sie unsere KI live aus — kostenlos und ohne Anmeldung. 5 Gratis-Prompts inklusive.</p>
+            <div class="mt-4"><span id="creditsBadge" class="credits-badge">5 Credits übrig</span></div>
+        </div>
+        <div class="bg-sand rounded-2xl p-4 sm:p-6">
+            <div class="demo-presets mb-4" id="demoPresets">
+                <button class="demo-preset" onclick="usePreset('email')" data-i18n="demo_preset1">📧 E-Mail analysieren</button>
+                <button class="demo-preset" onclick="usePreset('report')" data-i18n="demo_preset2">📊 Report zusammenfassen</button>
+                <button class="demo-preset" onclick="usePreset('contract')" data-i18n="demo_preset3">📋 Vertrag prüfen</button>
+                <button class="demo-preset" onclick="usePreset('customer')" data-i18n="demo_preset4">🛒 Kunden bewerten</button>
+                <button class="demo-preset" onclick="usePreset('meeting')" data-i18n="demo_preset5">💼 Meeting analysieren</button>
+            </div>
+            <div class="demo-chat p-4 sm:p-6" id="demoChat">
+                <div class="demo-message demo-ai" data-i18n="demo_welcome">Hallo! Ich bin die Gigatop KI. Stellen Sie mir eine Frage oder wählen Sie oben einen der 5 kostenlosen Prompts aus. 🚀</div>
+            </div>
+            <div class="flex gap-3 mt-4" id="demoInputArea">
+                <input type="text" id="demoInput" placeholder="Ihre Nachricht..." class="flex-1 bg-white border border-deepblue/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/50" data-i18n-placeholder="demo_placeholder">
+                <button id="demoSendBtn" onclick="sendDemoMessage()" class="btn-primary text-white px-6 py-3 rounded-xl font-semibold" data-i18n="demo_send">Senden</button>
+            </div>
+            <div id="demoCTA" class="hidden text-center py-8">
+                <p class="text-navy/70 mb-4" data-i18n="demo_cta">Sie haben alle Gratis-Prompts verwendet. Möchten Sie mehr erfahren?</p>
+                <button onclick="openContact()" class="btn-primary text-white px-8 py-3 rounded-xl font-semibold" data-i18n="demo_cta_btn">Session buchen</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== WIZARD ========== -->
+<section id="wizard" class="hidden py-20 bg-sand">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <button onclick="wizardBack()" class="text-navy/60 hover:text-navy mb-6 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <span data-i18n="wizard_back">Zurück</span>
+        </button>
+        <div class="glass-card rounded-2xl p-6 sm:p-8">
+            <div class="flex items-center gap-2 mb-8">
+                <div class="flex-1 h-2 bg-olive/20 rounded-full"><div id="wizardProgress" class="h-2 gradient-accent rounded-full transition-all duration-500" style="width:20%"></div></div>
+                <span id="wizardStepLabel" class="text-sm font-semibold text-navy/60">1/5</span>
+            </div>
+            <div id="wizard_q1" class="wizard-step">
+                <h3 class="font-display font-bold text-xl text-navy mb-2" data-i18n="wizard_q1_title">In welcher Branche sind Sie tätig?</h3>
+                <p class="text-navy/60 mb-6" data-i18n="wizard_q1_desc">Dies hilft uns, massgeschneiderte KI-Lösungen zu identifizieren.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button onclick="selectWizardOption(1, 'handel')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q1_opt1">🏪 Handel & Einzelhandel</div></button>
+                    <button onclick="selectWizardOption(1, 'dienstleistung')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q1_opt2">💼 Dienstleistungen</div></button>
+                    <button onclick="selectWizardOption(1, 'industrie')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q1_opt3">🏭 Industrie & Produktion</div></button>
+                    <button onclick="selectWizardOption(1, 'gesundheit')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q1_opt4">🏥 Gesundheitswesen</div></button>
+                    <button onclick="selectWizardOption(1, 'logistik')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q1_opt5">🚚 Logistik & Transport</div></button>
+                    <button onclick="selectWizardOption(1, 'finance')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q1_opt6">🏦 Finanzen & Versicherung</div></button>
+                </div>
+            </div>
+            <div id="wizard_q2" class="wizard-step hidden">
+                <h3 class="font-display font-bold text-xl text-navy mb-2" data-i18n="wizard_q2_title">Welcher Bereich soll optimiert werden?</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button onclick="selectWizardOption(2, 'sales')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q2_opt1">Sales & Vertrieb</div></button>
+                    <button onclick="selectWizardOption(2, 'support')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q2_opt2">Kunden-Support</div></button>
+                    <button onclick="selectWizardOption(2, 'ops')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q2_opt3">Operations</div></button>
+                    <button onclick="selectWizardOption(2, 'finance')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q2_opt4">Finanzen & Controlling</div></button>
+                </div>
+            </div>
+            <div id="wizard_q3" class="wizard-step hidden">
+                <h3 class="font-display font-bold text-xl text-navy mb-2" data-i18n="wizard_q3_title">Was kostet Sie am meisten Zeit?</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button onclick="selectWizardOption(3, 'data')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q3_opt1">📊 Datenanalyse & Reporting</div></button>
+                    <button onclick="selectWizardOption(3, 'docs')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q3_opt2">📄 Dokumentenmanagement</div></button>
+                    <button onclick="selectWizardOption(3, 'comms')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q3_opt3">💬 Kommunikation</div></button>
+                    <button onclick="selectWizardOption(3, 'analysis')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q3_opt4">🔍 Prozessanalyse</div></button>
+                </div>
+            </div>
+            <div id="wizard_q4" class="wizard-step hidden">
+                <h3 class="font-display font-bold text-xl text-navy mb-2" data-i18n="wizard_q4_title">Welche Datenquellen haben Sie?</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button onclick="selectWizardOption(4, 'crm')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q4_opt1">CRM-System</div></button>
+                    <button onclick="selectWizardOption(4, 'email')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q4_opt2">E-Mail-Postfächer</div></button>
+                    <button onclick="selectWizardOption(4, 'docs')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q4_opt3">Dokumente & Files</div></button>
+                    <button onclick="selectWizardOption(4, 'erp')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-left transition"><div class="font-semibold" data-i18n="wizard_q4_opt4">ERP-System</div></button>
+                </div>
+            </div>
+            <div id="wizard_q5" class="wizard-step hidden">
+                <h3 class="font-display font-bold text-xl text-navy mb-2" data-i18n="wizard_q5_title">Wie gross ist Ihr Unternehmen?</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="selectWizardOption(5, 'small')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-center transition"><div class="font-semibold" data-i18n="wizard_q5_opt1">1-10 Mitarbeiter</div></button>
+                    <button onclick="selectWizardOption(5, 'medium')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-center transition"><div class="font-semibold" data-i18n="wizard_q5_opt2">11-50 Mitarbeiter</div></button>
+                    <button onclick="selectWizardOption(5, 'large')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-center transition"><div class="font-semibold" data-i18n="wizard_q5_opt3">51-200 Mitarbeiter</div></button>
+                    <button onclick="selectWizardOption(5, 'enterprise')" class="p-4 bg-white border-2 border-transparent hover:border-terracotta rounded-xl text-center transition"><div class="font-semibold" data-i18n="wizard_q5_opt4">200+ Mitarbeiter</div></button>
+                </div>
+            </div>
+            <div id="wizard_result" class="wizard-step hidden">
+                <h3 class="font-display font-bold text-lg text-navy mt-4 mb-2" data-i18n="wizard_result_title">Ihre massgeschneiderte KI-Empfehlung</h3>
+                <div id="recContent"></div>
+                <div class="mt-6 flex gap-3">
+                    <button onclick="openContact()" class="btn-primary text-white px-6 py-3 rounded-xl font-semibold" data-i18n="wizard_cta">Beratungsgespräch buchen</button>
+                    <button onclick="resetWizard()" class="btn-outline px-6 py-3 rounded-xl font-semibold" data-i18n="wizard_reset">Neustart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ROI CALCULATOR ========== -->
+<section id="roi" class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="inline-block bg-terracotta/10 text-terracotta px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-i18n="roi_badge">ROI Rechner</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="roi_title">Berechnen Sie Ihr KI-Potenzial</h2>
+            <p class="text-navy/60 max-w-2xl mx-auto" data-i18n="roi_subtitle">Erhalten Sie in Sekunden eine realistische Kosteneinschätzung durch KI-Automatisierung.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="glass-card rounded-2xl p-6">
+                <h3 class="font-display font-bold text-lg text-navy mb-6" data-i18n="roi_input">Parameter eingeben</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label class="flex justify-between text-sm font-medium text-navy/70 mb-2">
+                            <span data-i18n="roi_employees">Mitarbeiter</span>
+                            <span id="roi_employees_val" class="text-terracotta font-bold">5</span>
+                        </label>
+                        <input type="range" id="roi_employees" min="1" max="200" value="5" class="w-full" oninput="calculateROI()">
+                    </div>
+                    <div>
+                        <label class="flex justify-between text-sm font-medium text-navy/70 mb-2">
+                            <span data-i18n="roi_hours">Stunden/Woche pro Prozess</span>
+                            <span id="roi_hours_val" class="text-terracotta font-bold">10</span>
+                        </label>
+                        <input type="range" id="roi_hours" min="1" max="40" value="10" class="w-full" oninput="calculateROI()">
+                    </div>
+                    <div>
+                        <label class="flex justify-between text-sm font-medium text-navy/70 mb-2">
+                            <span data-i18n="roi_salary">Bruttolohn / Jahr (CHF)</span>
+                            <span id="roi_salary_val" class="text-terracotta font-bold">80'000</span>
+                        </label>
+                        <input type="range" id="roi_salary" min="40000" max="200000" value="80000" step="5000" class="w-full" oninput="calculateROI()">
+                    </div>
+                    <div>
+                        <label class="flex justify-between text-sm font-medium text-navy/70 mb-2">
+                            <span data-i18n="roi_rate">Automatisierungsrate (%)</span>
+                            <span id="roi_rate_val" class="text-terracotta font-bold">50%</span>
+                        </label>
+                        <input type="range" id="roi_rate" min="10" max="90" value="50" class="w-full" oninput="calculateROI()">
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 gradient-deep text-white">
+                <h3 class="font-display font-bold text-lg mb-6" data-i18n="roi_result">Ergebnis</h3>
+                <div class="space-y-6">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <div class="text-white/60 text-sm" data-i18n="roi_savings_label">Jährliche Einsparung</div>
+                        <div id="roi_savings" class="text-3xl font-bold mt-1">CHF 20'000</div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/10 rounded-xl p-3">
+                            <div class="text-white/60 text-xs" data-i18n="roi_time_label">Zeit gespart / Jahr</div>
+                            <div id="roi_time" class="text-xl font-bold mt-1">520 Std.</div>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-3">
+                            <div class="text-white/60 text-xs" data-i18n="roi_proc_label">Prozesse / Monat</div>
+                            <div id="roi_proc" class="text-xl font-bold mt-1">10</div>
+                        </div>
+                    </div>
+                    <button onclick="openContact()" class="w-full btn-primary text-white px-6 py-3 rounded-xl font-semibold" data-i18n="roi_cta">Details besprechen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section id="pricing" class="py-20 bg-sand">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="inline-block bg-olive/10 text-olive px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-i18n="pricing_badge">Preise</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="pricing_title">Transparente Investition</h2>
+            <p class="text-navy/60 max-w-2xl mx-auto" data-i18n="pricing_subtitle">Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="pricing_1_title">Starter</h3>
+                <div class="text-3xl font-bold text-terracotta mb-1">CHF 5'000<span class="text-sm font-normal text-navy/50">/Projekt</span></div>
+                <p class="text-navy/50 text-sm mb-6" data-i18n="pricing_1_desc">Einzelne KI-Anwendung für den Einstieg</p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_1_f1">Ein KI-Use Case</span></li>
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_1_f2">Lokale Implementierung</span></li>
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_1_f3">Schulung & Support</span></li>
+                </ul>
+                <button onclick="openContact()" class="w-full btn-outline px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Anfragen</button>
+            </div>
+            <div class="glass-card rounded-2xl p-6 card-hover pricing-popular">
+                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="pricing_2_title">Professional</h3>
+                <div class="text-3xl font-bold text-terracotta mb-1">CHF 15'000<span class="text-sm font-normal text-navy/50">/Projekt</span></div>
+                <p class="text-navy/50 text-sm mb-6" data-i18n="pricing_2_desc">Umfassende KI-Lösung mit mehreren Use Cases</p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_2_f1">3-5 KI-Use Cases</span></li>
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_2_f2">Integration in bestehende Systeme</span></li>
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_2_f3">Training & Continuous Support</span></li>
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_2_f4">Dashboard & Monitoring</span></li>
+                </ul>
+                <button onclick="openContact()" class="w-full btn-primary text-white px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta_popular">Anfragen</button>
+            </div>
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="pricing_3_title">Enterprise</h3>
+                <div class="text-3xl font-bold text-terracotta mb-1">Individuell</div>
+                <p class="text-navy/50 text-sm mb-6" data-i18n="pricing_3_desc">Massgeschneiderte Enterprise-Lösung</p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f1">Unbegrenzte Use Cases</span></li>
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f2">DGX Station & On-Premise</span></li>
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f3">Dediziertes Team</span></li>
+                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f4">SLA & Priority Support</span></li>
+                </ul>
+                <button onclick="openContact()" class="w-full btn-outline px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Kontakt aufnehmen</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="about_title">Warum Gigatop?</h2>
+            <p class="text-navy/60" data-i18n="about_subtitle">Ihr lokaler Partner für private KI-Lösungen in der Schweiz.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <div class="text-3xl mb-3">🔒</div>
+                <h3 class="font-display font-bold text-navy mb-2" data-i18n="about_1_title">Datenschutz-first</h3>
+                <p class="text-navy/60 text-sm" data-i18n="about_1_desc">Ihre Daten verlassen niemals Ihr Unternehmen. 100% lokale Verarbeitung, keine Cloud.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <div class="text-3xl mb-3">⚡</div>
+                <h3 class="font-display font-bold text-navy mb-2" data-i18n="about_2_title">Schnelle Ergebnisse</h3>
+                <p class="text-navy/60 text-sm" data-i18n="about_2_desc">Messbare Verbesserungen innerhalb der ersten 4 Wochen. Keine langwierigen Pilotphasen.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <div class="text-3xl mb-3">🇨🇭</div>
+                <h3 class="font-display font-bold text-navy mb-2" data-i18n="about_3_title">Schweizer Präzision</h3>
+                <p class="text-navy/60 text-sm" data-i18n="about_3_desc">Verständnis für Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6 card-hover">
+                <div class="text-3xl mb-3">🤖</div>
+                <h3 class="font-display font-bold text-navy mb-2" data-i18n="about_4_title">DGX Station</h3>
+                <p class="text-navy/60 text-sm" data-i18n="about_4_desc">Enterprise-Grafikleistung für maximale KI-Leistung — direkt vor Ort in Ihrem Rechenzentrum.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CONTACT MODAL ========== -->
+<div id="contactModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeContact()"></div>
+    <div class="relative bg-white rounded-2xl p-6 sm:p-8 max-w-lg w-full shadow-2xl">
+        <button onclick="closeContact()" class="absolute top-4 right-4 text-navy/40 hover:text-navy"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <h3 class="font-display font-bold text-xl text-navy mb-2" data-i18n="contact_title">Kontakt aufnehmen</h3>
+        <p class="text-navy/60 text-sm mb-6" data-i18n="contact_subtitle">Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.</p>
+        <a href="mailto:top@gigatop.io" class="block btn-primary text-white text-center px-6 py-3 rounded-xl font-semibold mb-4" data-i18n="contact_email">top@gigatop.io</a>
+        <div class="text-center text-sm text-navy/50">
+            <p data-i18n="contact_location">Fabio Serpa, Einzelfirma</p>
+            <p>Hinterhöfenstrasse 8, 6312 Steinhausen</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-navy text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-8 h-8 gradient-deep rounded-lg flex items-center justify-center"><span class="text-white font-display font-bold">G</span></div>
+                    <span class="font-display font-bold text-lg">Gigatop</span>
+                </div>
+                <p class="text-white/50 text-sm" data-i18n="footer_desc">Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.</p>
+            </div>
+            <div>
+                <h4 class="font-display font-semibold mb-3" data-i18n="footer_nav">Navigation</h4>
+                <ul class="space-y-2">
+                    <li><a href="#usecases" class="text-white/50 hover:text-white text-sm" data-i18n="nav_usecases">Use Cases</a></li>
+                    <li><a href="#demo" class="text-white/50 hover:text-white text-sm" data-i18n="nav_demo">AI Demo</a></li>
+                    <li><a href="#roi" class="text-white/50 hover:text-white text-sm" data-i18n="nav_roi">ROI Rechner</a></li>
+                    <li><a href="#pricing" class="text-white/50 hover:text-white text-sm" data-i18n="nav_pricing">Preise</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-display font-semibold mb-3" data-i18n="footer_legal">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="datenschutz.html" class="text-white/50 hover:text-white text-sm" data-i18n="footer_privacy">Datenschutz</a></li>
+                    <li><a href="impressum.html" class="text-white/50 hover:text-white text-sm" data-i18n="footer_imprint">Impressum</a></li>
+                    <li><a href="agb.html" class="text-white/50 hover:text-white text-sm" data-i18n="footer_terms">AGB</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p class="text-white/40 text-sm">© 2025 Gigatop. <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></p>
+            <button onclick="openContact()" class="text-white/50 hover:text-white text-sm" data-i18n="footer_demo">AI Demo</button>
+        </div>
+    </div>
+</footer>
+
+<!-- ========== SCRIPTS ========== -->
+<script>
+var LANGS = {
+    de: {
+        nav_usecases: 'Use Cases', nav_demo: 'AI Demo', nav_roi: 'ROI Rechner', nav_pricing: 'Preise', nav_about: 'Über uns',
+        hero_badge: 'KI, die Ihr Unternehmen versteht', hero_title: 'Private AI-Lösungen für Schweizer Unternehmen',
+        hero_p1: 'Wir bringen künstliche Intelligenz sicher in Ihr Unternehmen — lokal, datenschutzkonform und messbar.',
+        hero_p2: 'Keine Cloud-Sensibilitäten. Keine Compliance-Risiken. Volle Kontrolle über Ihre Daten.',
+        hero_cta1: 'KI-Potenzial analysieren', hero_cta2: 'Live Demo testen',
+        hero_feat1: '100% lokal & privat', hero_feat2: 'Schweizer Datenschutz', hero_feat3: 'Messbare Ergebnisse',
+        uc_badge: 'Anwendungsbereiche', uc_title: 'KI für Ihr Unternehmen', uc_subtitle: 'Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.',
+        uc1_title: 'Sales & Wachstum', uc1_desc: 'Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.',
+        uc2_title: 'Operations & Effizienz', uc2_desc: 'Automatisierung von Prozessen, Dokumentenmanagement und Workflows.',
+        uc3_title: 'Kunden-Support', uc3_desc: 'KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.',
+        uc4_title: 'Daten & Intelligence', uc4_desc: 'Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.',
+        uc5_title: 'Finance & Controlling', uc5_desc: 'Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.',
+        uc_more: 'Mehr erfahren →',
+        demo_badge: 'Kostenlos testen', demo_title: 'AI Demo testen', demo_subtitle: 'Probieren Sie unsere KI live aus — kostenlos und ohne Anmeldung. 5 Gratis-Prompts inklusive.',
+        demo_preset1: '📧 E-Mail analysieren', demo_preset2: '📊 Report zusammenfassen', demo_preset3: '📋 Vertrag prüfen', demo_preset4: '🛒 Kunden bewerten', demo_preset5: '💼 Meeting analysieren',
+        demo_welcome: 'Hallo! Ich bin die Gigatop KI. Stellen Sie mir eine Frage oder wählen Sie oben einen der 5 kostenlosen Prompts aus. 🚀',
+        demo_placeholder: 'Ihre Nachricht...', demo_send: 'Senden', demo_cta: 'Sie haben alle Gratis-Prompts verwendet. Möchten Sie mehr erfahren?', demo_cta_btn: 'Session buchen',
+        wizard_back: 'Zurück', wizard_q1_title: 'In welcher Branche sind Sie tätig?', wizard_q1_desc: 'Dies hilft uns, massgeschneiderte KI-Lösungen zu identifizieren.',
+        wizard_q1_opt1: '🏪 Handel & Einzelhandel', wizard_q1_opt2: '💼 Dienstleistungen', wizard_q1_opt3: '🏭 Industrie & Produktion',
+        wizard_q1_opt4: '🏥 Gesundheitswesen', wizard_q1_opt5: '🚚 Logistik & Transport', wizard_q1_opt6: '🏦 Finanzen & Versicherung',
+        wizard_q2_title: 'Welcher Bereich soll optimiert werden?',
+        wizard_q2_opt1: 'Sales & Vertrieb', wizard_q2_opt2: 'Kunden-Support', wizard_q2_opt3: 'Operations', wizard_q2_opt4: 'Finanzen & Controlling',
+        wizard_q3_title: 'Was kostet Sie am meisten Zeit?',
+        wizard_q3_opt1: '📊 Datenanalyse & Reporting', wizard_q3_opt2: '📄 Dokumentenmanagement',
+        wizard_q3_opt3: '💬 Kommunikation', wizard_q3_opt4: '🔍 Prozessanalyse',
+        wizard_q4_title: 'Welche Datenquellen haben Sie?',
+        wizard_q4_opt1: 'CRM-System', wizard_q4_opt2: 'E-Mail-Postfächer', wizard_q4_opt3: 'Dokumente & Files', wizard_q4_opt4: 'ERP-System',
+        wizard_q5_title: 'Wie gross ist Ihr Unternehmen?',
+        wizard_q5_opt1: '1-10 Mitarbeiter', wizard_q5_opt2: '11-50 Mitarbeiter', wizard_q5_opt3: '51-200 Mitarbeiter', wizard_q5_opt4: '200+ Mitarbeiter',
+        wizard_result_title: 'Ihre massgeschneiderte KI-Empfehlung',
+        wizard_cta: 'Beratungsgespräch buchen', wizard_reset: 'Neustart',
+        roi_badge: 'ROI Rechner', roi_title: 'Berechnen Sie Ihr KI-Potenzial', roi_subtitle: 'Erhalten Sie in Sekunden eine realistische Kosteneinschätzung durch KI-Automatisierung.',
+        roi_input: 'Parameter eingeben', roi_employees: 'Mitarbeiter', roi_hours: 'Stunden/Woche pro Prozess', roi_salary: 'Bruttolohn / Jahr (CHF)', roi_rate: 'Automatisierungsrate (%)',
+        roi_result: 'Ergebnis', roi_savings_label: 'Jährliche Einsparung', roi_time_label: 'Zeit gespart / Jahr', roi_proc_label: 'Prozesse / Monat', roi_cta: 'Details besprechen',
+        pricing_badge: 'Preise', pricing_title: 'Transparente Investition', pricing_subtitle: 'Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.',
+        pricing_1_title: 'Starter', pricing_1_desc: 'Einzelne KI-Anwendung für den Einstieg',
+        pricing_1_f1: 'Ein KI-Use Case', pricing_1_f2: 'Lokale Implementierung', pricing_1_f3: 'Schulung & Support',
+        pricing_2_title: 'Professional', pricing_2_desc: 'Umfassende KI-Lösung mit mehreren Use Cases',
+        pricing_2_f1: '3-5 KI-Use Cases', pricing_2_f2: 'Integration in bestehende Systeme', pricing_2_f3: 'Training & Continuous Support', pricing_2_f4: 'Dashboard & Monitoring',
+        pricing_3_title: 'Enterprise', pricing_3_desc: 'Massgeschneiderte Enterprise-Lösung',
+        pricing_3_f1: 'Unbegrenzte Use Cases', pricing_3_f2: 'DGX Station & On-Premise', pricing_3_f3: 'Dediziertes Team', pricing_3_f4: 'SLA & Priority Support',
+        pricing_cta: 'Anfragen', pricing_cta_popular: 'Anfragen',
+        about_title: 'Warum Gigatop?', about_subtitle: 'Ihr lokaler Partner für private KI-Lösungen in der Schweiz.',
+        about_1_title: 'Datenschutz-first', about_1_desc: 'Ihre Daten verlassen niemals Ihr Unternehmen. 100% lokale Verarbeitung, keine Cloud.',
+        about_2_title: 'Schnelle Ergebnisse', about_2_desc: 'Messbare Verbesserungen innerhalb der ersten 4 Wochen. Keine langwierigen Pilotphasen.',
+        about_3_title: 'Schweizer Präzision', about_3_desc: 'Verständnis für Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.',
+        about_4_title: 'DGX Station', about_4_desc: 'Enterprise-Grafikleistung für maximale KI-Leistung — direkt vor Ort in Ihrem Rechenzentrum.',
+        contact_title: 'Kontakt aufnehmen', contact_subtitle: 'Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.', contact_email: 'top@gigatop.io', contact_location: 'Fabio Serpa, Einzelfirma',
+        footer_desc: 'Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.',
+        footer_nav: 'Navigation', footer_legal: 'Legal', footer_privacy: 'Datenschutz', footer_imprint: 'Impressum', footer_terms: 'AGB',
+        footer_rights: 'Alle Rechte vorbehalten.', credits_label: 'Credits übrig',
+        preset_email: 'Analysiere diese E-Mail und extrahiere die wichtigsten Punkte, Aktionen und Deadlines:\n\n',
+        preset_report: 'Fasse diesen Business-Report zusammen und erstelle eine executive summary:\n\n',
+        preset_contract: 'Prüfe diesen Vertrag auf Risiken, Pflichten und kritische Klauseln:\n\n',
+        preset_customer: 'Bewerte diese Kundeninteraktion auf Zufriedenheit, emotionale Tonalität und Handlungsempfehlungen:\n\n',
+        preset_meeting: 'Analysiere diese Meeting-Transkripte und erstelle: 1. Entscheidungen 2. To-Dos 3. Offene Punkte\n\n'
+    },
+    en: {
+        nav_usecases: 'Use Cases', nav_demo: 'AI Demo', nav_roi: 'ROI Calculator', nav_pricing: 'Pricing', nav_about: 'About',
+        hero_badge: 'AI that understands your business', hero_title: 'Private AI Solutions for Swiss Companies',
+        hero_p1: 'We bring artificial intelligence securely into your business — local, compliant and measurable.',
+        hero_p2: 'No cloud sensitivities. No compliance risks. Full control over your data.',
+        hero_cta1: 'Analyze AI potential', hero_cta2: 'Try live demo',
+        hero_feat1: '100% local & private', hero_feat2: 'Swiss data protection', hero_feat3: 'Measurable results',
+        uc_badge: 'Application Areas', uc_title: 'AI for Your Business', uc_subtitle: 'Choose a domain and discover how AI can revolutionize your daily work.',
+        uc1_title: 'Sales & Growth', uc1_desc: 'Lead generation, sales analysis and customer retention with AI-powered data evaluation.',
+        uc2_title: 'Operations & Efficiency', uc2_desc: 'Process automation, document management and workflows.',
+        uc3_title: 'Customer Support', uc3_desc: 'AI chatbots, ticket automation and 24/7 customer communication.',
+        uc4_title: 'Data & Intelligence', uc4_desc: 'Data analysis, business intelligence and data-driven decisions.',
+        uc5_title: 'Finance & Controlling', uc5_desc: 'Financial planning, risk assessment and automated reporting.',
+        uc_more: 'Learn more →',
+        demo_badge: 'Free to try', demo_title: 'Try AI Demo', demo_subtitle: 'Test our AI live — free and no sign-up required. 5 free prompts included.',
+        demo_preset1: '📧 Analyze Email', demo_preset2: '📊 Summarize Report', demo_preset3: '📋 Review Contract', demo_preset4: '🛒 Evaluate Customer', demo_preset5: '💼 Analyze Meeting',
+        demo_welcome: 'Hello! I am the Gigatop AI. Ask me a question or select one of the 5 free prompts above. 🚀',
+        demo_placeholder: 'Your message...', demo_send: 'Send', demo_cta: 'You have used all free prompts. Would you like to learn more?', demo_cta_btn: 'Book Session',
+        wizard_back: 'Back', wizard_q1_title: 'What industry are you in?', wizard_q1_desc: 'This helps us identify tailored AI solutions.',
+        wizard_q1_opt1: '🏪 Retail & E-commerce', wizard_q1_opt2: '💼 Services', wizard_q1_opt3: '🏭 Industry & Manufacturing',
+        wizard_q1_opt4: '🏥 Healthcare', wizard_q1_opt5: '🚚 Logistics & Transport', wizard_q1_opt6: '🏦 Finance & Insurance',
+        wizard_q2_title: 'Which area should be optimized?',
+        wizard_q2_opt1: 'Sales & Distribution', wizard_q2_opt2: 'Customer Support', wizard_q2_opt3: 'Operations', wizard_q2_opt4: 'Finance & Controlling',
+        wizard_q3_title: 'What costs you the most time?',
+        wizard_q3_opt1: '📊 Data Analysis & Reporting', wizard_q3_opt2: '📄 Document Management',
+        wizard_q3_opt3: '💬 Communication', wizard_q3_opt4: '🔍 Process Analysis',
+        wizard_q4_title: 'What data sources do you have?',
+        wizard_q4_opt1: 'CRM System', wizard_q4_opt2: 'Email Inboxes', wizard_q4_opt3: 'Documents & Files', wizard_q4_opt4: 'ERP System',
+        wizard_q5_title: 'How large is your company?',
+        wizard_q5_opt1: '1-10 employees', wizard_q5_opt2: '11-50 employees', wizard_q5_opt3: '51-200 employees', wizard_q5_opt4: '200+ employees',
+        wizard_result_title: 'Your tailored AI recommendation',
+        wizard_cta: 'Book a consultation', wizard_reset: 'Restart',
+        roi_badge: 'ROI Calculator', roi_title: 'Calculate Your AI Potential', roi_subtitle: 'Get a realistic cost estimate from AI automation in seconds.',
+        roi_input: 'Enter parameters', roi_employees: 'Employees', roi_hours: 'Hours/week per process', roi_salary: 'Gross salary / year (CHF)', roi_rate: 'Automation rate (%)',
+        roi_result: 'Result', roi_savings_label: 'Annual savings', roi_time_label: 'Time saved / year', roi_proc_label: 'Processes / month', roi_cta: 'Discuss details',
+        pricing_badge: 'Pricing', pricing_title: 'Transparent Investment', pricing_subtitle: 'Each solution is individually calculated. Use these as reference values.',
+        pricing_1_title: 'Starter', pricing_1_desc: 'Single AI application for getting started',
+        pricing_1_f1: 'One AI use case', pricing_1_f2: 'Local implementation', pricing_1_f3: 'Training & support',
+        pricing_2_title: 'Professional', pricing_2_desc: 'Comprehensive AI solution with multiple use cases',
+        pricing_2_f1: '3-5 AI use cases', pricing_2_f2: 'Integration with existing systems', pricing_2_f3: 'Training & continuous support', pricing_2_f4: 'Dashboard & monitoring',
+        pricing_3_title: 'Enterprise', pricing_3_desc: 'Custom enterprise solution',
+        pricing_3_f1: 'Unlimited use cases', pricing_3_f2: 'DGX Station & on-premise', pricing_3_f3: 'Dedicated team', pricing_3_f4: 'SLA & priority support',
+        pricing_cta: 'Inquire', pricing_cta_popular: 'Inquire',
+        about_title: 'Why Gigatop?', about_subtitle: 'Your local partner for private AI solutions in Switzerland.',
+        about_1_title: 'Privacy-first', about_1_desc: 'Your data never leaves your company. 100% local processing, no cloud.',
+        about_2_title: 'Fast results', about_2_desc: 'Measurable improvements within the first 4 weeks. No lengthy pilot phases.',
+        about_3_title: 'Swiss precision', about_3_desc: 'Understanding of Swiss market, compliance and multilingualism. DE/FR/EN/IT.',
+        about_4_title: 'DGX Station', about_4_desc: 'Enterprise-grade graphics performance for maximum AI power — directly on-site in your data center.',
+        contact_title: 'Contact Us', contact_subtitle: 'Send us an email — we respond within 24 hours.', contact_email: 'top@gigatop.io', contact_location: 'Fabio Serpa, Sole Proprietorship',
+        footer_desc: 'Private AI solutions for Swiss companies. Local processing, maximum security.',
+        footer_nav: 'Navigation', footer_legal: 'Legal', footer_privacy: 'Privacy', footer_imprint: 'Imprint', footer_terms: 'Terms',
+        footer_rights: 'All rights reserved.', credits_label: 'credits left',
+        preset_email: 'Analyze this email and extract the key points, actions and deadlines:\n\n',
+        preset_report: 'Summarize this business report and create an executive summary:\n\n',
+        preset_contract: 'Review this contract for risks, obligations and critical clauses:\n\n',
+        preset_customer: 'Evaluate this customer interaction for satisfaction, emotional tone and action recommendations:\n\n',
+        preset_meeting: 'Analyze this meeting transcript and create: 1. Decisions 2. To-dos 3. Open items\n\n'
+    }
+};
+
+function setLang(lang) {
+    localStorage.setItem('gigatop-lang', lang);
+    document.documentElement.lang = lang;
+    var els = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < els.length; i++) {
+        var k = els[i].getAttribute('data-i18n');
+        var v = LANGS[lang] && LANGS[lang][k];
+        if (v) {
+            if (els[i].tagName === 'INPUT' || els[i].tagName === 'TEXTAREA') {
+                els[i].placeholder = v;
+            } else {
+                els[i].textContent = v;
+            }
+        }
+    }
+    var phs = document.querySelectorAll('[data-i18n-placeholder]');
+    for (var i = 0; i < phs.length; i++) {
+        var k2 = phs[i].getAttribute('data-i18n-placeholder');
+        var v2 = LANGS[lang] && LANGS[lang][k2];
+        if (v2) phs[i].placeholder = v2;
+    }
+    updateCreditsBadge();
+    document.getElementById('langSelect').value = lang;
+}
+
+(function() {
+    var lang = localStorage.getItem('gigatop-lang') || 'de';
+    setLang(lang);
+    calculateROI();
+    updateCreditsBadge();
+    window.addEventListener('scroll', function() {
+        var h = document.getElementById('header');
+        if (h) {
+            if (window.scrollY > 10) { h.querySelector('div').classList.add('shadow-md'); }
+            else { h.querySelector('div').classList.remove('shadow-md'); }
+        }
+    });
+})();
+
+function toggleMobileMenu() {
+    var m = document.getElementById('mobileMenu');
+    m.classList.toggle('hidden');
+}
+
+function openContact() {
+    document.getElementById('contactModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+function closeContact() {
+    document.getElementById('contactModal').classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+// AI DEMO
+var DEMO_CREDITS_KEY = 'gigatop_demo_credits';
+var DEMO_MAX = 5;
+
+function getCredits() {
+    var v = localStorage.getItem(DEMO_CREDITS_KEY);
+    return v !== null ? parseInt(v) : DEMO_MAX;
+}
+function setCredits(v) {
+    localStorage.setItem(DEMO_CREDITS_KEY, v);
+}
+
+function updateCreditsBadge() {
+    var c = getCredits();
+    var badge = document.getElementById('creditsBadge');
+    var lang = localStorage.getItem('gigatop-lang') || 'de';
+    if (c <= 0) {
+        badge.textContent = '';
+        badge.classList.add('hidden');
+        document.getElementById('demoInputArea').classList.add('hidden');
+        document.getElementById('demoCTA').classList.remove('hidden');
+        document.getElementById('demoPresets').classList.add('hidden');
+    } else {
+        badge.textContent = c + ' ' + (LANGS[lang] && LANGS[lang].credits_label || 'Credits übrig');
+        badge.classList.remove('hidden');
+        document.getElementById('demoInputArea').classList.remove('hidden');
+        document.getElementById('demoCTA').classList.add('hidden');
+        document.getElementById('demoPresets').classList.remove('hidden');
+    }
+}
+
+var presetKeys = {
+    email: 'preset_email', report: 'preset_report', contract: 'preset_contract',
+    customer: 'preset_customer', meeting: 'preset_meeting'
+};
+
+function usePreset(type) {
+    var lang = localStorage.getItem('gigatop-lang') || 'de';
+    var key = presetKeys[type];
+    var input = document.getElementById('demoInput');
+    input.value = (LANGS[lang] && LANGS[lang][key]) || '';
+    input.focus();
+}
+
+function sendDemoMessage() {
+    var input = document.getElementById('demoInput');
+    var chat = document.getElementById('demoChat');
+    var lang = localStorage.getItem('gigatop-lang') || 'de';
+    var msg = input.value.trim();
+    if (!msg) return;
+
+    var credits = getCredits();
+    if (credits <= 0) return;
+
+    var userDiv = document.createElement('div');
+    userDiv.className = 'demo-message demo-user';
+    userDiv.textContent = msg;
+    chat.appendChild(userDiv);
+    input.value = '';
+
+    input.disabled = true;
+    var btn = document.getElementById('demoSendBtn');
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = lang === 'de' ? 'Sende...' : 'Sending...';
+    }
+
+    setCredits(credits - 1);
+    updateCreditsBadge();
+
+    var typingDiv = document.createElement('div');
+    typingDiv.className = 'demo-message demo-ai typing';
+    typingDiv.textContent = lang === 'de' ? 'Denkt nach...' : 'Thinking...';
+    chat.appendChild(typingDiv);
+    chat.scrollTop = chat.scrollHeight;
+
+    callGroq(msg).then(function(response) {
+        typingDiv.textContent = response;
+        typingDiv.classList.remove('typing');
+        input.disabled = false;
+        input.focus();
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = lang === 'de' ? 'Senden' : 'Send';
+        }
+        chat.scrollTop = chat.scrollHeight;
+    }).catch(function(err) {
+        console.error('Groq API Error:', err);
+        var errMsg = lang === 'de' 
+            ? 'Fehler: Die API konnte nicht erreicht werden. Prüfen Sie Ihre Internetverbindung.' 
+            : 'Error: Could not reach the API. Please check your internet connection.';
+        typingDiv.textContent = errMsg;
+        typingDiv.classList.remove('typing');
+        input.disabled = false;
+        input.focus();
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = lang === 'de' ? 'Senden' : 'Send';
+        }
+        setCredits(credits);
+        updateCreditsBadge();
+    });
+}
+
+function callGroq(userMessage) {
+    return fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + GROQ_API_KEY
+        },
+        body: JSON.stringify({
+            model: 'llama-3.1-8b-instant',
+            messages: [
+                { role: 'system', content: 'Du bist ein professioneller KI-Assistent für Schweizer Unternehmen. Antworte klar, präzise und hilfreich. Halte deine Antworten auf 3-5 Sätze. Antworte auf Deutsch.' },
+                { role: 'user', content: userMessage }
+            ],
+            max_tokens: 500
+        })
+    })
+    .then(function(r) { 
+        if (!r.ok) throw new Error('API Error: ' + r.status);
+        return r.json(); 
+    })
+    .then(function(data) {
+        if (data.error) throw new Error(data.error.message || 'Unknown error');
+        return data.choices && data.choices[0] && data.choices[0].message 
+            ? data.choices[0].message.content 
+            : 'Keine Antwort erhalten.';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('demoInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') sendDemoMessage();
+    });
+});
+
+// WIZARD
+var wizardAnswers = {};
+var currentStep = 0;
+
+function openWizard() {
+    resetWizard();
+    document.getElementById('wizard').classList.remove('hidden');
+    document.getElementById('wizard').scrollIntoView({ behavior: 'smooth' });
+}
+function closeWizard() {
+    document.getElementById('wizard').classList.add('hidden');
+    document.getElementById('usecases').scrollIntoView({ behavior: 'smooth' });
+}
+
+function selectWizardOption(step, value) {
+    wizardAnswers['q' + step] = value;
+    currentStep = step;
+
+    var currentDiv = document.getElementById('wizard_q' + step);
+    if (currentDiv) currentDiv.classList.add('hidden');
+
+    if (step < 5) {
+        var nextDiv = document.getElementById('wizard_q' + (step + 1));
+        if (nextDiv) {
+            nextDiv.classList.remove('hidden');
+            nextDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        var progress = (step / 5) * 100 + 20;
+        document.getElementById('wizardProgress').style.width = progress + '%';
+        document.getElementById('wizardStepLabel').textContent = (step + 1) + '/5';
+    } else {
+        showWizardResult();
+    }
+}
+
+function showWizardResult() {
+    var lang = localStorage.getItem('gigatop-lang') || 'de';
+    var dept = wizardAnswers.q2;
+    var problem = wizardAnswers.q3;
+    var size = wizardAnswers.q5;
+
+    var features = [];
+    var timeline = '';
+
+    if (dept === 'sales') {
+        features.push(lang === 'de' ? 'Lead-Scoring & Priorisierung' : 'Lead scoring & prioritization');
+        features.push(lang === 'de' ? 'Automatische Angebote & Verträge' : 'Automatic proposals & contracts');
+        features.push(lang === 'de' ? 'Verkaufsprognose' : 'Sales forecasting');
+    } else if (dept === 'support') {
+        features.push(lang === 'de' ? 'Intelligenter Chatbot' : 'Intelligent chatbot');
+        features.push(lang === 'de' ? 'Automatisches Ticket-Management' : 'Automated ticket management');
+        features.push(lang === 'de' ? 'Stimmungsanalyse' : 'Sentiment analysis');
+    } else if (dept === 'ops') {
+        features.push(lang === 'de' ? 'Prozessautomatisierung' : 'Process automation');
+        features.push(lang === 'de' ? 'Dokumentenverarbeitung' : 'Document processing');
+        features.push(lang === 'de' ? 'Workflow-Optimierung' : 'Workflow optimization');
+    } else if (dept === 'finance') {
+        features.push(lang === 'de' ? 'Automatisches Reporting' : 'Automated reporting');
+        features.push(lang === 'de' ? 'Betrugserkennung' : 'Fraud detection');
+        features.push(lang === 'de' ? 'Risikoanalyse' : 'Risk analysis');
+    }
+
+    if (problem === 'data') {
+        features.push(lang === 'de' ? 'Dashboard & Visualisierung' : 'Dashboard & visualization');
+    } else if (problem === 'docs') {
+        features.push(lang === 'de' ? 'OCR & Texterkennung' : 'OCR & text recognition');
+        features.push(lang === 'de' ? 'Smartes Suchen & Kategorisieren' : 'Smart search & categorization');
+    } else if (problem === 'comms') {
+        features.push(lang === 'de' ? 'E-Mail-Automation' : 'Email automation');
+        features.push(lang === 'de' ? 'Meeting-Transkription' : 'Meeting transcription');
+    }
+
+    if (size === 'small' || size === 'medium') {
+        timeline = lang === 'de' ? '2-4 Wochen' : '2-4 weeks';
+    } else {
+        timeline = lang === 'de' ? '4-8 Wochen' : '4-8 weeks';
+    }
+
+    var title = lang === 'de' ? 'Empfohlene Lösung' : 'Recommended solution';
+    var timelineLabel = lang === 'de' ? 'Implementierungszeit' : 'Implementation time';
+    var featuresLabel = lang === 'de' ? 'Enthaltene Features' : 'Included features';
+    var recIntro = lang === 'de' ? 'Basierend auf Ihren Antworten empfehlen wir:' : 'Based on your answers, we recommend:';
+
+    var html = '<h4 class="font-display font-bold text-lg text-navy mt-4 mb-2">' + title + '</h4>';
+    html += '<p class="text-navy/70 mb-4">' + recIntro + '</p>';
+
+    html += '<div class="grid grid-cols-2 gap-3 mb-4">';
+    html += '<div class="bg-sand rounded-xl p-3"><div class="text-sm text-navy/60">' + timelineLabel + '</div><div class="font-bold text-terracotta">' + timeline + '</div></div>';
+    html += '<div class="bg-sand rounded-xl p-3"><div class="text-sm text-navy/60">' + featuresLabel + '</div><div class="font-bold">' + features.length + '</div></div>';
+    html += '</div>';
+
+    html += '<ul class="space-y-2">';
+    for (var i = 0; i < features.length; i++) {
+        html += '<li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>' + features[i] + '</span></li>';
+    }
+    html += '</ul>';
+
+    document.getElementById('recContent').innerHTML = html;
+
+    var steps = document.querySelectorAll('.wizard-step');
+    for (var i = 0; i < steps.length; i++) {
+        steps[i].classList.add('hidden');
+    }
+    document.getElementById('wizard_result').classList.remove('hidden');
+    document.getElementById('wizardProgress').style.width = '100%';
+    document.getElementById('wizardStepLabel').textContent = '✓';
+}
+
+function wizardBack() {
+    if (currentStep > 1) {
+        currentStep--;
+        var currentDiv = document.getElementById('wizard_q' + (currentStep + 1));
+        if (currentDiv) currentDiv.classList.add('hidden');
+        var prevDiv = document.getElementById('wizard_q' + currentStep);
+        if (prevDiv) {
+            prevDiv.classList.remove('hidden');
+            prevDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        var progress = ((currentStep - 1) / 5) * 100 + 20;
+        document.getElementById('wizardProgress').style.width = progress + '%';
+        document.getElementById('wizardStepLabel').textContent = currentStep + '/5';
+    } else {
+        closeWizard();
+    }
+}
+
+function resetWizard() {
+    wizardAnswers = {};
+    currentStep = 0;
+    var steps = document.querySelectorAll('.wizard-step');
+    for (var i = 0; i < steps.length; i++) {
+        steps[i].classList.add('hidden');
+    }
+    document.getElementById('wizard_q1').classList.remove('hidden');
+    document.getElementById('wizardProgress').style.width = '20%';
+    document.getElementById('wizardStepLabel').textContent = '1/5';
+}
+
+// ROI CALCULATOR
+function calculateROI() {
+    var employees = parseInt(document.getElementById('roi_employees').value);
+    var hours = parseInt(document.getElementById('roi_hours').value);
+    var salary = parseInt(document.getElementById('roi_salary').value);
+    var rate = parseInt(document.getElementById('roi_rate').value) / 100;
+    var lang = localStorage.getItem('gigatop-lang') || 'de';
+
+    document.getElementById('roi_employees_val').textContent = employees;
+    document.getElementById('roi_hours_val').textContent = hours;
+    document.getElementById('roi_salary_val').textContent = salary.toLocaleString(lang === 'de' ? 'de-CH' : 'en-US');
+    document.getElementById('roi_rate_val').textContent = (rate * 100) + '%';
+
+    var annualHours = hours * 52;
+    var hourlyRate = salary / 2080;
+    var savings = Math.round(employees * annualHours * hourlyRate * rate);
+    var timeSaved = Math.round(employees * annualHours * rate);
+    var processesPerMonth = Math.round(employees * rate);
+
+    var format = function(n) { return 'CHF ' + n.toLocaleString(lang === 'de' ? 'de-CH' : 'en-US'); };
+
+    document.getElementById('roi_savings').textContent = format(savings);
+    document.getElementById('roi_time').textContent = timeSaved.toLocaleString(lang === 'de' ? 'de-CH' : 'en-US') + ' Std.';
+    document.getElementById('roi_proc').textContent = processesPerMonth;
+}
+</script>
+
+</body>
+</html>

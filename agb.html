@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGB | Einzelfirma — Fabio Serpa — Private AI & Local AI Solutions</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: '#F6F1E8',
+            terracotta: '#D66B45',
+            navy: '#174A5B',
+            olive: '#78866B',
+            dark: '#102A33',
+            text: '#202725',
+            muted: '#5A645F'
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body { background-color: #F6F1E8; color: #202725; font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Manrope', sans-serif; }
+    .gradient-text { background: linear-gradient(90deg, #174A5B, #78866B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-sand/90 backdrop-blur-md border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center text-white font-bold font-display">G</div>
+          <span class="font-display font-bold text-xl tracking-tight text-dark">GIGATOP</span>
+        </div>
+        
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium text-muted hover:text-navy transition">Home</a>
+          <a href="index.html#use-cases" class="text-sm font-medium text-muted hover:text-navy transition">Use Cases</a>
+          <a href="impressum.html" class="text-sm font-medium text-muted hover:text-navy transition">Impressum</a>
+          <a href="datenschutz.html" class="text-sm font-medium text-muted hover:text-navy transition">Datenschutz</a>
+          <a href="agb.html" class="text-sm font-semibold text-navy">AGB</a>
+          <a href="index.html" class="bg-navy hover:bg-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold transition">Zurück zur Website</a>
+        </div>
+        
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-sand border-t border-stone-200 absolute w-full">
+      <div class="p-6 space-y-4">
+        <a href="index.html" class="block text-dark font-medium">Home</a>
+        <a href="index.html#use-cases" class="block text-dark font-medium">Use Cases</a>
+        <a href="impressum.html" class="block text-dark font-medium">Impressum</a>
+        <a href="datenschutz.html" class="block text-dark font-medium">Datenschutz</a>
+        <a href="agb.html" class="block text-navy font-semibold">AGB</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-12 lg:pt-40 lg:pb-16">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="fade-in">
+        <div class="inline-flex items-center gap-2 bg-navy/10 text-navy px-3 py-1 rounded-full text-xs font-bold mb-6 tracking-wide">
+          RECHTLICHE INFORMATIONEN
+        </div>
+        <h1 class="text-5xl lg:text-6xl font-bold text-dark leading-[1.1] mb-6 tracking-tight">
+          Allgemeine Geschäftsbedingungen
+        </h1>
+        <p class="text-lg text-muted leading-relaxed">
+          Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Geschäftsbeziehungen zwischen der Einzelfirma — Fabio Serpa und ihren Kunden. Indem Sie unsere Dienstleistungen in Anspruch nehmen, erklären Sie sich mit diesen Bedingungen einverstanden.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="pb-24">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="space-y-12">
+        
+        <!-- 1. Geltungsbereich -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">1. Geltungsbereich</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">1.1</strong> Diese AGB gelten für alle Verträge, die zwischen der Einzelfirma — Fabio Serpa und dem Kunden geschlossen werden. Sie beinhalten sämtliche Vereinbarungen und treten anstelle etwaiger früherer Vereinbarungen.
+            </p>
+            <p>
+              <strong class="text-dark">1.2</strong> Abweichende Bedingungen des Kunden werden nur anerkannt, wenn ihnen explizit zugestimmt wird. Dies gilt insbesondere auch für Bedingungen, die mit den AGB des Kunden in Widerspruch stehen.
+            </p>
+            <p>
+              <strong class="text-dark">1.3</strong> Diese AGB gelten auch für künftige Geschäfte, selbst wenn sie nicht nochmals ausdrücklich in Erfahrung gebracht werden.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Vertragsschluss -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">2. Vertragsschluss</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">2.1</strong> Die Angebote von GIGATOP sind freibleibend. Die Annahme eines Angebots durch den Kunden erfolgt durch schriftliche Bestätigung oder durch die Erbringung der Leistung durch GIGATOP.
+            </p>
+            <p>
+              <strong class="text-dark">2.2</strong> Die Auftragserteilung durch den Kunden erfolgt in der Regel per E-Mail oder über das Kontaktformular auf der Website. Der Auftrag kommt durch schriftliche Bestätigung von GIGATOP oder durch Erbringung der Leistung zustande.
+            </p>
+            <p>
+              <strong class="text-dark">2.3</strong> Für elektronisch abgeschlossene Verträge gelten die Bestimmungen des Schweizerischen Bundesgesetzes über den elektronischen Vertragsschluss (EAVG).
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Leistungsumfang -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">3. Leistungsumfang</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">3.1</strong> GIGATOP bietet folgende Dienstleistungen an:
+            </p>
+            <ul class="space-y-2 ml-6">
+              <li class="flex items-start gap-2">
+                <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+                <span>Entwicklung und Implementierung lokaler KI-Systeme</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+                <span>Bau und Konfiguration intelligenter AI Agents</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+                <span>Integration von Datenquellen und Automatisierung</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+                <span>Hosting und Managed Services für KI-Infrastrukturen</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+                <span>Beratung, Schulung und Training im Bereich KI</span>
+              </li>
+            </ul>
+            <p>
+              <strong class="text-dark">3.2</strong> Der genaue Leistungsumfang wird in der jeweiligen Auftragsbestätigung, im Vertrag oder in einer Leistungsbeschreibung festgelegt. Abweichungen vom allgemeinen Leistungsumfang werden separat vereinbart.
+            </p>
+            <p>
+              <strong class="text-dark">3.3</strong> GIGATOP verpflichtet sich, die Leistungen mit der gebotenen Sorgfalt und nach dem aktuellen Stand der Technik auszuführen. Es werden keine Garantie für absolute Fehlerfreiheit oder ununterbrochenen Betrieb übernommen, insbesondere im Bereich von KI-Systemen, deren Ergebnisse von der Qualität der Daten und der Konfiguration abhängen.
+            </p>
+            <p>
+              <strong class="text-dark">3.4</strong> Ergebnisse von KI-Systemen stellen Empfehlungen und Analysen dar und ersetzen nicht die menschliche Beurteilung und Entscheidungsfindung. GIGATOP übernimmt keine Haftung für Entscheidungen, die auf der Grundlage von KI-generierten Empfehlungen getroffen werden.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Pflichten des Kunden -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">4. Pflichten des Kunden</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">4.1</strong> Der Kunde hat GIGATOP alle notwendigen Informationen, Daten und Zugänge zeitgerecht und vollständig zur Verfügung zu stellen, die für die Erbringung der Leistung erforderlich sind.
+            </p>
+            <p>
+              <strong class="text-dark">4.2</strong> Der Kunde stellt sicher, dass die bereitgestellten Daten rechtmässig sind und die entsprechenden Berechtigungen vorliegen. Der Kunde haftet für alle Konsequenzen, die sich aus unrichtigen, unvollständigen oder unrechtmässigen Daten ergeben.
+            </p>
+            <p>
+              <strong class="text-dark">4.3</strong> Der Kunde hat alle für die Erbringung der Leistung erforderlichen Lizenzen, Genehmigungen und Berechtigungen zu beschaffen. GIGATOP ist nicht verpflichtet, die Rechtmässigkeit der bereitgestellten Daten zu prüfen.
+            </p>
+            <p>
+              <strong class="text-dark">4.4</strong> Der Kunde verpflichtet sich zur Einhaltung aller datenschutzrechtlichen Bestimmungen, insbesondere des Schweizerischen Bundesgesetzes über den Datenschutz (DSG), des Bundesgesetzes zum Schutz vor unerlaubtem Wettbewerb (UWG) und der europäischen Datenschutz-Grundverordnung (DSGVO), falls EU-Daten verarbeitet werden.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5. Preise und Zahlung -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">5. Preise und Zahlung</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">5.1</strong> Alle Preise verstehen sich als Festpreise, sofern nicht ausdrücklich anders vereinbart. Die Preise verstehen sich zuzüglich allfälliger gesetzlicher Mehrwertsteuer.
+            </p>
+            <p>
+              <strong class="text-dark">5.2</strong> Die Zahlungsbedingungen werden im jeweiligen Angebot oder in der Auftragsbestätigung festgelegt. Standardmässig gelten:
+            </p>
+            <ul class="space-y-2 ml-6">
+              <li class="flex items-start gap-2">
+                <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+                <span>Rechnungsdatum, 30 Tage netto ohne Abzug (bei Projektarbeiten: Ratenzahlung)</span>
+              </li>
+            </ul>
+            <p>
+              <strong class="text-dark">5.3</strong> Bei Zahlungsverzug ist GIGATOP berechtigt, Verzugszinsen in der Höhe von 5% über dem Diskontsatz der Schweizerischen Nationalbank (SNB) zu verlangen. Zudem kann GIGATOP die Erbringung der Leistung bis zur Begleichung der Forderungen aussetzen.
+            </p>
+            <p>
+              <strong class="text-dark">5.4</strong> GIGATOP behält sich das Recht vor, Anzahlungen oder Vorauszahlungen zu verlangen, insbesondere bei grösseren Projekten oder wenn die Bonität des Kunden anzuzweifeln ist.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6. Laufzeit und Kündigung -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">6. Laufzeit und Kündigung</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">6.1</strong> Laufende Verträge und Dienstleistungsverträge werden auf unbestimmte Zeit geschlossen, sofern nicht ausdrücklich eine befristete Dauer vereinbart wird.
+            </p>
+            <p>
+              <strong class="text-dark">6.2</strong> Bei Verträgen auf unbestimmte Zeit kann jeder Teil mit einer Frist von 3 Monaten zum Monatsende kündigen. Bei Dienstleistungen mit festem Leistungszeitraum (z.B. Hosting, Support-Verträge) gilt eine Frist von 1 Monat zum Monatsende.
+            </p>
+            <p>
+              <strong class="text-dark">6.3</strong> Projektarbeiten können nur in den folgenden Fällen fristlos gekündigt werden:
+            </p>
+            <ul class="space-y-2 ml-6">
+              <li class="flex items-start gap-2">
+                <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+                <span>Wesentliche Pflichtverletzung des anderen Vertragspartners</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+                <span>Verzug der Leistungen ohne entschuldbaren Grund</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <div class="w-2 h-2 bg-navy rounded-full mt-2 flex-shrink-0"></div>
+                <span>Zahlungsunfähigkeit oder Überschuldung eines Vertragspartners</span>
+              </li>
+            </ul>
+            <p>
+              <strong class="text-dark">6.4</strong> Bei vorzeitiger Beendigung eines Vertrages durch den Kunden sind alle erbrachten Leistungen sowie die gesamten, bereits aufgelaufenen Kosten und Aufwände (inkl. entgangener Gewinne) von GIGATOP zu bezahlen.
+            </p>
+            <p>
+              <strong class="text-dark">6.5</strong> Bei Kündigung hat GIGATOP das Recht, die bereits erbrachten Leistungen in Rechnung zu stellen und die Kosten für bereits begonnene Arbeiten in Rechnung zu stellen, auch wenn diese nicht vollständig abgeschlossen wurden.
+            </p>
+          </div>
+        </div>
+
+        <!-- 7. Gewährleistung und Haftung -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">7. Gewährleistung und Haftung</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">7.1</strong> GIGATOP gewährleistet, dass die Leistungen den vereinbarten Spezifikationen entsprechen und den allgemein anerkannten technischen Standards der Branche entsprechen.
+            </p>
+            <p>
+              <strong class="text-dark">7.2</strong> Mängel sind innerhalb von 14 Tagen nach Entdeckung zu melden. Bei Verträgen, die auf unbestimmte Zeit abgeschlossen werden, gilt die gesetzliche Verjährungsfrist von 1 Jahr.
+            </p>
+            <p>
+              <strong class="text-dark">7.3</strong> Im Falle eines Mangels hat GIGATOP das Recht, die Mängelbeseitigung vor einer Schadensersatzforderung des Kunden durchzuführen.
+            </p>
+            <p>
+              <strong class="text-dark">7.4</strong> Die Haftung von GIGATOP ist auf Vorsatz und grobe Fahrlässigkeit beschränkt. GIGATOP haftet unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit, für Vorsatz, grobe Fahrlässigkeit und bei Verletzung wesentlicher Vertragspflichten.
+            </p>
+            <p>
+              <strong class="text-dark">7.5</strong> Die Haftung für indirekte Schäden (wie entgangener Gewinn, Datenverlust, Produktionsausfall) ist ausgeschlossen, soweit nicht Vorsatz oder grobe Fahrlässigkeit vorliegt.
+            </p>
+            <p>
+              <strong class="text-dark">7.6</strong> GIGATOP haftet nicht für Schäden, die durch die Benutzung von KI-generierten Inhalten, Empfehlungen oder Entscheidungen entstehen. KI-Systeme können Fehler enthalten und stellen keine verbindlichen rechtlichen, finanziellen oder technischen Beratung dar.
+            </p>
+            <p>
+              <strong class="text-dark">7.7</strong> Im Falle einer Inanspruchnahme von GIGATOP wegen Dritter wegen der Verletzung von Schutzrechten oder Urheberrechten, stellt GIGATOP den Kunden, falls zumutbar, von der Erfüllung der Forderungen frei oder sorgt für die Beseitigung der Beeinträchtigung.
+            </p>
+          </div>
+        </div>
+
+        <!-- 8. Datenschutz und confidentiality -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">8. Datenschutz und Vertraulichkeit</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">8.1</strong> GIGATOP verpflichtet sich, alle Informationen des Kunden, die im Rahmen der Geschäftsbeziehung bekannt werden, vertraulich zu behandeln und nicht an Dritte weiterzugeben.
+            </p>
+            <p>
+              <strong class="text-dark">8.2</strong> Dies gilt nicht für Informationen, die öffentlich zugänglich sind, bereits vor Vertragsschluss bekannt waren, von Dritten rechtmässig erworben wurden oder unabhängig von GIGATOP entwickelt wurden.
+            </p>
+            <p>
+              <strong class="text-dark">8.3</strong> Bei der Verarbeitung von personenbezogenen Daten gelten die Bestimmungen des Schweizerischen Bundesgesetzes über den Datenschutz (DSG) sowie die Datenschutzerklärung von GIGATOP.
+            </p>
+            <p>
+              <strong class="text-dark">8.4</strong> Nach Beendigung des Vertrags hat GIGATOP alle Vertraulichkeitspflichten zu erfüllen, die gemäss dem Gesetz und dem Zweck der Geschäftsbeziehung erforderlich sind. Die Vertraulichkeitspflicht dauert auch nach Vertragsende mindestens 3 Jahre fort.
+            </p>
+          </div>
+        </div>
+
+        <!-- 9. Force majeure -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">9. Höhere Gewalt (Force Majeure)</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">9.1</strong> GIGATOP ist nicht vertragswidrig, wenn sie infolge von Ereignissen der höheren Gewalt (z.B. Naturkatastrophen, Kriege, Terroranschläge, Pandemien, Gesetzesänderungen, Ausfälle von Drittanbietern) die vereinbarten Leistungen nicht erbringen kann.
+            </p>
+            <p>
+              <strong class="text-dark">9.2</strong> Bei der Verhinderung infolge höherer Gewalt ist jede Partei berechtigt, den Vertrag zu kündigen, ohne dass der andere Teil einen Anspruch auf Ersatz hat.
+            </p>
+            <p>
+              <strong class="text-dark">9.3</strong> GIGATOP hat dem Kunden die Verhinderung unverzüglich mitzuteilen. Der Kunde ist berechtigt, GIGATOP zur Abhilfe aufzufordern.
+            </p>
+          </div>
+        </div>
+
+        <!-- 10. Urheberrecht und Nutzungsrechte -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">10. Urheberrecht und Nutzungsrechte</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">10.1</strong> Die von GIGATOP erstellten Werke und Produkte (einschliesslich Software, Dokumentation, Berichte und Analysen) sind urheberrechtlich geschützt.
+            </p>
+            <p>
+              <strong class="text-dark">10.2</strong> Mit Zahlung der Rechnung erwirbt der Kunde das ausschliessliche Nutzungsrecht an den spezifisch für ihn entwickelten Werken. GIGATOP behält sich alle Rechte an allgemeinen Methoden, Prozessen, Algorithmen und Kenntnissen, die von GIGATOP entwickelt wurden und nicht spezifisch für den Kunden erstellt wurden.
+            </p>
+            <p>
+              <strong class="text-dark">10.3</strong> GIGATOP behält sich das Recht vor, allgemeine Erkenntnisse und Erfahrungen aus der Zusammenarbeit für zukünftige Projekte zu nutzen, solange dabei keine Vertraulichkeitsverpflichtungen verletzt werden.
+            </p>
+            <p>
+              <strong class="text-dark">10.4</strong> Alle Rechte an Daten, die von GIGATOP im Rahmen der Dienstleistung verarbeitet werden, verbleiben beim jeweiligen Eigentümer. GIGATOP erwirbt keine Eigentumsrechte an den Daten des Kunden.
+            </p>
+          </div>
+        </div>
+
+        <!-- 11. Salvatorische Klausel -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">11. Salvatorische Klausel</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">11.1</strong> Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, so berührt dies die Wirksamkeit der übrigen Bestimmungen nicht.
+            </p>
+            <p>
+              <strong class="text-dark">11.2</strong> Anstelle der unwirksamen Bestimmung gilt eine Bestimmung als vereinbart, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.
+            </p>
+            <p>
+              <strong class="text-dark">11.3</strong> GIGATOP und der Kunde sind verpflichtet, eine unwirksame Bestimmung durch eine wirksame Bestimmung zu ersetzen, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.
+            </p>
+          </div>
+        </div>
+
+        <!-- 12. Schlussbestimmungen -->
+        <div class="bg-white rounded-2xl p-8 border border-stone-200 shadow-sm fade-in">
+          <h2 class="text-2xl font-bold text-dark mb-6">12. Schlussbestimmungen</h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              <strong class="text-dark">12.1</strong> Es gilt das Recht der Schweizerischen Eidgenossenschaft. Das UN-Kaufrecht (CISG) wird ausgeschlossen.
+            </p>
+            <p>
+              <strong class="text-dark">12.2</strong> Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesen AGB ist Zürich (oder der Sitz von GIGATOP).
+            </p>
+            <p>
+              <strong class="text-dark">12.3</strong> Änderungen dieser AGB werden von GIGATOP dem Kunden schriftlich mitgeteilt. Der Kunde hat die Möglichkeit, innerhalb von 30 Tagen nach Erhalt der Änderungsmitschrift widerspruch einzulegen. Bei Ausbleiben des Widerspruchs gilt die Änderung als akzeptiert.
+            </p>
+            <p>
+              <strong class="text-dark">12.4</strong> Diese AGB gelten seit dem 1. September 2026. Frühere Versionen werden nicht mehr anerkannt.
+            </p>
+          </div>
+        </div>
+
+        <!-- Platzhalter Hinweis -->
+        <div class="bg-terracotta/10 border border-terracotta/20 rounded-2xl p-6 fade-in">
+          <div class="flex items-start gap-3">
+            <div class="text-2xl">⚠️</div>
+            <div>
+              <h3 class="font-bold text-terracotta mb-2">Wichtige Hinweise</h3>
+              <p class="text-muted text-sm">
+                Diese AGB dienen als Vorlage und müssen von einem Rechtsanwalt geprüft und an die spezifischen Gegebenheiten der Einzelfirma — Fabio Serpa angepasst werden. Insbesondere die Haftungsbeschränkungen müssen den tatsächlichen Risiken und Leistungen der Einzelfirma — Fabio Serpa entsprechen. Zudem müssen die Kontaktdaten (Adresse, UID, etc.) mit den tatsächlichen Daten übereinstimmen.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark/90 border-t border-stone-800 py-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h4 class="font-display font-bold text-lg mb-4 text-white">GIGATOP</h4>
+          <p class="text-sm text-muted">Private AI Solutions.</p>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-4 text-white">Navigation</h5>
+          <ul class="space-y-2 text-sm text-muted">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="index.html#use-cases" class="hover:text-white">Use Cases</a></li>
+            <li><a href="impressum.html" class="hover:text-white">Impressum</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-4 text-white">Legal</h5>
+          <ul class="space-y-2 text-sm text-muted">
+            <li><a href="impressum.html" class="hover:text-white">Impressum</a></li>
+            <li><a href="datenschutz.html" class="hover:text-white">Datenschutz</a></li>
+            <li><a href="agb.html" class="hover:text-white">AGB</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-4 text-white">Kontakt</h5>
+          <ul class="space-y-2 text-sm text-muted">
+            <li>top@gigatop.io</li>
+            <li>+41 41 123 45 67</li>
+            <li>Zug, Schweiz</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-stone-800 pt-6 text-center text-sm text-muted">
+        © 2026 Einzelfirma — Fabio Serpa. Alle Rechte vorbehalten.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('hidden');
+    }
+    
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.85) el.classList.add('visible');
+      });
+    });
+    window.dispatchEvent(new Event('scroll'));
+  </script>
+
+</body>
+</html>

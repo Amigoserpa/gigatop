@@ -103,6 +103,76 @@
             background: #fee; border: 1px solid #fcc; color: #c00;
             padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 1rem; font-size: 0.9rem;
         }
+
+        /* === MOBILE OPTIMIZATIONS === */
+        /* Touch targets - min 44px */
+        button, a.btn-primary, a.btn-outline, .form-btn, .form-input, .form-textarea, .form-select, select, input[type="text"], input[type="email"], input[type="tel"] {
+            min-height: 44px;
+        }
+
+        /* Mobile menu animation */
+        #mobileMenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        #mobileMenu:not(.hidden) {
+            max-height: 400px;
+        }
+
+        /* Mobile hero text scaling */
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem !important; line-height: 1.2 !important; }
+            h2 { font-size: 1.75rem !important; }
+            h3 { font-size: 1.25rem !important; }
+            .hero-bg { background-size: cover !important; }
+            .grid { gap: 1rem !important; }
+            .glass-card { padding: 1.25rem !important; }
+        }
+
+        /* Pricing cards on mobile */
+        @media (max-width: 768px) {
+            .pricing-cards .grid { grid-template-columns: 1fr !important; }
+            .pricing-cards .card-hover { margin-bottom: 0.5rem; }
+            .pricing-cards .btn-primary, .pricing-cards .btn-outline {
+                padding: 0.75rem 1rem !important;
+                font-size: 1rem !important;
+            }
+        }
+
+        /* Modal mobile optimisation */
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1.5rem !important;
+                border-radius: 1rem !important;
+                width: 96% !important;
+                max-height: 85vh !important;
+            }
+            .modal-title { font-size: 1.25rem !important; }
+            .form-input, .form-textarea, .form-select {
+                font-size: 16px !important; /* Prevent iOS zoom */
+                padding: 0.875rem 1rem !important;
+            }
+            .form-btn { font-size: 1.1rem !important; }
+        }
+
+        /* Ensure all links/buttons are clickable */
+        a, button {
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            touch-action: manipulation;
+        }
+
+        /* Improve scroll behavior */
+        html {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Hide scrollbar on mobile */
+        @media (max-width: 640px) {
+            .modal-content::-webkit-scrollbar { width: 4px; }
+            .modal-content::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+        }
     </style>
 </head>
 
@@ -172,10 +242,10 @@
                 Keine Cloud-Sensibilitäten. Keine Compliance-Risiken. Volle Kontrolle über Ihre Daten.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
-                <button onclick="openContact()" class="btn-primary text-white px-8 py-4 rounded-xl text-lg font-semibold" data-i18n="hero_cta1">
+                <button onclick="openContact('KI-Workshop')" class="btn-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-lg font-semibold" data-i18n="hero_cta1">
                     KI-Potenzial analysieren
                 </button>
-                <button onclick="openContact()" class="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all" data-i18n="hero_cta2">
+                <button onclick="openContact('KI-Workshop')" class="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all" data-i18n="hero_cta2">
                     Kontakt aufnehmen
                 </button>
             </div>
@@ -217,7 +287,7 @@
                     </div>
                     <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc1_title">Sales & Wachstum</h3>
                     <p class="text-navy/60 text-sm mb-4" data-i18n="uc1_desc">Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.</p>
-                    <button onclick="openContact()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
                 </div>
             </div>
             <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
@@ -230,7 +300,7 @@
                     </div>
                     <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc2_title">Operations & Effizienz</h3>
                     <p class="text-navy/60 text-sm mb-4" data-i18n="uc2_desc">Automatisierung von Prozessen, Dokumentenmanagement und Workflows.</p>
-                    <button onclick="openContact()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
                 </div>
             </div>
             <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
@@ -243,7 +313,7 @@
                     </div>
                     <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc3_title">Kunden-Support</h3>
                     <p class="text-navy/60 text-sm mb-4" data-i18n="uc3_desc">KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.</p>
-                    <button onclick="openContact()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
                 </div>
             </div>
             <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
@@ -256,7 +326,7 @@
                     </div>
                     <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc4_title">Daten & Intelligence</h3>
                     <p class="text-navy/60 text-sm mb-4" data-i18n="uc4_desc">Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.</p>
-                    <button onclick="openContact()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
                 </div>
             </div>
             <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
@@ -269,7 +339,7 @@
                     </div>
                     <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc5_title">Finance & Controlling</h3>
                     <p class="text-navy/60 text-sm mb-4" data-i18n="uc5_desc">Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.</p>
-                    <button onclick="openContact()" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
+                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
                 </div>
             </div>
         </div>
@@ -334,7 +404,7 @@
                             <div id="roi_proc" class="text-xl font-bold mt-1">10</div>
                         </div>
                     </div>
-                    <button onclick="openContact()" class="w-full btn-primary text-white px-6 py-3 rounded-xl font-semibold" data-i18n="roi_cta">Details besprechen</button>
+                    <button onclick="openContact('KI-Workshop')" class="w-full btn-primary text-white px-6 py-3 rounded-xl font-semibold" data-i18n="roi_cta">Details besprechen</button>
                 </div>
             </div>
         </div>
@@ -422,20 +492,18 @@
     </div>
 </section>
 
-<!-- ========== CONTACT MODAL ========== -->
-<div id="contactModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeContact()"></div>
-    <div class="relative bg-white rounded-2xl p-6 sm:p-8 max-w-lg w-full shadow-2xl">
-        <button onclick="closeContact()" class="absolute top-4 right-4 text-navy/40 hover:text-navy"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
-        <h3 class="font-display font-bold text-xl text-navy mb-2" data-i18n="contact_title">Kontakt aufnehmen</h3>
-        <p class="text-navy/60 text-sm mb-6" data-i18n="contact_subtitle">Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.</p>
-        <a href="mailto:top@gigatop.io" class="block btn-primary text-white text-center px-6 py-3 rounded-xl font-semibold mb-4" data-i18n="contact_email">top@gigatop.io</a>
-        <div class="text-center text-sm text-navy/50">
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="py-20 bg-sand/30">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="contact_title">Kontakt aufnehmen</h2>
+        <p class="text-navy/60 mb-8" data-i18n="contact_subtitle">Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.</p>
+        <a href="mailto:top@gigatop.io" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-block mb-6">top@gigatop.io</a>
+        <div class="text-navy/50 text-sm">
             <p data-i18n="contact_location">Fabio Serpa, Einzelfirma</p>
             <p>Hinterhöfenstrasse 8, 6312 Steinhausen</p>
         </div>
     </div>
-</div>
+</section>
 
 <!-- ========== FOOTER ========== -->
 <footer class="bg-navy text-white py-12">
@@ -592,14 +660,6 @@ function toggleMobileMenu() {
     m.classList.toggle('hidden');
 }
 
-function openContact() {
-    document.getElementById('contactModal').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-}
-function closeContact() {
-    document.getElementById('contactModal').classList.add('hidden');
-    document.body.style.overflow = '';
-}
 function calculateROI() {
     var employees = parseInt(document.getElementById('roi_employees').value);
     var hours = parseInt(document.getElementById('roi_hours').value);

@@ -240,6 +240,7 @@
             transition: all var(--duration-normal) var(--ease-out);
             position: relative;
             overflow: hidden;
+            white-space: nowrap;
         }
         
         .btn-primary {
@@ -277,6 +278,19 @@
         }
         .btn:hover .arrow { transform: translateX(4px); }
         .btn:active .arrow { transform: translateX(2px); }
+        
+        /* Hero CTA — same size as all other buttons */
+        .btn-hero {
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+        }
+        
+        /* Remove any inline style overrides */
+        .btn[style] {
+            all: revert;
+        }
+        
+.btn-full { width: 100%; justify-content: center; }
         
         /* ============================================
            HERO
@@ -1548,6 +1562,111 @@
             text-decoration: none;
             font-weight: 500;
         }
+
+        /* ============================================
+           MOBILE OPTIMIZATIONS
+           ============================================ */
+        @media (max-width: 767px) {
+            /* Typography */
+            h1 { font-size: 2.25rem; }
+            h2 { font-size: 1.75rem; }
+            h3 { font-size: 1.25rem; }
+            
+            /* Layout */
+            .container { padding: 0 1.25rem; }
+            .hero { padding: 6rem 0 3rem; min-height: auto; }
+            .section { padding: 3rem 0; }
+            
+            /* Hero adjustments */
+            .hero-container { grid-template-columns: 1fr; }
+            .hero-eyebrow { font-size: 0.8rem; padding: 0.25rem 0.75rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-stats { gap: 1.5rem; }
+            .hero-stat-number { font-size: 1.5rem; }
+            
+            /* All buttons full-width on mobile */
+            .btn { 
+                width: 100%; 
+                justify-content: center;
+                padding: 0.875rem 1.5rem;
+            }
+            .hero-actions { flex-direction: column; }
+            
+            /* Cards */
+            .usecase-card { padding: 1.25rem; }
+            .pricing-card { padding: 1.5rem; }
+            .deploy-card { padding: 1.25rem; }
+            
+            /* Problem section */
+            .problem-grid { grid-template-columns: 1fr; }
+            .problem-item { padding: 1rem; }
+            
+            /* Features grid */
+            .features-grid { grid-template-columns: 1fr; }
+            
+            /* Agents grid */
+            .agents-grid { grid-template-columns: 1fr; }
+            
+            /* How it works */
+            .steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .step-arrow { display: none; }
+            
+            /* Deploy grid */
+            .deploy-grid { grid-template-columns: 1fr; }
+            
+            /* Pricing grid */
+            .pricing-grid { grid-template-columns: 1fr; }
+            
+            /* Footer */
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-legal { flex-direction: column; gap: 0.5rem; }
+            
+            /* Modal */
+            .modal { padding: 1.5rem; }
+            .form-input, .form-textarea, .form-select { padding: 0.75rem; }
+            
+            /* Finder widget */
+            .finder-widget { padding: 1.25rem; }
+            
+            /* ROI */
+            .roi-widget { padding: 1.25rem; }
+            
+            /* Mobile menu */
+            .mobile-menu { 
+                display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                right: 0; 
+                bottom: 0; 
+                background: var(--bg-primary); 
+                z-index: 1500; 
+                flex-direction: column; 
+                align-items: center; 
+                justify-content: center; 
+                gap: 1.5rem; 
+            }
+            .mobile-menu.active { 
+                display: flex; 
+            }
+            .mobile-menu a { 
+                font-size: 1.25rem; 
+                color: var(--text-primary); 
+                text-decoration: none; 
+                font-weight: 500; 
+                padding: 0.75rem;
+            }
+            .mobile-menu-close { 
+                position: absolute; 
+                top: 1rem; 
+                right: 1rem; 
+                background: none; 
+                border: none; 
+                color: var(--text-primary); 
+                font-size: 1.5rem; 
+                cursor: pointer; 
+            }
+        }
     </style>
     <script data-i18n="true">
         // ============================================
@@ -1748,31 +1867,11 @@
                     </div>
                 </div>
                 <div class="hero-visual reveal">
-                    <div class="hero-system">
-                        <div class="system-node">
-                            <span class="node-icon">📊</span>
-                            <span class="node-label" data-i18n="node_data">Daten</span>
-                        </div>
-                        <div class="system-node">
-                            <span class="node-icon">🧠</span>
-                            <span class="node-label" data-i18n="node_ai">AI Engine</span>
-                        </div>
-                        <div class="system-node">
-                            <span class="node-icon">💼</span>
-                            <span class="node-label" data-i18n="node_business">Business</span>
-                        </div>
-                        <div class="system-node">
-                            <span class="node-icon">🔒</span>
-                            <span class="node-label" data-i18n="node_security">Sicherheit</span>
-                        </div>
-                        <div class="system-node">
-                            <span class="node-icon">🚀</span>
-                            <span class="node-label" data-i18n="node_result">Ergebnis</span>
-                        </div>
-                        <div class="system-line"></div>
-                        <div class="system-line"></div>
-                        <div class="system-line"></div>
-                    </div>
+                    <img 
+                        src="hero-visual-ai.png" 
+                        alt="Private AI System Visualisierung - Neuronale Netzwerke und Datenverarbeitung" 
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); opacity: 0.85;"
+                    >
                 </div>
             </div>
         </div>
@@ -1787,7 +1886,7 @@
                     <p class="section-subtitle" data-i18n="problem_subtitle">
                         Das Wissen Ihres Unternehmens ist verteilt und unzuganglich fur AI-Systeme. Gigatop verbindet alle Quellen mit intelligenter KI.
                     </p>
-                    <a href="#" class="btn btn-secondary" onclick="openContact('Data Integration Inquiry'); return false;" style="margin-top: var(--space-xl);" data-i18n="problem_cta">
+                    <a href="#" class="btn btn-secondary" onclick="openContact('Data Integration Inquiry'); return false;"  data-i18n="problem_cta">
                         Datenquellen verbinden <span class="arrow">→</span>
                     </a>
                 </div>
@@ -1880,7 +1979,7 @@
                 <div class="finder-result" id="finderResult">
                     <h4 data-i18n="finder_result_title">Empfohlener Use Case</h4>
                     <p data-i18n="finder_result_desc">Auf Basis Ihrer Auswahl empfehlen wir einen Private AI Assistant fur Ihre Document Operations mit 73% Potential zur Zeiteinsparung.</p>
-                    <a href="#" class="btn btn-primary" onclick="openContact('Use Case Finder Result'); return false;" style="margin-top: var(--space-md);">
+                    <a href="#" class="btn btn-primary" onclick="openContact('Use Case Finder Result'); return false;" >
                         Beratung starten <span class="arrow">→</span>
                     </a>
                 </div>
@@ -1998,6 +2097,11 @@
                 <p class="section-subtitle" data-i18n="arch_subtitle">Jede Schicht ist transparent, kontrollierbar und vollständig unter Ihrer Hoheit.</p>
             </div>
             <div class="arch-visual reveal">
+                <img 
+                    src="architecture-visual.png" 
+                    alt="AI Architektur Diagramm - Schichten und Verbindungen" 
+                    style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--space-xl);"
+                >
                 <div class="arch-label" data-i18n="arch_layer1">Anwendungsschicht</div>
                 <div class="arch-layer">
                     <div class="arch-block">
@@ -2150,7 +2254,7 @@
                         <li data-i18n="p1_f3">On-Premise Deployment</li>
                         <li data-i18n="p1_f4">30 Tage Support</li>
                     </ul>
-                    <a href="#" class="btn btn-secondary" onclick="openContact('Starter Plan'); return false;" style="width: 100%; justify-content: center;" data-i18n="pricing_cta">Anfragen</a>
+                    <a href="#" class="btn btn-secondary" onclick="openContact('Starter Plan'); return false;"  data-i18n="pricing_cta">Anfragen</a>
                 </div>
                 <div class="pricing-card featured reveal reveal-delay-1">
                     <h3 class="pricing-title" data-i18n="p2_title">Enterprise</h3>
@@ -2163,7 +2267,7 @@
                         <li data-i18n="p2_f4">90 Tage Support & Optimierung</li>
                         <li data-i18n="p2_f5">Dedizierter AI Engineer</li>
                     </ul>
-                    <a href="#" class="btn btn-primary" onclick="openContact('Enterprise Plan'); return false;" style="width: 100%; justify-content: center;" data-i18n="pricing_cta">Anfragen</a>
+                    <a href="#" class="btn btn-primary" onclick="openContact('Enterprise Plan'); return false;"  data-i18n="pricing_cta">Anfragen</a>
                 </div>
             </div>
         </div>
@@ -2228,7 +2332,7 @@
             <h2 class="cta-title reveal" data-i18n="cta_title">Bereit fur Private AI?</h2>
             <p class="cta-subtitle reveal reveal-delay-1" data-i18n="cta_subtitle">Lassen Sie uns uber Ihr Unternehmen sprechen. In einem kostenlosen Erstgesprach zeigen wir Ihnen, wo AI den grossten Impact hat.</p>
             <div class="reveal reveal-delay-2">
-                <a href="#" class="btn btn-primary" onclick="openContact('Beratung anfragen'); return false;" style="font-size: 1.125rem; padding: 1rem 2.5rem;">
+                <a href="#" class="btn btn-primary" onclick="openContact('Beratung anfragen'); return false;" class="btn-hero">
                     Erstgesprach buchen <span class="arrow">→</span>
                 </a>
             </div>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Gigatop — Private AI. Built around your business.</title>
-    <meta name="description" content="Gigatop baut Private AI-Systeme für Schweizer Unternehmen. Lokale KI, die Ihr Wissen mit Ihren Daten verbindet — sicher, kontrollierbar, messbar.">
+    <title data-lang-de="Gigatop — Private AI. Built around your business." data-lang-en="Gigatop — Private AI. Built around your business.">Gigatop — Private AI. Built around your business.</title>
+    <meta name="description" data-lang-de="Gigatop baut Private AI-Systeme für Schweizer Unternehmen. Lokale KI, die Ihr Wissen mit Ihren Daten verbindet — sicher, kontrollierbar, messbar." data-lang-en="Gigatop builds Private AI systems for Swiss enterprises. Local AI that connects your knowledge with your data — secure, controllable, measurable.">Gigatop baut Private AI-Systeme für Schweizer Unternehmen. Lokale KI, die Ihr Wissen mit Ihren Daten verbindet — sicher, kontrollierbar, messbar.</meta>
     <meta property="og:title" content="Gigatop — Private AI. Built around your business.">
     <meta property="og:description" content="Gigatop baut Private AI-Systeme für Schweizer Unternehmen.">
     <meta property="og:type" content="website">
@@ -13,7 +13,6 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://gigatop.io">
 
-    <!-- Geist Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,42 +20,27 @@
     <style>
         /* ============================================
            DESIGN TOKENS — Mediterranean Technology
-           Swiss precision x Mediterranean energy
            ============================================ */
         :root {
-            /* Backgrounds */
             --bg-primary: #102A33;
             --bg-secondary: #0E2229;
             --bg-elevated: #142C35;
             --surface: #183340;
             --surface-hover: #1D3A48;
-
-            /* Borders */
             --border: rgba(240, 235, 226, 0.07);
             --border-strong: rgba(240, 235, 226, 0.14);
             --border-accent: rgba(214, 107, 69, 0.2);
-
-            /* Accent — Terracotta */
             --accent: #D66B45;
             --accent-hover: #E07850;
             --accent-glow: rgba(214, 107, 69, 0.2);
             --accent-muted: rgba(214, 107, 69, 0.08);
-
-            /* Sage / Olive */
             --olive: #78866B;
             --olive-glow: rgba(120, 134, 107, 0.12);
-
-            /* Text */
             --text-primary: #F6F1E8;
             --text-secondary: rgba(246, 241, 232, 0.55);
             --text-tertiary: rgba(246, 241, 232, 0.32);
-            --text-accent: #D66B45;
-
-            /* Font */
             --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, monospace;
-
-            /* Spacing */
             --space-xs: 0.25rem;
             --space-sm: 0.5rem;
             --space-md: 1rem;
@@ -66,21 +50,14 @@
             --space-3xl: 5rem;
             --space-4xl: 7rem;
             --space-5xl: 9rem;
-
-            /* Layout */
             --max-width: 1280px;
             --max-width-narrow: 720px;
-
-            /* Radius */
             --radius: 12px;
-
-            /* Easing */
             --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
             --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
         }
 
-        /* Reset & Base */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; scroll-padding-top: 64px; }
         body {
@@ -92,17 +69,11 @@
             overflow-x: hidden;
         }
 
-        /* Selection */
         ::selection { background: var(--accent); color: var(--text-primary); }
-
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 7px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
 
-        /* ============================================
-           TYPOGRAPHY SCALE
-           ============================================ */
         h1, h2, h3, h4 { line-height: 1.1; font-weight: 700; letter-spacing: -0.035em; }
         h1 { font-size: clamp(2.75rem, 6vw, 5rem); font-weight: 700; }
         h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
@@ -113,26 +84,16 @@
         .text-lg { font-size: clamp(1.125rem, 1.5vw, 1.25rem); line-height: 1.6; color: var(--text-secondary); }
 
         .label {
-            font-size: 0.75rem;
-            font-family: var(--font-mono);
-            color: var(--accent);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-weight: 500;
+            font-size: 0.75rem; font-family: var(--font-mono);
+            color: var(--accent); letter-spacing: 0.08em;
+            text-transform: uppercase; font-weight: 500;
         }
 
-        .olive { color: var(--olive); }
-
-        /* ============================================
-           LAYOUT
-           ============================================ */
         .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-xl); }
         .container--narrow { max-width: var(--max-width-narrow); margin-left: auto; margin-right: auto; }
         .section { padding: var(--space-4xl) 0; position: relative; }
 
-        /* ============================================
-           NAVIGATION — 64px, sticky, blur
-           ============================================ */
+        /* NAV */
         .nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             height: 64px; display: flex; align-items: center;
@@ -142,71 +103,58 @@
             transition: transform 200ms var(--ease-out);
         }
         .nav--hidden { transform: translateY(-100%); }
-
         .nav__inner { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-xl); }
         .nav__logo { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; }
         .nav__logo span { color: var(--accent); }
 
-        .nav__links { display: none; align-items: center; gap: var(--space-xl); }
+        .nav__links { display: none; align-items: center; gap: var(--space-md); }
         @media (min-width: 768px) { .nav__links { display: flex; } }
-        .nav__link { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; font-weight: 500; transition: color 150ms var(--ease-out); }
+        .nav__link { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 150ms var(--ease-out); white-space: nowrap; }
         .nav__link:hover { color: var(--text-primary); }
-        .nav__link--cta { color: var(--accent); }
+
+        .nav__lang-toggle {
+            display: inline-flex; align-items: center; gap: 2px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 6px; padding: 2px; cursor: pointer;
+            font-size: 0.75rem; font-family: var(--font-mono);
+            font-weight: 500; color: var(--text-tertiary);
+            transition: color 150ms var(--ease-out);
+        }
+        .nav__lang-toggle:hover { color: var(--text-primary); }
+        .nav__lang-toggle .active-lang { color: var(--accent); }
 
         .nav__menu-btn { display: block; background: none; border: none; color: var(--text-primary); cursor: pointer; padding: var(--space-sm); }
         @media (min-width: 768px) { .nav__menu-btn { display: none; } }
-
         .nav__mobile { display: none; padding: 0 0 var(--space-lg); }
         .nav__mobile.open { display: block; }
         @media (min-width: 768px) { .nav__mobile { display: none !important; } }
         .nav__mobile-link { display: block; color: var(--text-secondary); text-decoration: none; font-size: 1rem; font-weight: 500; padding: var(--space-md) 0; border-bottom: 1px solid var(--border); }
 
-        /* ============================================
-           BUTTONS
-           ============================================ */
+        /* BUTTONS */
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: var(--space-sm);
-            padding: 0.6875rem 1.625rem;
-            font-size: 0.9375rem; font-weight: 600; font-family: var(--font-sans);
+            padding: 0.6875rem 1.625rem; font-size: 0.9375rem; font-weight: 600; font-family: var(--font-sans);
             border-radius: var(--radius); border: none; cursor: pointer;
             text-decoration: none; white-space: nowrap;
             transition: transform 160ms var(--ease-out), background 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out);
             will-change: transform;
         }
         .btn:active { transform: scale(0.97); }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
         .btn--primary { background: var(--accent); color: var(--text-primary); }
         .btn--primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
-
         .btn--ghost { background: transparent; color: var(--text-primary); border: 1px solid var(--border-strong); }
         .btn--ghost:hover { background: var(--surface); transform: translateY(-2px); }
-
         .btn--large { padding: 0.875rem 2.25rem; font-size: 1rem; }
-
-        .btn--outline {
-            background: transparent; color: var(--text-primary);
-            border: 2px solid var(--border-strong);
-            padding: 0.875rem 2.5rem; font-size: 1.0625rem;
-        }
+        .btn--outline { background: transparent; color: var(--text-primary); border: 2px solid var(--border-strong); padding: 0.875rem 2.5rem; font-size: 1.0625rem; }
         .btn--outline:hover { background: var(--surface); border-color: var(--accent); transform: translateY(-2px); }
 
-        /* ============================================
-           SCROLL REVEAL SYSTEM
-           ============================================ */
-        .reveal {
-            opacity: 0; transform: translateY(32px);
-            transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
-        }
+        /* SCROLL REVEAL */
+        .reveal { opacity: 0; transform: translateY(32px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
         .reveal.is-visible { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 100ms; }
         .reveal-delay-2 { transition-delay: 200ms; }
         .reveal-delay-3 { transition-delay: 300ms; }
-
-        .reveal-stagger > * {
-            opacity: 0; transform: translateY(24px);
-            transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
-        }
+        .reveal-stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
         .reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
         .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
         .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
@@ -219,132 +167,58 @@
             .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
         }
 
-        /* ============================================
-           SECTION 1: HERO — Asymmetric Split
-           No eyebrow. Just strong statement.
-           ============================================ */
-        .hero {
-            min-height: 100dvh; display: flex; align-items: center;
-            padding-top: 64px; position: relative; overflow: hidden;
-        }
-        .hero__bg {
-            position: absolute; inset: 0; z-index: 0;
-            background:
-                radial-gradient(ellipse 40% 50% at 75% 30%, var(--accent-glow), transparent 60%),
-                radial-gradient(ellipse 30% 40% at 15% 70%, var(--olive-glow), transparent 55%);
-        }
-        .hero__inner {
-            position: relative; z-index: 1;
-            display: grid; grid-template-columns: 1fr;
-            gap: var(--space-2xl); align-items: center;
-        }
-        @media (min-width: 1024px) {
-            .hero__inner { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-3xl); }
-        }
+        /* HERO */
+        .hero { min-height: 100dvh; display: flex; align-items: center; padding-top: 64px; position: relative; overflow: hidden; }
+        .hero__bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 40% 50% at 75% 30%, var(--accent-glow), transparent 60%), radial-gradient(ellipse 30% 40% at 15% 70%, var(--olive-glow), transparent 55%); }
+        .hero__inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: var(--space-2xl); align-items: center; }
+        @media (min-width: 1024px) { .hero__inner { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-3xl); } }
         .hero__headline { font-size: clamp(2.75rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: var(--space-lg); }
         .hero__headline em { font-style: italic; color: var(--accent); font-weight: 600; }
         .hero__sub { font-size: clamp(1.0625rem, 1.5vw, 1.25rem); color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-2xl); max-width: 50ch; }
         .hero__ctas { display: flex; gap: var(--space-md); flex-wrap: wrap; }
-
-        /* Hero Visual — AI System Diagram */
-        .hero__visual {
-            position: relative; border-radius: var(--radius); overflow: hidden;
-            aspect-ratio: 4 / 3; background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
-            padding: var(--space-xl);
-            display: flex; flex-direction: column; justify-content: center; gap: var(--space-sm);
-        }
-        .hero__visual-layer {
-            display: flex; align-items: center; justify-content: center;
-            padding: var(--space-sm) var(--space-md);
-            border-radius: 8px;
-            font-size: 0.875rem; font-weight: 600;
-            letter-spacing: 0.02em;
-            transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
-            position: relative;
-        }
+        .hero__visual { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/3; background: var(--bg-secondary); border: 1px solid var(--border); box-shadow: 0 24px 80px rgba(0,0,0,0.3); padding: var(--space-xl); display: flex; flex-direction: column; justify-content: center; gap: var(--space-xs); }
+        .hero__visual-layer { display: flex; align-items: center; justify-content: center; padding: var(--space-sm) var(--space-md); border-radius: 8px; font-size: 0.875rem; font-weight: 600; transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out); }
         .hero__visual-layer:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
         .hero__visual-layer--data { background: var(--bg-elevated); border: 1px solid var(--border-strong); color: var(--text-primary); padding: var(--space-xs) var(--space-md); font-size: 0.8125rem; }
-        .hero__visual-layer--ai { background: var(--accent-muted); border: 1px solid var(--border-accent); color: var(--accent); padding: var(--space-sm) var(--space-md); font-size: 0.9375rem; }
+        .hero__visual-layer--ai { background: var(--accent-muted); border: 1px solid var(--border-accent); color: var(--accent); }
         .hero__visual-layer--agents { background: var(--surface); border: 1px solid var(--border); color: var(--text-primary); padding: var(--space-xs) var(--space-md); font-size: 0.8125rem; }
         .hero__visual-arrow { text-align: center; color: var(--text-tertiary); font-size: 0.75rem; font-family: var(--font-mono); }
 
-        /* ============================================
-           SECTION 2: MANIFESTO — Editorial Statement
-           ============================================ */
-        .manifesto {
-            padding: var(--space-5xl) 0;
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            text-align: center;
-        }
-        .manifesto__text {
-            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-            font-weight: 600; letter-spacing: -0.02em;
-            line-height: 1.25; max-width: 75ch; margin: 0 auto;
-        }
+        /* MANIFESTO */
+        .manifesto { padding: var(--space-5xl) 0; background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center; }
+        .manifesto__text { font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; max-width: 75ch; margin: 0 auto; }
         .manifesto__text em { font-style: italic; color: var(--accent); font-weight: 500; }
+        .manifesto__attribution { margin-top: var(--space-lg); font-size: 0.9375rem; color: var(--text-tertiary); }
 
-        /* ============================================
-           SECTION 3: PROBLEM — Editorial, no cards
-           ============================================ */
-        .problem__grid {
-            display: grid; grid-template-columns: 1fr;
-            gap: var(--space-xl);
-        }
-        @media (min-width: 768px) {
-            .problem__grid { grid-template-columns: 1.3fr 0.7fr; gap: var(--space-2xl); }
-        }
+        /* PROBLEM */
+        .problem__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+        @media (min-width: 768px) { .problem__grid { grid-template-columns: 1.3fr 0.7fr; gap: var(--space-2xl); } }
         .problem__main h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin-bottom: var(--space-md); }
         .problem__main p { font-size: 1.125rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: var(--space-md); }
         .problem__asides { display: flex; flex-direction: column; gap: var(--space-lg); }
-        .problem__aside {
-            padding: var(--space-xl);
-            border-top: 2px solid var(--accent);
-            background: var(--bg-secondary);
-            border-radius: 0 0 var(--radius) var(--radius);
-        }
+        .problem__aside { padding: var(--space-xl); border-top: 2px solid var(--accent); background: var(--bg-secondary); border-radius: 0 0 var(--radius) var(--radius); }
         .problem__aside h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-xs); }
         .problem__aside p { font-size: 0.9375rem; line-height: 1.55; color: var(--text-secondary); }
 
-        /* ============================================
-           SECTION 4: USE CASES — Full-width spreads (alternating)
-           ============================================ */
+        /* USE CASES */
         .usecases__heading { text-align: center; margin-bottom: var(--space-2xl); }
-        .spread {
-            display: grid; grid-template-columns: 1fr;
-            border-bottom: 1px solid var(--border);
-            padding: var(--space-2xl) 0;
-        }
-        @media (min-width: 768px) {
-            .spread { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-3xl); }
-            .spread.reverse { grid-template-columns: 0.85fr 1.15fr; }
-        }
+        .spread { display: grid; grid-template-columns: 1fr; border-bottom: 1px solid var(--border); padding: var(--space-2xl) 0; }
+        @media (min-width: 768px) { .spread { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-3xl); } .spread.reverse { grid-template-columns: 0.85fr 1.15fr; } }
         .spread__content { display: flex; flex-direction: column; justify-content: center; }
-        .spread__label { margin-bottom: var(--space-md); }
         .spread__title { font-size: clamp(1.5rem, 3vw, 2.125rem); margin-bottom: var(--space-sm); }
         .spread__desc { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: var(--space-lg); max-width: 48ch; }
         .spread__link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9375rem; transition: opacity 150ms var(--ease-out); display: inline-flex; align-items: center; gap: var(--space-xs); }
         .spread__link:hover { opacity: 0.8; }
         .spread__link::after { content: '→'; transition: transform 150ms var(--ease-out); }
         .spread__link:hover::after { transform: translateX(4px); }
-        .spread__visual {
-            border-radius: var(--radius); overflow: hidden;
-            background: var(--bg-secondary); border: 1px solid var(--border);
-            aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center;
-            position: relative;
-        }
+        .spread__visual { border-radius: var(--radius); overflow: hidden; background: var(--bg-secondary); border: 1px solid var(--border); aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; }
         .spread--tint-a .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(214, 107, 69, 0.06)); }
         .spread--tint-b .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(120, 134, 107, 0.08)); }
         .spread--tint-c .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(214, 107, 69, 0.04)); }
         .spread--tint-d .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(120, 134, 107, 0.06)); }
         .spread--tint-e .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(214, 107, 69, 0.05)); }
 
-        /* ============================================
-           SECTION 5: PRIVATE AI vs PUBLIC AI — Comparison
-           ============================================ */
+        /* COMPARE */
         .compare-section { background: var(--bg-secondary); }
         .compare__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
         @media (min-width: 768px) { .compare__grid { grid-template-columns: 1fr 1fr; gap: var(--space-2xl); } }
@@ -357,27 +231,14 @@
         .compare__card--private h3 { color: var(--accent); }
         .compare__list { list-style: none; }
         .compare__list li { padding: var(--space-sm) 0; border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--space-sm); }
-        .compare__list li .icon { flex-shrink: 0; }
-        .compare__card--public .compare__list li .icon { color: var(--text-tertiary); }
-        .compare__card--private .compare__list li .icon { color: var(--accent); }
         .compare__flow { display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); padding: var(--space-xl); }
         .compare__flow-step { font-size: 0.875rem; font-weight: 600; padding: var(--space-xs) var(--space-md); border-radius: 6px; }
         .compare__flow-arrow { color: var(--text-tertiary); font-size: 0.75rem; }
 
-        /* ============================================
-           SECTION 6: AI AGENTS — Workflow
-           ============================================ */
+        /* AGENTS */
         .agents-flow { display: flex; flex-direction: column; gap: var(--space-md); align-items: center; }
-        @media (min-width: 768px) {
-            .agents-flow { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: var(--space-lg); }
-        }
-        .agent-step {
-            display: flex; flex-direction: column; align-items: center; gap: var(--space-xs);
-            padding: var(--space-lg); border-radius: var(--radius);
-            background: var(--bg-elevated); border: 1px solid var(--border);
-            min-width: 140px; text-align: center;
-            transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out);
-        }
+        @media (min-width: 768px) { .agents-flow { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: var(--space-lg); } }
+        .agent-step { display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); padding: var(--space-lg); border-radius: var(--radius); background: var(--bg-elevated); border: 1px solid var(--border); min-width: 140px; text-align: center; transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out); }
         .agent-step:hover { transform: translateY(-4px); border-color: var(--border-accent); }
         .agent-step__icon { font-size: 1.5rem; margin-bottom: var(--space-xs); }
         .agent-step__label { font-size: 0.875rem; font-weight: 600; }
@@ -385,18 +246,11 @@
         .agent-arrow { color: var(--text-tertiary); font-size: 0.75rem; }
         @media (max-width: 767px) { .agent-arrow { transform: rotate(90deg); margin: var(--space-xs) 0; } }
 
-        /* ============================================
-           SECTION 7: ARCHITECTURE — Layered stack
-           ============================================ */
+        /* ARCHITECTURE */
+        .arch { background: var(--bg-secondary); padding: var(--space-5xl) 0; }
         .arch__inner { text-align: center; max-width: 800px; margin: 0 auto; }
-        .arch__inner p { margin: 0 auto; }
         .arch__stack { max-width: 720px; margin: var(--space-2xl) auto 0; display: flex; flex-direction: column; gap: 0; }
-        .arch__layer {
-            padding: var(--space-lg) var(--space-xl);
-            display: flex; align-items: center; justify-content: center; gap: var(--space-lg);
-            font-size: 0.9375rem; font-weight: 500;
-            transition: background 200ms var(--ease-out);
-        }
+        .arch__layer { padding: var(--space-lg) var(--space-xl); display: flex; align-items: center; justify-content: center; gap: var(--space-lg); font-size: 0.9375rem; font-weight: 500; transition: background 200ms var(--ease-out); }
         .arch__layer:hover { background: rgba(255,255,255,0.02); }
         .arch__layer:first-child { border-radius: var(--radius) var(--radius) 0 0; }
         .arch__layer:last-child { border-radius: 0 0 var(--radius) var(--radius); }
@@ -409,78 +263,67 @@
         .arch__layer-item { font-size: 0.875rem; color: var(--text-secondary); }
         .arch__layer-arrow { text-align: center; color: var(--text-tertiary); font-family: var(--font-mono); font-size: 0.75rem; padding: var(--space-xs); }
 
-        /* ============================================
-           SECTION 8: HOW IT WORKS — Timeline
-           ============================================ */
+        /* STEPS / HOW IT WORKS */
         .steps__inner { max-width: 700px; margin: 0 auto; }
         .step { display: grid; grid-template-columns: 60px 1fr; gap: var(--space-lg); padding: var(--space-xl) 0; }
-        .step__number {
-            font-size: 0.875rem; font-family: var(--font-mono); font-weight: 600;
-            color: var(--accent); display: flex; align-items: flex-start; justify-content: center;
-            padding-top: var(--space-xs);
-        }
+        .step__number { font-size: 0.875rem; font-family: var(--font-mono); font-weight: 600; color: var(--accent); display: flex; align-items: flex-start; justify-content: center; padding-top: var(--space-xs); }
         .step__content h4 { font-size: 1.25rem; margin-bottom: var(--space-xs); }
         .step__content p { font-size: 1rem; line-height: 1.6; }
         .step-line { grid-column: 1 / 2; width: 1px; background: var(--border); margin: 0 auto; height: var(--space-xl); }
 
-        /* ============================================
-           SECTION 9: DEPLOYMENT OPTIONS — 3 columns
-           ============================================ */
+        /* DEPLOYMENT */
         .deploy__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
         @media (min-width: 768px) { .deploy__grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); } }
         .deploy__card { padding: var(--space-2xl); border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-secondary); text-align: center; transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out); }
         .deploy__card:hover { transform: translateY(-4px); border-color: var(--border-accent); }
         .deploy__card--featured { border-color: var(--border-accent); background: var(--accent-muted); }
-        .deploy__card--featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); border-radius: var(--radius) var(--radius) 0 0; }
-        .deploy__card { position: relative; }
         .deploy__badge { font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-md); }
         .deploy__card h3 { font-size: 1.25rem; margin-bottom: var(--space-sm); }
         .deploy__card p { font-size: 0.9375rem; margin: 0 auto var(--space-lg); }
         .deploy__features { list-style: none; text-align: left; }
         .deploy__features li { padding: var(--space-xs) 0; font-size: 0.9375rem; color: var(--text-secondary); display: flex; align-items: center; gap: var(--space-xs); }
 
-        /* ============================================
-           SECTION 10: AI USE CASE FINDER — Interactive
-           ============================================ */
+        /* PRICING */
+        .pricing__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+        @media (min-width: 768px) { .pricing__grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); } }
+        .pricing__card { padding: var(--space-2xl); border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-secondary); transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out); }
+        .pricing__card:hover { transform: translateY(-4px); border-color: var(--border-accent); }
+        .pricing__card--featured { border-color: var(--border-accent); background: var(--accent-muted); position: relative; }
+        .pricing__card--featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); border-radius: var(--radius) var(--radius) 0 0; }
+        .pricing__tier { font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-md); }
+        .pricing__card h3 { font-size: 1.375rem; margin-bottom: var(--space-sm); }
+        .pricing__price { font-size: 1.75rem; font-weight: 700; margin-bottom: var(--space-md); }
+        .pricing__price span { font-size: 0.9375rem; font-weight: 400; color: var(--text-secondary); }
+        .pricing__card p { font-size: 0.9375rem; margin: 0 auto var(--space-lg); }
+        .pricing__features { list-style: none; text-align: left; }
+        .pricing__features li { padding: var(--space-xs) 0; font-size: 0.9375rem; color: var(--text-secondary); }
+        .pricing__note { text-align: center; margin-top: var(--space-2xl); }
+        .pricing__note p { font-size: 0.9375rem; color: var(--text-tertiary); margin: 0 auto; }
+
+        /* FINDER */
         .finder { background: var(--bg-secondary); }
         .finder__form { max-width: 600px; margin: 0 auto; }
         .finder__question { margin-bottom: var(--space-xl); }
         .finder__question label { display: block; font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-md); }
         .finder__options { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
-        .finder__option {
-            padding: var(--space-sm) var(--space-md); border-radius: 8px;
-            border: 1px solid var(--border); background: var(--bg-elevated);
-            color: var(--text-secondary); font-size: 0.9375rem; cursor: pointer;
-            font-family: var(--font-sans); font-weight: 500;
-            transition: all 150ms var(--ease-out);
-            user-select: none;
-        }
+        .finder__option { padding: var(--space-sm) var(--space-md); border-radius: 8px; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text-secondary); font-size: 0.9375rem; cursor: pointer; font-family: var(--font-sans); font-weight: 500; transition: all 150ms var(--ease-out); user-select: none; }
         .finder__option:hover { border-color: var(--border-strong); color: var(--text-primary); }
         .finder__option.selected { border-color: var(--accent); background: var(--accent-muted); color: var(--accent); }
-        .finder__result {
-            display: none; padding: var(--space-2xl); border-radius: var(--radius);
-            background: var(--accent-muted); border: 1px solid var(--border-accent);
-            text-align: center;
-        }
+        .finder__result { display: none; padding: var(--space-2xl); border-radius: var(--radius); background: var(--accent-muted); border: 1px solid var(--border-accent); text-align: center; }
         .finder__result.visible { display: block; }
         .finder__result h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: var(--space-md); }
         .finder__result p { margin: 0 auto var(--space-lg); }
         .finder__result .opportunity { font-size: 1.25rem; font-weight: 700; margin-bottom: var(--space-xs); }
         .finder__result .potential { font-size: 0.875rem; color: var(--accent); font-family: var(--font-mono); letter-spacing: 0.04em; }
 
-        /* ============================================
-           SECTION 11: WHY GIGATOP — Feature strip
-           ============================================ */
-        .reasons { background: var(--bg-secondary); }
+        /* WHY */
         .reasons__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
         @media (min-width: 768px) { .reasons__grid { grid-template-columns: repeat(2, 1fr); } }
         .reason__item { padding: var(--space-xl); border-bottom: 1px solid var(--border); }
         .reason__item h3 { font-size: 1.25rem; margin-bottom: var(--space-sm); }
         .reason__item p { font-size: 1rem; }
 
-        /* ============================================
-           SECTION 12: FOUNDER
-           ============================================ */
+        /* FOUNDER */
         .founder { background: var(--bg-secondary); border-top: 1px solid var(--border); }
         .founder__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-2xl); align-items: center; }
         @media (min-width: 768px) { .founder__grid { grid-template-columns: 0.6fr 1.4fr; } }
@@ -490,9 +333,7 @@
         .founder__text p { font-size: 1.125rem; margin-bottom: var(--space-md); }
         .founder__name { font-size: 1rem; font-weight: 600; color: var(--accent); margin-top: var(--space-lg); }
 
-        /* ============================================
-           SECTION 13: INSIGHTS PREVIEW
-           ============================================ */
+        /* INSIGHTS */
         .insights__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
         @media (min-width: 768px) { .insights__grid { grid-template-columns: repeat(3, 1fr); } }
         .insight__card { padding: var(--space-xl); border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-secondary); transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out); }
@@ -502,26 +343,11 @@
         .insight__card p { font-size: 0.9375rem; }
         .insights__more { text-align: center; margin-top: var(--space-2xl); }
 
-        /* ============================================
-           SECTION 14: FINAL CTA — Dark accent section
-           ============================================ */
-        .final-cta { background: var(--bg-primary); padding: var(--space-5xl) 0; text-align: center; border-top: 1px solid var(--border); }
-        .final-cta h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: var(--space-md); }
-        .final-cta p { font-size: 1.25rem; color: var(--text-secondary); margin: 0 auto var(--space-2xl); max-width: 52ch; }
-
-        /* ============================================
-           FAQ — Accordion
-           ============================================ */
+        /* FAQ */
         .faq__list { max-width: var(--max-width-narrow); margin: 0 auto; }
         .faq__heading { text-align: center; margin-bottom: var(--space-2xl); }
         .faq__item { border-bottom: 1px solid var(--border); }
-        .faq__question {
-            width: 100%; display: flex; justify-content: space-between; align-items: center;
-            padding: var(--space-lg) 0; background: none; border: none;
-            color: var(--text-primary); font-size: 1.0625rem; font-weight: 600;
-            font-family: var(--font-sans); text-align: left; cursor: pointer;
-            transition: color 150ms var(--ease-out);
-        }
+        .faq__question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: var(--space-lg) 0; background: none; border: none; color: var(--text-primary); font-size: 1.0625rem; font-weight: 600; font-family: var(--font-sans); text-align: left; cursor: pointer; transition: color 150ms var(--ease-out); }
         .faq__question:hover { color: var(--accent); }
         .faq__icon { font-size: 1.375rem; font-weight: 300; transition: transform 250ms var(--ease-out); flex-shrink: 0; margin-left: var(--space-md); color: var(--text-tertiary); }
         .faq__item.open .faq__icon { transform: rotate(45deg); color: var(--accent); }
@@ -529,9 +355,12 @@
         .faq__item.open .faq__answer { max-height: 400px; padding-bottom: var(--space-lg); }
         .faq__answer p { font-size: 1rem; line-height: 1.65; }
 
-        /* ============================================
-           FOOTER
-           ============================================ */
+        /* FINAL CTA */
+        .final-cta { padding: var(--space-5xl) 0; text-align: center; border-top: 1px solid var(--border); }
+        .final-cta h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: var(--space-md); }
+        .final-cta p { font-size: 1.25rem; color: var(--text-secondary); margin: 0 auto var(--space-2xl); max-width: 52ch; }
+
+        /* FOOTER */
         .footer { padding: var(--space-3xl) 0; border-top: 1px solid var(--border); }
         .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-xl); }
         .footer__brand { font-size: 1.25rem; font-weight: 700; margin-bottom: var(--space-xs); }
@@ -541,24 +370,10 @@
         .footer__link { font-size: 0.9375rem; color: var(--text-secondary); text-decoration: none; }
         .footer__link:hover { color: var(--text-primary); }
 
-        /* ============================================
-           CONTACT MODAL
-           ============================================ */
-        .modal-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(12px);
-            z-index: 2000; align-items: center; justify-content: center;
-            padding: var(--space-md);
-        }
+        /* MODAL */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(12px); z-index: 2000; align-items: center; justify-content: center; padding: var(--space-md); }
         .modal-overlay.open { display: flex; }
-        .modal {
-            background: var(--bg-elevated); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: var(--space-2xl);
-            max-width: 500px; width: 100%; position: relative;
-            transform: scale(0.95); opacity: 0;
-            transition: transform 250ms var(--ease-out), opacity 250ms var(--ease-out);
-        }
+        .modal { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-2xl); max-width: 500px; width: 100%; position: relative; transform: scale(0.95); opacity: 0; transition: transform 250ms var(--ease-out), opacity 250ms var(--ease-out); }
         .modal-overlay.open .modal { transform: scale(1); opacity: 1; }
         .modal__close { position: absolute; top: var(--space-md); right: var(--space-md); background: none; border: none; color: var(--text-tertiary); font-size: 1.5rem; cursor: pointer; padding: var(--space-xs); line-height: 1; transition: color 150ms var(--ease-out); }
         .modal__close:hover { color: var(--text-primary); }
@@ -566,45 +381,30 @@
         .modal__subtitle { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: var(--space-xl); }
         .form-group { margin-bottom: var(--space-md); }
         .form-label { display: block; font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); margin-bottom: var(--space-xs); }
-        .form-input, .form-textarea, .form-select {
-            width: 100%; padding: 0.75rem 1rem; font-size: 1rem;
-            font-family: var(--font-sans); background: var(--bg-primary);
-            border: 1px solid var(--border); border-radius: var(--radius);
-            color: var(--text-primary);
-            transition: border-color 150ms var(--ease-out);
-        }
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
-            outline: none; border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-        }
+        .form-input, .form-textarea, .form-select { width: 100%; padding: 0.75rem 1rem; font-size: 1rem; font-family: var(--font-sans); background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-primary); transition: border-color 150ms var(--ease-out); }
+        .form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
         .form-textarea { resize: vertical; min-height: 120px; }
         .form-submit { width: 100%; margin-top: var(--space-md); }
 
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
+        /* RESPONSIVE */
         @media (max-width: 767px) {
             .section { padding: var(--space-3xl) 0; }
             .hero { min-height: auto; padding: 120px 0 var(--space-2xl); }
             .hero__headline { font-size: clamp(2.25rem, 8vw, 2.75rem); }
-            .hero__sub { font-size: 1.0625rem; }
             .hero__ctas { flex-direction: column; }
             .hero__ctas .btn { width: 100%; }
             .btn { width: 100%; justify-content: center; }
             .problem__asides { flex-direction: column; }
             .spread { grid-template-columns: 1fr !important; }
             .spread__visual { aspect-ratio: 16/9; }
-            .deploy__grid { grid-template-columns: 1fr; }
-            .reasons__grid { grid-template-columns: 1fr; }
-            .insights__grid { grid-template-columns: 1fr; }
+            .deploy__grid, .reasons__grid, .insights__grid { grid-template-columns: 1fr; }
+            .pricing__grid { grid-template-columns: 1fr; }
             .footer__inner { flex-direction: column; text-align: center; }
             .footer__links { justify-content: center; }
             .step { grid-template-columns: 40px 1fr; gap: var(--space-md); }
         }
 
-        /* ============================================
-           LIGHT MODE
-           ============================================ */
+        /* LIGHT MODE */
         @media (prefers-color-scheme: light) {
             :root {
                 --bg-primary: #FAFAF8; --bg-secondary: #F4F2EE;
@@ -619,7 +419,6 @@
                 --text-primary: #1A1A1A;
                 --text-secondary: rgba(26, 26, 26, 0.6);
                 --text-tertiary: rgba(26, 26, 26, 0.4);
-                --text-accent: #C4583E;
             }
             .modal { background: var(--bg-elevated); }
             .form-input, .form-textarea, .form-select { background: var(--bg-primary); }
@@ -635,14 +434,19 @@
         <div class="nav__inner">
             <a href="/" class="nav__logo">giga<span>top</span></a>
             <div class="nav__links">
-                <a href="#loesungen" class="nav__link">Loesungen</a>
-                <a href="#private-ai" class="nav__link">Private AI</a>
-                <a href="#architektur" class="nav__link">Architektur</a>
-                <a href="#ablauf" class="nav__link">Ablauf</a>
-                <a href="#ueber" class="nav__link">Ueber</a>
-                <a href="#insights" class="nav__link">Insights</a>
-                <a href="#" class="nav__link nav__link--cta" onclick="openModal(); return false;">Kunde-Login</a>
-                <a href="#" class="btn btn--primary" onclick="openModal(); return false;" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">AI Session buchen</a>
+                <a href="#loesungen" class="nav__link" data-lang-de="Loesungen" data-lang-en="Solutions">Loesungen</a>
+                <a href="#private-ai" class="nav__link" data-lang-de="Private AI" data-lang-en="Private AI">Private AI</a>
+                <a href="#agents" class="nav__link" data-lang-de="AI Agents" data-lang-en="AI Agents">AI Agents</a>
+                <a href="#architektur" class="nav__link" data-lang-de="Architektur" data-lang-en="Architecture">Architektur</a>
+                <a href="#ablauf" class="nav__link" data-lang-de="Ablauf" data-lang-en="How it Works">Ablauf</a>
+                <a href="#preise" class="nav__link" data-lang-de="Preise" data-lang-en="Pricing">Preise</a>
+                <a href="#ueber" class="nav__link" data-lang-de="Ueber" data-lang-en="About">Ueber</a>
+                <a href="#insights" class="nav__link" data-lang-de="Insights" data-lang-en="Insights">Insights</a>
+                <div class="nav__lang-toggle" onclick="toggleLang()" title="Language">
+                    <span class="active-lang" id="lang-current">DE</span>
+                    <span id="lang-next">/ EN</span>
+                </div>
+                <a href="#" class="btn btn--primary" onclick="openModal(); return false;" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;" data-lang-de="AI Session buchen" data-lang-en="Book AI Session">AI Session buchen</a>
             </div>
             <button class="nav__menu-btn" onclick="toggleMobile()" aria-label="Menu">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -652,14 +456,19 @@
                 </svg>
             </button>
             <div class="nav__mobile" id="mobile-menu">
-                <a href="#loesungen" class="nav__mobile-link" onclick="toggleMobile()">Loesungen</a>
-                <a href="#private-ai" class="nav__mobile-link" onclick="toggleMobile()">Private AI</a>
-                <a href="#architektur" class="nav__mobile-link" onclick="toggleMobile()">Architektur</a>
-                <a href="#ablauf" class="nav__mobile-link" onclick="toggleMobile()">Ablauf</a>
-                <a href="#ueber" class="nav__mobile-link" onclick="toggleMobile()">Ueber</a>
-                <a href="#insights" class="nav__mobile-link" onclick="toggleMobile()">Insights</a>
-                <a href="#" class="nav__mobile-link" onclick="openModal(); toggleMobile(); return false;">Kunde-Login</a>
-                <a href="#" class="btn btn--primary" onclick="openModal(); toggleMobile(); return false;" style="margin-top: 1rem;">AI Session buchen</a>
+                <a href="#loesungen" class="nav__mobile-link" onclick="toggleMobile()" data-lang-de="Loesungen" data-lang-en="Solutions">Loesungen</a>
+                <a href="#private-ai" class="nav__mobile-link" onclick="toggleMobile()" data-lang-de="Private AI" data-lang-en="Private AI">Private AI</a>
+                <a href="#agents" class="nav__mobile-link" onclick="toggleMobile()" data-lang-de="AI Agents" data-lang-en="AI Agents">AI Agents</a>
+                <a href="#architektur" class="nav__mobile-link" onclick="toggleMobile()" data-lang-de="Architektur" data-lang-en="Architecture">Architektur</a>
+                <a href="#ablauf" class="nav__mobile-link" onclick="toggleMobile()" data-lang-de="Ablauf" data-lang-en="How it Works">Ablauf</a>
+                <a href="#preise" class="nav__mobile-link" onclick="toggleMobile()" data-lang-de="Preise" data-lang-en="Pricing">Preise</a>
+                <a href="#ueber" class="nav__mobile-link" onclick="toggleMobile()" data-lang-de="Ueber" data-lang-en="About">Ueber</a>
+                <a href="#insights" class="nav__mobile-link" onclick="toggleMobile()" data-lang-de="Insights" data-lang-en="Insights">Insights</a>
+                <div style="padding: var(--space-md) 0; border-bottom: 1px solid var(--border);" onclick="toggleLang()">
+                    <span id="mobile-lang-current" style="color: var(--accent); font-family: var(--font-mono); font-size: 0.875rem;">DE</span>
+                    <span style="color: var(--text-tertiary); font-family: var(--font-mono); font-size: 0.875rem;"> / EN</span>
+                </div>
+                <a href="#" class="btn btn--primary" onclick="openModal(); toggleMobile(); return false;" style="margin-top: 1rem;" data-lang-de="AI Session buchen" data-lang-en="Book AI Session">AI Session buchen</a>
             </div>
         </div>
     </nav>
@@ -670,31 +479,19 @@
         <div class="container">
             <div class="hero__inner">
                 <div>
-                    <h1 class="hero__headline reveal">
-                        Ihre KI.<br>
-                        Ihre Daten.<br>
-                        <em>Ihre Infrastruktur.</em>
-                    </h1>
-                    <p class="hero__sub reveal reveal-delay-1">
-                        Gigatop baut Private AI-Systeme und intelligente Agents, die direkt mit Ihren Unternehmensdaten arbeiten. Auf Wunsch vollstaendig innerhalb Ihrer eigenen Infrastruktur.
-                    </p>
+                    <h1 class="hero__headline reveal" data-lang-de="Ihre KI.<br>Ihre Daten.<br><em>Ihre Infrastruktur.</em>" data-lang-en="Your AI.<br>Your Data.<br><em>Your Infrastructure.</em>">Ihre KI.<br>Ihre Daten.<br><em>Ihre Infrastruktur.</em></h1>
+                    <p class="hero__sub reveal reveal-delay-1" data-lang-de="Gigatop baut Private AI-Systeme und intelligente Agents, die direkt mit Ihren Unternehmensdaten arbeiten. Auf Wunsch vollstaendig innerhalb Ihrer eigenen Infrastruktur." data-lang-en="Gigatop builds Private AI systems and intelligent agents that work directly with your enterprise data. Fully within your own infrastructure, on request.">Gigatop baut Private AI-Systeme und intelligente Agents, die direkt mit Ihren Unternehmensdaten arbeiten. Auf Wunsch vollstaendig innerhalb Ihrer eigenen Infrastruktur.</p>
                     <div class="hero__ctas reveal reveal-delay-2">
-                        <a href="#" class="btn btn--primary btn--large" onclick="openModal(); return false;">AI Potenzial entdecken</a>
-                        <a href="#private-ai" class="btn btn--ghost btn--large">Private AI ansehen</a>
+                        <a href="#" class="btn btn--primary btn--large" onclick="openModal(); return false;" data-lang-de="AI Potenzial entdecken" data-lang-en="Discover AI Potential">AI Potenzial entdecken</a>
+                        <a href="#private-ai" class="btn btn--ghost btn--large" data-lang-de="Private AI ansehen" data-lang-en="View Private AI">Private AI ansehen</a>
                     </div>
                 </div>
                 <div class="hero__visual reveal reveal-delay-2">
-                    <div class="hero__visual-layer hero__visual-layer--data">
-                        CRM &bull; ERP &bull; SharePoint &bull; E-Mail &bull; SQL
-                    </div>
+                    <div class="hero__visual-layer hero__visual-layer--data">CRM &bull; ERP &bull; SharePoint &bull; E-Mail &bull; SQL</div>
                     <div class="hero__visual-arrow">&#8595; &nbsp; Ihre Daten &nbsp; &#8593;</div>
-                    <div class="hero__visual-layer hero__visual-layer--ai">
-                        &#9632; GIGATOP AI LAYER &#9632;
-                    </div>
+                    <div class="hero__visual-layer hero__visual-layer--ai">&#9632; GIGATOP AI LAYER &#9632;</div>
                     <div class="hero__visual-arrow">&#8595; &nbsp; Agents &bull; RAG &bull; Automation &nbsp; &#8593;</div>
-                    <div class="hero__visual-layer hero__visual-layer--agents">
-                        Sales Agent &bull; Knowledge Agent &bull; Document Agent
-                    </div>
+                    <div class="hero__visual-layer hero__visual-layer--agents">Sales Agent &bull; Knowledge Agent &bull; Document Agent</div>
                 </div>
             </div>
         </div>
@@ -703,10 +500,8 @@
     <!-- MANIFESTO -->
     <section class="manifesto">
         <div class="container">
-            <p class="manifesto__text reveal">
-                In einer Welt, in der Ihre sensibelsten Daten an Cloud-Anbieter wandern, ist <em>Loeslichkeit</em> kein Feature. Es ist eine Voraussetzung.
-            </p>
-            <p class="manifesto__attribution reveal reveal-delay-1">Die Gigatop Praemisse</p>
+            <p class="manifesto__text reveal" data-lang-de="In einer Welt, in der Ihre sensibelsten Daten an Cloud-Anbieter wandern, ist <em>Loeslichkeit</em> kein Feature. Es ist eine Voraussetzung." data-lang-en="In a world where your most sensitive data travels to cloud providers, <em>locality</em> is not a feature. It is a prerequisite.">In einer Welt, in der Ihre sensibelsten Daten an Cloud-Anbieter wandern, ist <em>Loeslichkeit</em> kein Feature. Es ist eine Voraussetzung.</p>
+            <p class="manifesto__attribution reveal reveal-delay-1" data-lang-de="Die Gigatop Praemisse" data-lang-en="The Gigatop Premise">Die Gigatop Praemisse</p>
         </div>
     </section>
 
@@ -715,24 +510,22 @@
         <div class="container">
             <div class="problem__grid">
                 <div class="problem__main reveal">
-                    <h2>Ihr Unternehmen hat die Daten.<br>AI kann sie nur noch nicht sinnvoll nutzen.</h2>
-                    <p>Schweizer Unternehmen speichern ihre wertvollsten Informationen in Dutzenden Systemen. SAP, SharePoint, E-Mails, PDFs, CRMs. Doch diese Daten bleiben still. AI kann sie noch nicht verbinden, verstehen und in handlungsfaehiges Wissen verwandeln.</p>
-                    <p class="text-lg" style="color: var(--accent); margin-top: var(--space-lg);">
-                        Wir bauen die Verbindung. Ohne Ihre Daten aus Ihrem Netzwerk zu schicken.
-                    </p>
+                    <h2 data-lang-de="Ihr Unternehmen hat die Daten.<br>AI kann sie nur noch nicht sinnvoll nutzen." data-lang-en="Your company has the data.<br>AI just cannot use it yet.">Ihr Unternehmen hat die Daten.<br>AI kann sie nur noch nicht sinnvoll nutzen.</h2>
+                    <p data-lang-de="Schweizer Unternehmen speichern ihre wertvollsten Informationen in Dutzenden Systemen. SAP, SharePoint, E-Mails, PDFs, CRMs. Doch diese Daten bleiben still. AI kann sie noch nicht verbinden, verstehen und in handlungsfaehiges Wissen verwandeln." data-lang-en="Swiss enterprises store their most valuable information in dozens of systems. SAP, SharePoint, emails, PDFs, CRMs. But this data stays silent. AI cannot yet connect, understand, and turn it into actionable knowledge.">Schweizer Unternehmen speichern ihre wertvollsten Informationen in Dutzenden Systemen. SAP, SharePoint, E-Mails, PDFs, CRMs. Doch diese Daten bleiben still. AI kann sie noch nicht verbinden, verstehen und in handlungsfaehiges Wissen verwandeln.</p>
+                    <p class="text-lg" style="color: var(--accent); margin-top: var(--space-lg);" data-lang-de="Wir bauen die Verbindung. Ohne Ihre Daten aus Ihrem Netzwerk zu schicken." data-lang-en="We build the connection. Without sending your data out of your network.">Wir bauen die Verbindung. Ohne Ihre Daten aus Ihrem Netzwerk zu schicken.</p>
                 </div>
                 <div class="problem__asides">
                     <div class="problem__aside reveal reveal-delay-1">
-                        <h3>Cloud-Risiko</h3>
-                        <p>US-Cloudanbieter koennen Ihre Daten an US-Behoerden herausgeben. Trotz Schweizer Datenschutzgesetze.</p>
+                        <h3 data-lang-de="Cloud-Risiko" data-lang-en="Cloud Risk">Cloud-Risiko</h3>
+                        <p data-lang-de="US-Cloudanbieter koennen Ihre Daten an US-Behoerden herausgeben. Trotz Schweizer Datenschutzgesetze." data-lang-en="US cloud providers can hand over your data to US authorities. Despite Swiss data protection laws.">US-Cloudanbieter koennen Ihre Daten an US-Behoerden herausgeben. Trotz Schweizer Datenschutzgesetze.</p>
                     </div>
                     <div class="problem__aside reveal reveal-delay-2">
-                        <h3>Kostenexplosion</h3>
-                        <p>Pro-Token-Preise wachsen exponentiell. Was heute verstaenglich ist, wird zum Budget-Problem.</p>
+                        <h3 data-lang-de="Kostenexplosion" data-lang-en="Cost Explosion">Kostenexplosion</h3>
+                        <p data-lang-de="Pro-Token-Preise wachsen exponentiell. Was heute verstaenglich ist, wird zum Budget-Problem." data-lang-en="Per-token prices grow exponentially. What is manageable today becomes a budget problem.">Pro-Token-Preise wachsen exponentiell. Was heute verstaenglich ist, wird zum Budget-Problem.</p>
                     </div>
                     <div class="problem__aside reveal reveal-delay-3">
-                        <h3>Kein Unternehmenswissen</h3>
-                        <p>Standard-AIs kennen Ihr Know-how, Ihre Prozesse und Ihre Sprache nicht.</p>
+                        <h3 data-lang-de="Kein Unternehmenswissen" data-lang-en="No Enterprise Knowledge">Kein Unternehmenswissen</h3>
+                        <p data-lang-de="Standard-AIs kennen Ihr Know-how, Ihre Prozesse und Ihre Sprache nicht." data-lang-en="Standard AIs do not know your know-how, your processes, and your language.">Standard-AIs kennen Ihr Know-how, Ihre Prozesse und Ihre Sprache nicht.</p>
                     </div>
                 </div>
             </div>
@@ -743,25 +536,25 @@
     <section class="section" id="loesungen">
         <div class="container">
             <div class="usecases__heading reveal">
-                <h2>Loesungen, die messbar sind.</h2>
+                <h2 data-lang-de="Loesungen, die messbar sind." data-lang-en="Solutions that are measurable.">Loesungen, die messbar sind.</h2>
             </div>
         </div>
         <div class="container">
             <!-- Spread 1: Sales -->
             <div class="spread spread--tint-a reveal-stagger">
                 <div class="spread__content">
-                    <div class="spread__label">Vertrieb &bull; Sales</div>
-                    <h3 class="spread__title">AI Sales Intelligence</h3>
-                    <p class="spread__desc">CRM, E-Mail, Meetings, Website-Leads. Die AI erkennt Prioritaets-Leads, Kaufsignale, Risiken im Pipeline und gibt die naechste beste Aktion vor.</p>
-                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                    <div class="spread__label" data-lang-de="Vertrieb &bull; Sales" data-lang-en="Sales">Vertrieb &bull; Sales</div>
+                    <h3 class="spread__title" data-lang-de="AI Sales Intelligence" data-lang-en="AI Sales Intelligence">AI Sales Intelligence</h3>
+                    <p class="spread__desc" data-lang-de="CRM, E-Mail, Meetings, Website-Leads. Die AI erkennt Prioritaets-Leads, Kaufsignale, Risiken im Pipeline und gibt die naechste beste Aktion vor." data-lang-en="CRM, email, meetings, website leads. AI identifies priority leads, buying signals, pipeline risks, and recommends the next best action.">CRM, E-Mail, Meetings, Website-Leads. Die AI erkennt Prioritaets-Leads, Kaufsignale, Risiken im Pipeline und gibt die naechste beste Aktion vor.</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;" data-lang-de="Gespraech anfragen" data-lang-en="Request a call">Gespraech anfragen</a>
                 </div>
                 <div class="spread__visual">
                     <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
-                        <div style="color: var(--accent); font-size: 0.875rem; margin-bottom: var(--space-xs);">Pipeline-Analyse</div>
-                        <div>Prioritaet: HOECHST</div>
-                        <div>Buying Signal: +3</div>
-                        <div>Risiko: Mässig</div>
-                        <div>Next Action: Follow-up</div>
+                        <div style="color: var(--accent); font-size: 0.875rem; margin-bottom: var(--space-xs);" data-lang-de="Pipeline-Analyse" data-lang-en="Pipeline Analysis">Pipeline-Analyse</div>
+                        <div data-lang-de="Prioritaet: HOECHST" data-lang-en="Priority: HIGHEST">Prioritaet: HOECHST</div>
+                        <div data-lang-de="Buying Signal: +3" data-lang-en="Buying Signal: +3">Buying Signal: +3</div>
+                        <div data-lang-de="Risiko: Mässig" data-lang-en="Risk: Moderate">Risiko: Mässig</div>
+                        <div data-lang-de="Next Action: Follow-up" data-lang-en="Next Action: Follow-up">Next Action: Follow-up</div>
                     </div>
                 </div>
             </div>
@@ -770,34 +563,34 @@
             <div class="spread spread--tint-b reverse reveal-stagger">
                 <div class="spread__visual">
                     <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
-                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);">Wissensabfrage</div>
+                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);" data-lang-de="Wissensabfrage" data-lang-en="Knowledge Query">Wissensabfrage</div>
                         <div>»Was gilt fuer Kunde X?«</div>
                         <div>»Fasse Projekt Y zusammen«</div>
                         <div>»Wo ist Vertrag Z?«</div>
-                        <div style="margin-top: var(--space-sm); color: var(--olive);">→ Antworten mit Quellen</div>
+                        <div style="margin-top: var(--space-sm); color: var(--olive);" data-lang-de="→ Antworten mit Quellen" data-lang-en="→ Answers with sources">→ Antworten mit Quellen</div>
                     </div>
                 </div>
                 <div class="spread__content">
-                    <div class="spread__label">Wissensmanagement</div>
-                    <h3 class="spread__title">Privates Unternehmenswissen</h3>
-                    <p class="spread__desc">SharePoint, PDF, Word, ERP, Fileserver, Wiki. Mitarbeiter koennen natuerlich fragen. Mit Quellenangaben. Und vollstaendig lokal.</p>
-                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                    <div class="spread__label" data-lang-de="Wissensmanagement" data-lang-en="Knowledge Management">Wissensmanagement</div>
+                    <h3 class="spread__title" data-lang-de="Privates Unternehmenswissen" data-lang-en="Private Company Knowledge">Privates Unternehmenswissen</h3>
+                    <p class="spread__desc" data-lang-de="SharePoint, PDF, Word, ERP, Fileserver, Wiki. Mitarbeiter koennen natuerlich fragen. Mit Quellenangaben. Und vollstaendig lokal." data-lang-en="SharePoint, PDF, Word, ERP, fileserver, wiki. Employees ask naturally. With source references. Fully local.">SharePoint, PDF, Word, ERP, Fileserver, Wiki. Mitarbeiter koennen natuerlich fragen. Mit Quellenangaben. Und vollstaendig lokal.</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;" data-lang-de="Gespraech anfragen" data-lang-en="Request a call">Gespraech anfragen</a>
                 </div>
             </div>
 
             <!-- Spread 3: Documents -->
             <div class="spread spread--tint-c reveal-stagger">
                 <div class="spread__content">
-                    <div class="spread__label">Dokumente &bull; Operations</div>
-                    <h3 class="spread__title">AI Document Operations</h3>
-                    <p class="spread__desc">PDFs, Rechnungen, Vertraege, Angebote, Formulare. Automatische Extraktion, Validierung und Weiterleitung an ERP oder CRM. Mit menschlicher Freigabe.</p>
-                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                    <div class="spread__label" data-lang-de="Dokumente &bull; Operations" data-lang-en="Documents &bull; Operations">Dokumente &bull; Operations</div>
+                    <h3 class="spread__title" data-lang-de="AI Document Operations" data-lang-en="AI Document Operations">AI Document Operations</h3>
+                    <p class="spread__desc" data-lang-de="PDFs, Rechnungen, Vertraege, Angebote, Formulare. Automatische Extraktion, Validierung und Weiterleitung an ERP oder CRM. Mit menschlicher Freigabe." data-lang-en="PDFs, invoices, contracts, proposals, forms. Automatic extraction, validation, and routing to ERP or CRM. With human approval.">PDFs, Rechnungen, Vertraege, Angebote, Formulare. Automatische Extraktion, Validierung und Weiterleitung an ERP oder CRM. Mit menschlicher Freigabe.</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;" data-lang-de="Gespraech anfragen" data-lang-en="Request a call">Gespraech anfragen</a>
                 </div>
                 <div class="spread__visual">
                     <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
-                        <div style="color: var(--accent); font-size: 0.875rem; margin-bottom: var(--space-xs);">Dokumenten-Pipeline</div>
-                        <div>PDF / Rechnung → Extraktion → Validierung → ERP</div>
-                        <div style="margin-top: var(--space-sm);">Status: Freigabe offen</div>
+                        <div style="color: var(--accent); font-size: 0.875rem; margin-bottom: var(--space-xs);" data-lang-de="Dokumenten-Pipeline" data-lang-en="Document Pipeline">Dokumenten-Pipeline</div>
+                        <div data-lang-de="PDF / Rechnung → Extraktion → Validierung → ERP" data-lang-en="PDF / Invoice → Extraction → Validation → ERP">PDF / Rechnung → Extraktion → Validierung → ERP</div>
+                        <div style="margin-top: var(--space-sm);" data-lang-de="Status: Freigabe offen" data-lang-en="Status: Approval pending">Status: Freigabe offen</div>
                     </div>
                 </div>
             </div>
@@ -806,35 +599,35 @@
             <div class="spread spread--tint-d reverse reveal-stagger">
                 <div class="spread__visual">
                     <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
-                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);">Morning Brief</div>
-                        <div>Umsatz +2.3% vs. Plan</div>
-                        <div>Pipeline-Risiko: 2 Keys Accounts</div>
-                        <div>Kundenaktivitaet: +4 Tickets</div>
-                        <div>Prioritaet: A-Deal verfolgen</div>
+                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);" data-lang-de="Morning Brief" data-lang-en="Morning Brief">Morning Brief</div>
+                        <div data-lang-de="Umsatz +2.3% vs. Plan" data-lang-en="Revenue +2.3% vs. Plan">Umsatz +2.3% vs. Plan</div>
+                        <div data-lang-de="Pipeline-Risiko: 2 Keys Accounts" data-lang-en="Pipeline Risk: 2 Key Accounts">Pipeline-Risiko: 2 Keys Accounts</div>
+                        <div data-lang-de="Kundenaktivitaet: +4 Tickets" data-lang-en="Customer Activity: +4 Tickets">Kundenaktivitaet: +4 Tickets</div>
+                        <div data-lang-de="Prioritaet: A-Deal verfolgen" data-lang-en="Priority: Pursue A-Deal">Prioritaet: A-Deal verfolgen</div>
                     </div>
                 </div>
                 <div class="spread__content">
-                    <div class="spread__label">Executive Intelligence</div>
-                    <h3 class="spread__title">Morning Briefings, die erzaehlen</h3>
-                    <p class="spread__desc">Nicht nur Zahlen. Die AI erklaert: Was hat sich geaendert? Warum ist es wichtig? Was sollten wir tun?</p>
-                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                    <div class="spread__label" data-lang-de="Executive Intelligence" data-lang-en="Executive Intelligence">Executive Intelligence</div>
+                    <h3 class="spread__title" data-lang-de="Morning Briefings, die erzaehlen" data-lang-en="Morning Briefings that explain">Morning Briefings, die erzaehlen</h3>
+                    <p class="spread__desc" data-lang-de="Nicht nur Zahlen. Die AI erklaert: Was hat sich geaendert? Warum ist es wichtig? Was sollten wir tun?" data-lang-en="Not just numbers. AI explains: What changed? Why does it matter? What should we do?">Nicht nur Zahlen. Die AI erklaert: Was hat sich geaendert? Warum ist es wichtig? Was sollten wir tun?</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;" data-lang-de="Gespraech anfragen" data-lang-en="Request a call">Gespraech anfragen</a>
                 </div>
             </div>
 
-            <!-- Spread 5: Performance -->
+            <!-- Spread 5: Health -->
             <div class="spread spread--tint-e reveal-stagger">
                 <div class="spread__content">
-                    <div class="spread__label">Performance &bull; Coaching</div>
-                    <h3 class="spread__title">AI Health & Performance Coach</h3>
-                    <p class="spread__desc">Wearables, Schlaf, HRV, Training, Erholung. Die AI erstellt Performance-Insights, Regenerationstrends und Trainingsempfehlungen. Keine medizinische Diagnose.</p>
-                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                    <div class="spread__label" data-lang-de="Performance &bull; Coaching" data-lang-en="Performance &bull; Coaching">Performance &bull; Coaching</div>
+                    <h3 class="spread__title" data-lang-de="AI Health & Performance Coach" data-lang-en="AI Health & Performance Coach">AI Health & Performance Coach</h3>
+                    <p class="spread__desc" data-lang-de="Wearables, Schlaf, HRV, Training, Erholung. Die AI erstellt Performance-Insights, Regenerationstrends und Trainingsempfehlungen. Keine medizinische Diagnose." data-lang-en="Wearables, sleep, HRV, training, recovery. AI generates performance insights, recovery trends, and training recommendations. No medical diagnosis.">Wearables, Schlaf, HRV, Training, Erholung. Die AI erstellt Performance-Insights, Regenerationstrends und Trainingsempfehlungen. Keine medizinische Diagnose.</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;" data-lang-de="Gespraech anfragen" data-lang-en="Request a call">Gespraech anfragen</a>
                 </div>
                 <div class="spread__visual">
                     <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
-                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);">Recovery-Analyse</div>
-                        <div>HRV Trend: Steigend +5%</div>
-                        <div>Schlaf: 7.2h (durchschn.)</div>
-                        <div>Empfehlung: Leichtes Training</div>
+                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);" data-lang-de="Recovery-Analyse" data-lang-en="Recovery Analysis">Recovery-Analyse</div>
+                        <div data-lang-de="HRV Trend: Steigend +5%" data-lang-en="HRV Trend: Rising +5%">HRV Trend: Steigend +5%</div>
+                        <div data-lang-de="Schlaf: 7.2h (durchschn.)" data-lang-en="Sleep: 7.2h (avg.)">Schlaf: 7.2h (durchschn.)</div>
+                        <div data-lang-de="Empfehlung: Leichtes Training" data-lang-en="Recommendation: Light Training">Empfehlung: Leichtes Training</div>
                     </div>
                 </div>
             </div>
@@ -845,33 +638,31 @@
     <section class="section compare-section" id="private-ai">
         <div class="container">
             <div class="usecases__heading reveal">
-                <h2>Private AI. Ihre Wahl.</h2>
+                <h2 data-lang-de="Private AI. Ihre Wahl." data-lang-en="Private AI. Your choice.">Private AI. Ihre Wahl.</h2>
             </div>
             <div class="compare__grid">
-                <!-- Public AI -->
                 <div class="compare__card compare__card--public reveal">
-                    <h3>Public AI</h3>
+                    <h3 data-lang-de="Public AI" data-lang-en="Public AI">Public AI</h3>
                     <div class="compare__flow">
-                        <div class="compare__flow-step" style="background: var(--bg-primary);">Ihrer Unternehmen</div>
-                        <div class="compare__flow-arrow">&#8595; Daten wandern ab</div>
+                        <div class="compare__flow-step" style="background: var(--bg-primary);" data-lang-de="Ihrer Unternehmen" data-lang-en="Your Company">Ihrer Unternehmen</div>
+                        <div class="compare__flow-arrow" data-lang-de="Daten wandern ab" data-lang-en="Data travels out">Daten wandern ab</div>
                         <div class="compare__flow-step" style="background: var(--surface);">Internet</div>
                         <div class="compare__flow-arrow">&#8595;</div>
-                        <div class="compare__flow-step" style="background: var(--surface);">Aeussere KI-Anbieter</div>
+                        <div class="compare__flow-step" style="background: var(--surface);" data-lang-de="Aeuşere KI-Anbieter" data-lang-en="External AI Providers">Aeuşere KI-Anbieter</div>
                         <div class="compare__flow-arrow">&#8595;</div>
-                        <div class="compare__flow-step" style="background: var(--bg-primary);">KI-Antwort</div>
+                        <div class="compare__flow-step" style="background: var(--bg-primary);" data-lang-de="KI-Antwort" data-lang-en="AI Response">KI-Antwort</div>
                     </div>
                 </div>
-                <!-- Private AI -->
                 <div class="compare__card compare__card--private reveal reveal-delay-1">
-                    <h3>Private AI</h3>
+                    <h3 data-lang-de="Private AI" data-lang-en="Private AI">Private AI</h3>
                     <div class="compare__flow">
-                        <div class="compare__flow-step" style="background: var(--bg-primary);">Ihrer Unternehmen</div>
-                        <div class="compare__flow-arrow">&#8595; Bleibt lokal</div>
-                        <div class="compare__flow-step" style="background: var(--accent-muted); border: 1px solid var(--border-accent);">Lokale KI-Engine</div>
+                        <div class="compare__flow-step" style="background: var(--bg-primary);" data-lang-de="Ihrer Unternehmen" data-lang-en="Your Company">Ihrer Unternehmen</div>
+                        <div class="compare__flow-arrow" data-lang-de="Bleibt lokal" data-lang-en="Stays local">Bleibt lokal</div>
+                        <div class="compare__flow-step" style="background: var(--accent-muted); border: 1px solid var(--border-accent);" data-lang-de="Lokale KI-Engine" data-lang-en="Local AI Engine">Lokale KI-Engine</div>
                         <div class="compare__flow-arrow">&#8595;</div>
-                        <div class="compare__flow-step" style="background: var(--surface);">Agents & Automation</div>
+                        <div class="compare__flow-step" style="background: var(--surface);" data-lang-de="Agents & Automation" data-lang-en="Agents & Automation">Agents & Automation</div>
                         <div class="compare__flow-arrow">&#8595;</div>
-                        <div class="compare__flow-step" style="background: var(--bg-primary);">Handlung</div>
+                        <div class="compare__flow-step" style="background: var(--bg-primary);" data-lang-de="Handlung" data-lang-en="Action">Handlung</div>
                     </div>
                 </div>
             </div>
@@ -882,98 +673,96 @@
     <section class="section" id="agents">
         <div class="container">
             <div class="usecases__heading reveal">
-                <h2>AI, die nicht nur antwortet.<br>AI, die handelt.</h2>
+                <h2 data-lang-de="AI, die nicht nur antwortet.<br>AI, die handelt." data-lang-en="AI that does not just answer.<br>AI that acts.">AI, die nicht nur antwortet.<br>AI, die handelt.</h2>
             </div>
-            <p class="text-lg" style="text-align: center; margin: 0 auto var(--space-2xl); max-width: 52ch;">
-                Chatbot: Frage → Antwort. Agent: Beobachten, Verstehen, Entscheiden, Handeln.
-            </p>
+            <p class="text-lg" style="text-align: center; margin: 0 auto var(--space-2xl); max-width: 52ch;" data-lang-de="Chatbot: Frage → Antwort. Agent: Beobachten, Verstehen, Entscheiden, Handeln." data-lang-en="Chatbot: Question → Answer. Agent: Observe, Understand, Decide, Act.">Chatbot: Frage → Antwort. Agent: Beobachten, Verstehen, Entscheiden, Handeln.</p>
             <div class="agents-flow reveal-stagger">
                 <div class="agent-step">
                     <div class="agent-step__icon">&#128202;</div>
-                    <div class="agent-step__label">Beobachten</div>
-                    <div class="agent-step__desc">CRM, E-Mail, Daten</div>
+                    <div class="agent-step__label" data-lang-de="Beobachten" data-lang-en="Observe">Beobachten</div>
+                    <div class="agent-step__desc" data-lang-de="CRM, E-Mail, Daten" data-lang-en="CRM, Email, Data">CRM, E-Mail, Daten</div>
                 </div>
                 <div class="agent-arrow">&#8594;</div>
                 <div class="agent-step">
                     <div class="agent-step__icon">&#129309;</div>
-                    <div class="agent-step__label">Verstehen</div>
-                    <div class="agent-step__desc">Kontext, Muster</div>
+                    <div class="agent-step__label" data-lang-de="Verstehen" data-lang-en="Understand">Verstehen</div>
+                    <div class="agent-step__desc" data-lang-de="Kontext, Muster" data-lang-en="Context, Patterns">Kontext, Muster</div>
                 </div>
                 <div class="agent-arrow">&#8594;</div>
                 <div class="agent-step">
                     <div class="agent-step__icon">&#9881;</div>
-                    <div class="agent-step__label">Entscheiden</div>
-                    <div class="agent-step__desc">Regeln, Kontext</div>
+                    <div class="agent-step__label" data-lang-de="Entscheiden" data-lang-en="Decide">Entscheiden</div>
+                    <div class="agent-step__desc" data-lang-de="Regeln, Kontext" data-lang-en="Rules, Context">Regeln, Kontext</div>
                 </div>
                 <div class="agent-arrow">&#8594;</div>
                 <div class="agent-step">
                     <div class="agent-step__icon">&#9889;</div>
-                    <div class="agent-step__label">Handeln</div>
-                    <div class="agent-step__desc">Systeme, Workflows</div>
+                    <div class="agent-step__label" data-lang-de="Handeln" data-lang-en="Act">Handeln</div>
+                    <div class="agent-step__desc" data-lang-de="Systeme, Workflows" data-lang-en="Systems, Workflows">Systeme, Workflows</div>
                 </div>
             </div>
 
             <div class="container" style="margin-top: var(--space-3xl);">
                 <div class="reveal-stagger" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md);">
-                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">CRM analysieren &amp; priorisieren</div>
-                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">Meetings vorbereiten</div>
-                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">Reports erstellen</div>
-                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">Dokumente verarbeiten</div>
-                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">E-Mails vorbereiten</div>
-                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">Mitarbeiter informieren</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);" data-lang-de="CRM analysieren &amp; priorisieren" data-lang-en="Analyze &amp; prioritize CRM">CRM analysieren &amp; priorisieren</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);" data-lang-de="Meetings vorbereiten" data-lang-en="Prepare meetings">Meetings vorbereiten</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);" data-lang-de="Reports erstellen" data-lang-en="Generate reports">Reports erstellen</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);" data-lang-de="Dokumente verarbeiten" data-lang-en="Process documents">Dokumente verarbeiten</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);" data-lang-de="E-Mails vorbereiten" data-lang-en="Prepare emails">E-Mails vorbereiten</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);" data-lang-de="Mitarbeiter informieren" data-lang-en="Notify employees">Mitarbeiter informieren</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ARCHITECTURE -->
-    <section class="arch" id="architektur" style="background: var(--bg-secondary); padding: var(--space-5xl) 0;">
+    <section class="arch" id="architektur">
         <div class="container">
             <div class="arch__inner reveal">
-                <h2>Architektur, die unter Ihrer Kontrolle bleibt.</h2>
-                <p>Drei Schichten. Null Cloud-Abhaengigkeit. Vollstaendig in Ihrer Infrastruktur.</p>
+                <h2 data-lang-de="Architektur, die unter Ihrer Kontrolle bleibt." data-lang-en="Architecture that stays under your control.">Architektur, die unter Ihrer Kontrolle bleibt.</h2>
+                <p data-lang-de="Drei Schichten. Null Cloud-Abhaengigkeit. Vollstaendig in Ihrer Infrastruktur." data-lang-en="Four layers. Zero cloud dependency. Fully within your infrastructure.">Drei Schichten. Null Cloud-Abhaengigkeit. Vollstaendig in Ihrer Infrastruktur.</p>
             </div>
             <div class="arch__stack reveal reveal-delay-1">
                 <div class="arch__layer arch__layer--people">
-                    <div class="arch__layer-label">People</div>
+                    <div class="arch__layer-label" data-lang-de="People" data-lang-en="People">People</div>
                     <div class="arch__layer-items">
-                        <span class="arch__layer-item">Teams</span>
+                        <span class="arch__layer-item" data-lang-de="Teams" data-lang-en="Teams">Teams</span>
                         <span class="arch__layer-item">Web</span>
                         <span class="arch__layer-item">Mobile</span>
-                        <span class="arch__layer-item">Anwendungen</span>
+                        <span class="arch__layer-item" data-lang-de="Anwendungen" data-lang-en="Applications">Anwendungen</span>
                     </div>
                 </div>
                 <div class="arch__layer-arrow">&#8595;</div>
                 <div class="arch__layer arch__layer--ai">
-                    <div class="arch__layer-label">AI Layer</div>
+                    <div class="arch__layer-label" data-lang-de="AI Layer" data-lang-en="AI Layer">AI Layer</div>
                     <div class="arch__layer-items">
                         <span class="arch__layer-item">Agents</span>
                         <span class="arch__layer-item">RAG</span>
-                        <span class="arch__layer-item">Automation</span>
+                        <span class="arch__layer-item" data-lang-de="Automation" data-lang-en="Automation">Automation</span>
                         <span class="arch__layer-item">Model Router</span>
-                        <span class="arch__layer-item">Permissions</span>
-                        <span class="arch__layer-item">Audit</span>
+                        <span class="arch__layer-item" data-lang-de="Permissions" data-lang-en="Permissions">Permissions</span>
+                        <span class="arch__layer-item" data-lang-de="Audit" data-lang-en="Audit">Audit</span>
                     </div>
                 </div>
                 <div class="arch__layer-arrow">&#8595;</div>
                 <div class="arch__layer arch__layer--systems">
-                    <div class="arch__layer-label">Systeme</div>
+                    <div class="arch__layer-label" data-lang-de="Systeme" data-lang-en="Systems">Systeme</div>
                     <div class="arch__layer-items">
                         <span class="arch__layer-item">SharePoint</span>
                         <span class="arch__layer-item">CRM</span>
                         <span class="arch__layer-item">ERP</span>
                         <span class="arch__layer-item">SQL</span>
-                        <span class="arch__layer-item">Files</span>
+                        <span class="arch__layer-item" data-lang-de="Files" data-lang-en="Files">Files</span>
                         <span class="arch__layer-item">APIs</span>
                     </div>
                 </div>
                 <div class="arch__layer-arrow">&#8595;</div>
                 <div class="arch__layer arch__layer--infra">
-                    <div class="arch__layer-label">Infrastruktur</div>
+                    <div class="arch__layer-label" data-lang-de="Infrastruktur" data-lang-en="Infrastructure">Infrastruktur</div>
                     <div class="arch__layer-items">
-                        <span class="arch__layer-item">Lokale Modelle</span>
-                        <span class="arch__layer-item">GPU-Compute</span>
-                        <span class="arch__layer-item">Optionale Cloud-Modelle</span>
+                        <span class="arch__layer-item" data-lang-de="Lokale Modelle" data-lang-en="Local Models">Lokale Modelle</span>
+                        <span class="arch__layer-item" data-lang-de="GPU-Compute" data-lang-en="GPU Compute">GPU-Compute</span>
+                        <span class="arch__layer-item" data-lang-de="Optionale Cloud-Modelle" data-lang-en="Optional Cloud Models">Optionale Cloud-Modelle</span>
                     </div>
                 </div>
             </div>
@@ -984,46 +773,46 @@
     <section class="section" id="ablauf">
         <div class="container">
             <div class="usecases__heading reveal">
-                <h2>So funktioniert es.</h2>
+                <h2 data-lang-de="So funktioniert es." data-lang-en="How it works.">So funktioniert es.</h2>
             </div>
             <div class="steps__inner">
                 <div class="step reveal">
                     <div class="step__number">01</div>
                     <div class="step__content">
-                        <h4>Discover</h4>
-                        <p>Wir identifizieren Ihre Prozesse, Daten und AI-Moeglichkeiten. Ohne Blabla. Mit konkreten Ergebnissen.</p>
+                        <h4 data-lang-de="Discover" data-lang-en="Discover">Discover</h4>
+                        <p data-lang-de="Wir identifizieren Ihre Prozesse, Daten und AI-Moeglichkeiten. Ohne Blabla. Mit konkreten Ergebnissen." data-lang-en="We identify your processes, data, and AI opportunities. No fluff. With concrete results.">Wir identifizieren Ihre Prozesse, Daten und AI-Moeglichkeiten. Ohne Blabla. Mit konkreten Ergebnissen.</p>
                     </div>
                 </div>
                 <div class="step-line reveal reveal-delay-1"></div>
                 <div class="step reveal">
                     <div class="step__number">02</div>
                     <div class="step__content">
-                        <h4>Prototype</h4>
-                        <p>Proof of Concept bauen. Schnell, messbar, real. Kein theoretisches Konstrukt.</p>
+                        <h4 data-lang-de="Prototype" data-lang-en="Prototype">Prototype</h4>
+                        <p data-lang-de="Proof of Concept bauen. Schnell, messbar, real. Kein theoretisches Konstrukt." data-lang-en="Build a proof of concept. Fast, measurable, real. Not a theoretical construct.">Proof of Concept bauen. Schnell, messbar, real. Kein theoretisches Konstrukt.</p>
                     </div>
                 </div>
                 <div class="step-line reveal reveal-delay-1"></div>
                 <div class="step reveal">
                     <div class="step__number">03</div>
                     <div class="step__content">
-                        <h4>Connect</h4>
-                        <p>CRM, Datenbanken, SharePoint, APIs. Alles verbindet sich mit Ihrer AI-Engine.</p>
+                        <h4 data-lang-de="Connect" data-lang-en="Connect">Connect</h4>
+                        <p data-lang-de="CRM, Datenbanken, SharePoint, APIs. Alles verbindet sich mit Ihrer AI-Engine." data-lang-en="CRM, databases, SharePoint, APIs. Everything connects to your AI engine.">CRM, Datenbanken, SharePoint, APIs. Alles verbindet sich mit Ihrer AI-Engine.</p>
                     </div>
                 </div>
                 <div class="step-line reveal reveal-delay-1"></div>
                 <div class="step reveal">
                     <div class="step__number">04</div>
                     <div class="step__content">
-                        <h4>Deploy</h4>
-                        <p>Lokal, hosted oder hybrid. Sie waehlen, wo Ihre AI laeuft.</p>
+                        <h4 data-lang-de="Deploy" data-lang-en="Deploy">Deploy</h4>
+                        <p data-lang-de="Lokal, hosted oder hybrid. Sie waehlen, wo Ihre AI laeuft." data-lang-en="Local, hosted, or hybrid. You choose where your AI runs.">Lokal, hosted oder hybrid. Sie waehlen, wo Ihre AI laeuft.</p>
                     </div>
                 </div>
                 <div class="step-line reveal reveal-delay-1"></div>
                 <div class="step reveal">
                     <div class="step__number">05</div>
                     <div class="step__content">
-                        <h4>Improve</h4>
-                        <p>Agents, Modelle und Prozesse optimieren. Kontinuierlich. Messbar.</p>
+                        <h4 data-lang-de="Improve" data-lang-en="Improve">Improve</h4>
+                        <p data-lang-de="Agents, Modelle und Prozesse optimieren. Kontinuierlich. Messbar." data-lang-en="Optimize agents, models, and processes. Continuously. Measurably.">Agents, Modelle und Prozesse optimieren. Kontinuierlich. Messbar.</p>
                     </div>
                 </div>
             </div>
@@ -1034,40 +823,92 @@
     <section class="section" id="deployment" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="usecases__heading reveal">
-                <h2>Drei Wege. Alle Ihre Kontrolle.</h2>
+                <h2 data-lang-de="Drei Wege. Alle Ihre Kontrolle." data-lang-en="Three paths. All your control.">Drei Wege. Alle Ihre Kontrolle.</h2>
             </div>
             <div class="deploy__grid">
                 <div class="deploy__card deploy__card--featured reveal reveal-delay-1">
-                    <div class="deploy__badge">Empfohlen</div>
-                    <h3>Private AI</h3>
-                    <p>AI laeuft vollstaendig innerhalb Ihrer Infrastruktur. Keine Cloud. Keine Abhaengigkeit.</p>
+                    <div class="deploy__badge" data-lang-de="Empfohlen" data-lang-en="Recommended">Empfohlen</div>
+                    <h3 data-lang-de="Private AI" data-lang-en="Private AI">Private AI</h3>
+                    <p data-lang-de="AI laeuft vollstaendig innerhalb Ihrer Infrastruktur. Keine Cloud. Keine Abhaengigkeit." data-lang-en="AI runs entirely within your infrastructure. No cloud. No dependency.">AI laeuft vollstaendig innerhalb Ihrer Infrastruktur. Keine Cloud. Keine Abhaengigkeit.</p>
                     <ul class="deploy__features">
-                        <li>&#10003; Voellig lokal</li>
-                        <li>&#10003; Maximum an Sicherheit</li>
-                        <li>&#10003; Keine Datenabwanderung</li>
-                        <li>&#10003; Custom Modelle</li>
+                        <li data-lang-de="Voellig lokal" data-lang-en="Fully local">Voellig lokal</li>
+                        <li data-lang-de="Maximum an Sicherheit" data-lang-en="Maximum security">Maximum an Sicherheit</li>
+                        <li data-lang-de="Keine Datenabwanderung" data-lang-en="No data migration">Keine Datenabwanderung</li>
+                        <li data-lang-de="Custom Modelle" data-lang-en="Custom models">Custom Modelle</li>
                     </ul>
                 </div>
                 <div class="deploy__card reveal reveal-delay-2">
-                    <h3>Private Hosted</h3>
-                    <p>Dedizierte Umgebung. Wir betreiben, Sie kontrollieren.</p>
+                    <h3 data-lang-de="Private Hosted" data-lang-en="Private Hosted">Private Hosted</h3>
+                    <p data-lang-de="Dedizierte Umgebung. Wir betreiben, Sie kontrollieren." data-lang-en="Dedicated environment. We operate, you control.">Dedizierte Umgebung. Wir betreiben, Sie kontrollieren.</p>
                     <ul class="deploy__features">
-                        <li>&#10003; Dedizierte Infrastruktur</li>
-                        <li>&#10003; Managed durch Gigatop</li>
-                        <li>&#10003; Keine eigene Hardware</li>
-                        <li>&#10003; Monitoring inklusive</li>
+                        <li data-lang-de="Dedizierte Infrastruktur" data-lang-en="Dedicated infrastructure">Dedizierte Infrastruktur</li>
+                        <li data-lang-de="Managed durch Gigatop" data-lang-en="Managed by Gigatop">Managed durch Gigatop</li>
+                        <li data-lang-de="Keine eigene Hardware" data-lang-en="No own hardware">Keine eigene Hardware</li>
+                        <li data-lang-de="Monitoring inklusive" data-lang-en="Monitoring included">Monitoring inklusive</li>
                     </ul>
                 </div>
                 <div class="deploy__card reveal reveal-delay-3">
-                    <h3>Hybrid AI</h3>
-                    <p>Lokale Daten plus ausgewaehlte externe AI-Services.</p>
+                    <h3 data-lang-de="Hybrid AI" data-lang-en="Hybrid AI">Hybrid AI</h3>
+                    <p data-lang-de="Lokale Daten plus ausgewaehlte externe AI-Services." data-lang-en="Local data plus selected external AI services.">Lokale Daten plus ausgewaehlte externe AI-Services.</p>
                     <ul class="deploy__features">
-                        <li>&#10003; Beste von beiden Welten</li>
-                        <li>&#10003; Sensitiv: lokal</li>
-                        <li>&#10003; Nicht-kritisch: Cloud</li>
-                        <li>&#10003; Flexible Modelle</li>
+                        <li data-lang-de="Beste von beiden Welten" data-lang-en="Best of both worlds">Beste von beiden Welten</li>
+                        <li data-lang-de="Sensitiv: lokal" data-lang-en="Sensitive: local">Sensitiv: lokal</li>
+                        <li data-lang-de="Nicht-kritisch: Cloud" data-lang-en="Non-critical: Cloud">Nicht-kritisch: Cloud</li>
+                        <li data-lang-de="Flexible Modelle" data-lang-en="Flexible models">Flexible Modelle</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="preise">
+        <div class="container">
+            <div class="usecases__heading reveal">
+                <h2 data-lang-de="Transparente Strukturen." data-lang-en="Transparent structures.">Transparente Strukturen.</h2>
+            </div>
+            <div class="pricing__grid">
+                <div class="pricing__card reveal">
+                    <div class="pricing__tier" data-lang-de="Einstieg" data-lang-en="Starter">Einstieg</div>
+                    <h3 data-lang-de="AI Starter" data-lang-en="AI Starter">AI Starter</h3>
+                    <div class="pricing__price" data-lang-de="ab CHF 4'900" data-lang-en="from CHF 4'900">ab CHF 4'900</div>
+                    <p data-lang-de="Einmalige Investition. Ein Use Case. Ein konkretes Ergebnis." data-lang-en="One-time investment. One use case. One concrete result.">Einmalige Investition. Ein Use Case. Ein konkretes Ergebnis.</p>
+                    <ul class="pricing__features">
+                        <li data-lang-de="AI Assessmen" data-lang-en="AI Assessment">AI Assessmen</li>
+                        <li data-lang-de="Proof of Concept" data-lang-en="Proof of Concept">Proof of Concept</li>
+                        <li data-lang-de="Integration einer Datenquelle" data-lang-en="Single data source integration">Integration einer Datenquelle</li>
+                        <li data-lang-de="Schulung fuer Ihr Team" data-lang-en="Team training">Schulung fuer Ihr Team</li>
+                    </ul>
+                </div>
+                <div class="pricing__card pricing__card--featured reveal reveal-delay-1">
+                    <div class="pricing__tier" data-lang-de="Empfohlen" data-lang-en="Recommended">Empfohlen</div>
+                    <h3 data-lang-de="Private AI Platform" data-lang-en="Private AI Platform">Private AI Platform</h3>
+                    <div class="pricing__price" data-lang-de="Individuell" data-lang-en="Custom">Individuell</div>
+                    <p data-lang-de="Massgeschneidert fuer Ihr Unternehmen. Mehrere Use Cases. Volle Kontrolle." data-lang-en="Tailored for your company. Multiple use cases. Full control.">Massgeschneidert fuer Ihr Unternehmen. Mehrere Use Cases. Volle Kontrolle.</p>
+                    <ul class="pricing__features">
+                        <li data-lang-de="Umfassendes AI Assessment" data-lang-en="Comprehensive AI Assessment">Umfassendes AI Assessment</li>
+                        <li data-lang-de="Multi-Source Integration" data-lang-en="Multi-source integration">Multi-Source Integration</li>
+                        <li data-lang-de="Custom AI Agents" data-lang-en="Custom AI Agents">Custom AI Agents</li>
+                        <li data-lang-de="On-Premise Deployment" data-lang-en="On-premise deployment">On-Premise Deployment</li>
+                        <li data-lang-de="Dedizierter Support" data-lang-en="Dedicated support">Dedizierter Support</li>
+                    </ul>
+                </div>
+                <div class="pricing__card reveal reveal-delay-2">
+                    <div class="pricing__tier" data-lang-de="Rundum-sorglos" data-lang-en="Managed">Rundum-sorglos</div>
+                    <h3 data-lang-de="Managed Private AI" data-lang-en="Managed Private AI">Managed Private AI</h3>
+                    <div class="pricing__price" data-lang-de="ab CHF 980<span>/Mo</span>" data-lang-en="from CHF 980<span>/mo</span>">ab CHF 980<span>/Mo</span></div>
+                    <p data-lang-de="Wir betreiben Ihre AI-Plattform. Monitoring, Updates, Optimierung." data-lang-en="We operate your AI platform. Monitoring, updates, optimization.">Wir betreiben Ihre AI-Plattform. Monitoring, Updates, Optimierung.</p>
+                    <ul class="pricing__features">
+                        <li data-lang-de="Alles aus Private AI Platform" data-lang-en="Everything from Private AI Platform">Alles aus Private AI Platform</li>
+                        <li data-lang-de="24/7 Monitoring" data-lang-en="24/7 monitoring">24/7 Monitoring</li>
+                        <li data-lang-de="Laufende Optimierung" data-lang-en="Continuous optimization">Laufende Optimierung</li>
+                        <li data-lang-de="Neue Modelle & Features" data-lang-en="New models & features">Neue Modelle & Features</li>
+                        <li data-lang-de="SLA inklusive" data-lang-en="SLA included">SLA inklusive</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pricing__note reveal">
+                <p data-lang-de="Jedes Unternehmen ist anders. Wir erstellen gerne ein individuelles Angebot nach einem unverbindlichen AI Assessmen." data-lang-en="Every company is different. We are happy to create a custom quote after a non-binding AI assessment.">Jedes Unternehmen ist anders. Wir erstellen gerne ein individuelles Angebot nach einem unverbindlichen AI Assessmen.</p>
             </div>
         </div>
     </section>
@@ -1076,34 +917,34 @@
     <section class="section finder" id="use-case-finder">
         <div class="container container--narrow">
             <div class="usecases__heading reveal">
-                <h2>Was koennte AI in Ihrem Unternehmen tun?</h2>
+                <h2 data-lang-de="Was koennte AI in Ihrem Unternehmen tun?" data-lang-en="What could AI do in your company?">Was koennte AI in Ihrem Unternehmen tun?</h2>
             </div>
-            <p class="text-lg" style="text-align: center; margin: 0 auto var(--space-2xl);">Finden Sie Ihre AI-Moeglichkeit in wenigen Schritten.</p>
+            <p class="text-lg" style="text-align: center; margin: 0 auto var(--space-2xl);" data-lang-de="Finden Sie Ihre AI-Moeglichkeit in wenigen Schritten." data-lang-en="Find your AI opportunity in a few steps.">Finden Sie Ihre AI-Moeglichkeit in wenigen Schritten.</p>
 
             <div class="finder__form reveal">
                 <div class="finder__question">
-                    <label>Abteilung?</label>
+                    <label data-lang-de="Abteilung?" data-lang-en="Department?">Abteilung?</label>
                     <div class="finder__options" data-group="department">
-                        <button type="button" class="finder__option" data-value="vertrieb">Vertrieb</button>
-                        <button type="button" class="finder__option" data-value="hr">HR</button>
-                        <button type="button" class="finder__option" data-value="support">Kundensupport</button>
-                        <button type="button" class="finder__option" data-value="finance">Finance</button>
-                        <button type="button" class="finder__option" data-value="ops">Operations</button>
-                        <button type="button" class="finder__option" data-value="management">Management</button>
+                        <button type="button" class="finder__option" data-value="vertrieb" data-lang-de="Vertrieb" data-lang-en="Sales">Vertrieb</button>
+                        <button type="button" class="finder__option" data-value="hr" data-lang-de="HR" data-lang-en="HR">HR</button>
+                        <button type="button" class="finder__option" data-value="support" data-lang-de="Kundensupport" data-lang-en="Customer Support">Kundensupport</button>
+                        <button type="button" class="finder__option" data-value="finance" data-lang-de="Finance" data-lang-en="Finance">Finance</button>
+                        <button type="button" class="finder__option" data-value="ops" data-lang-de="Operations" data-lang-en="Operations">Operations</button>
+                        <button type="button" class="finder__option" data-value="management" data-lang-de="Management" data-lang-en="Management">Management</button>
                     </div>
                 </div>
                 <div class="finder__question">
-                    <label>Staerke wiederkehrende Aufgabe?</label>
+                    <label data-lang-de="Staerke wiederkehrende Aufgabe?" data-lang-en="Main repetitive task?">Staerke wiederkehrende Aufgabe?</label>
                     <div class="finder__options" data-group="task">
-                        <button type="button" class="finder__option" data-value="data">Daten zusammenfuehren</button>
-                        <button type="button" class="finder__option" data-value="reports">Reports erstellen</button>
-                        <button type="button" class="finder__option" data-value="docs">Dokumente verarbeiten</button>
-                        <button type="button" class="finder__option" data-value="analysis">Analysen durchfuehren</button>
-                        <button type="button" class="finder__option" data-value="communication">Kommunikation automatisieren</button>
+                        <button type="button" class="finder__option" data-value="data" data-lang-de="Daten zusammenfuehren" data-lang-en="Combine data">Daten zusammenfuehren</button>
+                        <button type="button" class="finder__option" data-value="reports" data-lang-de="Reports erstellen" data-lang-en="Generate reports">Reports erstellen</button>
+                        <button type="button" class="finder__option" data-value="docs" data-lang-de="Dokumente verarbeiten" data-lang-en="Process documents">Dokumente verarbeiten</button>
+                        <button type="button" class="finder__option" data-value="analysis" data-lang-de="Analysen durchfuehren" data-lang-en="Run analyses">Analysen durchfuehren</button>
+                        <button type="button" class="finder__option" data-value="communication" data-lang-de="Kommunikation automatisieren" data-lang-en="Automate communication">Kommunikation automatisieren</button>
                     </div>
                 </div>
                 <div class="finder__question">
-                    <label>Welche Datenquellen nutzen Sie?</label>
+                    <label data-lang-de="Welche Datenquellen nutzen Sie?" data-lang-en="Which data sources do you use?">Welche Datenquellen nutzen Sie?</label>
                     <div class="finder__options" data-group="sources">
                         <button type="button" class="finder__option" data-value="crm">CRM</button>
                         <button type="button" class="finder__option" data-value="email">E-Mail</button>
@@ -1117,34 +958,34 @@
                     <div class="opportunity" id="result-title"></div>
                     <div class="potential" id="result-potential"></div>
                     <p id="result-desc" style="margin-top: var(--space-lg);"></p>
-                    <a href="#" class="btn btn--primary" onclick="openModal(); return false;" style="margin-top: var(--space-lg);">Use Case besprechen</a>
+                    <a href="#" class="btn btn--primary" onclick="openModal(); return false;" style="margin-top: var(--space-lg);" data-lang-de="Use Case besprechen" data-lang-en="Discuss use case">Use Case besprechen</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- WHY GIGATOP -->
-    <section class="section reasons" id="warum">
+    <section class="section" id="warum" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="usecases__heading reveal">
-                <h2>Warum Gigatop?</h2>
+                <h2 data-lang-de="Warum Gigatop?" data-lang-en="Why Gigatop?">Warum Gigatop?</h2>
             </div>
             <div class="reasons__grid">
                 <div class="reason__item reveal">
-                    <h3>Wir bauen. Wir reden nicht.</h3>
-                    <p>Wir reden nicht monatelang ueber AI. Wir bauen, testen und verbessern. Schnell, pragmatisch, messbar.</p>
+                    <h3 data-lang-de="Wir bauen. Wir reden nicht." data-lang-en="We build. We do not talk.">Wir bauen. Wir reden nicht.</h3>
+                    <p data-lang-de="Wir reden nicht monatelang ueber AI. Wir bauen, testen und verbessern. Schnell, pragmatisch, messbar." data-lang-en="We do not talk about AI for months. We build, test, and improve. Fast, pragmatic, measurable.">Wir reden nicht monatelang ueber AI. Wir bauen, testen und verbessern. Schnell, pragmatisch, messbar.</p>
                 </div>
                 <div class="reason__item reveal reveal-delay-1">
-                    <h3>Models change. Architecture stays.</h3>
-                    <p>Modelle wechseln. Ihre Architektur nicht. Wir sind model-agnostisch und binden Sie nicht an einen Anbieter.</p>
+                    <h3 data-lang-de="Models change. Architecture stays." data-lang-en="Models change. Architecture stays.">Models change. Architecture stays.</h3>
+                    <p data-lang-de="Modelle wechseln. Ihre Architektur nicht. Wir sind model-agnostisch und binden Sie nicht an einen Anbieter." data-lang-en="Models change. Your architecture does not. We are model-agnostic and do not lock you into a provider.">Modelle wechseln. Ihre Architektur nicht. Wir sind model-agnostisch und binden Sie nicht an einen Anbieter.</p>
                 </div>
                 <div class="reason__item reveal">
-                    <h3>Swiss Made. Mediterran.</h3>
-                    <p>Schweizer Praezision trifft mediterrane Energie. Wir sind technisch, sympathisch, ambitioniert.</p>
+                    <h3 data-lang-de="Swiss Made. Mediterran." data-lang-en="Swiss Made. Mediterranean.">Swiss Made. Mediterran.</h3>
+                    <p data-lang-de="Schweizer Praezision trifft mediterrane Energie. Wir sind technisch, sympathisch, ambitioniert." data-lang-en="Swiss precision meets Mediterranean energy. Technical, approachable, ambitious.">Schweizer Praezision trifft mediterrane Energie. Wir sind technisch, sympathisch, ambitioniert.</p>
                 </div>
                 <div class="reason__item reveal reveal-delay-1">
-                    <h3>Business first. Technology second.</h3>
-                    <p>Wir verstehen Ihr Business bevor wir eine Zeile Code schreiben. Technologie ist das Mittel, nicht das Ziel.</p>
+                    <h3 data-lang-de="Business first. Technology second." data-lang-en="Business first. Technology second.">Business first. Technology second.</h3>
+                    <p data-lang-de="Wir verstehen Ihr Business bevor wir eine Zeile Code schreiben. Technologie ist das Mittel, nicht das Ziel." data-lang-en="We understand your business before we write a line of code. Technology is the means, not the end.">Wir verstehen Ihr Business bevor wir eine Zeile Code schreiben. Technologie ist das Mittel, nicht das Ziel.</p>
                 </div>
             </div>
         </div>
@@ -1155,13 +996,16 @@
         <div class="container">
             <div class="founder__grid">
                 <div class="founder__avatar reveal">
-                    <!-- Placeholder for founder photo -->
-                    <div style="color: var(--text-tertiary); font-family: var(--font-mono); font-size: 0.75rem;">[Gründer-Foto]</div>
+                    <!-- TODO: Founder photo — replace placeholder with: <img src="founder.jpg" alt="Fabio, Gruender Gigatop"> -->
+                    <div style="color: var(--text-tertiary); font-family: var(--font-mono); font-size: 0.75rem; text-align: center; padding: var(--space-xl);">
+                        [Gründer-Foto]<br>
+                        <span style="font-size: 0.625rem;">Replace with founder.jpg</span>
+                    </div>
                 </div>
                 <div class="founder__text reveal reveal-delay-1">
-                    <h2>Built by people who actually build AI.</h2>
-                    <p>Gigatop ist keine anonym Corporation. Es ist ein kleines, ambitions Team, das echte AI-Systeme baut. Hands-on. Pragmatisch. Business-driven. Technology-driven.</p>
-                    <p>Kein AI Guru. Kein Visionaer. Jemand, der liebers Baut als redet.</p>
+                    <h2 data-lang-de="Built by people who actually build AI." data-lang-en="Built by people who actually build AI.">Built by people who actually build AI.</h2>
+                    <p data-lang-de="Gigatop ist keine anonym Corporation. Es ist ein kleines, ambitions Team, das echte AI-Systeme baut. Hands-on. Pragmatisch. Business-driven. Technology-driven." data-lang-en="Gigatop is not an anonymous corporation. It is a small, ambitious team that builds real AI systems. Hands-on. Pragmatic. Business-driven. Technology-driven.">Gigatop ist keine anonym Corporation. Es ist ein kleines, ambitions Team, das echte AI-Systeme baut. Hands-on. Pragmatisch. Business-driven. Technology-driven.</p>
+                    <p data-lang-de="Kein AI Guru. Kein Visionaer. Jemand, der liebers Baut als redet." data-lang-en="No AI guru. No visionary. Someone who prefers building to talking.">Kein AI Guru. Kein Visionaer. Jemand, der liebers Baut als redet.</p>
                     <div class="founder__name">Fabio &bull; Gruender, Gigatop</div>
                 </div>
             </div>
@@ -1172,27 +1016,27 @@
     <section class="section" id="insights">
         <div class="container">
             <div class="usecases__heading reveal">
-                <h2>Insights.</h2>
+                <h2 data-lang-de="Insights." data-lang-en="Insights.">Insights.</h2>
             </div>
             <div class="insights__grid">
                 <div class="insight__card reveal">
-                    <div class="insight__category">Private AI</div>
-                    <h3>Why companies are bringing AI on-premise</h3>
-                    <p>Warum Schweizer Unternehmen lokale AI waehlen. Und warum Cloud-KI allein nicht mehr reicht.</p>
+                    <div class="insight__category" data-lang-de="Private AI" data-lang-en="Private AI">Private AI</div>
+                    <h3 data-lang-de="Why companies are bringing AI on-premise" data-lang-en="Why companies are bringing AI on-premise">Why companies are bringing AI on-premise</h3>
+                    <p data-lang-de="Warum Schweizer Unternehmen lokale AI waehlen. Und warum Cloud-KI allein nicht mehr reicht." data-lang-en="Why Swiss companies are choosing local AI. And why public cloud AI alone is no longer enough.">Warum Schweizer Unternehmen lokale AI waehlen. Und warum Cloud-KI allein nicht mehr reicht.</p>
                 </div>
                 <div class="insight__card reveal reveal-delay-1">
-                    <div class="insight__category">AI Agents</div>
-                    <h3>What is an AI Agent?</h3>
-                    <p>Der Unterschied zwischen Chatbot und Agent. Und warum Agents handeln, nicht nur antworten.</p>
+                    <div class="insight__category" data-lang-de="AI Agents" data-lang-en="AI Agents">AI Agents</div>
+                    <h3 data-lang-de="What is an AI Agent?" data-lang-en="What is an AI Agent?">What is an AI Agent?</h3>
+                    <p data-lang-de="Der Unterschied zwischen Chatbot und Agent. Und warum Agents handeln, nicht nur antworten." data-lang-en="The difference between chatbot and agent. And why agents act, not just answer.">Der Unterschied zwischen Chatbot und Agent. Und warum Agents handeln, nicht nur antworten.</p>
                 </div>
                 <div class="insight__card reveal reveal-delay-2">
-                    <div class="insight__category">Lokale KI</div>
-                    <h3>Private AI vs. Public AI</h3>
-                    <p>Wann welche Architektur passt. Und wie Sie die richtige Wahl treffen.</p>
+                    <div class="insight__category" data-lang-de="Lokale KI" data-lang-en="Local AI">Lokale KI</div>
+                    <h3 data-lang-de="Private AI vs. Public AI" data-lang-en="Private AI vs. Public AI">Private AI vs. Public AI</h3>
+                    <p data-lang-de="Wann welche Architektur passt. Und wie Sie die richtige Wahl treffen." data-lang-en="When which architecture fits. And how to make the right choice.">Wann welche Architektur passt. Und wie Sie die richtige Wahl treffen.</p>
                 </div>
             </div>
             <div class="insights__more reveal">
-                <a href="#" class="btn btn--ghost">Alle Insights ansehen</a>
+                <a href="#" class="btn btn--ghost" data-lang-de="Alle Insights ansehen" data-lang-en="View all insights">Alle Insights ansehen</a>
             </div>
         </div>
     </section>
@@ -1201,43 +1045,36 @@
     <section class="section faq" id="faq">
         <div class="container container--narrow">
             <div class="faq__heading reveal">
-                <h2>Haeufige Fragen.</h2>
+                <h2 data-lang-de="Haeufige Fragen." data-lang-en="Frequently asked questions.">Haeufige Fragen.</h2>
             </div>
             <div class="faq__list">
                 <div class="faq__item reveal">
                     <button class="faq__question" onclick="toggleFaq(this)">
-                        <span>Muss ich eine Cloud-Loesung aufgeben?</span>
+                        <span data-lang-de="Muss ich eine Cloud-Loesung aufgeben?" data-lang-en="Do I have to give up cloud solutions?">Muss ich eine Cloud-Loesung aufgeben?</span>
                         <span class="faq__icon">+</span>
                     </button>
-                    <div class="faq__answer"><p>Nicht zwingend. Gigatop kann neben bestehenden Cloud-Tools laufen und diese intelligent ergaenzen. Viele Kunden nutzen Gigatop primar fuer sensible Daten und behalten Cloud-KI fuer nicht-kritische Aufgaben.</p></div>
+                    <div class="faq__answer"><p data-lang-de="Nicht zwingend. Gigatop kann neben bestehenden Cloud-Tools laufen und diese intelligent ergaenzen. Viele Kunden nutzen Gigatop primar fuer sensible Daten und behalten Cloud-KI fuer nicht-kritische Aufgaben." data-lang-en="Not necessarily. Gigatop can run alongside existing cloud tools and intelligently complement them. Many clients use Gigatop primarily for sensitive data and keep cloud AI for non-critical tasks.">Nicht zwingend. Gigatop kann neben bestehenden Cloud-Tools laufen und diese intelligent ergaenzen. Viele Kunden nutzen Gigatop primar fuer sensible Daten und behalten Cloud-KI fuer nicht-kritische Aufgaben.</p></div>
                 </div>
                 <div class="faq__item reveal reveal-delay-1">
                     <button class="faq__question" onclick="toggleFaq(this)">
-                        <span>Wie lange dauert die Installation?</span>
+                        <span data-lang-de="Wie lange dauert die Installation?" data-lang-en="How long does installation take?">Wie lange dauert die Installation?</span>
                         <span class="faq__icon">+</span>
                     </button>
-                    <div class="faq__answer"><p>Die Grundinstallation dauert wenige Stunden. Die Anpassung an Ihre spezifischen Daten und Prozesse kann mehrere Wochen dauern. Wir begleiten Sie Schritt fuer Schritt.</p></div>
+                    <div class="faq__answer"><p data-lang-de="Die Grundinstallation dauert wenige Stunden. Die Anpassung an Ihre spezifischen Daten und Prozesse kann mehrere Wochen dauern. Wir begleiten Sie Schritt fuer Schritt." data-lang-en="Basic installation takes a few hours. Customization to your specific data and processes can take several weeks. We guide you step by step.">Die Grundinstallation dauert wenige Stunden. Die Anpassung an Ihre spezifischen Daten und Prozesse kann mehrere Wochen dauern. Wir begleiten Sie Schritt fuer Schritt.</p></div>
                 </div>
                 <div class="faq__item reveal reveal-delay-2">
                     <button class="faq__question" onclick="toggleFaq(this)">
-                        <span>Welche Hardware brauche ich?</span>
+                        <span data-lang-de="Welche Hardware brauche ich?" data-lang-en="What hardware do I need?">Welche Hardware brauche ich?</span>
                         <span class="faq__icon">+</span>
                     </button>
-                    <div class="faq__answer"><p>Das haengt vom Umfang ab. Fuer kleinere Use Cases reichen Standard-Server. Fuer komplexere Szenarien empfehlen wir eine GPU-gestuetzte Infrastruktur. Wir beraten Sie gerne vor Ort.</p></div>
+                    <div class="faq__answer"><p data-lang-de="Das haengt vom Umfang ab. Fuer kleinere Use Cases reichen Standard-Server. Fuer komplexere Szenarien empfehlen wir eine GPU-gestuetzte Infrastruktur. Wir beraten Sie gerne vor Ort." data-lang-en="This depends on scope. For smaller use cases, standard servers suffice. For more complex scenarios, we recommend GPU-accelerated infrastructure. We advise you on-site.">Das haengt vom Umfang ab. Fuer kleinere Use Cases reichen Standard-Server. Fuer komplexere Szenarien empfehlen wir eine GPU-gestuetzte Infrastruktur. Wir beraten Sie gerne vor Ort.</p></div>
                 </div>
                 <div class="faq__item reveal reveal-delay-3">
                     <button class="faq__question" onclick="toggleFaq(this)">
-                        <span>Kann ich Gigatop auch vor Ort bekommen?</span>
+                        <span data-lang-de="Kann ich Gigatop auch vor Ort bekommen?" data-lang-en="Can I get Gigatop on-site?">Kann ich Gigatop auch vor Ort bekommen?</span>
                         <span class="faq__icon">+</span>
                     </button>
-                    <div class="faq__answer"><p>Ja. Wir bieten Vor-Ort-Onboarding, Schulungen und Support in der Schweiz an. Unser Team spricht Deutsch, Franzosisch und Englisch.</p></div>
-                </div>
-                <div class="faq__item reveal">
-                    <button class="faq__question" onclick="toggleFaq(this)">
-                        <span>Wie sieht die Preisgestaltung aus?</span>
-                        <span class="faq__icon">+</span>
-                    </button>
-                    <div class="faq__answer"><p>Gigatop basiert auf einer Einmalinvestition. Der genaue Preis haengt vom Umfang und der Komplexitaet ab. Wir erstellen gerne ein individuelles Angebot.</p></div>
+                    <div class="faq__answer"><p data-lang-de="Ja. Wir bieten Vor-Ort-Onboarding, Schulungen und Support in der Schweiz an. Unser Team spricht Deutsch, Franzosisch und Englisch." data-lang-en="Yes. We offer on-site onboarding, training, and support throughout Switzerland. Our team speaks German, French, and English.">Ja. Wir bieten Vor-Ort-Onboarding, Schulungen und Support in der Schweiz an. Unser Team spricht Deutsch, Franzosisch und Englisch.</p></div>
                 </div>
             </div>
         </div>
@@ -1246,11 +1083,11 @@
     <!-- FINAL CTA -->
     <section class="final-cta">
         <div class="container">
-            <h2 class="reveal">Ihr Unternehmen hat bereits die Daten.<br>Verwandeln Sie sie in Intelligenz.</h2>
-            <p class="reveal reveal-delay-1">Lassen Sie uns darueber sprechen, was AI in Ihrem Unternehmen leisten kann.</p>
+            <h2 class="reveal" data-lang-de="Ihr Unternehmen hat bereits die Daten.<br>Verwandeln Sie sie in Intelligenz." data-lang-en="Your company already has the data.<br>Turn it into intelligence.">Ihr Unternehmen hat bereits die Daten.<br>Verwandeln Sie sie in Intelligenz.</h2>
+            <p class="reveal reveal-delay-1" data-lang-de="Lassen Sie uns darueber sprechen, was AI in Ihrem Unternehmen leisten kann." data-lang-en="Let us talk about what AI can achieve in your company.">Lassen Sie uns darueber sprechen, was AI in Ihrem Unternehmen leisten kann.</p>
             <div class="reveal reveal-delay-2">
-                <a href="#" class="btn btn--primary btn--large" onclick="openModal(); return false;" style="margin-right: var(--space-md);">AI Session buchen</a>
-                <a href="#loesungen" class="btn btn--ghost btn--large">Loesungen entdecken</a>
+                <a href="#" class="btn btn--primary btn--large" onclick="openModal(); return false;" style="margin-right: var(--space-md);" data-lang-de="AI Session buchen" data-lang-en="Book AI Session">AI Session buchen</a>
+                <a href="#loesungen" class="btn btn--ghost btn--large" data-lang-de="Loesungen entdecken" data-lang-en="Explore solutions">Loesungen entdecken</a>
             </div>
         </div>
     </section>
@@ -1264,10 +1101,9 @@
                     <p class="footer__copy">Private AI. Built around your business.</p>
                 </div>
                 <div class="footer__links">
-                    <a href="#" class="footer__link">Impressum</a>
-                    <a href="#" class="footer__link">Datenschutz</a>
-                    <a href="#" class="footer__link" onclick="openModal(); return false;">Kontakt</a>
-                    <a href="#" class="footer__link" onclick="openModal(); return false;">Kunde-Login</a>
+                    <a href="#" class="footer__link" data-lang-de="Impressum" data-lang-en="Imprint">Impressum</a>
+                    <a href="#" class="footer__link" data-lang-de="Datenschutz" data-lang-en="Privacy">Datenschutz</a>
+                    <a href="#" class="footer__link" onclick="openModal(); return false;" data-lang-de="Kontakt" data-lang-en="Contact">Kontakt</a>
                 </div>
             </div>
         </div>
@@ -1276,37 +1112,75 @@
     <!-- CONTACT MODAL -->
     <div class="modal-overlay" id="contact-modal">
         <div class="modal">
-            <button class="modal__close" onclick="closeModal()" aria-label="Schliessen">&times;</button>
-            <h3 class="modal__title">AI Session buchen</h3>
-            <p class="modal__subtitle">Erzaehlen Sie uns von Ihren Herausforderungen. Wir melden uns innert 24 Stunden.</p>
+            <button class="modal__close" onclick="closeModal()" aria-label="Close">&times;</button>
+            <h3 class="modal__title" data-lang-de="AI Session buchen" data-lang-en="Book AI Session">AI Session buchen</h3>
+            <p class="modal__subtitle" data-lang-de="Erzaehlen Sie uns von Ihren Herausforderungen. Wir melden uns innert 24 Stunden." data-lang-en="Tell us about your challenges. We will get back to you within 24 hours.">Erzaehlen Sie uns von Ihren Herausforderungen. Wir melden uns innert 24 Stunden.</p>
             <form action="https://formsubmit.co/top@gigatop.io" method="POST">
                 <input type="hidden" name="_subject" value="Neue Anfrage von gigatop.io">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 <div class="form-group">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label" data-lang-de="Name" data-lang-en="Name">Name</label>
                     <input type="text" id="name" name="name" class="form-input" required placeholder="Ihr Name">
                 </div>
                 <div class="form-group">
-                    <label for="email" class="form-label">E-Mail</label>
+                    <label for="email" class="form-label" data-lang-de="E-Mail" data-lang-en="Email">E-Mail</label>
                     <input type="email" id="email" name="email" class="form-input" required placeholder="ihre@email.ch">
                 </div>
                 <div class="form-group">
-                    <label for="company" class="form-label">Unternehmen</label>
+                    <label for="company" class="form-label" data-lang-de="Unternehmen" data-lang-en="Company">Unternehmen</label>
                     <input type="text" id="company" name="company" class="form-input" placeholder="Firmenname">
                 </div>
                 <div class="form-group">
-                    <label for="message" class="form-label">Nachricht</label>
+                    <label for="message" class="form-label" data-lang-de="Nachricht" data-lang-en="Message">Nachricht</label>
                     <textarea id="message" name="message" class="form-textarea" required placeholder="Wovon sollen wir sprechen?"></textarea>
                 </div>
-                <button type="submit" class="btn btn--primary form-submit">Nachricht senden</button>
+                <button type="submit" class="btn btn--primary form-submit" data-lang-de="Nachricht senden" data-lang-en="Send message">Nachricht senden</button>
             </form>
         </div>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- LANGUAGE TOGGLE -->
     <script>
-        // Nav hide/show on scroll
+        // ========== LANGUAGE SYSTEM ==========
+        let currentLang = localStorage.getItem('gigatop-lang') || 'de';
+
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('gigatop-lang', lang);
+            document.documentElement.lang = lang;
+
+            // Update all data-lang elements
+            document.querySelectorAll('[data-lang-' + lang + ']').forEach(el => {
+                const html = el.getAttribute('data-lang-' + lang);
+                if (html) {
+                    if (el.tagName === 'TITLE' || el.tagName === 'META') {
+                        el.textContent = html;
+                    } else {
+                        el.innerHTML = html;
+                    }
+                }
+            });
+
+            // Update language toggle display
+            const currentEl = document.getElementById('lang-current');
+            const nextEl = document.getElementById('lang-next');
+            if (currentEl) currentEl.textContent = lang.toUpperCase();
+            if (nextEl) nextEl.textContent = '/ ' + (lang === 'de' ? 'EN' : 'DE');
+
+            // Mobile lang display
+            const mobileEl = document.getElementById('mobile-lang-current');
+            if (mobileEl) mobileEl.textContent = lang.toUpperCase();
+        }
+
+        function toggleLang() {
+            setLang(currentLang === 'de' ? 'en' : 'de');
+        }
+
+        // Initialize
+        setLang(currentLang);
+
+        // ========== NAV SCROLL ==========
         let lastScroll = 0;
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
@@ -1319,13 +1193,13 @@
             lastScroll = current;
         }, { passive: true });
 
-        // Mobile menu toggle
+        // ========== MOBILE MENU ==========
         function toggleMobile() {
             const menu = document.getElementById('mobile-menu');
             if (menu) menu.classList.toggle('open');
         }
 
-        // FAQ accordion
+        // ========== FAQ ACCORDION ==========
         function toggleFaq(btn) {
             const item = btn.closest('.faq__item');
             const wasOpen = item.classList.contains('open');
@@ -1333,7 +1207,7 @@
             if (!wasOpen) item.classList.add('open');
         }
 
-        // Modal
+        // ========== MODAL ==========
         function openModal() {
             const modal = document.getElementById('contact-modal');
             if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
@@ -1354,7 +1228,7 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // Use Case Finder
+        // ========== USE CASE FINDER ==========
         const finderState = { department: '', task: '', sources: '' };
 
         document.querySelectorAll('.finder__option').forEach(opt => {
@@ -1381,59 +1255,60 @@
 
             const responses = {
                 'vertrieb': {
-                    'data': { title: 'AI Sales Intelligence', potential: 'POTENZIAL: HOCH', desc: 'CRM + E-Mail + SharePoint. Empfohlene Loesung: Private / Hybrid AI.' },
-                    'reports': { title: 'AI Vertriebsreporting', potential: 'POTENZIAL: HOCH', desc: 'CRM + ERP + E-Mail. Empfohlene Loesung: Private AI.' },
-                    'analysis': { title: 'AI Pipeline-Analyse', potential: 'POTENZIAL: HOCH', desc: 'CRM + Meetings + E-Mail. Empfohlene Loesung: Private AI.' },
-                    'docs': { title: 'AI Dokumenten-Processing', potential: 'POTENZIAL: MEDIUM', desc: 'CRM + Dokumente. Empfohlene Loesung: Private AI.' },
-                    'communication': { title: 'AI Vertriebs-Kommunikation', potential: 'POTENZIAL: MEDIUM', desc: 'E-Mail + CRM. Empfohlene Loesung: Hybrid AI.' }
+                    'data': { de: { title: 'AI Sales Intelligence', potential: 'POTENZIAL: HOCH', desc: 'CRM + E-Mail + SharePoint. Empfohlene Loesung: Private / Hybrid AI.' }, en: { title: 'AI Sales Intelligence', potential: 'POTENTIAL: HIGH', desc: 'CRM + Email + SharePoint. Recommended: Private / Hybrid AI.' }},
+                    'reports': { de: { title: 'AI Vertriebsreporting', potential: 'POTENZIAL: MEDIUM', desc: 'CRM + ERP + E-Mail. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Sales Reporting', potential: 'POTENTIAL: MEDIUM', desc: 'CRM + ERP + Email. Recommended: Private AI.' }},
+                    'analysis': { de: { title: 'AI Pipeline-Analyse', potential: 'POTENZIAL: HOCH', desc: 'CRM + Meetings + E-Mail. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Pipeline Analysis', potential: 'POTENTIAL: HIGH', desc: 'CRM + Meetings + Email. Recommended: Private AI.' }},
+                    'docs': { de: { title: 'AI Dokumenten-Processing', potential: 'POTENZIAL: MEDIUM', desc: 'CRM + Dokumente. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Document Processing', potential: 'POTENTIAL: MEDIUM', desc: 'CRM + Documents. Recommended: Private AI.' }},
+                    'communication': { de: { title: 'AI Vertriebs-Kommunikation', potential: 'POTENZIAL: MEDIUM', desc: 'E-Mail + CRM. Empfohlene Loesung: Hybrid AI.' }, en: { title: 'AI Sales Communication', potential: 'POTENTIAL: MEDIUM', desc: 'Email + CRM. Recommended: Hybrid AI.' }}
                 },
                 'hr': {
-                    'data': { title: 'AI Wissensmanagement HR', potential: 'POTENZIAL: HOCH', desc: 'SharePoint + E-Mail + Dokumente. Empfohlene Loesung: Private AI.' },
-                    'reports': { title: 'AI HR-Analysen', potential: 'POTENZIAL: MEDIUM', desc: 'HR-Systeme + Berichte. Empfohlene Loesung: Private AI.' },
-                    'docs': { title: 'AI HR-Dokumente', potential: 'POTENZIAL: MEDIUM', desc: 'PDFs + Vertraege + Richtlinien. Empfohlene Loesung: Private AI.' },
-                    'analysis': { title: 'AI Mitarbeiter-Analysen', potential: 'POTENZIAL: MEDIUM', desc: 'HR-Systeme + Daten. Empfohlene Loesung: Private AI.' },
-                    'communication': { title: 'AI Onboarding-Automation', potential: 'POTENZIAL: HOCH', desc: 'SharePoint + E-Mail + Richtlinien. Empfohlene Loesung: Private AI.' }
+                    'data': { de: { title: 'AI Wissensmanagement HR', potential: 'POTENZIAL: HOCH', desc: 'SharePoint + E-Mail + Dokumente. Empfohlene Loesung: Private AI.' }, en: { title: 'AI HR Knowledge Management', potential: 'POTENTIAL: HIGH', desc: 'SharePoint + Email + Documents. Recommended: Private AI.' }},
+                    'reports': { de: { title: 'AI HR-Analysen', potential: 'POTENZIAL: MEDIUM', desc: 'HR-Systeme + Berichte. Empfohlene Loesung: Private AI.' }, en: { title: 'AI HR Analytics', potential: 'POTENTIAL: MEDIUM', desc: 'HR systems + Reports. Recommended: Private AI.' }},
+                    'docs': { de: { title: 'AI HR-Dokumente', potential: 'POTENZIAL: MEDIUM', desc: 'PDFs + Vertraege + Richtlinien. Empfohlene Loesung: Private AI.' }, en: { title: 'AI HR Documents', potential: 'POTENTIAL: MEDIUM', desc: 'PDFs + Contracts + Policies. Recommended: Private AI.' }},
+                    'analysis': { de: { title: 'AI Mitarbeiter-Analysen', potential: 'POTENZIAL: MEDIUM', desc: 'HR-Systeme + Daten. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Employee Analytics', potential: 'POTENTIAL: MEDIUM', desc: 'HR systems + Data. Recommended: Private AI.' }},
+                    'communication': { de: { title: 'AI Onboarding-Automation', potential: 'POTENZIAL: HOCH', desc: 'SharePoint + E-Mail + Richtlinien. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Onboarding Automation', potential: 'POTENTIAL: HIGH', desc: 'SharePoint + Email + Policies. Recommended: Private AI.' }}
                 },
                 'support': {
-                    'data': { title: 'AI Customer Support', potential: 'POTENZIAL: HOCH', desc: 'CRM + E-Mail + Wissensdatenbank. Empfohlene Loesung: Private / Hybrid AI.' },
-                    'reports': { title: 'AI Support-Analysen', potential: 'POTENZIAL: MEDIUM', desc: 'Support-Logs + Tickets. Empfohlene Loesung: Private AI.' },
-                    'docs': { title: 'AI Support-Dokumente', potential: 'POTENZIAL: MEDIUM', desc: 'FAQs + Produktdaten. Empfohlene Loesung: Private AI.' },
-                    'analysis': { title: 'AI Kundenanalyse', potential: 'POTENZIAL: MEDIUM', desc: 'CRM + Support-Logs. Empfohlene Loesung: Private AI.' },
-                    'communication': { title: 'AI Support-Automation', potential: 'POTENZIAL: HOCH', desc: 'E-Mail + CRM + Wissensbasis. Empfohlene Loesung: Private AI.' }
+                    'data': { de: { title: 'AI Customer Support', potential: 'POTENZIAL: HOCH', desc: 'CRM + E-Mail + Wissensdatenbank. Empfohlene Loesung: Private / Hybrid AI.' }, en: { title: 'AI Customer Support', potential: 'POTENTIAL: HIGH', desc: 'CRM + Email + Knowledge base. Recommended: Private / Hybrid AI.' }},
+                    'reports': { de: { title: 'AI Support-Analysen', potential: 'POTENZIAL: MEDIUM', desc: 'Support-Logs + Tickets. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Support Analytics', potential: 'POTENTIAL: MEDIUM', desc: 'Support logs + Tickets. Recommended: Private AI.' }},
+                    'docs': { de: { title: 'AI Support-Dokumente', potential: 'POTENZIAL: MEDIUM', desc: 'FAQs + Produktdaten. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Support Documents', potential: 'POTENTIAL: MEDIUM', desc: 'FAQs + Product data. Recommended: Private AI.' }},
+                    'analysis': { de: { title: 'AI Kundenanalyse', potential: 'POTENZIAL: MEDIUM', desc: 'CRM + Support-Logs. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Customer Analysis', potential: 'POTENTIAL: MEDIUM', desc: 'CRM + Support logs. Recommended: Private AI.' }},
+                    'communication': { de: { title: 'AI Support-Automation', potential: 'POTENZIAL: HOCH', desc: 'E-Mail + CRM + Wissensbasis. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Support Automation', potential: 'POTENTIAL: HIGH', desc: 'Email + CRM + Knowledge base. Recommended: Private AI.' }}
                 },
                 'finance': {
-                    'data': { title: 'AI Finanzanalyse', potential: 'POTENZIAL: HOCH', desc: 'ERP + Excel + E-Mail. Empfohlene Loesung: Private AI.' },
-                    'reports': { title: 'AI Finanzreporting', potential: 'POTENZIAL: HOCH', desc: 'ERP + Finance-Systeme. Empfohlene Loesung: Private AI.' },
-                    'docs': { title: 'AI Rechnungsextraktion', potential: 'POTENZIAL: HOCH', desc: 'PDFs + Rechnungen + ERP. Empfohlene Loesung: Private AI.' },
-                    'analysis': { title: 'AI Forecasting', potential: 'POTENZIAL: HOCH', desc: 'ERP + historische Daten. Empfohlene Loesung: Private AI.' },
-                    'communication': { title: 'AI Finance-Kommunikation', potential: 'POTENZIAL: MEDIUM', desc: 'E-Mail + ERP + Reports. Empfohlene Loesung: Private AI.' }
+                    'data': { de: { title: 'AI Finanzanalyse', potential: 'POTENZIAL: HOCH', desc: 'ERP + Excel + E-Mail. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Financial Analysis', potential: 'POTENTIAL: HIGH', desc: 'ERP + Excel + Email. Recommended: Private AI.' }},
+                    'reports': { de: { title: 'AI Finanzreporting', potential: 'POTENZIAL: HOCH', desc: 'ERP + Finance-Systeme. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Financial Reporting', potential: 'POTENTIAL: HIGH', desc: 'ERP + Finance systems. Recommended: Private AI.' }},
+                    'docs': { de: { title: 'AI Rechnungsextraktion', potential: 'POTENZIAL: HOCH', desc: 'PDFs + Rechnungen + ERP. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Invoice Extraction', potential: 'POTENTIAL: HIGH', desc: 'PDFs + Invoices + ERP. Recommended: Private AI.' }},
+                    'analysis': { de: { title: 'AI Forecasting', potential: 'POTENZIAL: HOCH', desc: 'ERP + historische Daten. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Forecasting', potential: 'POTENTIAL: HIGH', desc: 'ERP + historical data. Recommended: Private AI.' }},
+                    'communication': { de: { title: 'AI Finance-Kommunikation', potential: 'POTENZIAL: MEDIUM', desc: 'E-Mail + ERP + Reports. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Finance Communication', potential: 'POTENTIAL: MEDIUM', desc: 'Email + ERP + Reports. Recommended: Private AI.' }}
                 },
                 'ops': {
-                    'data': { title: 'AI Operations Intelligence', potential: 'POTENZIAL: HOCH', desc: 'ERP + CRM + Datenquellen. Empfohlene Loesung: Private AI.' },
-                    'reports': { title: 'AI Operations-Reporting', potential: 'POTENZIAL: MEDIUM', desc: 'Verschiedene Quellen. Empfohlene Loesung: Private AI.' },
-                    'docs': { title: 'AI Dokumentenfluss', potential: 'POTENZIAL: MEDIUM', desc: 'PDFs + Vertraege + Angebote. Empfohlene Loesung: Private AI.' },
-                    'analysis': { title: 'AI Process Mining', potential: 'POTENZIAL: HOCH', desc: 'System-Logs + ERP. Empfohlene Loesung: Private AI.' },
-                    'communication': { title: 'AI Workflow-Automation', potential: 'POTENZIAL: HOCH', desc: 'Systeme + E-Mail. Empfohlene Loesung: Private / Hybrid AI.' }
+                    'data': { de: { title: 'AI Operations Intelligence', potential: 'POTENZIAL: HOCH', desc: 'ERP + CRM + Datenquellen. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Operations Intelligence', potential: 'POTENTIAL: HIGH', desc: 'ERP + CRM + Data sources. Recommended: Private AI.' }},
+                    'reports': { de: { title: 'AI Operations-Reporting', potential: 'POTENZIAL: MEDIUM', desc: 'Verschiedene Quellen. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Operations Reporting', potential: 'POTENTIAL: MEDIUM', desc: 'Various sources. Recommended: Private AI.' }},
+                    'docs': { de: { title: 'AI Dokumentenfluss', potential: 'POTENZIAL: MEDIUM', desc: 'PDFs + Vertraege + Angebote. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Document Flow', potential: 'POTENTIAL: MEDIUM', desc: 'PDFs + Contracts + Proposals. Recommended: Private AI.' }},
+                    'analysis': { de: { title: 'AI Process Mining', potential: 'POTENZIAL: HOCH', desc: 'System-Logs + ERP. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Process Mining', potential: 'POTENTIAL: HIGH', desc: 'System logs + ERP. Recommended: Private AI.' }},
+                    'communication': { de: { title: 'AI Workflow-Automation', potential: 'POTENZIAL: HOCH', desc: 'Systeme + E-Mail. Empfohlene Loesung: Private / Hybrid AI.' }, en: { title: 'AI Workflow Automation', potential: 'POTENTIAL: HIGH', desc: 'Systems + Email. Recommended: Private / Hybrid AI.' }}
                 },
                 'management': {
-                    'data': { title: 'AI Executive Intelligence', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' },
-                    'reports': { title: 'AI Executive Dashboard', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' },
-                    'analysis': { title: 'AI Strategie-Analyse', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' },
-                    'communication': { title: 'AI Morning Briefing', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' },
-                    'docs': { title: 'AI Management-Support', potential: 'POTENZIAL: MEDIUM', desc: 'Dokumente + Daten. Empfohlene Loesung: Private AI.' }
+                    'data': { de: { title: 'AI Executive Intelligence', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Executive Intelligence', potential: 'POTENTIAL: HIGH', desc: 'All sources. Recommended: Private AI.' }},
+                    'reports': { de: { title: 'AI Executive Dashboard', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Executive Dashboard', potential: 'POTENTIAL: HIGH', desc: 'All sources. Recommended: Private AI.' }},
+                    'analysis': { de: { title: 'AI Strategie-Analyse', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Strategy Analysis', potential: 'POTENTIAL: HIGH', desc: 'All sources. Recommended: Private AI.' }},
+                    'communication': { de: { title: 'AI Morning Briefing', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Morning Briefing', potential: 'POTENTIAL: HIGH', desc: 'All sources. Recommended: Private AI.' }},
+                    'docs': { de: { title: 'AI Management-Support', potential: 'POTENZIAL: MEDIUM', desc: 'Dokumente + Daten. Empfohlene Loesung: Private AI.' }, en: { title: 'AI Management Support', potential: 'POTENTIAL: MEDIUM', desc: 'Documents + Data. Recommended: Private AI.' }}
                 }
             };
 
             const response = responses[finderState.department]?.[finderState.task];
             if (response) {
-                title.textContent = response.title;
-                potential.textContent = response.potential;
-                desc.textContent = response.desc;
+                const data = response[currentLang] || response['de'];
+                title.textContent = data.title;
+                potential.textContent = data.potential;
+                desc.textContent = data.desc;
                 result.classList.add('visible');
             }
         }
 
-        // Scroll reveal with stagger
+        // ========== SCROLL REVEAL ==========
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {

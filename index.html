@@ -4,501 +4,1158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gigatop - Private AI & Local AI Solutions</title>
+    <meta name="description" content="Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sand: '#F6F1E8',
-                        terracotta: '#D66B45',
-                        deepblue: '#174A5B',
-                        olive: '#78866B',
-                        navy: '#102A33',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        display: ['Space Grotesk', 'Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --sand: #F6F1E8;
+            --sand-light: #FAFAF6;
+            --terracotta: #D66B45;
+            --terracotta-hover: #C45A35;
+            --deepblue: #174A5B;
+            --olive: #78866B;
+            --navy: #102A33;
+            --white: #FAFAF8;
+            --navy-soft: #0A1F28;
+        }
+
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', system-ui, sans-serif; background-color: #F6F1E8; color: #102A33; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--sand-light);
+            color: var(--navy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
         .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
-        .gradient-hero { background: linear-gradient(135deg, rgba(16, 42, 51, 0.85) 0%, rgba(23, 74, 91, 0.80) 40%, rgba(120, 134, 107, 0.75) 100%); }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.45) saturate(0.9); }
-        .glass-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(214, 107, 69, 0.15); }
-        .gradient-accent { background: linear-gradient(135deg, #D66B45 0%, #78866B 100%); }
-        .gradient-deep { background: linear-gradient(135deg, #174A5B 0%, #102A33 100%); }
-        .btn-primary { background: linear-gradient(135deg, #D66B45 0%, #174A5B 100%); transition: all 0.3s; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(214, 107, 69, 0.3); }
-        .btn-outline { border: 2px solid #D66B45; color: #D66B45; transition: all 0.3s; }
-        .btn-outline:hover { background: #D66B45; color: white; }
-        .card-hover { transition: all 0.3s; }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(16, 42, 51, 0.12); }
-    
-        /* === MODAL === */
+
+        /* ==================== NAVIGATION ==================== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(250, 250, 248, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(16, 42, 51, 0.06);
+            transition: all 0.3s;
+        }
+        nav.scrolled {
+            box-shadow: 0 1px 20px rgba(16, 42, 51, 0.06);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+        .logo span { color: var(--terracotta); }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--navy)/0.7;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--navy); }
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .lang-select {
+            background: var(--sand);
+            border: 1px solid rgba(16, 42, 51, 0.1);
+            border-radius: 8px;
+            padding: 0.4rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .lang-select:focus { outline: none; border-color: var(--terracotta); }
+        .btn-nav {
+            background: var(--terracotta);
+            color: #fff;
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-nav:hover {
+            background: var(--terracotta-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(214, 107, 69, 0.35);
+        }
+
+        /* Mobile menu */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .mobile-toggle svg { width: 24px; height: 24px; color: var(--navy); }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px; left: 0; right: 0; bottom: 0;
+            background: rgba(250, 250, 248, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 99;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .mobile-menu.open { display: block; }
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--navy);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(16, 42, 51, 0.06);
+        }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            padding-top: 72px;
+        }
+        .hero-left {
+            background: var(--white);
+            padding: 6rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-right {
+            background: var(--navy-soft);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-right::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(214, 107, 69, 0.12), transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(120, 134, 107, 0.1), transparent 50%);
+            pointer-events: none;
+        }
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--olive);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.08;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            color: var(--navy);
+        }
+        .hero h1 .accent {
+            background: linear-gradient(135deg, var(--terracotta), #E8875F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: rgba(16, 42, 51, 0.6);
+            line-height: 1.65;
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+        }
+        .hero-cta-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--terracotta);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.25s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-hero:hover {
+            background: var(--terracotta-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(214, 107, 69, 0.45);
+        }
+        .btn-hero-ghost {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 1rem 1.5rem;
+            transition: color 0.2s;
+        }
+        .btn-hero-ghost:hover { color: var(--terracotta); }
+        .hero-features {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(16, 42, 51, 0.6);
+            font-weight: 500;
+        }
+        .hero-feature .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--terracotta);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Hero right: neural network visual */
+        .hero-visual {
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+            z-index: 1;
+        }
+        .hero-visual svg { width: 100%; height: auto; }
+
+        /* ==================== STATS BAR ==================== */
+        .stats-bar {
+            background: var(--navy);
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+        }
+        .stat { text-align: center; }
+        .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            letter-spacing: -0.02em;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* ==================== SECTION COMMON ==================== */
+        section { padding: 6rem 2rem; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-badge {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.25rem;
+        }
+        .section-badge.terracotta { background: rgba(214, 107, 69, 0.1); color: var(--terracotta); }
+        .section-badge.olive { background: rgba(120, 134, 107, 0.1); color: var(--olive); }
+        .section-badge.deepblue { background: rgba(23, 74, 91, 0.08); color: var(--deepblue); }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .section-desc {
+            font-size: 1.1rem;
+            color: rgba(16, 42, 51, 0.55);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==================== USE CASES ==================== */
+        .usecases { background: var(--sand); }
+        .usecases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+        .uc-card {
+            background: var(--white);
+            border: 1px solid rgba(16, 42, 51, 0.06);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .uc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(16, 42, 51, 0.08);
+        }
+        .uc-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+        }
+        .uc-icon.terracotta { background: rgba(214, 107, 69, 0.1); color: var(--terracotta); }
+        .uc-icon.deepblue { background: rgba(23, 74, 91, 0.08); color: var(--deepblue); }
+        .uc-icon.olive { background: rgba(120, 134, 107, 0.12); color: var(--olive); }
+        .uc-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        .uc-card p {
+            font-size: 0.9rem;
+            color: rgba(16, 42, 51, 0.55);
+            line-height: 1.55;
+            margin-bottom: 1.25rem;
+        }
+        .uc-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--terracotta);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .uc-link:hover { color: var(--deepblue); }
+
+        /* ==================== ROI ==================== */
+        .roi { background: var(--white); }
+        .roi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .roi-panel {
+            background: var(--sand);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(16, 42, 51, 0.06);
+        }
+        .roi-panel--dark {
+            background: var(--navy);
+            border-color: transparent;
+        }
+        .roi-panel h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+        .roi-panel--dark h3 { color: #fff; }
+        .roi-input { margin-bottom: 1.75rem; }
+        .roi-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: rgba(16, 42, 51, 0.7);
+        }
+        .roi-label .val {
+            color: var(--terracotta);
+            font-weight: 700;
+        }
+        .roi-panel--dark .roi-label .val { color: var(--terracotta); }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(16, 42, 51, 0.1);
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.3);
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.3);
+        }
+        .roi-result { margin-bottom: 2rem; }
+        .roi-result-box {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .roi-result-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.25rem;
+        }
+        .roi-result-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .roi-grid-small {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .roi-grid-small .roi-result-box { margin-bottom: 0; }
+        .roi-grid-small .roi-result-label { font-size: 0.7rem; }
+        .roi-grid-small .roi-result-value { font-size: 1.25rem; }
+
+        /* ==================== FEATURES ==================== */
+        .features { background: var(--navy); padding: 6rem 2rem; }
+        .features .section-title { color: #fff; }
+        .features .section-desc { color: rgba(255,255,255,0.5); }
+        .features .section-badge { background: rgba(120, 134, 107, 0.15); color: #a8c4a0; }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: rgba(23, 74, 91, 0.4);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            border-color: rgba(214, 107, 69, 0.3);
+            transform: translateY(-2px);
+        }
+        .feature-accent {
+            width: 40px;
+            height: 3px;
+            background: var(--olive);
+            border-radius: 2px;
+            margin-bottom: 1.25rem;
+        }
+        .feature-accent.terracotta { background: var(--terracotta); }
+        .feature-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.6;
+        }
+
+        /* ==================== PRICING ==================== */
+        .pricing { background: var(--sand); }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .pricing-card {
+            background: var(--white);
+            border: 1px solid rgba(16, 42, 51, 0.06);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(16, 42, 51, 0.08);
+        }
+        .pricing-card--featured {
+            background: var(--navy);
+            border-color: transparent;
+            box-shadow: 0 8px 40px rgba(16, 42, 51, 0.15);
+        }
+        .pricing-card--featured:hover {
+            box-shadow: 0 16px 50px rgba(16, 42, 51, 0.25);
+        }
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--terracotta);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.3rem 1rem;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .pricing-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .pricing-card--featured .pricing-name { color: #fff; }
+        .pricing-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.02em;
+        }
+        .pricing-price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: rgba(16, 42, 51, 0.4);
+        }
+        .pricing-card--featured .pricing-price span { color: rgba(255,255,255,0.35); }
+        .pricing-desc {
+            font-size: 0.85rem;
+            color: rgba(16, 42, 51, 0.5);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        .pricing-card--featured .pricing-desc { color: rgba(255,255,255,0.4); }
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .pricing-features li {
+            font-size: 0.875rem;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .pricing-card--featured .pricing-features li { color: rgba(255,255,255,0.7); }
+        .pricing-features li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--olive);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .pricing-card--featured .pricing-features li::before {
+            background: var(--terracotta);
+        }
+        .btn-pricing {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 0.875rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.25s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-pricing-outline {
+            border: 2px solid var(--navy);
+            color: var(--navy);
+            background: transparent;
+        }
+        .btn-pricing-outline:hover {
+            background: var(--navy);
+            color: #fff;
+        }
+        .btn-pricing-solid {
+            background: var(--terracotta);
+            color: #fff;
+            border: none;
+        }
+        .btn-pricing-solid:hover {
+            background: var(--terracotta-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(214, 107, 69, 0.4);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--navy);
+            padding: 4rem 2rem 3rem;
+            color: #fff;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-brand .logo { color: #fff; margin-bottom: 1rem; display: inline-block; }
+        .footer-brand p { font-size: 0.875rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+        .footer-col h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.3rem 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+
+        /* ==================== MODAL ==================== */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(16, 42, 51, 0.85); backdrop-filter: blur(4px);
-            z-index: 9999; display: none; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 31, 40, 0.85);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content {
-            background: white; padding: 2rem; border-radius: 1.5rem;
-            width: 92%; max-width: 600px; max-height: 90vh; overflow-y: auto;
-            position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            transform: scale(0.95); transition: transform 0.3s;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            width: 92%;
+            max-width: 580px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+            transform: scale(0.95);
+            transition: transform 0.3s;
         }
         .modal-overlay.active .modal-content { transform: scale(1); }
         .modal-close {
-            position: absolute; top: 1rem; right: 1rem; background: #f0f0f0;
-            border-radius: 50%; width: 36px; height: 36px; border: none;
-            cursor: pointer; font-size: 1.2rem; color: #666;
-            display: flex; align-items: center; justify-content: center;
+            position: absolute;
+            top: 1.25rem; right: 1.25rem;
+            background: var(--sand);
+            border: none;
+            border-radius: 50%;
+            width: 36px; height: 36px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: background 0.2s;
         }
-        .modal-close:hover { background: #ddd; color: #333; }
-        .modal-title { font-size: 1.5rem; font-weight: bold; color: #102A33; margin-bottom: 0.5rem; }
-        .modal-subtitle { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .modal-close:hover { background: #e0dcd4; }
+        .modal-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .modal-subtitle {
+            color: rgba(16, 42, 51, 0.55);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
         .form-group { margin-bottom: 1.25rem; }
-        .form-label { display: block; font-weight: 600; color: #102A33; margin-bottom: 0.5rem; font-size: 0.9rem; }
-        .form-label .optional { font-weight: 400; color: #999; font-size: 0.8rem; }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+        .form-label .optional {
+            font-weight: 400;
+            color: #999;
+            font-size: 0.8rem;
+        }
         .form-input, .form-textarea, .form-select {
-            width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0;
-            border-radius: 0.75rem; font-size: 1rem; color: #333;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid rgba(16, 42, 51, 0.1);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--navy);
             transition: border-color 0.2s, box-shadow 0.2s;
             font-family: inherit;
+            background: var(--white);
         }
         .form-input:focus, .form-textarea:focus, .form-select:focus {
-            outline: none; border-color: #D66B45; box-shadow: 0 0 0 3px rgba(214, 107, 69, 0.15);
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(214, 107, 69, 0.12);
         }
         .form-textarea { resize: vertical; min-height: 100px; }
         .form-btn {
-            width: 100%; padding: 0.875rem; background: linear-gradient(135deg, #D66B45, #E8865A);
-            color: white; border: none; border-radius: 0.75rem; font-size: 1rem;
-            font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            padding: 1rem;
+            background: var(--terracotta);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-        .form-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(214, 107, 69, 0.4); }
+        .form-btn:hover {
+            background: var(--terracotta-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(214, 107, 69, 0.35);
+        }
         .form-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        .form-success {
-            text-align: center; padding: 2rem 0;
+        .form-success { text-align: center; padding: 2rem 0; }
+        .form-success h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--olive);
+            margin-bottom: 0.75rem;
         }
-        .form-success h3 { font-size: 1.5rem; color: #78866B; margin-bottom: 1rem; }
-        .form-success p { color: #666; }
+        .form-success p { color: rgba(16, 42, 51, 0.6); line-height: 1.6; }
         .form-success .check-icon {
-            width: 60px; height: 60px; background: #78866B; color: white;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 2rem; margin: 0 auto 1rem;
+            width: 64px; height: 64px;
+            background: var(--olive);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.25rem;
         }
         .form-error {
-            background: #fee; border: 1px solid #fcc; color: #c00;
-            padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 1rem; font-size: 0.9rem;
+            background: rgba(220, 50, 50, 0.06);
+            border: 1px solid rgba(220, 50, 50, 0.2);
+            color: #b91c1c;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
         }
 
-        /* === MOBILE OPTIMIZATIONS === */
-        /* Touch targets - min 44px */
-        button, a.btn-primary, a.btn-outline, .form-btn, .form-input, .form-textarea, .form-select, select, input[type="text"], input[type="email"], input[type="tel"] {
-            min-height: 44px;
-        }
-
-        /* Mobile menu animation */
-        #mobileMenu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        #mobileMenu:not(.hidden) {
-            max-height: 400px;
-        }
-
-        /* Mobile hero text scaling */
-        @media (max-width: 640px) {
-            h1 { font-size: 2rem !important; line-height: 1.2 !important; }
-            h2 { font-size: 1.75rem !important; }
-            h3 { font-size: 1.25rem !important; }
-            .hero-bg { background-size: cover !important; }
-            .grid { gap: 1rem !important; }
-            .glass-card { padding: 1.25rem !important; }
-        }
-
-        /* Pricing cards on mobile */
+        /* ==================== MOBILE ==================== */
         @media (max-width: 768px) {
-            .pricing-cards .grid { grid-template-columns: 1fr !important; }
-            .pricing-cards .card-hover { margin-bottom: 0.5rem; }
-            .pricing-cards .btn-primary, .pricing-cards .btn-outline {
-                padding: 0.75rem 1rem !important;
-                font-size: 1rem !important;
-            }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-left { padding: 5rem 1.5rem 3rem; }
+            .hero-right { min-height: 280px; }
+            .hero h1 { font-size: 2rem; }
+            .hero-features { gap: 1.25rem; }
+            .stats-bar { flex-wrap: wrap; gap: 2rem; padding: 2.5rem 1.5rem; justify-content: space-around; }
+            .stat-num { font-size: 2rem; }
+            section { padding: 4rem 1.25rem; }
+            .section-header { margin-bottom: 2.5rem; }
+            .usecases-grid { grid-template-columns: 1fr; }
+            .roi-grid { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+            .modal-content { padding: 1.75rem; border-radius: 16px; width: 96%; }
         }
 
-        /* Modal mobile optimisation */
-        @media (max-width: 640px) {
-            .modal-content {
-                padding: 1.5rem !important;
-                border-radius: 1rem !important;
-                width: 96% !important;
-                max-height: 85vh !important;
-            }
-            .modal-title { font-size: 1.25rem !important; }
-            .form-input, .form-textarea, .form-select {
-                font-size: 16px !important; /* Prevent iOS zoom */
-                padding: 0.875rem 1rem !important;
-            }
-            .form-btn { font-size: 1.1rem !important; }
-        }
-
-        /* Ensure all links/buttons are clickable */
-        a, button {
-            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-            touch-action: manipulation;
-        }
-
-        /* Improve scroll behavior */
-        html {
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Hide scrollbar on mobile */
-        @media (max-width: 640px) {
-            .modal-content::-webkit-scrollbar { width: 4px; }
-            .modal-content::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+        /* Touch targets */
+        button, a, .btn-pricing, .btn-hero, select, input[type="text"], input[type="email"], input[type="tel"], input[type="range"] {
+            min-height: 44px;
         }
     </style>
 </head>
 
 <body>
 
-<!-- ========== HEADER ========== -->
-<header class="fixed top-0 w-full z-50 transition-all duration-300" id="header">
-    <div class="bg-white/90 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="#" class="flex items-center space-x-2">
-                    <div class="w-10 h-10 gradient-deep rounded-lg flex items-center justify-center">
-                        <span class="text-white font-display font-bold text-xl">G</span>
-                    </div>
-                    <span class="font-display font-bold text-xl text-navy">Gigatop</span>
-                </a>
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#usecases" class="nav-link text-sm font-medium text-navy/70 hover:text-navy" data-i18n="nav_usecases">Use Cases</a>
-                    <a href="#roi" class="nav-link text-sm font-medium text-navy/70 hover:text-navy" data-i18n="nav_roi">ROI Rechner</a>
-                    <a href="#pricing" class="nav-link text-sm font-medium text-navy/70 hover:text-navy" data-i18n="nav_pricing">Preise</a>
-                    <a href="#about" class="nav-link text-sm font-medium text-navy/70 hover:text-navy" data-i18n="nav_about">Über uns</a>
-                </nav>
-                <div class="flex items-center space-x-3">
-                    <select id="langSelect" onchange="setLang(this.value)" class="bg-sand border border-deepblue/20 rounded-lg px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-terracotta/50">
-                        <option value="de">🇨🇭 DE</option>
-                        <option value="en">🇬🇧 EN</option>
-                    </select>
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+<!-- ========== NAVIGATION ========== -->
+<nav id="mainNav">
+    <div class="nav-inner">
+        <a href="#" class="logo">giga<span>top</span></a>
+        <ul class="nav-links">
+            <li><a href="#usecases" data-i18n="nav_usecases">Use Cases</a></li>
+            <li><a href="#roi" data-i18n="nav_roi">ROI Rechner</a></li>
+            <li><a href="#pricing" data-i18n="nav_pricing">Preise</a></li>
+            <li><a href="#about" data-i18n="nav_about">Über uns</a></li>
+        </ul>
+        <div class="nav-actions">
+            <select id="langSelect" onchange="setLang(this.value)" class="lang-select">
+                <option value="de">🇨🇭 DE</option>
+                <option value="en">🇬🇧 EN</option>
+            </select>
+            <button class="btn-nav" onclick="openContact('KI-Workshop')" data-i18n="hero_cta1">KI-Potenzial analysieren</button>
+            <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menü">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
         </div>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t">
-        <div class="px-4 py-4 space-y-3">
-            <a href="#usecases" onclick="toggleMobileMenu()" class="block py-2 text-navy/70 font-medium" data-i18n="nav_usecases">Use Cases</a>
-            <a href="#roi" onclick="toggleMobileMenu()" class="block py-2 text-navy/70 font-medium" data-i18n="nav_roi">ROI Rechner</a>
-            <a href="#pricing" onclick="toggleMobileMenu()" class="block py-2 text-navy/70 font-medium" data-i18n="nav_pricing">Preise</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-navy/70 font-medium" data-i18n="nav_about">Über uns</a>
-        </div>
-    </div>
-</header>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#usecases" onclick="toggleMobileMenu()" data-i18n="nav_usecases">Use Cases</a>
+    <a href="#roi" onclick="toggleMobileMenu()" data-i18n="nav_roi">ROI Rechner</a>
+    <a href="#pricing" onclick="toggleMobileMenu()" data-i18n="nav_pricing">Preise</a>
+    <a href="#about" onclick="toggleMobileMenu()" data-i18n="nav_about">Über uns</a>
+</div>
 
 <!-- ========== HERO ========== -->
-<section class="relative min-h-screen flex items-center overflow-hidden">
-    <!-- Hero Background Image -->
-    <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80" alt="" loading="eager">
-    </div>
-    <div class="gradient-hero"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div class="max-w-3xl">
-            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <span class="w-2 h-2 bg-terracotta rounded-full animate-pulse"></span>
-                <span class="text-white/90 text-sm font-medium" data-i18n="hero_badge">KI, die Ihr Unternehmen versteht</span>
-            </div>
-            <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6" data-i18n="hero_title">
-                Private AI-Lösungen für Schweizer Unternehmen
-            </h1>
-            <p class="text-lg sm:text-xl text-white/80 mb-8 leading-relaxed" data-i18n="hero_p1">
-                Wir bringen künstliche Intelligenz sicher in Ihr Unternehmen — lokal, datenschutzkonform und messbar.
-            </p>
-            <p class="text-base sm:text-lg text-white/70 mb-10 max-w-2xl" data-i18n="hero_p2">
-                Keine Cloud-Sensibilitäten. Keine Compliance-Risiken. Volle Kontrolle über Ihre Daten.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <button onclick="openContact('KI-Workshop')" class="btn-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-lg font-semibold" data-i18n="hero_cta1">
-                    KI-Potenzial analysieren
-                </button>
-                <button onclick="openContact('KI-Workshop')" class="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all" data-i18n="hero_cta2">
-                    Kontakt aufnehmen
-                </button>
-            </div>
-            <div class="mt-12 flex items-center gap-8 text-white/60">
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-terracotta" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                    <span class="text-sm" data-i18n="hero_feat1">100% lokal & privat</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-terracotta" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                    <span class="text-sm" data-i18n="hero_feat2">Schweizer Datenschutz</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-terracotta" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                    <span class="text-sm" data-i18n="hero_feat3">Messbare Ergebnisse</span>
-                </div>
-            </div>
+<section class="hero">
+    <div class="hero-left">
+        <div class="hero-eyebrow" data-i18n="hero_badge">KI, die Ihr Unternehmen versteht</div>
+        <h1 data-i18n="hero_title_html">Private AI für <span class="accent">Schweizer Unternehmen</span></h1>
+        <p class="hero-sub" data-i18n="hero_p1">Wir bringen künstliche Intelligenz sicher in Ihr Unternehmen — lokal, datenschutzkonform und messbar.</p>
+        <div class="hero-cta-row">
+            <button onclick="openContact('KI-Workshop')" class="btn-hero" data-i18n="hero_cta1">KI-Potenzial analysieren</button>
+            <a href="#contact" class="btn-hero-ghost" onclick="openContact('KI-Workshop')" data-i18n="hero_cta2">Kontakt aufnehmen</a>
+        </div>
+        <div class="hero-features">
+            <div class="hero-feature"><span class="dot"></span><span data-i18n="hero_feat1">100% lokal & privat</span></div>
+            <div class="hero-feature"><span class="dot"></span><span data-i18n="hero_feat2">Schweizer Datenschutz</span></div>
+            <div class="hero-feature"><span class="dot"></span><span data-i18n="hero_feat3">Messbare Ergebnisse</span></div>
         </div>
     </div>
-    <div class="absolute bottom-0 w-full bg-[#F6F1E8] h-16 wave-divider"></div>
+    <div class="hero-right">
+        <div class="hero-visual">
+            <!-- Neural network SVG -->
+            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Nodes layer 1 -->
+                <circle cx="60" cy="60" r="14" fill="#D66B45" opacity="0.9"/>
+                <circle cx="60" cy="140" r="14" fill="#D66B45" opacity="0.7"/>
+                <circle cx="60" cy="220" r="14" fill="#D66B45" opacity="0.9"/>
+                <circle cx="60" cy="300" r="14" fill="#D66B45" opacity="0.7"/>
+                <circle cx="60" cy="360" r="14" fill="#D66B45" opacity="0.9"/>
+                <!-- Nodes layer 2 (middle) -->
+                <circle cx="200" cy="40" r="18" fill="#78866B" opacity="0.8"/>
+                <circle cx="200" cy="120" r="18" fill="#78866B" opacity="0.6"/>
+                <circle cx="200" cy="200" r="22" fill="#D66B45" opacity="0.9"/>
+                <circle cx="200" cy="280" r="18" fill="#78866B" opacity="0.6"/>
+                <circle cx="200" cy="360" r="18" fill="#78866B" opacity="0.8"/>
+                <!-- Nodes layer 3 (right) -->
+                <circle cx="340" cy="80" r="14" fill="#174A5B" opacity="0.9"/>
+                <circle cx="340" cy="160" r="14" fill="#174A5B" opacity="0.7"/>
+                <circle cx="340" cy="240" r="14" fill="#174A5B" opacity="0.9"/>
+                <circle cx="340" cy="320" r="14" fill="#174A5B" opacity="0.7"/>
+                <!-- Connections layer 1 -> 2 -->
+                <line x1="74" y1="60" x2="182" y2="40" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <line x1="74" y1="60" x2="182" y2="120" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line x1="74" y1="140" x2="182" y2="120" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <line x1="74" y1="140" x2="182" y2="200" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line x1="74" y1="220" x2="182" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <line x1="74" y1="220" x2="182" y2="280" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line x1="74" y1="300" x2="182" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <line x1="74" y1="300" x2="182" y2="360" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line x1="74" y1="360" x2="182" y2="360" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <!-- Connections layer 2 -> 3 -->
+                <line x1="218" y1="40" x2="326" y2="80" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line x1="218" y1="120" x2="326" y2="80" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <line x1="218" y1="120" x2="326" y2="160" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line x1="218" y1="200" x2="326" y2="160" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <line x1="218" y1="200" x2="326" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line x1="218" y1="280" x2="326" y2="240" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <line x1="218" y1="280" x2="326" y2="320" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <line x1="218" y1="360" x2="326" y2="320" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                <!-- Glow at center -->
+                <circle cx="200" cy="200" r="35" fill="url(#centerGlow)" opacity="0.35"/>
+                <defs>
+                    <radialGradient id="centerGlow">
+                        <stop offset="0%" stop-color="#D66B45" stop-opacity="0.6"/>
+                        <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<!-- ========== STATS BAR ========== -->
+<section class="stats-bar">
+    <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label" data-i18n="stat_local">Lokal verarbeitet</div>
+    </div>
+    <div class="stat">
+        <div class="stat-num">0 ms</div>
+        <div class="stat-label" data-i18n="stat_latency">Cloud-Latenz</div>
+    </div>
+    <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label" data-i18n="stat_privacy">Datenschutz</div>
+    </div>
 </section>
 
 <!-- ========== USE CASES ========== -->
-<section id="usecases" class="py-20 bg-sand">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="inline-block bg-terracotta/10 text-terracotta px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-i18n="uc_badge">Anwendungsbereiche</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="uc_title">KI für Ihr Unternehmen</h2>
-            <p class="text-navy/60 max-w-2xl mx-auto" data-i18n="uc_subtitle">Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.</p>
+<section class="usecases" id="usecases">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-badge terracotta" data-i18n="uc_badge">Anwendungsbereiche</span>
+            <h2 class="section-title" data-i18n="uc_title">KI für Ihr Unternehmen</h2>
+            <p class="section-desc" data-i18n="uc_subtitle">Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                    <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
+        <div class="usecases-grid">
+            <div class="uc-card" onclick="openContact('Starter')">
+                <div class="uc-icon terracotta">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
                 </div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                    </div>
-                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc1_title">Sales & Wachstum</h3>
-                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc1_desc">Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.</p>
-                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
-                </div>
+                <h3 data-i18n="uc1_title">Sales & Wachstum</h3>
+                <p data-i18n="uc1_desc">Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.</p>
+                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
+            <div class="uc-card" onclick="openContact('Starter')">
+                <div class="uc-icon deepblue">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 </div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 gradient-deep rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    </div>
-                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc2_title">Operations & Effizienz</h3>
-                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc2_desc">Automatisierung von Prozessen, Dokumentenmanagement und Workflows.</p>
-                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
-                </div>
+                <h3 data-i18n="uc2_title">Operations & Effizienz</h3>
+                <p data-i18n="uc2_desc">Automatisierung von Prozessen, Dokumentenmanagement und Workflows.</p>
+                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
+            <div class="uc-card" onclick="openContact('Starter')">
+                <div class="uc-icon olive">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
                 </div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
-                    </div>
-                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc3_title">Kunden-Support</h3>
-                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc3_desc">KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.</p>
-                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
-                </div>
+                <h3 data-i18n="uc3_title">Kunden-Support</h3>
+                <p data-i18n="uc3_desc">KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.</p>
+                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
+            <div class="uc-card" onclick="openContact('Starter')">
+                <div class="uc-icon deepblue">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
                 </div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 gradient-deep rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
-                    </div>
-                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc4_title">Daten & Intelligence</h3>
-                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc4_desc">Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.</p>
-                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
-                </div>
+                <h3 data-i18n="uc4_title">Daten & Intelligence</h3>
+                <p data-i18n="uc4_desc">Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.</p>
+                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover relative overflow-hidden group">
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afcab8eb5927?w=400&q=60" alt="" class="w-full h-full object-cover" style="filter: saturate(0.3);">
+            <div class="uc-card" onclick="openContact('Starter')">
+                <div class="uc-icon terracotta">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="uc5_title">Finance & Controlling</h3>
-                    <p class="text-navy/60 text-sm mb-4" data-i18n="uc5_desc">Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.</p>
-                    <button onclick="openContact('Starter')" class="text-terracotta font-semibold text-sm hover:text-deepblue transition" data-i18n="uc_more">Mehr erfahren →</button>
-                </div>
+                <h3 data-i18n="uc5_title">Finance & Controlling</h3>
+                <p data-i18n="uc5_desc">Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.</p>
+                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
             </div>
         </div>
     </div>
 </section>
 
-<section id="roi" class="py-20 bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <span class="inline-block bg-terracotta/10 text-terracotta px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-i18n="roi_badge">ROI Rechner</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="roi_title">Berechnen Sie Ihr KI-Potenzial</h2>
-            <p class="text-navy/60 max-w-2xl mx-auto" data-i18n="roi_subtitle">Erhalten Sie in Sekunden eine realistische Kosteneinschätzung durch KI-Automatisierung.</p>
+<!-- ========== ROI ========== -->
+<section class="roi" id="roi">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-badge olive" data-i18n="roi_badge">ROI Rechner</span>
+            <h2 class="section-title" data-i18n="roi_title">Berechnen Sie Ihr KI-Potenzial</h2>
+            <p class="section-desc" data-i18n="roi_subtitle">Erhalten Sie in Sekunden eine realistische Kosteneinschätzung durch KI-Automatisierung.</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="glass-card rounded-2xl p-6">
-                <h3 class="font-display font-bold text-lg text-navy mb-6" data-i18n="roi_input">Parameter eingeben</h3>
-                <div class="space-y-6">
-                    <div>
-                        <label class="flex justify-between text-sm font-medium text-navy/70 mb-2">
-                            <span data-i18n="roi_employees">Mitarbeiter</span>
-                            <span id="roi_employees_val" class="text-terracotta font-bold">5</span>
-                        </label>
-                        <input type="range" id="roi_employees" min="1" max="200" value="5" class="w-full" oninput="calculateROI()">
-                    </div>
-                    <div>
-                        <label class="flex justify-between text-sm font-medium text-navy/70 mb-2">
-                            <span data-i18n="roi_hours">Stunden/Woche pro Prozess</span>
-                            <span id="roi_hours_val" class="text-terracotta font-bold">10</span>
-                        </label>
-                        <input type="range" id="roi_hours" min="1" max="40" value="10" class="w-full" oninput="calculateROI()">
-                    </div>
-                    <div>
-                        <label class="flex justify-between text-sm font-medium text-navy/70 mb-2">
-                            <span data-i18n="roi_salary">Bruttolohn / Jahr (CHF)</span>
-                            <span id="roi_salary_val" class="text-terracotta font-bold">80'000</span>
-                        </label>
-                        <input type="range" id="roi_salary" min="40000" max="200000" value="80000" step="5000" class="w-full" oninput="calculateROI()">
-                    </div>
-                    <div>
-                        <label class="flex justify-between text-sm font-medium text-navy/70 mb-2">
-                            <span data-i18n="roi_rate">Automatisierungsrate (%)</span>
-                            <span id="roi_rate_val" class="text-terracotta font-bold">50%</span>
-                        </label>
-                        <input type="range" id="roi_rate" min="10" max="90" value="50" class="w-full" oninput="calculateROI()">
-                    </div>
+        <div class="roi-grid">
+            <div class="roi-panel">
+                <h3 data-i18n="roi_input">Parameter eingeben</h3>
+                <div class="roi-input">
+                    <div class="roi-label"><span data-i18n="roi_employees">Mitarbeiter</span><span class="val" id="roi_employees_val">5</span></div>
+                    <input type="range" id="roi_employees" min="1" max="200" value="5" oninput="calculateROI()">
+                </div>
+                <div class="roi-input">
+                    <div class="roi-label"><span data-i18n="roi_hours">Stunden/Woche pro Prozess</span><span class="val" id="roi_hours_val">10</span></div>
+                    <input type="range" id="roi_hours" min="1" max="40" value="10" oninput="calculateROI()">
+                </div>
+                <div class="roi-input">
+                    <div class="roi-label"><span data-i18n="roi_salary">Bruttolohn / Jahr (CHF)</span><span class="val" id="roi_salary_val">80'000</span></div>
+                    <input type="range" id="roi_salary" min="40000" max="200000" value="80000" step="5000" oninput="calculateROI()">
+                </div>
+                <div class="roi-input">
+                    <div class="roi-label"><span data-i18n="roi_rate">Automatisierungsrate (%)</span><span class="val" id="roi_rate_val">50%</span></div>
+                    <input type="range" id="roi_rate" min="10" max="90" value="50" oninput="calculateROI()">
                 </div>
             </div>
-            <div class="glass-card rounded-2xl p-6 gradient-deep text-white">
-                <h3 class="font-display font-bold text-lg mb-6" data-i18n="roi_result">Ergebnis</h3>
-                <div class="space-y-6">
-                    <div class="bg-white/10 rounded-xl p-4">
-                        <div class="text-white/60 text-sm" data-i18n="roi_savings_label">Jährliche Einsparung</div>
-                        <div id="roi_savings" class="text-3xl font-bold mt-1">CHF 20'000</div>
+            <div class="roi-panel roi-panel--dark">
+                <h3 data-i18n="roi_result">Ergebnis</h3>
+                <div class="roi-result">
+                    <div class="roi-result-box">
+                        <div class="roi-result-label" data-i18n="roi_savings_label">Jährliche Einsparung</div>
+                        <div class="roi-result-value" id="roi_savings">CHF 20'000</div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white/10 rounded-xl p-3">
-                            <div class="text-white/60 text-xs" data-i18n="roi_time_label">Zeit gespart / Jahr</div>
-                            <div id="roi_time" class="text-xl font-bold mt-1">520 Std.</div>
-                        </div>
-                        <div class="bg-white/10 rounded-xl p-3">
-                            <div class="text-white/60 text-xs" data-i18n="roi_proc_label">Prozesse / Monat</div>
-                            <div id="roi_proc" class="text-xl font-bold mt-1">10</div>
-                        </div>
-                    </div>
-                    <button onclick="openContact('KI-Workshop')" class="w-full btn-primary text-white px-6 py-3 rounded-xl font-semibold" data-i18n="roi_cta">Details besprechen</button>
                 </div>
+                <div class="roi-grid-small">
+                    <div class="roi-result-box">
+                        <div class="roi-result-label" data-i18n="roi_time_label">Zeit gespart / Jahr</div>
+                        <div class="roi-result-value" id="roi_time">520 Std.</div>
+                    </div>
+                    <div class="roi-result-box">
+                        <div class="roi-result-label" data-i18n="roi_proc_label">Prozesse / Monat</div>
+                        <div class="roi-result-value" id="roi_proc">10</div>
+                    </div>
+                </div>
+                <button onclick="openContact('KI-Workshop')" style="width:100%;margin-top:1.5rem;padding:1rem;background:var(--terracotta);color:#fff;border:none;border-radius:10px;font-weight:600;font-size:1rem;cursor:pointer;transition:all 0.2s;" data-i18n="roi_cta">Details besprechen</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FEATURES / ABOUT ========== -->
+<section class="features" id="about">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-badge" data-i18n="about_badge">Warum Gigatop</span>
+            <h2 class="section-title" data-i18n="about_title">Warum Gigatop?</h2>
+            <p class="section-desc" data-i18n="about_subtitle">Ihr lokaler Partner für private KI-Lösungen in der Schweiz.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-accent"></div>
+                <h3 data-i18n="about_1_title">Datenschutz-first</h3>
+                <p data-i18n="about_1_desc">Ihre Daten verlassen niemals Ihr Unternehmen. 100% lokale Verarbeitung, keine Cloud.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-accent terracotta"></div>
+                <h3 data-i18n="about_2_title">Schnelle Ergebnisse</h3>
+                <p data-i18n="about_2_desc">Messbare Verbesserungen innerhalb der ersten 4 Wochen. Keine langwierigen Pilotphasen.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-accent terracotta"></div>
+                <h3 data-i18n="about_3_title">Schweizer Präzision</h3>
+                <p data-i18n="about_3_desc">Verständnis für Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-accent"></div>
+                <h3 data-i18n="about_4_title">DGX Station</h3>
+                <p data-i18n="about_4_desc">Enterprise-Grafikleistung für maximale KI-Leistung — direkt vor Ort in Ihrem Rechenzentrum.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ========== PRICING ========== -->
-<section id="pricing" class="py-20 bg-sand">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <span class="inline-block bg-olive/10 text-olive px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-i18n="pricing_badge">Preise</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="pricing_title">Transparente Investition</h2>
-            <p class="text-navy/60 max-w-2xl mx-auto" data-i18n="pricing_subtitle">Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.</p>
+<section class="pricing" id="pricing">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-badge deepblue" data-i18n="pricing_badge">Preise</span>
+            <h2 class="section-title" data-i18n="pricing_title">Transparente Investition</h2>
+            <p class="section-desc" data-i18n="pricing_subtitle">Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-card rounded-2xl p-6 card-hover border-2 border-terracotta/30 relative">
-                <div class="absolute -top-3 left-4 bg-terracotta text-white text-xs font-bold px-3 py-1 rounded-full">Angebot</div>
-                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="pricing_0_title">KI-Workshop</h3>
-                <div class="text-3xl font-bold text-terracotta mb-1">CHF 399<span class="text-sm font-normal text-navy/50">/Session</span></div>
-                <p class="text-navy/50 text-sm mb-6" data-i18n="pricing_0_desc">2 Stunden: Agent-Entwicklung & Launch</p>
-                <ul class="space-y-3 mb-6">
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_0_f1">2h intensive Workshop-Sitzung</span></li>
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_0_f2">Gemeinsam den KI-Agenten bauen</span></li>
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_0_f3">Auf meiner Station/Testumgebung</span></li>
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_0_f4">Sofortiger Start Ihrer KI-Lösung</span></li>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-name" data-i18n="pricing_0_title">KI-Workshop</div>
+                <div class="pricing-price">CHF 399 <span data-i18n="pricing_0_unit">/ Session</span></div>
+                <p class="pricing-desc" data-i18n="pricing_0_desc">2 Stunden: Agent-Entwicklung & Launch</p>
+                <ul class="pricing-features">
+                    <li data-i18n="pricing_0_f1">2h intensive Workshop-Sitzung</li>
+                    <li data-i18n="pricing_0_f2">Gemeinsam den KI-Agenten bauen</li>
+                    <li data-i18n="pricing_0_f3">Auf meiner Station/Testumgebung</li>
+                    <li data-i18n="pricing_0_f4">Sofortiger Start Ihrer KI-Lösung</li>
                 </ul>
-                <button onclick="openContact('KI-Workshop')" class="w-full btn-primary text-white px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Jetzt anfragen</button>
+                <button onclick="openContact('KI-Workshop')" class="btn-pricing btn-pricing-solid" data-i18n="pricing_cta">Jetzt anfragen</button>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="pricing_1_title">Starter</h3>
-                <div class="text-3xl font-bold text-terracotta mb-1">CHF 5'000<span class="text-sm font-normal text-navy/50">/Projekt</span></div>
-                <p class="text-navy/50 text-sm mb-6" data-i18n="pricing_1_desc">Einzelne KI-Anwendung für den Einstieg</p>
-                <ul class="space-y-3 mb-6">
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_1_f1">Ein KI-Use Case</span></li>
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_1_f2">Passende Hardware wird geliefert</span></li>
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_1_f3">Schulung & Support</span></li>
+            <div class="pricing-card pricing-card--featured">
+                <div class="pricing-badge" data-i18n="pricing_badge_label">Empfohlen</div>
+                <div class="pricing-name" data-i18n="pricing_1_title">Starter</div>
+                <div class="pricing-price">CHF 5'000 <span data-i18n="pricing_1_unit">/ Projekt</span></div>
+                <p class="pricing-desc" data-i18n="pricing_1_desc">Einzelne KI-Anwendung für den Einstieg</p>
+                <ul class="pricing-features">
+                    <li data-i18n="pricing_1_f1">Ein KI-Use Case</li>
+                    <li data-i18n="pricing_1_f2">Passende Hardware wird geliefert</li>
+                    <li data-i18n="pricing_1_f3">Schulung & Support</li>
                 </ul>
-                <button onclick="openContact('Starter')" class="w-full btn-outline px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Anfragen</button>
+                <button onclick="openContact('Starter')" class="btn-pricing btn-pricing-solid" data-i18n="pricing_cta">Anfragen</button>
             </div>
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <h3 class="font-display font-bold text-lg text-navy mb-2" data-i18n="pricing_3_title">Enterprise</h3>
-                <div class="text-3xl font-bold text-terracotta mb-1">Individuell</div>
-                <p class="text-navy/50 text-sm mb-6" data-i18n="pricing_3_desc">Massgeschneiderte Enterprise-Lösung</p>
-                <ul class="space-y-3 mb-6">
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f1">Unbegrenzte Use Cases</span></li>
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f2">DGX Station & On-Premise</span></li>
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f3">Dediziertes Team</span></li>
-                    <li class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-olive" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="pricing_3_f4">SLA & Priority Support</span></li>
+            <div class="pricing-card">
+                <div class="pricing-name" data-i18n="pricing_3_title">Enterprise</div>
+                <div class="pricing-price" data-i18n="pricing_3_price">Individuell</div>
+                <p class="pricing-desc" data-i18n="pricing_3_desc">Massgeschneiderte Enterprise-Lösung</p>
+                <ul class="pricing-features">
+                    <li data-i18n="pricing_3_f1">Unbegrenzte Use Cases</li>
+                    <li data-i18n="pricing_3_f2">DGX Station & On-Premise</li>
+                    <li data-i18n="pricing_3_f3">Dediziertes Team</li>
+                    <li data-i18n="pricing_3_f4">SLA & Priority Support</li>
                 </ul>
-                <button onclick="openContact('Enterprise')" class="w-full btn-outline px-4 py-2.5 rounded-xl font-semibold text-sm" data-i18n="pricing_cta">Kontakt aufnehmen</button>
+                <button onclick="openContact('Enterprise')" class="btn-pricing btn-pricing-outline" data-i18n="pricing_cta">Kontakt aufnehmen</button>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ========== ABOUT ========== -->
-<section id="about" class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="about_title">Warum Gigatop?</h2>
-            <p class="text-navy/60" data-i18n="about_subtitle">Ihr lokaler Partner für private KI-Lösungen in der Schweiz.</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <div class="text-3xl mb-3">🔒</div>
-                <h3 class="font-display font-bold text-navy mb-2" data-i18n="about_1_title">Datenschutz-first</h3>
-                <p class="text-navy/60 text-sm" data-i18n="about_1_desc">Ihre Daten verlassen niemals Ihr Unternehmen. 100% lokale Verarbeitung, keine Cloud.</p>
-            </div>
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <div class="text-3xl mb-3">⚡</div>
-                <h3 class="font-display font-bold text-navy mb-2" data-i18n="about_2_title">Schnelle Ergebnisse</h3>
-                <p class="text-navy/60 text-sm" data-i18n="about_2_desc">Messbare Verbesserungen innerhalb der ersten 4 Wochen. Keine langwierigen Pilotphasen.</p>
-            </div>
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <div class="text-3xl mb-3">🇨🇭</div>
-                <h3 class="font-display font-bold text-navy mb-2" data-i18n="about_3_title">Schweizer Präzision</h3>
-                <p class="text-navy/60 text-sm" data-i18n="about_3_desc">Verständnis für Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.</p>
-            </div>
-            <div class="glass-card rounded-2xl p-6 card-hover">
-                <div class="text-3xl mb-3">🤖</div>
-                <h3 class="font-display font-bold text-navy mb-2" data-i18n="about_4_title">DGX Station</h3>
-                <p class="text-navy/60 text-sm" data-i18n="about_4_desc">Enterprise-Grafikleistung für maximale KI-Leistung — direkt vor Ort in Ihrem Rechenzentrum.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== CONTACT ========== -->
-<section id="contact" class="py-20 bg-sand/30">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="font-display font-bold text-3xl sm:text-4xl text-navy mb-4" data-i18n="contact_title">Kontakt aufnehmen</h2>
-        <p class="text-navy/60 mb-8" data-i18n="contact_subtitle">Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.</p>
-        <a href="mailto:top@gigatop.io" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-block mb-6">top@gigatop.io</a>
-        <div class="text-navy/50 text-sm">
+<!-- ========== CONTACT SECTION ========== -->
+<section id="contact" style="background: var(--sand-light);">
+    <div class="section-inner" style="text-align:center;">
+        <h2 class="section-title" data-i18n="contact_title">Kontakt aufnehmen</h2>
+        <p class="section-desc" style="margin-bottom:2rem;" data-i18n="contact_subtitle">Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.</p>
+        <a href="mailto:top@gigatop.io" class="btn-hero" style="margin-bottom:2rem;">top@gigatop.io</a>
+        <div style="color:rgba(16,42,51,0.4);font-size:0.85rem;">
             <p data-i18n="contact_location">Fabio Serpa, Einzelfirma</p>
             <p>Hinterhöfenstrasse 8, 6312 Steinhausen</p>
         </div>
@@ -506,49 +1163,80 @@
 </section>
 
 <!-- ========== FOOTER ========== -->
-<footer class="bg-navy text-white py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
-                <div class="flex items-center space-x-2 mb-4">
-                    <div class="w-8 h-8 gradient-deep rounded-lg flex items-center justify-center"><span class="text-white font-display font-bold">G</span></div>
-                    <span class="font-display font-bold text-lg">Gigatop</span>
-                </div>
-                <p class="text-white/50 text-sm" data-i18n="footer_desc">Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.</p>
-            </div>
-            <div>
-                <h4 class="font-display font-semibold mb-3" data-i18n="footer_nav">Navigation</h4>
-                <ul class="space-y-2">
-                    <li><a href="#usecases" class="text-white/50 hover:text-white text-sm" data-i18n="nav_usecases">Use Cases</a></li>
-                    <li><a href="#roi" class="text-white/50 hover:text-white text-sm" data-i18n="nav_roi">ROI Rechner</a></li>
-                    <li><a href="#pricing" class="text-white/50 hover:text-white text-sm" data-i18n="nav_pricing">Preise</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-display font-semibold mb-3" data-i18n="footer_legal">Legal</h4>
-                <ul class="space-y-2">
-                    <li><a href="datenschutz.html" class="text-white/50 hover:text-white text-sm" data-i18n="footer_privacy">Datenschutz</a></li>
-                    <li><a href="impressum.html" class="text-white/50 hover:text-white text-sm" data-i18n="footer_imprint">Impressum</a></li>
-                    <li><a href="agb.html" class="text-white/50 hover:text-white text-sm" data-i18n="footer_terms">AGB</a></li>
-                </ul>
-            </div>
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="#" class="logo">giga<span>top</span></a>
+            <p data-i18n="footer_desc">Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.</p>
         </div>
-        <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-white/40 text-sm">© 2025 Gigatop. <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></p>
+        <div class="footer-col">
+            <h4 data-i18n="footer_nav">Navigation</h4>
+            <a href="#usecases" data-i18n="nav_usecases">Use Cases</a>
+            <a href="#roi" data-i18n="nav_roi">ROI Rechner</a>
+            <a href="#pricing" data-i18n="nav_pricing">Preise</a>
         </div>
+        <div class="footer-col">
+            <h4 data-i18n="footer_legal">Legal</h4>
+            <a href="datenschutz.html" data-i18n="footer_privacy">Datenschutz</a>
+            <a href="impressum.html" data-i18n="footer_imprint">Impressum</a>
+            <a href="agb.html" data-i18n="footer_terms">AGB</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Gigatop. <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></p>
     </div>
 </footer>
 
-<!-- ========== SCRIPTS ========== -->
+<!-- ========== CONTACT MODAL ========== -->
+<div id="contactModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div id="modalFormArea">
+            <div class="modal-title" id="modalTitle">Anfrage senden</div>
+            <div class="modal-subtitle" id="modalSubtitle">Füllen Sie das Formular aus — wir melden uns innerhalb von 24 Stunden.</div>
+            <form id="contactForm" onsubmit="submitForm(event)" action="https://formsubmit.co/top@gigatop.io" method="POST">
+                <input type="hidden" name="_subject" value="Neue Anfrage - Gigatop Website">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" id="redirectUrl">
+                <input type="hidden" name="Package" id="formPackage">
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="form_name">Name *</label>
+                    <input type="text" name="Name" class="form-input" required placeholder="Ihr vollständiger Name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" data-i18n="form_email">E-Mail *</label>
+                    <input type="email" name="Email" class="form-input" required placeholder="ihre@email.ch">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" data-i18n="form_phone">Telefon <span class="optional">(optional)</span></label>
+                    <input type="tel" name="Telefon" class="form-input" placeholder="+41 XX XXX XX XX">
+                </div>
+
+                <div id="dynamicQuestions"></div>
+
+                <button type="submit" class="form-btn" id="submitBtn" data-i18n="form_submit">Anfrage absenden →</button>
+            </form>
+        </div>
+        <div id="modalSuccess" class="form-success" style="display:none;">
+            <div class="check-icon">✓</div>
+            <h3>Vielen Dank!</h3>
+            <p data-i18n="form_success">Ihre Anfrage wurde erfolgreich gesendet.<br>Wir melden uns schnellstmöglich bei Ihnen.</p>
+        </div>
+    </div>
+</div>
+
 <script>
 var LANGS = {
     de: {
         nav_usecases: 'Use Cases', nav_roi: 'ROI Rechner', nav_pricing: 'Preise', nav_about: 'Über uns',
-        hero_badge: 'KI, die Ihr Unternehmen versteht', hero_title: 'Private AI-Lösungen für Schweizer Unternehmen',
+        hero_badge: 'KI, die Ihr Unternehmen versteht', hero_title_html: 'Private AI für <span class="accent">Schweizer Unternehmen</span>',
         hero_p1: 'Wir bringen künstliche Intelligenz sicher in Ihr Unternehmen — lokal, datenschutzkonform und messbar.',
         hero_p2: 'Keine Cloud-Sensibilitäten. Keine Compliance-Risiken. Volle Kontrolle über Ihre Daten.',
         hero_cta1: 'KI-Potenzial analysieren', hero_cta2: 'Kontakt aufnehmen',
         hero_feat1: '100% lokal & privat', hero_feat2: 'Schweizer Datenschutz', hero_feat3: 'Messbare Ergebnisse',
+        stat_local: 'Lokal verarbeitet', stat_latency: 'Cloud-Latenz', stat_privacy: 'Datenschutz',
         uc_badge: 'Anwendungsbereiche', uc_title: 'KI für Ihr Unternehmen', uc_subtitle: 'Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.',
         uc1_title: 'Sales & Wachstum', uc1_desc: 'Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.',
         uc2_title: 'Operations & Effizienz', uc2_desc: 'Automatisierung von Prozessen, Dokumentenmanagement und Workflows.',
@@ -559,34 +1247,34 @@ var LANGS = {
         roi_badge: 'ROI Rechner', roi_title: 'Berechnen Sie Ihr KI-Potenzial', roi_subtitle: 'Erhalten Sie in Sekunden eine realistische Kosteneinschätzung durch KI-Automatisierung.',
         roi_input: 'Parameter eingeben', roi_employees: 'Mitarbeiter', roi_hours: 'Stunden/Woche pro Prozess', roi_salary: 'Bruttolohn / Jahr (CHF)', roi_rate: 'Automatisierungsrate (%)',
         roi_result: 'Ergebnis', roi_savings_label: 'Jährliche Einsparung', roi_time_label: 'Zeit gespart / Jahr', roi_proc_label: 'Prozesse / Monat', roi_cta: 'Details besprechen',
-        pricing_0_title: 'KI-Workshop', pricing_0_desc: '2 Stunden: Agent-Entwicklung & Launch',
-        pricing_0_f1: '2h intensive Workshop-Sitzung', pricing_0_f2: 'Gemeinsam den KI-Agenten bauen', pricing_0_f3: 'Auf meiner Station/Testumgebung', pricing_0_f4: 'Sofortiger Start Ihrer KI-Lösung',
-        
-pricing_badge: 'Preise', pricing_title: 'Transparente Investition', pricing_subtitle: 'Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.',
-        pricing_1_title: 'Starter', pricing_1_desc: 'Einzelne KI-Anwendung für den Einstieg',
-        pricing_1_f1: 'Ein KI-Use Case', pricing_1_f2: 'Passende Hardware wird geliefert', pricing_1_f3: 'Schulung & Support',
-        pricing_2_title: 'Professional', pricing_2_desc: 'Umfassende KI-Lösung mit mehreren Use Cases',
-        pricing_2_f1: '3-5 KI-Use Cases', pricing_2_f2: 'Integration in bestehende Systeme', pricing_2_f3: 'Training & Continuous Support', pricing_2_f4: 'Dashboard & Monitoring',
-        pricing_3_title: 'Enterprise', pricing_3_desc: 'Massgeschneiderte Enterprise-Lösung',
-        pricing_3_f1: 'Unbegrenzte Use Cases', pricing_3_f2: 'DGX Station & On-Premise', pricing_3_f3: 'Dediziertes Team', pricing_3_f4: 'SLA & Priority Support',
-        pricing_cta: 'Anfragen', pricing_cta_popular: 'Anfragen',
-        about_title: 'Warum Gigatop?', about_subtitle: 'Ihr lokaler Partner für private KI-Lösungen in der Schweiz.',
+        about_badge: 'Warum Gigatop', about_title: 'Warum Gigatop?', about_subtitle: 'Ihr lokaler Partner für private KI-Lösungen in der Schweiz.',
         about_1_title: 'Datenschutz-first', about_1_desc: 'Ihre Daten verlassen niemals Ihr Unternehmen. 100% lokale Verarbeitung, keine Cloud.',
         about_2_title: 'Schnelle Ergebnisse', about_2_desc: 'Messbare Verbesserungen innerhalb der ersten 4 Wochen. Keine langwierigen Pilotphasen.',
         about_3_title: 'Schweizer Präzision', about_3_desc: 'Verständnis für Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.',
         about_4_title: 'DGX Station', about_4_desc: 'Enterprise-Grafikleistung für maximale KI-Leistung — direkt vor Ort in Ihrem Rechenzentrum.',
+        pricing_badge: 'Preise', pricing_title: 'Transparente Investition', pricing_subtitle: 'Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.',
+        pricing_badge_label: 'Empfohlen',
+        pricing_0_unit: '/ Session', pricing_1_unit: '/ Projekt', pricing_3_price: 'Individuell',
+        pricing_0_title: 'KI-Workshop', pricing_0_desc: '2 Stunden: Agent-Entwicklung & Launch',
+        pricing_0_f1: '2h intensive Workshop-Sitzung', pricing_0_f2: 'Gemeinsam den KI-Agenten bauen', pricing_0_f3: 'Auf meiner Station/Testumgebung', pricing_0_f4: 'Sofortiger Start Ihrer KI-Lösung',
+        pricing_1_title: 'Starter', pricing_1_desc: 'Einzelne KI-Anwendung für den Einstieg',
+        pricing_1_f1: 'Ein KI-Use Case', pricing_1_f2: 'Passende Hardware wird geliefert', pricing_1_f3: 'Schulung & Support',
+        pricing_3_title: 'Enterprise', pricing_3_desc: 'Massgeschneiderte Enterprise-Lösung',
+        pricing_3_f1: 'Unbegrenzte Use Cases', pricing_3_f2: 'DGX Station & On-Premise', pricing_3_f3: 'Dediziertes Team', pricing_3_f4: 'SLA & Priority Support',
+        pricing_cta: 'Anfragen', pricing_cta_popular: 'Anfragen',
         contact_title: 'Kontakt aufnehmen', contact_subtitle: 'Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.', contact_email: 'top@gigatop.io', contact_location: 'Fabio Serpa, Einzelfirma',
         footer_desc: 'Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.',
-        footer_nav: 'Navigation', footer_legal: 'Legal', footer_privacy: 'Datenschutz', footer_imprint: 'Impressum', footer_terms: 'AGB',
-        footer_rights: 'Alle Rechte vorbehalten.',
+        footer_nav: 'Navigation', footer_legal: 'Legal', footer_privacy: 'Datenschutz', footer_imprint: 'Impressum', footer_terms: 'AGB', footer_rights: 'Alle Rechte vorbehalten.',
+        form_name: 'Name *', form_email: 'E-Mail *', form_phone: 'Telefon', form_submit: 'Anfrage absenden →', form_success: 'Ihre Anfrage wurde erfolgreich gesendet.<br>Wir melden uns schnellstmöglich bei Ihnen.',
     },
     en: {
         nav_usecases: 'Use Cases', nav_roi: 'ROI Calculator', nav_pricing: 'Pricing', nav_about: 'About',
-        hero_badge: 'AI that understands your business', hero_title: 'Private AI Solutions for Swiss Companies',
+        hero_badge: 'AI that understands your business', hero_title_html: 'Private AI for <span class="accent">Swiss Companies</span>',
         hero_p1: 'We bring artificial intelligence securely into your business — local, compliant and measurable.',
         hero_p2: 'No cloud sensitivities. No compliance risks. Full control over your data.',
         hero_cta1: 'Analyze AI potential', hero_cta2: 'Contact us',
         hero_feat1: '100% local & private', hero_feat2: 'Swiss data protection', hero_feat3: 'Measurable results',
+        stat_local: 'Local processing', stat_latency: 'Zero cloud latency', stat_privacy: 'Privacy',
         uc_badge: 'Application Areas', uc_title: 'AI for Your Business', uc_subtitle: 'Choose a domain and discover how AI can revolutionize your daily work.',
         uc1_title: 'Sales & Growth', uc1_desc: 'Lead generation, sales analysis and customer retention with AI-powered data evaluation.',
         uc2_title: 'Operations & Efficiency', uc2_desc: 'Process automation, document management and workflows.',
@@ -597,25 +1285,25 @@ pricing_badge: 'Preise', pricing_title: 'Transparente Investition', pricing_subt
         roi_badge: 'ROI Calculator', roi_title: 'Calculate Your AI Potential', roi_subtitle: 'Get a realistic cost estimate from AI automation in seconds.',
         roi_input: 'Enter parameters', roi_employees: 'Employees', roi_hours: 'Hours/week per process', roi_salary: 'Gross salary / year (CHF)', roi_rate: 'Automation rate (%)',
         roi_result: 'Result', roi_savings_label: 'Annual savings', roi_time_label: 'Time saved / year', roi_proc_label: 'Processes / month', roi_cta: 'Discuss details',
-        pricing_0_title: 'AI Workshop', pricing_0_desc: '2 Hours: Agent Development & Launch',
-        pricing_0_f1: '2h intensive workshop session', pricing_0_f2: 'Build the AI agent together', pricing_0_f3: 'On my station/test environment', pricing_0_f4: 'Immediate start of your AI solution',
-        
-pricing_badge: 'Pricing', pricing_title: 'Transparent Investment', pricing_subtitle: 'Each solution is individually calculated. Use these as reference values.',
-        pricing_1_title: 'Starter', pricing_1_desc: 'Single AI application for getting started',
-        pricing_1_f1: 'One AI use case', pricing_1_f2: 'Matching hardware is delivered', pricing_1_f3: 'Training & support',
-        pricing_2_title: 'Professional', pricing_2_desc: 'Comprehensive AI solution with multiple use cases',
-        pricing_2_f1: '3-5 AI use cases', pricing_2_f2: 'Integration with existing systems', pricing_2_f3: 'Training & continuous support', pricing_2_f4: 'Dashboard & monitoring',
-        pricing_3_title: 'Enterprise', pricing_3_desc: 'Custom enterprise solution',
-        pricing_3_f1: 'Unlimited use cases', pricing_3_f2: 'DGX Station & on-premise', pricing_3_f3: 'Dedicated team', pricing_3_f4: 'SLA & priority support',
-        pricing_cta: 'Inquire', pricing_cta_popular: 'Inquire',
-        about_title: 'Why Gigatop?', about_subtitle: 'Your local partner for private AI solutions in Switzerland.',
+        about_badge: 'Why Gigatop', about_title: 'Why Gigatop?', about_subtitle: 'Your local partner for private AI solutions in Switzerland.',
         about_1_title: 'Privacy-first', about_1_desc: 'Your data never leaves your company. 100% local processing, no cloud.',
         about_2_title: 'Fast results', about_2_desc: 'Measurable improvements within the first 4 weeks. No lengthy pilot phases.',
         about_3_title: 'Swiss precision', about_3_desc: 'Understanding of Swiss market, compliance and multilingualism. DE/FR/EN/IT.',
         about_4_title: 'DGX Station', about_4_desc: 'Enterprise-grade graphics performance for maximum AI power — directly on-site in your data center.',
+        pricing_badge: 'Pricing', pricing_title: 'Transparent Investment', pricing_subtitle: 'Each solution is individually calculated. Use these as reference values.',
+        pricing_badge_label: 'Recommended',
+        pricing_0_unit: '/ session', pricing_1_unit: '/ project', pricing_3_price: 'Custom',
+        pricing_0_title: 'AI Workshop', pricing_0_desc: '2 Hours: Agent Development & Launch',
+        pricing_0_f1: '2h intensive workshop session', pricing_0_f2: 'Build the AI agent together', pricing_0_f3: 'On my station/test environment', pricing_0_f4: 'Immediate start of your AI solution',
+        pricing_1_title: 'Starter', pricing_1_desc: 'Single AI application for getting started',
+        pricing_1_f1: 'One AI use case', pricing_1_f2: 'Matching hardware is delivered', pricing_1_f3: 'Training & support',
+        pricing_3_title: 'Enterprise', pricing_3_desc: 'Custom enterprise solution',
+        pricing_3_f1: 'Unlimited use cases', pricing_3_f2: 'DGX Station & on-premise', pricing_3_f3: 'Dedicated team', pricing_3_f4: 'SLA & priority support',
+        pricing_cta: 'Inquire', pricing_cta_popular: 'Inquire',
         contact_title: 'Contact Us', contact_subtitle: 'Send us an email — we respond within 24 hours.', contact_email: 'top@gigatop.io', contact_location: 'Fabio Serpa, Sole Proprietorship',
         footer_desc: 'Private AI solutions for Swiss companies. Local processing, maximum security.',
-        footer_nav: 'Navigation', footer_legal: 'Legal', footer_privacy: 'Privacy', footer_imprint: 'Imprint', footer_terms: 'Terms',
+        footer_nav: 'Navigation', footer_legal: 'Legal', footer_privacy: 'Privacy', footer_imprint: 'Imprint', footer_terms: 'Terms', footer_rights: 'All rights reserved.',
+        form_name: 'Name *', form_email: 'Email *', form_phone: 'Phone', form_submit: 'Send inquiry →', form_success: 'Your inquiry has been sent successfully.<br>We will contact you as soon as possible.',
     }
 };
 
@@ -630,15 +1318,9 @@ function setLang(lang) {
             if (els[i].tagName === 'INPUT' || els[i].tagName === 'TEXTAREA') {
                 els[i].placeholder = v;
             } else {
-                els[i].textContent = v;
+                els[i].innerHTML = v;
             }
         }
-    }
-    var phs = document.querySelectorAll('[data-i18n-placeholder]');
-    for (var i = 0; i < phs.length; i++) {
-        var k2 = phs[i].getAttribute('data-i18n-placeholder');
-        var v2 = LANGS[lang] && LANGS[lang][k2];
-        if (v2) phs[i].placeholder = v2;
     }
 }
 
@@ -646,18 +1328,17 @@ function setLang(lang) {
     var lang = localStorage.getItem('gigatop-lang') || 'de';
     setLang(lang);
     calculateROI();
+
+    var nav = document.getElementById('mainNav');
     window.addEventListener('scroll', function() {
-        var h = document.getElementById('header');
-        if (h) {
-            if (window.scrollY > 10) { h.querySelector('div').classList.add('shadow-md'); }
-            else { h.querySelector('div').classList.remove('shadow-md'); }
-        }
+        if (window.scrollY > 10) { nav.classList.add('scrolled'); }
+        else { nav.classList.remove('scrolled'); }
     });
 })();
 
 function toggleMobileMenu() {
     var m = document.getElementById('mobileMenu');
-    m.classList.toggle('hidden');
+    m.classList.toggle('open');
 }
 
 function calculateROI() {
@@ -685,28 +1366,22 @@ function calculateROI() {
     document.getElementById('roi_proc').textContent = processesPerMonth;
 }
 
-
-
 // === CONTACT MODAL ===
 function openContact(packageName) {
     var modal = document.getElementById('contactModal');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // Set redirect URL to current page
     document.getElementById('redirectUrl').value = window.location.href + '#thank-you';
 
-    // Pre-select package
     if (packageName) {
         document.getElementById('formPackage').value = packageName;
         renderQuestions(packageName);
     } else {
-        // Default: empty / let user choose
         document.getElementById('formPackage').value = '';
         renderQuestions('');
     }
 
-    // Reset form state
     document.getElementById('modalFormArea').style.display = 'block';
     document.getElementById('modalSuccess').style.display = 'none';
     document.getElementById('contactForm').reset();
@@ -839,59 +1514,10 @@ function submitForm(e) {
     });
 }
 
-// Close on Escape key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeModal();
 });
 </script>
-
-
-<!-- ========== CONTACT MODAL ========== -->
-<div id="contactModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">✕</button>
-        <div id="modalFormArea">
-            <div class="modal-title" id="modalTitle">Anfrage senden</div>
-            <div class="modal-subtitle" id="modalSubtitle">Füllen Sie das Formular aus — wir melden uns innerhalb von 24 Stunden.</div>
-            <form id="contactForm" onsubmit="submitForm(event)" action="https://formsubmit.co/top@gigatop.io" method="POST">
-                <!-- FormSubmit config -->
-                <input type="hidden" name="_subject" value="Neue Anfrage - Gigatop Website">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" id="redirectUrl">
-                <!-- Hidden package field -->
-                <input type="hidden" name="Package" id="formPackage">
-
-                <!-- Name -->
-                <div class="form-group">
-                    <label class="form-label">Name *</label>
-                    <input type="text" name="Name" class="form-input" required placeholder="Ihr vollständiger Name">
-                </div>
-                <!-- Email -->
-                <div class="form-group">
-                    <label class="form-label">E-Mail *</label>
-                    <input type="email" name="Email" class="form-input" required placeholder="ihre@email.ch">
-                </div>
-                <!-- Phone -->
-                <div class="form-group">
-                    <label class="form-label">Telefon <span class="optional">(optional)</span></label>
-                    <input type="tel" name="Telefon" class="form-input" placeholder="+41 XX XXX XX XX">
-                </div>
-
-                <!-- Dynamic Questions Container -->
-                <div id="dynamicQuestions"></div>
-
-                <button type="submit" class="form-btn" id="submitBtn">Anfrage absenden →</button>
-            </form>
-        </div>
-        <!-- Success Message (hidden by default) -->
-        <div id="modalSuccess" class="form-success" style="display:none;">
-            <div class="check-icon">✓</div>
-            <h3>Vielen Dank!</h3>
-            <p>Ihre Anfrage wurde erfolgreich gesendet.<br>Wir melden uns schnellstmöglich bei Ihnen.</p>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>

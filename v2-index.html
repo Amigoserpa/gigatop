@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Gigatop — Private AI. Built around your business.</title>
+    <meta name="description" content="Gigatop baut Private AI-Systeme für Schweizer Unternehmen. Lokale KI, die Ihr Wissen mit Ihren Daten verbindet — sicher, kontrollierbar, messbar.">
+    <meta property="og:title" content="Gigatop — Private AI. Built around your business.">
+    <meta property="og:description" content="Gigatop baut Private AI-Systeme für Schweizer Unternehmen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gigatop.io">
+    <meta property="og:image" content="/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://gigatop.io">
+
+    <!-- Geist Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           DESIGN TOKENS — Mediterranean Technology
+           Swiss precision x Mediterranean energy
+           ============================================ */
+        :root {
+            /* Backgrounds */
+            --bg-primary: #102A33;
+            --bg-secondary: #0E2229;
+            --bg-elevated: #142C35;
+            --surface: #183340;
+            --surface-hover: #1D3A48;
+
+            /* Borders */
+            --border: rgba(240, 235, 226, 0.07);
+            --border-strong: rgba(240, 235, 226, 0.14);
+            --border-accent: rgba(214, 107, 69, 0.2);
+
+            /* Accent — Terracotta */
+            --accent: #D66B45;
+            --accent-hover: #E07850;
+            --accent-glow: rgba(214, 107, 69, 0.2);
+            --accent-muted: rgba(214, 107, 69, 0.08);
+
+            /* Sage / Olive */
+            --olive: #78866B;
+            --olive-glow: rgba(120, 134, 107, 0.12);
+
+            /* Text */
+            --text-primary: #F6F1E8;
+            --text-secondary: rgba(246, 241, 232, 0.55);
+            --text-tertiary: rgba(246, 241, 232, 0.32);
+            --text-accent: #D66B45;
+
+            /* Font */
+            --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, monospace;
+
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 5rem;
+            --space-4xl: 7rem;
+            --space-5xl: 9rem;
+
+            /* Layout */
+            --max-width: 1280px;
+            --max-width-narrow: 720px;
+
+            /* Radius */
+            --radius: 12px;
+
+            /* Easing */
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Selection */
+        ::selection { background: var(--accent); color: var(--text-primary); }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+
+        /* ============================================
+           TYPOGRAPHY SCALE
+           ============================================ */
+        h1, h2, h3, h4 { line-height: 1.1; font-weight: 700; letter-spacing: -0.035em; }
+        h1 { font-size: clamp(2.75rem, 6vw, 5rem); font-weight: 700; }
+        h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+        h4 { font-size: 1.125rem; font-weight: 600; }
+
+        p { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.65; max-width: 65ch; }
+        .text-lg { font-size: clamp(1.125rem, 1.5vw, 1.25rem); line-height: 1.6; color: var(--text-secondary); }
+
+        .label {
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .olive { color: var(--olive); }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-xl); }
+        .container--narrow { max-width: var(--max-width-narrow); margin-left: auto; margin-right: auto; }
+        .section { padding: var(--space-4xl) 0; position: relative; }
+
+        /* ============================================
+           NAVIGATION — 64px, sticky, blur
+           ============================================ */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            height: 64px; display: flex; align-items: center;
+            background: rgba(16, 42, 51, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border);
+            transition: transform 200ms var(--ease-out);
+        }
+        .nav--hidden { transform: translateY(-100%); }
+
+        .nav__inner { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-xl); }
+        .nav__logo { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; }
+        .nav__logo span { color: var(--accent); }
+
+        .nav__links { display: none; align-items: center; gap: var(--space-xl); }
+        @media (min-width: 768px) { .nav__links { display: flex; } }
+        .nav__link { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; font-weight: 500; transition: color 150ms var(--ease-out); }
+        .nav__link:hover { color: var(--text-primary); }
+        .nav__link--cta { color: var(--accent); }
+
+        .nav__menu-btn { display: block; background: none; border: none; color: var(--text-primary); cursor: pointer; padding: var(--space-sm); }
+        @media (min-width: 768px) { .nav__menu-btn { display: none; } }
+
+        .nav__mobile { display: none; padding: 0 0 var(--space-lg); }
+        .nav__mobile.open { display: block; }
+        @media (min-width: 768px) { .nav__mobile { display: none !important; } }
+        .nav__mobile-link { display: block; color: var(--text-secondary); text-decoration: none; font-size: 1rem; font-weight: 500; padding: var(--space-md) 0; border-bottom: 1px solid var(--border); }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: var(--space-sm);
+            padding: 0.6875rem 1.625rem;
+            font-size: 0.9375rem; font-weight: 600; font-family: var(--font-sans);
+            border-radius: var(--radius); border: none; cursor: pointer;
+            text-decoration: none; white-space: nowrap;
+            transition: transform 160ms var(--ease-out), background 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out);
+            will-change: transform;
+        }
+        .btn:active { transform: scale(0.97); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .btn--primary { background: var(--accent); color: var(--text-primary); }
+        .btn--primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
+
+        .btn--ghost { background: transparent; color: var(--text-primary); border: 1px solid var(--border-strong); }
+        .btn--ghost:hover { background: var(--surface); transform: translateY(-2px); }
+
+        .btn--large { padding: 0.875rem 2.25rem; font-size: 1rem; }
+
+        .btn--outline {
+            background: transparent; color: var(--text-primary);
+            border: 2px solid var(--border-strong);
+            padding: 0.875rem 2.5rem; font-size: 1.0625rem;
+        }
+        .btn--outline:hover { background: var(--surface); border-color: var(--accent); transform: translateY(-2px); }
+
+        /* ============================================
+           SCROLL REVEAL SYSTEM
+           ============================================ */
+        .reveal {
+            opacity: 0; transform: translateY(32px);
+            transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+        }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 100ms; }
+        .reveal-delay-2 { transition-delay: 200ms; }
+        .reveal-delay-3 { transition-delay: 300ms; }
+
+        .reveal-stagger > * {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+        }
+        .reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+        .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+        .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+        .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+        .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+        .reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+        .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 400ms; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* ============================================
+           SECTION 1: HERO — Asymmetric Split
+           No eyebrow. Just strong statement.
+           ============================================ */
+        .hero {
+            min-height: 100dvh; display: flex; align-items: center;
+            padding-top: 64px; position: relative; overflow: hidden;
+        }
+        .hero__bg {
+            position: absolute; inset: 0; z-index: 0;
+            background:
+                radial-gradient(ellipse 40% 50% at 75% 30%, var(--accent-glow), transparent 60%),
+                radial-gradient(ellipse 30% 40% at 15% 70%, var(--olive-glow), transparent 55%);
+        }
+        .hero__inner {
+            position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1fr;
+            gap: var(--space-2xl); align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .hero__inner { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-3xl); }
+        }
+        .hero__headline { font-size: clamp(2.75rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: var(--space-lg); }
+        .hero__headline em { font-style: italic; color: var(--accent); font-weight: 600; }
+        .hero__sub { font-size: clamp(1.0625rem, 1.5vw, 1.25rem); color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-2xl); max-width: 50ch; }
+        .hero__ctas { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+
+        /* Hero Visual — AI System Diagram */
+        .hero__visual {
+            position: relative; border-radius: var(--radius); overflow: hidden;
+            aspect-ratio: 4 / 3; background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+            padding: var(--space-xl);
+            display: flex; flex-direction: column; justify-content: center; gap: var(--space-sm);
+        }
+        .hero__visual-layer {
+            display: flex; align-items: center; justify-content: center;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 8px;
+            font-size: 0.875rem; font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+            position: relative;
+        }
+        .hero__visual-layer:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+        .hero__visual-layer--data { background: var(--bg-elevated); border: 1px solid var(--border-strong); color: var(--text-primary); padding: var(--space-xs) var(--space-md); font-size: 0.8125rem; }
+        .hero__visual-layer--ai { background: var(--accent-muted); border: 1px solid var(--border-accent); color: var(--accent); padding: var(--space-sm) var(--space-md); font-size: 0.9375rem; }
+        .hero__visual-layer--agents { background: var(--surface); border: 1px solid var(--border); color: var(--text-primary); padding: var(--space-xs) var(--space-md); font-size: 0.8125rem; }
+        .hero__visual-arrow { text-align: center; color: var(--text-tertiary); font-size: 0.75rem; font-family: var(--font-mono); }
+
+        /* ============================================
+           SECTION 2: MANIFESTO — Editorial Statement
+           ============================================ */
+        .manifesto {
+            padding: var(--space-5xl) 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        .manifesto__text {
+            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+            font-weight: 600; letter-spacing: -0.02em;
+            line-height: 1.25; max-width: 75ch; margin: 0 auto;
+        }
+        .manifesto__text em { font-style: italic; color: var(--accent); font-weight: 500; }
+
+        /* ============================================
+           SECTION 3: PROBLEM — Editorial, no cards
+           ============================================ */
+        .problem__grid {
+            display: grid; grid-template-columns: 1fr;
+            gap: var(--space-xl);
+        }
+        @media (min-width: 768px) {
+            .problem__grid { grid-template-columns: 1.3fr 0.7fr; gap: var(--space-2xl); }
+        }
+        .problem__main h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin-bottom: var(--space-md); }
+        .problem__main p { font-size: 1.125rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: var(--space-md); }
+        .problem__asides { display: flex; flex-direction: column; gap: var(--space-lg); }
+        .problem__aside {
+            padding: var(--space-xl);
+            border-top: 2px solid var(--accent);
+            background: var(--bg-secondary);
+            border-radius: 0 0 var(--radius) var(--radius);
+        }
+        .problem__aside h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-xs); }
+        .problem__aside p { font-size: 0.9375rem; line-height: 1.55; color: var(--text-secondary); }
+
+        /* ============================================
+           SECTION 4: USE CASES — Full-width spreads (alternating)
+           ============================================ */
+        .usecases__heading { text-align: center; margin-bottom: var(--space-2xl); }
+        .spread {
+            display: grid; grid-template-columns: 1fr;
+            border-bottom: 1px solid var(--border);
+            padding: var(--space-2xl) 0;
+        }
+        @media (min-width: 768px) {
+            .spread { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-3xl); }
+            .spread.reverse { grid-template-columns: 0.85fr 1.15fr; }
+        }
+        .spread__content { display: flex; flex-direction: column; justify-content: center; }
+        .spread__label { margin-bottom: var(--space-md); }
+        .spread__title { font-size: clamp(1.5rem, 3vw, 2.125rem); margin-bottom: var(--space-sm); }
+        .spread__desc { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: var(--space-lg); max-width: 48ch; }
+        .spread__link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9375rem; transition: opacity 150ms var(--ease-out); display: inline-flex; align-items: center; gap: var(--space-xs); }
+        .spread__link:hover { opacity: 0.8; }
+        .spread__link::after { content: '→'; transition: transform 150ms var(--ease-out); }
+        .spread__link:hover::after { transform: translateX(4px); }
+        .spread__visual {
+            border-radius: var(--radius); overflow: hidden;
+            background: var(--bg-secondary); border: 1px solid var(--border);
+            aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .spread--tint-a .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(214, 107, 69, 0.06)); }
+        .spread--tint-b .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(120, 134, 107, 0.08)); }
+        .spread--tint-c .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(214, 107, 69, 0.04)); }
+        .spread--tint-d .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(120, 134, 107, 0.06)); }
+        .spread--tint-e .spread__visual { background: linear-gradient(135deg, var(--bg-secondary), rgba(214, 107, 69, 0.05)); }
+
+        /* ============================================
+           SECTION 5: PRIVATE AI vs PUBLIC AI — Comparison
+           ============================================ */
+        .compare-section { background: var(--bg-secondary); }
+        .compare__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+        @media (min-width: 768px) { .compare__grid { grid-template-columns: 1fr 1fr; gap: var(--space-2xl); } }
+        .compare__card { padding: var(--space-2xl); border-radius: var(--radius); }
+        .compare__card--public { border: 1px solid var(--border); }
+        .compare__card--private { border: 1px solid var(--border-accent); background: var(--accent-muted); position: relative; }
+        .compare__card--private::before { content: 'Empfohlen'; position: absolute; top: var(--space-md); right: var(--space-md); font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; }
+        .compare__card h3 { font-size: 1.25rem; margin-bottom: var(--space-lg); }
+        .compare__card--public h3 { color: var(--text-secondary); }
+        .compare__card--private h3 { color: var(--accent); }
+        .compare__list { list-style: none; }
+        .compare__list li { padding: var(--space-sm) 0; border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--space-sm); }
+        .compare__list li .icon { flex-shrink: 0; }
+        .compare__card--public .compare__list li .icon { color: var(--text-tertiary); }
+        .compare__card--private .compare__list li .icon { color: var(--accent); }
+        .compare__flow { display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); padding: var(--space-xl); }
+        .compare__flow-step { font-size: 0.875rem; font-weight: 600; padding: var(--space-xs) var(--space-md); border-radius: 6px; }
+        .compare__flow-arrow { color: var(--text-tertiary); font-size: 0.75rem; }
+
+        /* ============================================
+           SECTION 6: AI AGENTS — Workflow
+           ============================================ */
+        .agents-flow { display: flex; flex-direction: column; gap: var(--space-md); align-items: center; }
+        @media (min-width: 768px) {
+            .agents-flow { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: var(--space-lg); }
+        }
+        .agent-step {
+            display: flex; flex-direction: column; align-items: center; gap: var(--space-xs);
+            padding: var(--space-lg); border-radius: var(--radius);
+            background: var(--bg-elevated); border: 1px solid var(--border);
+            min-width: 140px; text-align: center;
+            transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out);
+        }
+        .agent-step:hover { transform: translateY(-4px); border-color: var(--border-accent); }
+        .agent-step__icon { font-size: 1.5rem; margin-bottom: var(--space-xs); }
+        .agent-step__label { font-size: 0.875rem; font-weight: 600; }
+        .agent-step__desc { font-size: 0.75rem; color: var(--text-tertiary); }
+        .agent-arrow { color: var(--text-tertiary); font-size: 0.75rem; }
+        @media (max-width: 767px) { .agent-arrow { transform: rotate(90deg); margin: var(--space-xs) 0; } }
+
+        /* ============================================
+           SECTION 7: ARCHITECTURE — Layered stack
+           ============================================ */
+        .arch__inner { text-align: center; max-width: 800px; margin: 0 auto; }
+        .arch__inner p { margin: 0 auto; }
+        .arch__stack { max-width: 720px; margin: var(--space-2xl) auto 0; display: flex; flex-direction: column; gap: 0; }
+        .arch__layer {
+            padding: var(--space-lg) var(--space-xl);
+            display: flex; align-items: center; justify-content: center; gap: var(--space-lg);
+            font-size: 0.9375rem; font-weight: 500;
+            transition: background 200ms var(--ease-out);
+        }
+        .arch__layer:hover { background: rgba(255,255,255,0.02); }
+        .arch__layer:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+        .arch__layer:last-child { border-radius: 0 0 var(--radius) var(--radius); }
+        .arch__layer--people { background: var(--bg-elevated); border: 1px solid var(--border); border-bottom: none; }
+        .arch__layer--ai { background: var(--accent-muted); border: 1px solid var(--border-accent); border-bottom: none; }
+        .arch__layer--systems { background: var(--surface); border: 1px solid var(--border); border-bottom: none; }
+        .arch__layer--infra { background: var(--bg-secondary); border: 1px solid var(--border); }
+        .arch__layer-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; min-width: 120px; }
+        .arch__layer-items { display: flex; gap: var(--space-md); flex-wrap: wrap; justify-content: center; }
+        .arch__layer-item { font-size: 0.875rem; color: var(--text-secondary); }
+        .arch__layer-arrow { text-align: center; color: var(--text-tertiary); font-family: var(--font-mono); font-size: 0.75rem; padding: var(--space-xs); }
+
+        /* ============================================
+           SECTION 8: HOW IT WORKS — Timeline
+           ============================================ */
+        .steps__inner { max-width: 700px; margin: 0 auto; }
+        .step { display: grid; grid-template-columns: 60px 1fr; gap: var(--space-lg); padding: var(--space-xl) 0; }
+        .step__number {
+            font-size: 0.875rem; font-family: var(--font-mono); font-weight: 600;
+            color: var(--accent); display: flex; align-items: flex-start; justify-content: center;
+            padding-top: var(--space-xs);
+        }
+        .step__content h4 { font-size: 1.25rem; margin-bottom: var(--space-xs); }
+        .step__content p { font-size: 1rem; line-height: 1.6; }
+        .step-line { grid-column: 1 / 2; width: 1px; background: var(--border); margin: 0 auto; height: var(--space-xl); }
+
+        /* ============================================
+           SECTION 9: DEPLOYMENT OPTIONS — 3 columns
+           ============================================ */
+        .deploy__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+        @media (min-width: 768px) { .deploy__grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); } }
+        .deploy__card { padding: var(--space-2xl); border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-secondary); text-align: center; transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out); }
+        .deploy__card:hover { transform: translateY(-4px); border-color: var(--border-accent); }
+        .deploy__card--featured { border-color: var(--border-accent); background: var(--accent-muted); }
+        .deploy__card--featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); border-radius: var(--radius) var(--radius) 0 0; }
+        .deploy__card { position: relative; }
+        .deploy__badge { font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-md); }
+        .deploy__card h3 { font-size: 1.25rem; margin-bottom: var(--space-sm); }
+        .deploy__card p { font-size: 0.9375rem; margin: 0 auto var(--space-lg); }
+        .deploy__features { list-style: none; text-align: left; }
+        .deploy__features li { padding: var(--space-xs) 0; font-size: 0.9375rem; color: var(--text-secondary); display: flex; align-items: center; gap: var(--space-xs); }
+
+        /* ============================================
+           SECTION 10: AI USE CASE FINDER — Interactive
+           ============================================ */
+        .finder { background: var(--bg-secondary); }
+        .finder__form { max-width: 600px; margin: 0 auto; }
+        .finder__question { margin-bottom: var(--space-xl); }
+        .finder__question label { display: block; font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-md); }
+        .finder__options { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+        .finder__option {
+            padding: var(--space-sm) var(--space-md); border-radius: 8px;
+            border: 1px solid var(--border); background: var(--bg-elevated);
+            color: var(--text-secondary); font-size: 0.9375rem; cursor: pointer;
+            font-family: var(--font-sans); font-weight: 500;
+            transition: all 150ms var(--ease-out);
+            user-select: none;
+        }
+        .finder__option:hover { border-color: var(--border-strong); color: var(--text-primary); }
+        .finder__option.selected { border-color: var(--accent); background: var(--accent-muted); color: var(--accent); }
+        .finder__result {
+            display: none; padding: var(--space-2xl); border-radius: var(--radius);
+            background: var(--accent-muted); border: 1px solid var(--border-accent);
+            text-align: center;
+        }
+        .finder__result.visible { display: block; }
+        .finder__result h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: var(--space-md); }
+        .finder__result p { margin: 0 auto var(--space-lg); }
+        .finder__result .opportunity { font-size: 1.25rem; font-weight: 700; margin-bottom: var(--space-xs); }
+        .finder__result .potential { font-size: 0.875rem; color: var(--accent); font-family: var(--font-mono); letter-spacing: 0.04em; }
+
+        /* ============================================
+           SECTION 11: WHY GIGATOP — Feature strip
+           ============================================ */
+        .reasons { background: var(--bg-secondary); }
+        .reasons__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+        @media (min-width: 768px) { .reasons__grid { grid-template-columns: repeat(2, 1fr); } }
+        .reason__item { padding: var(--space-xl); border-bottom: 1px solid var(--border); }
+        .reason__item h3 { font-size: 1.25rem; margin-bottom: var(--space-sm); }
+        .reason__item p { font-size: 1rem; }
+
+        /* ============================================
+           SECTION 12: FOUNDER
+           ============================================ */
+        .founder { background: var(--bg-secondary); border-top: 1px solid var(--border); }
+        .founder__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-2xl); align-items: center; }
+        @media (min-width: 768px) { .founder__grid { grid-template-columns: 0.6fr 1.4fr; } }
+        .founder__avatar { aspect-ratio: 3/4; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .founder__avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .founder__text h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin-bottom: var(--space-lg); }
+        .founder__text p { font-size: 1.125rem; margin-bottom: var(--space-md); }
+        .founder__name { font-size: 1rem; font-weight: 600; color: var(--accent); margin-top: var(--space-lg); }
+
+        /* ============================================
+           SECTION 13: INSIGHTS PREVIEW
+           ============================================ */
+        .insights__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+        @media (min-width: 768px) { .insights__grid { grid-template-columns: repeat(3, 1fr); } }
+        .insight__card { padding: var(--space-xl); border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-secondary); transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out); }
+        .insight__card:hover { transform: translateY(-4px); border-color: var(--border-accent); }
+        .insight__category { font-size: 0.75rem; font-family: var(--font-mono); color: var(--olive); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-sm); }
+        .insight__card h3 { font-size: 1.125rem; margin-bottom: var(--space-sm); }
+        .insight__card p { font-size: 0.9375rem; }
+        .insights__more { text-align: center; margin-top: var(--space-2xl); }
+
+        /* ============================================
+           SECTION 14: FINAL CTA — Dark accent section
+           ============================================ */
+        .final-cta { background: var(--bg-primary); padding: var(--space-5xl) 0; text-align: center; border-top: 1px solid var(--border); }
+        .final-cta h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: var(--space-md); }
+        .final-cta p { font-size: 1.25rem; color: var(--text-secondary); margin: 0 auto var(--space-2xl); max-width: 52ch; }
+
+        /* ============================================
+           FAQ — Accordion
+           ============================================ */
+        .faq__list { max-width: var(--max-width-narrow); margin: 0 auto; }
+        .faq__heading { text-align: center; margin-bottom: var(--space-2xl); }
+        .faq__item { border-bottom: 1px solid var(--border); }
+        .faq__question {
+            width: 100%; display: flex; justify-content: space-between; align-items: center;
+            padding: var(--space-lg) 0; background: none; border: none;
+            color: var(--text-primary); font-size: 1.0625rem; font-weight: 600;
+            font-family: var(--font-sans); text-align: left; cursor: pointer;
+            transition: color 150ms var(--ease-out);
+        }
+        .faq__question:hover { color: var(--accent); }
+        .faq__icon { font-size: 1.375rem; font-weight: 300; transition: transform 250ms var(--ease-out); flex-shrink: 0; margin-left: var(--space-md); color: var(--text-tertiary); }
+        .faq__item.open .faq__icon { transform: rotate(45deg); color: var(--accent); }
+        .faq__answer { max-height: 0; overflow: hidden; transition: max-height 350ms var(--ease-out), padding 250ms var(--ease-out); }
+        .faq__item.open .faq__answer { max-height: 400px; padding-bottom: var(--space-lg); }
+        .faq__answer p { font-size: 1rem; line-height: 1.65; }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer { padding: var(--space-3xl) 0; border-top: 1px solid var(--border); }
+        .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-xl); }
+        .footer__brand { font-size: 1.25rem; font-weight: 700; margin-bottom: var(--space-xs); }
+        .footer__brand span { color: var(--accent); }
+        .footer__copy { font-size: 0.875rem; color: var(--text-tertiary); }
+        .footer__links { display: flex; gap: var(--space-xl); flex-wrap: wrap; }
+        .footer__link { font-size: 0.9375rem; color: var(--text-secondary); text-decoration: none; }
+        .footer__link:hover { color: var(--text-primary); }
+
+        /* ============================================
+           CONTACT MODAL
+           ============================================ */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(12px);
+            z-index: 2000; align-items: center; justify-content: center;
+            padding: var(--space-md);
+        }
+        .modal-overlay.open { display: flex; }
+        .modal {
+            background: var(--bg-elevated); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: var(--space-2xl);
+            max-width: 500px; width: 100%; position: relative;
+            transform: scale(0.95); opacity: 0;
+            transition: transform 250ms var(--ease-out), opacity 250ms var(--ease-out);
+        }
+        .modal-overlay.open .modal { transform: scale(1); opacity: 1; }
+        .modal__close { position: absolute; top: var(--space-md); right: var(--space-md); background: none; border: none; color: var(--text-tertiary); font-size: 1.5rem; cursor: pointer; padding: var(--space-xs); line-height: 1; transition: color 150ms var(--ease-out); }
+        .modal__close:hover { color: var(--text-primary); }
+        .modal__title { font-size: 1.5rem; font-weight: 700; margin-bottom: var(--space-xs); }
+        .modal__subtitle { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: var(--space-xl); }
+        .form-group { margin-bottom: var(--space-md); }
+        .form-label { display: block; font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); margin-bottom: var(--space-xs); }
+        .form-input, .form-textarea, .form-select {
+            width: 100%; padding: 0.75rem 1rem; font-size: 1rem;
+            font-family: var(--font-sans); background: var(--bg-primary);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            color: var(--text-primary);
+            transition: border-color 150ms var(--ease-out);
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none; border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .form-textarea { resize: vertical; min-height: 120px; }
+        .form-submit { width: 100%; margin-top: var(--space-md); }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 767px) {
+            .section { padding: var(--space-3xl) 0; }
+            .hero { min-height: auto; padding: 120px 0 var(--space-2xl); }
+            .hero__headline { font-size: clamp(2.25rem, 8vw, 2.75rem); }
+            .hero__sub { font-size: 1.0625rem; }
+            .hero__ctas { flex-direction: column; }
+            .hero__ctas .btn { width: 100%; }
+            .btn { width: 100%; justify-content: center; }
+            .problem__asides { flex-direction: column; }
+            .spread { grid-template-columns: 1fr !important; }
+            .spread__visual { aspect-ratio: 16/9; }
+            .deploy__grid { grid-template-columns: 1fr; }
+            .reasons__grid { grid-template-columns: 1fr; }
+            .insights__grid { grid-template-columns: 1fr; }
+            .footer__inner { flex-direction: column; text-align: center; }
+            .footer__links { justify-content: center; }
+            .step { grid-template-columns: 40px 1fr; gap: var(--space-md); }
+        }
+
+        /* ============================================
+           LIGHT MODE
+           ============================================ */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-primary: #FAFAF8; --bg-secondary: #F4F2EE;
+                --bg-elevated: #FFFFFF; --surface: #EDEAE4;
+                --surface-hover: #E5E1DB;
+                --border: rgba(0, 0, 0, 0.06);
+                --border-strong: rgba(0, 0, 0, 0.1);
+                --accent: #C4583E; --accent-hover: #D66B45;
+                --accent-glow: rgba(196, 88, 62, 0.1);
+                --accent-muted: rgba(196, 88, 62, 0.04);
+                --olive: #5E6F52; --olive-glow: rgba(94, 111, 82, 0.08);
+                --text-primary: #1A1A1A;
+                --text-secondary: rgba(26, 26, 26, 0.6);
+                --text-tertiary: rgba(26, 26, 26, 0.4);
+                --text-accent: #C4583E;
+            }
+            .modal { background: var(--bg-elevated); }
+            .form-input, .form-textarea, .form-select { background: var(--bg-primary); }
+            .nav { background: rgba(250, 250, 248, 0.85); }
+            ::-webkit-scrollbar-thumb { background: var(--border-strong); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">giga<span>top</span></a>
+            <div class="nav__links">
+                <a href="#loesungen" class="nav__link">Loesungen</a>
+                <a href="#private-ai" class="nav__link">Private AI</a>
+                <a href="#architektur" class="nav__link">Architektur</a>
+                <a href="#ablauf" class="nav__link">Ablauf</a>
+                <a href="#ueber" class="nav__link">Ueber</a>
+                <a href="#insights" class="nav__link">Insights</a>
+                <a href="#" class="nav__link nav__link--cta" onclick="openModal(); return false;">Kunde-Login</a>
+                <a href="#" class="btn btn--primary" onclick="openModal(); return false;" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">AI Session buchen</a>
+            </div>
+            <button class="nav__menu-btn" onclick="toggleMobile()" aria-label="Menu">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    <line x1="2" y1="5" x2="18" y2="5"/>
+                    <line x1="2" y1="10" x2="18" y2="10"/>
+                    <line x1="2" y1="15" x2="18" y2="15"/>
+                </svg>
+            </button>
+            <div class="nav__mobile" id="mobile-menu">
+                <a href="#loesungen" class="nav__mobile-link" onclick="toggleMobile()">Loesungen</a>
+                <a href="#private-ai" class="nav__mobile-link" onclick="toggleMobile()">Private AI</a>
+                <a href="#architektur" class="nav__mobile-link" onclick="toggleMobile()">Architektur</a>
+                <a href="#ablauf" class="nav__mobile-link" onclick="toggleMobile()">Ablauf</a>
+                <a href="#ueber" class="nav__mobile-link" onclick="toggleMobile()">Ueber</a>
+                <a href="#insights" class="nav__mobile-link" onclick="toggleMobile()">Insights</a>
+                <a href="#" class="nav__mobile-link" onclick="openModal(); toggleMobile(); return false;">Kunde-Login</a>
+                <a href="#" class="btn btn--primary" onclick="openModal(); toggleMobile(); return false;" style="margin-top: 1rem;">AI Session buchen</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero__bg"></div>
+        <div class="container">
+            <div class="hero__inner">
+                <div>
+                    <h1 class="hero__headline reveal">
+                        Ihre KI.<br>
+                        Ihre Daten.<br>
+                        <em>Ihre Infrastruktur.</em>
+                    </h1>
+                    <p class="hero__sub reveal reveal-delay-1">
+                        Gigatop baut Private AI-Systeme und intelligente Agents, die direkt mit Ihren Unternehmensdaten arbeiten. Auf Wunsch vollstaendig innerhalb Ihrer eigenen Infrastruktur.
+                    </p>
+                    <div class="hero__ctas reveal reveal-delay-2">
+                        <a href="#" class="btn btn--primary btn--large" onclick="openModal(); return false;">AI Potenzial entdecken</a>
+                        <a href="#private-ai" class="btn btn--ghost btn--large">Private AI ansehen</a>
+                    </div>
+                </div>
+                <div class="hero__visual reveal reveal-delay-2">
+                    <div class="hero__visual-layer hero__visual-layer--data">
+                        CRM &bull; ERP &bull; SharePoint &bull; E-Mail &bull; SQL
+                    </div>
+                    <div class="hero__visual-arrow">&#8595; &nbsp; Ihre Daten &nbsp; &#8593;</div>
+                    <div class="hero__visual-layer hero__visual-layer--ai">
+                        &#9632; GIGATOP AI LAYER &#9632;
+                    </div>
+                    <div class="hero__visual-arrow">&#8595; &nbsp; Agents &bull; RAG &bull; Automation &nbsp; &#8593;</div>
+                    <div class="hero__visual-layer hero__visual-layer--agents">
+                        Sales Agent &bull; Knowledge Agent &bull; Document Agent
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto">
+        <div class="container">
+            <p class="manifesto__text reveal">
+                In einer Welt, in der Ihre sensibelsten Daten an Cloud-Anbieter wandern, ist <em>Loeslichkeit</em> kein Feature. Es ist eine Voraussetzung.
+            </p>
+            <p class="manifesto__attribution reveal reveal-delay-1">Die Gigatop Praemisse</p>
+        </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section problem" id="herausforderungen">
+        <div class="container">
+            <div class="problem__grid">
+                <div class="problem__main reveal">
+                    <h2>Ihr Unternehmen hat die Daten.<br>AI kann sie nur noch nicht sinnvoll nutzen.</h2>
+                    <p>Schweizer Unternehmen speichern ihre wertvollsten Informationen in Dutzenden Systemen. SAP, SharePoint, E-Mails, PDFs, CRMs. Doch diese Daten bleiben still. AI kann sie noch nicht verbinden, verstehen und in handlungsfaehiges Wissen verwandeln.</p>
+                    <p class="text-lg" style="color: var(--accent); margin-top: var(--space-lg);">
+                        Wir bauen die Verbindung. Ohne Ihre Daten aus Ihrem Netzwerk zu schicken.
+                    </p>
+                </div>
+                <div class="problem__asides">
+                    <div class="problem__aside reveal reveal-delay-1">
+                        <h3>Cloud-Risiko</h3>
+                        <p>US-Cloudanbieter koennen Ihre Daten an US-Behoerden herausgeben. Trotz Schweizer Datenschutzgesetze.</p>
+                    </div>
+                    <div class="problem__aside reveal reveal-delay-2">
+                        <h3>Kostenexplosion</h3>
+                        <p>Pro-Token-Preise wachsen exponentiell. Was heute verstaenglich ist, wird zum Budget-Problem.</p>
+                    </div>
+                    <div class="problem__aside reveal reveal-delay-3">
+                        <h3>Kein Unternehmenswissen</h3>
+                        <p>Standard-AIs kennen Ihr Know-how, Ihre Prozesse und Ihre Sprache nicht.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="section" id="loesungen">
+        <div class="container">
+            <div class="usecases__heading reveal">
+                <h2>Loesungen, die messbar sind.</h2>
+            </div>
+        </div>
+        <div class="container">
+            <!-- Spread 1: Sales -->
+            <div class="spread spread--tint-a reveal-stagger">
+                <div class="spread__content">
+                    <div class="spread__label">Vertrieb &bull; Sales</div>
+                    <h3 class="spread__title">AI Sales Intelligence</h3>
+                    <p class="spread__desc">CRM, E-Mail, Meetings, Website-Leads. Die AI erkennt Prioritaets-Leads, Kaufsignale, Risiken im Pipeline und gibt die naechste beste Aktion vor.</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                </div>
+                <div class="spread__visual">
+                    <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
+                        <div style="color: var(--accent); font-size: 0.875rem; margin-bottom: var(--space-xs);">Pipeline-Analyse</div>
+                        <div>Prioritaet: HOECHST</div>
+                        <div>Buying Signal: +3</div>
+                        <div>Risiko: Mässig</div>
+                        <div>Next Action: Follow-up</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spread 2: Knowledge -->
+            <div class="spread spread--tint-b reverse reveal-stagger">
+                <div class="spread__visual">
+                    <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
+                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);">Wissensabfrage</div>
+                        <div>»Was gilt fuer Kunde X?«</div>
+                        <div>»Fasse Projekt Y zusammen«</div>
+                        <div>»Wo ist Vertrag Z?«</div>
+                        <div style="margin-top: var(--space-sm); color: var(--olive);">→ Antworten mit Quellen</div>
+                    </div>
+                </div>
+                <div class="spread__content">
+                    <div class="spread__label">Wissensmanagement</div>
+                    <h3 class="spread__title">Privates Unternehmenswissen</h3>
+                    <p class="spread__desc">SharePoint, PDF, Word, ERP, Fileserver, Wiki. Mitarbeiter koennen natuerlich fragen. Mit Quellenangaben. Und vollstaendig lokal.</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                </div>
+            </div>
+
+            <!-- Spread 3: Documents -->
+            <div class="spread spread--tint-c reveal-stagger">
+                <div class="spread__content">
+                    <div class="spread__label">Dokumente &bull; Operations</div>
+                    <h3 class="spread__title">AI Document Operations</h3>
+                    <p class="spread__desc">PDFs, Rechnungen, Vertraege, Angebote, Formulare. Automatische Extraktion, Validierung und Weiterleitung an ERP oder CRM. Mit menschlicher Freigabe.</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                </div>
+                <div class="spread__visual">
+                    <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
+                        <div style="color: var(--accent); font-size: 0.875rem; margin-bottom: var(--space-xs);">Dokumenten-Pipeline</div>
+                        <div>PDF / Rechnung → Extraktion → Validierung → ERP</div>
+                        <div style="margin-top: var(--space-sm);">Status: Freigabe offen</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spread 4: Executive -->
+            <div class="spread spread--tint-d reverse reveal-stagger">
+                <div class="spread__visual">
+                    <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
+                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);">Morning Brief</div>
+                        <div>Umsatz +2.3% vs. Plan</div>
+                        <div>Pipeline-Risiko: 2 Keys Accounts</div>
+                        <div>Kundenaktivitaet: +4 Tickets</div>
+                        <div>Prioritaet: A-Deal verfolgen</div>
+                    </div>
+                </div>
+                <div class="spread__content">
+                    <div class="spread__label">Executive Intelligence</div>
+                    <h3 class="spread__title">Morning Briefings, die erzaehlen</h3>
+                    <p class="spread__desc">Nicht nur Zahlen. Die AI erklaert: Was hat sich geaendert? Warum ist es wichtig? Was sollten wir tun?</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                </div>
+            </div>
+
+            <!-- Spread 5: Performance -->
+            <div class="spread spread--tint-e reveal-stagger">
+                <div class="spread__content">
+                    <div class="spread__label">Performance &bull; Coaching</div>
+                    <h3 class="spread__title">AI Health & Performance Coach</h3>
+                    <p class="spread__desc">Wearables, Schlaf, HRV, Training, Erholung. Die AI erstellt Performance-Insights, Regenerationstrends und Trainingsempfehlungen. Keine medizinische Diagnose.</p>
+                    <a href="#" class="spread__link" onclick="openModal(); return false;">Gespraech anfragen</a>
+                </div>
+                <div class="spread__visual">
+                    <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
+                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);">Recovery-Analyse</div>
+                        <div>HRV Trend: Steigend +5%</div>
+                        <div>Schlaf: 7.2h (durchschn.)</div>
+                        <div>Empfehlung: Leichtes Training</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVATE AI vs PUBLIC AI -->
+    <section class="section compare-section" id="private-ai">
+        <div class="container">
+            <div class="usecases__heading reveal">
+                <h2>Private AI. Ihre Wahl.</h2>
+            </div>
+            <div class="compare__grid">
+                <!-- Public AI -->
+                <div class="compare__card compare__card--public reveal">
+                    <h3>Public AI</h3>
+                    <div class="compare__flow">
+                        <div class="compare__flow-step" style="background: var(--bg-primary);">Ihrer Unternehmen</div>
+                        <div class="compare__flow-arrow">&#8595; Daten wandern ab</div>
+                        <div class="compare__flow-step" style="background: var(--surface);">Internet</div>
+                        <div class="compare__flow-arrow">&#8595;</div>
+                        <div class="compare__flow-step" style="background: var(--surface);">Aeussere KI-Anbieter</div>
+                        <div class="compare__flow-arrow">&#8595;</div>
+                        <div class="compare__flow-step" style="background: var(--bg-primary);">KI-Antwort</div>
+                    </div>
+                </div>
+                <!-- Private AI -->
+                <div class="compare__card compare__card--private reveal reveal-delay-1">
+                    <h3>Private AI</h3>
+                    <div class="compare__flow">
+                        <div class="compare__flow-step" style="background: var(--bg-primary);">Ihrer Unternehmen</div>
+                        <div class="compare__flow-arrow">&#8595; Bleibt lokal</div>
+                        <div class="compare__flow-step" style="background: var(--accent-muted); border: 1px solid var(--border-accent);">Lokale KI-Engine</div>
+                        <div class="compare__flow-arrow">&#8595;</div>
+                        <div class="compare__flow-step" style="background: var(--surface);">Agents & Automation</div>
+                        <div class="compare__flow-arrow">&#8595;</div>
+                        <div class="compare__flow-step" style="background: var(--bg-primary);">Handlung</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI AGENTS -->
+    <section class="section" id="agents">
+        <div class="container">
+            <div class="usecases__heading reveal">
+                <h2>AI, die nicht nur antwortet.<br>AI, die handelt.</h2>
+            </div>
+            <p class="text-lg" style="text-align: center; margin: 0 auto var(--space-2xl); max-width: 52ch;">
+                Chatbot: Frage → Antwort. Agent: Beobachten, Verstehen, Entscheiden, Handeln.
+            </p>
+            <div class="agents-flow reveal-stagger">
+                <div class="agent-step">
+                    <div class="agent-step__icon">&#128202;</div>
+                    <div class="agent-step__label">Beobachten</div>
+                    <div class="agent-step__desc">CRM, E-Mail, Daten</div>
+                </div>
+                <div class="agent-arrow">&#8594;</div>
+                <div class="agent-step">
+                    <div class="agent-step__icon">&#129309;</div>
+                    <div class="agent-step__label">Verstehen</div>
+                    <div class="agent-step__desc">Kontext, Muster</div>
+                </div>
+                <div class="agent-arrow">&#8594;</div>
+                <div class="agent-step">
+                    <div class="agent-step__icon">&#9881;</div>
+                    <div class="agent-step__label">Entscheiden</div>
+                    <div class="agent-step__desc">Regeln, Kontext</div>
+                </div>
+                <div class="agent-arrow">&#8594;</div>
+                <div class="agent-step">
+                    <div class="agent-step__icon">&#9889;</div>
+                    <div class="agent-step__label">Handeln</div>
+                    <div class="agent-step__desc">Systeme, Workflows</div>
+                </div>
+            </div>
+
+            <div class="container" style="margin-top: var(--space-3xl);">
+                <div class="reveal-stagger" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md);">
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">CRM analysieren &amp; priorisieren</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">Meetings vorbereiten</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">Reports erstellen</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">Dokumente verarbeiten</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">E-Mails vorbereiten</div>
+                    <div style="padding: var(--space-md); border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-secondary);">Mitarbeiter informieren</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="arch" id="architektur" style="background: var(--bg-secondary); padding: var(--space-5xl) 0;">
+        <div class="container">
+            <div class="arch__inner reveal">
+                <h2>Architektur, die unter Ihrer Kontrolle bleibt.</h2>
+                <p>Drei Schichten. Null Cloud-Abhaengigkeit. Vollstaendig in Ihrer Infrastruktur.</p>
+            </div>
+            <div class="arch__stack reveal reveal-delay-1">
+                <div class="arch__layer arch__layer--people">
+                    <div class="arch__layer-label">People</div>
+                    <div class="arch__layer-items">
+                        <span class="arch__layer-item">Teams</span>
+                        <span class="arch__layer-item">Web</span>
+                        <span class="arch__layer-item">Mobile</span>
+                        <span class="arch__layer-item">Anwendungen</span>
+                    </div>
+                </div>
+                <div class="arch__layer-arrow">&#8595;</div>
+                <div class="arch__layer arch__layer--ai">
+                    <div class="arch__layer-label">AI Layer</div>
+                    <div class="arch__layer-items">
+                        <span class="arch__layer-item">Agents</span>
+                        <span class="arch__layer-item">RAG</span>
+                        <span class="arch__layer-item">Automation</span>
+                        <span class="arch__layer-item">Model Router</span>
+                        <span class="arch__layer-item">Permissions</span>
+                        <span class="arch__layer-item">Audit</span>
+                    </div>
+                </div>
+                <div class="arch__layer-arrow">&#8595;</div>
+                <div class="arch__layer arch__layer--systems">
+                    <div class="arch__layer-label">Systeme</div>
+                    <div class="arch__layer-items">
+                        <span class="arch__layer-item">SharePoint</span>
+                        <span class="arch__layer-item">CRM</span>
+                        <span class="arch__layer-item">ERP</span>
+                        <span class="arch__layer-item">SQL</span>
+                        <span class="arch__layer-item">Files</span>
+                        <span class="arch__layer-item">APIs</span>
+                    </div>
+                </div>
+                <div class="arch__layer-arrow">&#8595;</div>
+                <div class="arch__layer arch__layer--infra">
+                    <div class="arch__layer-label">Infrastruktur</div>
+                    <div class="arch__layer-items">
+                        <span class="arch__layer-item">Lokale Modelle</span>
+                        <span class="arch__layer-item">GPU-Compute</span>
+                        <span class="arch__layer-item">Optionale Cloud-Modelle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="ablauf">
+        <div class="container">
+            <div class="usecases__heading reveal">
+                <h2>So funktioniert es.</h2>
+            </div>
+            <div class="steps__inner">
+                <div class="step reveal">
+                    <div class="step__number">01</div>
+                    <div class="step__content">
+                        <h4>Discover</h4>
+                        <p>Wir identifizieren Ihre Prozesse, Daten und AI-Moeglichkeiten. Ohne Blabla. Mit konkreten Ergebnissen.</p>
+                    </div>
+                </div>
+                <div class="step-line reveal reveal-delay-1"></div>
+                <div class="step reveal">
+                    <div class="step__number">02</div>
+                    <div class="step__content">
+                        <h4>Prototype</h4>
+                        <p>Proof of Concept bauen. Schnell, messbar, real. Kein theoretisches Konstrukt.</p>
+                    </div>
+                </div>
+                <div class="step-line reveal reveal-delay-1"></div>
+                <div class="step reveal">
+                    <div class="step__number">03</div>
+                    <div class="step__content">
+                        <h4>Connect</h4>
+                        <p>CRM, Datenbanken, SharePoint, APIs. Alles verbindet sich mit Ihrer AI-Engine.</p>
+                    </div>
+                </div>
+                <div class="step-line reveal reveal-delay-1"></div>
+                <div class="step reveal">
+                    <div class="step__number">04</div>
+                    <div class="step__content">
+                        <h4>Deploy</h4>
+                        <p>Lokal, hosted oder hybrid. Sie waehlen, wo Ihre AI laeuft.</p>
+                    </div>
+                </div>
+                <div class="step-line reveal reveal-delay-1"></div>
+                <div class="step reveal">
+                    <div class="step__number">05</div>
+                    <div class="step__content">
+                        <h4>Improve</h4>
+                        <p>Agents, Modelle und Prozesse optimieren. Kontinuierlich. Messbar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPLOYMENT OPTIONS -->
+    <section class="section" id="deployment" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="usecases__heading reveal">
+                <h2>Drei Wege. Alle Ihre Kontrolle.</h2>
+            </div>
+            <div class="deploy__grid">
+                <div class="deploy__card deploy__card--featured reveal reveal-delay-1">
+                    <div class="deploy__badge">Empfohlen</div>
+                    <h3>Private AI</h3>
+                    <p>AI laeuft vollstaendig innerhalb Ihrer Infrastruktur. Keine Cloud. Keine Abhaengigkeit.</p>
+                    <ul class="deploy__features">
+                        <li>&#10003; Voellig lokal</li>
+                        <li>&#10003; Maximum an Sicherheit</li>
+                        <li>&#10003; Keine Datenabwanderung</li>
+                        <li>&#10003; Custom Modelle</li>
+                    </ul>
+                </div>
+                <div class="deploy__card reveal reveal-delay-2">
+                    <h3>Private Hosted</h3>
+                    <p>Dedizierte Umgebung. Wir betreiben, Sie kontrollieren.</p>
+                    <ul class="deploy__features">
+                        <li>&#10003; Dedizierte Infrastruktur</li>
+                        <li>&#10003; Managed durch Gigatop</li>
+                        <li>&#10003; Keine eigene Hardware</li>
+                        <li>&#10003; Monitoring inklusive</li>
+                    </ul>
+                </div>
+                <div class="deploy__card reveal reveal-delay-3">
+                    <h3>Hybrid AI</h3>
+                    <p>Lokale Daten plus ausgewaehlte externe AI-Services.</p>
+                    <ul class="deploy__features">
+                        <li>&#10003; Beste von beiden Welten</li>
+                        <li>&#10003; Sensitiv: lokal</li>
+                        <li>&#10003; Nicht-kritisch: Cloud</li>
+                        <li>&#10003; Flexible Modelle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI USE CASE FINDER -->
+    <section class="section finder" id="use-case-finder">
+        <div class="container container--narrow">
+            <div class="usecases__heading reveal">
+                <h2>Was koennte AI in Ihrem Unternehmen tun?</h2>
+            </div>
+            <p class="text-lg" style="text-align: center; margin: 0 auto var(--space-2xl);">Finden Sie Ihre AI-Moeglichkeit in wenigen Schritten.</p>
+
+            <div class="finder__form reveal">
+                <div class="finder__question">
+                    <label>Abteilung?</label>
+                    <div class="finder__options" data-group="department">
+                        <button type="button" class="finder__option" data-value="vertrieb">Vertrieb</button>
+                        <button type="button" class="finder__option" data-value="hr">HR</button>
+                        <button type="button" class="finder__option" data-value="support">Kundensupport</button>
+                        <button type="button" class="finder__option" data-value="finance">Finance</button>
+                        <button type="button" class="finder__option" data-value="ops">Operations</button>
+                        <button type="button" class="finder__option" data-value="management">Management</button>
+                    </div>
+                </div>
+                <div class="finder__question">
+                    <label>Staerke wiederkehrende Aufgabe?</label>
+                    <div class="finder__options" data-group="task">
+                        <button type="button" class="finder__option" data-value="data">Daten zusammenfuehren</button>
+                        <button type="button" class="finder__option" data-value="reports">Reports erstellen</button>
+                        <button type="button" class="finder__option" data-value="docs">Dokumente verarbeiten</button>
+                        <button type="button" class="finder__option" data-value="analysis">Analysen durchfuehren</button>
+                        <button type="button" class="finder__option" data-value="communication">Kommunikation automatisieren</button>
+                    </div>
+                </div>
+                <div class="finder__question">
+                    <label>Welche Datenquellen nutzen Sie?</label>
+                    <div class="finder__options" data-group="sources">
+                        <button type="button" class="finder__option" data-value="crm">CRM</button>
+                        <button type="button" class="finder__option" data-value="email">E-Mail</button>
+                        <button type="button" class="finder__option" data-value="sharepoint">SharePoint</button>
+                        <button type="button" class="finder__option" data-value="erp">ERP / SAP</button>
+                        <button type="button" class="finder__option" data-value="docs">PDFs / Dokumente</button>
+                    </div>
+                </div>
+
+                <div class="finder__result" id="finder-result">
+                    <div class="opportunity" id="result-title"></div>
+                    <div class="potential" id="result-potential"></div>
+                    <p id="result-desc" style="margin-top: var(--space-lg);"></p>
+                    <a href="#" class="btn btn--primary" onclick="openModal(); return false;" style="margin-top: var(--space-lg);">Use Case besprechen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY GIGATOP -->
+    <section class="section reasons" id="warum">
+        <div class="container">
+            <div class="usecases__heading reveal">
+                <h2>Warum Gigatop?</h2>
+            </div>
+            <div class="reasons__grid">
+                <div class="reason__item reveal">
+                    <h3>Wir bauen. Wir reden nicht.</h3>
+                    <p>Wir reden nicht monatelang ueber AI. Wir bauen, testen und verbessern. Schnell, pragmatisch, messbar.</p>
+                </div>
+                <div class="reason__item reveal reveal-delay-1">
+                    <h3>Models change. Architecture stays.</h3>
+                    <p>Modelle wechseln. Ihre Architektur nicht. Wir sind model-agnostisch und binden Sie nicht an einen Anbieter.</p>
+                </div>
+                <div class="reason__item reveal">
+                    <h3>Swiss Made. Mediterran.</h3>
+                    <p>Schweizer Praezision trifft mediterrane Energie. Wir sind technisch, sympathisch, ambitioniert.</p>
+                </div>
+                <div class="reason__item reveal reveal-delay-1">
+                    <h3>Business first. Technology second.</h3>
+                    <p>Wir verstehen Ihr Business bevor wir eine Zeile Code schreiben. Technologie ist das Mittel, nicht das Ziel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section class="section founder" id="ueber">
+        <div class="container">
+            <div class="founder__grid">
+                <div class="founder__avatar reveal">
+                    <!-- Placeholder for founder photo -->
+                    <div style="color: var(--text-tertiary); font-family: var(--font-mono); font-size: 0.75rem;">[Gründer-Foto]</div>
+                </div>
+                <div class="founder__text reveal reveal-delay-1">
+                    <h2>Built by people who actually build AI.</h2>
+                    <p>Gigatop ist keine anonym Corporation. Es ist ein kleines, ambitions Team, das echte AI-Systeme baut. Hands-on. Pragmatisch. Business-driven. Technology-driven.</p>
+                    <p>Kein AI Guru. Kein Visionaer. Jemand, der liebers Baut als redet.</p>
+                    <div class="founder__name">Fabio &bull; Gruender, Gigatop</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section class="section" id="insights">
+        <div class="container">
+            <div class="usecases__heading reveal">
+                <h2>Insights.</h2>
+            </div>
+            <div class="insights__grid">
+                <div class="insight__card reveal">
+                    <div class="insight__category">Private AI</div>
+                    <h3>Why companies are bringing AI on-premise</h3>
+                    <p>Warum Schweizer Unternehmen lokale AI waehlen. Und warum Cloud-KI allein nicht mehr reicht.</p>
+                </div>
+                <div class="insight__card reveal reveal-delay-1">
+                    <div class="insight__category">AI Agents</div>
+                    <h3>What is an AI Agent?</h3>
+                    <p>Der Unterschied zwischen Chatbot und Agent. Und warum Agents handeln, nicht nur antworten.</p>
+                </div>
+                <div class="insight__card reveal reveal-delay-2">
+                    <div class="insight__category">Lokale KI</div>
+                    <h3>Private AI vs. Public AI</h3>
+                    <p>Wann welche Architektur passt. Und wie Sie die richtige Wahl treffen.</p>
+                </div>
+            </div>
+            <div class="insights__more reveal">
+                <a href="#" class="btn btn--ghost">Alle Insights ansehen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+        <div class="container container--narrow">
+            <div class="faq__heading reveal">
+                <h2>Haeufige Fragen.</h2>
+            </div>
+            <div class="faq__list">
+                <div class="faq__item reveal">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Muss ich eine Cloud-Loesung aufgeben?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer"><p>Nicht zwingend. Gigatop kann neben bestehenden Cloud-Tools laufen und diese intelligent ergaenzen. Viele Kunden nutzen Gigatop primar fuer sensible Daten und behalten Cloud-KI fuer nicht-kritische Aufgaben.</p></div>
+                </div>
+                <div class="faq__item reveal reveal-delay-1">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Wie lange dauert die Installation?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer"><p>Die Grundinstallation dauert wenige Stunden. Die Anpassung an Ihre spezifischen Daten und Prozesse kann mehrere Wochen dauern. Wir begleiten Sie Schritt fuer Schritt.</p></div>
+                </div>
+                <div class="faq__item reveal reveal-delay-2">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Welche Hardware brauche ich?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer"><p>Das haengt vom Umfang ab. Fuer kleinere Use Cases reichen Standard-Server. Fuer komplexere Szenarien empfehlen wir eine GPU-gestuetzte Infrastruktur. Wir beraten Sie gerne vor Ort.</p></div>
+                </div>
+                <div class="faq__item reveal reveal-delay-3">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Kann ich Gigatop auch vor Ort bekommen?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer"><p>Ja. Wir bieten Vor-Ort-Onboarding, Schulungen und Support in der Schweiz an. Unser Team spricht Deutsch, Franzosisch und Englisch.</p></div>
+                </div>
+                <div class="faq__item reveal">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Wie sieht die Preisgestaltung aus?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer"><p>Gigatop basiert auf einer Einmalinvestition. Der genaue Preis haengt vom Umfang und der Komplexitaet ab. Wir erstellen gerne ein individuelles Angebot.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 class="reveal">Ihr Unternehmen hat bereits die Daten.<br>Verwandeln Sie sie in Intelligenz.</h2>
+            <p class="reveal reveal-delay-1">Lassen Sie uns darueber sprechen, was AI in Ihrem Unternehmen leisten kann.</p>
+            <div class="reveal reveal-delay-2">
+                <a href="#" class="btn btn--primary btn--large" onclick="openModal(); return false;" style="margin-right: var(--space-md);">AI Session buchen</a>
+                <a href="#loesungen" class="btn btn--ghost btn--large">Loesungen entdecken</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div>
+                    <div class="footer__brand">giga<span>top</span></div>
+                    <p class="footer__copy">Private AI. Built around your business.</p>
+                </div>
+                <div class="footer__links">
+                    <a href="#" class="footer__link">Impressum</a>
+                    <a href="#" class="footer__link">Datenschutz</a>
+                    <a href="#" class="footer__link" onclick="openModal(); return false;">Kontakt</a>
+                    <a href="#" class="footer__link" onclick="openModal(); return false;">Kunde-Login</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CONTACT MODAL -->
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal">
+            <button class="modal__close" onclick="closeModal()" aria-label="Schliessen">&times;</button>
+            <h3 class="modal__title">AI Session buchen</h3>
+            <p class="modal__subtitle">Erzaehlen Sie uns von Ihren Herausforderungen. Wir melden uns innert 24 Stunden.</p>
+            <form action="https://formsubmit.co/top@gigatop.io" method="POST">
+                <input type="hidden" name="_subject" value="Neue Anfrage von gigatop.io">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required placeholder="Ihr Name">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">E-Mail</label>
+                    <input type="email" id="email" name="email" class="form-input" required placeholder="ihre@email.ch">
+                </div>
+                <div class="form-group">
+                    <label for="company" class="form-label">Unternehmen</label>
+                    <input type="text" id="company" name="company" class="form-input" placeholder="Firmenname">
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Nachricht</label>
+                    <textarea id="message" name="message" class="form-textarea" required placeholder="Wovon sollen wir sprechen?"></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary form-submit">Nachricht senden</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Nav hide/show on scroll
+        let lastScroll = 0;
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            const current = window.scrollY;
+            if (current > lastScroll && current > 100) {
+                nav.classList.add('nav--hidden');
+            } else {
+                nav.classList.remove('nav--hidden');
+            }
+            lastScroll = current;
+        }, { passive: true });
+
+        // Mobile menu toggle
+        function toggleMobile() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('open');
+        }
+
+        // FAQ accordion
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq__item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq__item.open').forEach(el => el.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        }
+
+        // Modal
+        function openModal() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        }
+        function closeModal() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('contact-modal');
+            if (overlay) {
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === this) closeModal();
+                });
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Use Case Finder
+        const finderState = { department: '', task: '', sources: '' };
+
+        document.querySelectorAll('.finder__option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                const group = this.closest('.finder__options').dataset.group;
+                this.closest('.finder__options').querySelectorAll('.finder__option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                finderState[group] = this.dataset.value;
+                checkFinder();
+            });
+        });
+
+        function checkFinder() {
+            if (finderState.department && finderState.task && finderState.sources) {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            const result = document.getElementById('finder-result');
+            const title = document.getElementById('result-title');
+            const potential = document.getElementById('result-potential');
+            const desc = document.getElementById('result-desc');
+
+            const responses = {
+                'vertrieb': {
+                    'data': { title: 'AI Sales Intelligence', potential: 'POTENZIAL: HOCH', desc: 'CRM + E-Mail + SharePoint. Empfohlene Loesung: Private / Hybrid AI.' },
+                    'reports': { title: 'AI Vertriebsreporting', potential: 'POTENZIAL: HOCH', desc: 'CRM + ERP + E-Mail. Empfohlene Loesung: Private AI.' },
+                    'analysis': { title: 'AI Pipeline-Analyse', potential: 'POTENZIAL: HOCH', desc: 'CRM + Meetings + E-Mail. Empfohlene Loesung: Private AI.' },
+                    'docs': { title: 'AI Dokumenten-Processing', potential: 'POTENZIAL: MEDIUM', desc: 'CRM + Dokumente. Empfohlene Loesung: Private AI.' },
+                    'communication': { title: 'AI Vertriebs-Kommunikation', potential: 'POTENZIAL: MEDIUM', desc: 'E-Mail + CRM. Empfohlene Loesung: Hybrid AI.' }
+                },
+                'hr': {
+                    'data': { title: 'AI Wissensmanagement HR', potential: 'POTENZIAL: HOCH', desc: 'SharePoint + E-Mail + Dokumente. Empfohlene Loesung: Private AI.' },
+                    'reports': { title: 'AI HR-Analysen', potential: 'POTENZIAL: MEDIUM', desc: 'HR-Systeme + Berichte. Empfohlene Loesung: Private AI.' },
+                    'docs': { title: 'AI HR-Dokumente', potential: 'POTENZIAL: MEDIUM', desc: 'PDFs + Vertraege + Richtlinien. Empfohlene Loesung: Private AI.' },
+                    'analysis': { title: 'AI Mitarbeiter-Analysen', potential: 'POTENZIAL: MEDIUM', desc: 'HR-Systeme + Daten. Empfohlene Loesung: Private AI.' },
+                    'communication': { title: 'AI Onboarding-Automation', potential: 'POTENZIAL: HOCH', desc: 'SharePoint + E-Mail + Richtlinien. Empfohlene Loesung: Private AI.' }
+                },
+                'support': {
+                    'data': { title: 'AI Customer Support', potential: 'POTENZIAL: HOCH', desc: 'CRM + E-Mail + Wissensdatenbank. Empfohlene Loesung: Private / Hybrid AI.' },
+                    'reports': { title: 'AI Support-Analysen', potential: 'POTENZIAL: MEDIUM', desc: 'Support-Logs + Tickets. Empfohlene Loesung: Private AI.' },
+                    'docs': { title: 'AI Support-Dokumente', potential: 'POTENZIAL: MEDIUM', desc: 'FAQs + Produktdaten. Empfohlene Loesung: Private AI.' },
+                    'analysis': { title: 'AI Kundenanalyse', potential: 'POTENZIAL: MEDIUM', desc: 'CRM + Support-Logs. Empfohlene Loesung: Private AI.' },
+                    'communication': { title: 'AI Support-Automation', potential: 'POTENZIAL: HOCH', desc: 'E-Mail + CRM + Wissensbasis. Empfohlene Loesung: Private AI.' }
+                },
+                'finance': {
+                    'data': { title: 'AI Finanzanalyse', potential: 'POTENZIAL: HOCH', desc: 'ERP + Excel + E-Mail. Empfohlene Loesung: Private AI.' },
+                    'reports': { title: 'AI Finanzreporting', potential: 'POTENZIAL: HOCH', desc: 'ERP + Finance-Systeme. Empfohlene Loesung: Private AI.' },
+                    'docs': { title: 'AI Rechnungsextraktion', potential: 'POTENZIAL: HOCH', desc: 'PDFs + Rechnungen + ERP. Empfohlene Loesung: Private AI.' },
+                    'analysis': { title: 'AI Forecasting', potential: 'POTENZIAL: HOCH', desc: 'ERP + historische Daten. Empfohlene Loesung: Private AI.' },
+                    'communication': { title: 'AI Finance-Kommunikation', potential: 'POTENZIAL: MEDIUM', desc: 'E-Mail + ERP + Reports. Empfohlene Loesung: Private AI.' }
+                },
+                'ops': {
+                    'data': { title: 'AI Operations Intelligence', potential: 'POTENZIAL: HOCH', desc: 'ERP + CRM + Datenquellen. Empfohlene Loesung: Private AI.' },
+                    'reports': { title: 'AI Operations-Reporting', potential: 'POTENZIAL: MEDIUM', desc: 'Verschiedene Quellen. Empfohlene Loesung: Private AI.' },
+                    'docs': { title: 'AI Dokumentenfluss', potential: 'POTENZIAL: MEDIUM', desc: 'PDFs + Vertraege + Angebote. Empfohlene Loesung: Private AI.' },
+                    'analysis': { title: 'AI Process Mining', potential: 'POTENZIAL: HOCH', desc: 'System-Logs + ERP. Empfohlene Loesung: Private AI.' },
+                    'communication': { title: 'AI Workflow-Automation', potential: 'POTENZIAL: HOCH', desc: 'Systeme + E-Mail. Empfohlene Loesung: Private / Hybrid AI.' }
+                },
+                'management': {
+                    'data': { title: 'AI Executive Intelligence', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' },
+                    'reports': { title: 'AI Executive Dashboard', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' },
+                    'analysis': { title: 'AI Strategie-Analyse', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' },
+                    'communication': { title: 'AI Morning Briefing', potential: 'POTENZIAL: HOCH', desc: 'Alle Quellen. Empfohlene Loesung: Private AI.' },
+                    'docs': { title: 'AI Management-Support', potential: 'POTENZIAL: MEDIUM', desc: 'Dokumente + Daten. Empfohlene Loesung: Private AI.' }
+                }
+            };
+
+            const response = responses[finderState.department]?.[finderState.task];
+            if (response) {
+                title.textContent = response.title;
+                potential.textContent = response.potential;
+                desc.textContent = response.desc;
+                result.classList.add('visible');
+            }
+        }
+
+        // Scroll reveal with stagger
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
     <meta name="description" content="Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -25,42 +25,43 @@
 
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--sand-light);
-            color: var(--navy);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            color: #f5f5f7;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
-        .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+        }
 
-        /* ==================== NAVIGATION ==================== */
+        /* ========== NAVIGATION ========== */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
-            background: rgba(250, 250, 248, 0.92);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(16, 42, 51, 0.06);
-            transition: all 0.3s;
-        }
-        nav.scrolled {
-            box-shadow: 0 1px 20px rgba(16, 42, 51, 0.06);
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: background 0.3s;
         }
         .nav-inner {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 2.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 72px;
+            height: 56px;
         }
         .logo {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: var(--navy);
+            color: #f5f5f7;
             text-decoration: none;
             letter-spacing: -0.03em;
         }
@@ -68,25 +69,26 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 2.25rem;
             list-style: none;
         }
         .nav-links a {
-            color: rgba(16, 42, 51, 0.7);
+            color: rgba(245,245,247,0.8);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 400;
             transition: color 0.2s;
         }
-        .nav-links a:hover { color: var(--navy); }
-        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-links a:hover { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
         .lang-select {
-            background: var(--sand);
-            border: 1px solid rgba(16, 42, 51, 0.1);
-            border-radius: 8px;
-            padding: 0.4rem 0.75rem;
-            font-size: 0.85rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.75rem;
             font-weight: 500;
+            color: #f5f5f7;
             cursor: pointer;
             transition: border-color 0.2s;
         }
@@ -94,30 +96,29 @@
         .btn-nav {
             background: var(--terracotta);
             color: #fff;
-            padding: 0.6rem 1.25rem;
-            border-radius: 8px;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.875rem;
-            transition: all 0.2s;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
             border: none;
             cursor: pointer;
         }
         .btn-nav:hover {
             background: var(--terracotta-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(214, 107, 69, 0.35);
+            transform: scale(1.02);
         }
 
         /* Mobile menu */
         .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-        .mobile-toggle svg { width: 24px; height: 24px; color: var(--navy); }
+        .mobile-toggle svg { width: 20px; height: 20px; color: #f5f5f7; }
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 72px; left: 0; right: 0; bottom: 0;
-            background: rgba(250, 250, 248, 0.98);
-            backdrop-filter: blur(20px);
+            top: 56px; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.97);
+            backdrop-filter: blur(30px);
             z-index: 99;
             padding: 2rem;
             overflow-y: auto;
@@ -126,76 +127,56 @@
         .mobile-menu a {
             display: block;
             padding: 1rem 0;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--navy);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #f5f5f7;
             text-decoration: none;
-            border-bottom: 1px solid rgba(16, 42, 51, 0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
-        /* ==================== HERO ==================== */
+        /* ========== HERO ========== */
         .hero {
+            min-height: 100dvh;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            min-height: 100vh;
-            padding-top: 72px;
+            padding-top: 56px;
+            background: #000;
         }
         .hero-left {
-            background: var(--white);
-            padding: 6rem 4rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            position: relative;
+            padding: 5rem 4rem 4rem 5rem;
         }
         .hero-right {
             position: relative;
             overflow: hidden;
-            background: var(--navy-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .hero-right img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(0.7) brightness(0.6);
-            transition: transform 8s ease;
-        }
-        .hero-right:hover img {
-            transform: scale(1.03);
-        }
-        .hero-right::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(10, 31, 40, 0.85), rgba(16, 42, 51, 0.6));
-            z-index: 1;
+            filter: brightness(0.9);
         }
         .hero-right::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 70% 40%, rgba(214, 107, 69, 0.15), transparent 50%),
-                        radial-gradient(circle at 30% 70%, rgba(120, 134, 107, 0.1), transparent 50%);
-            z-index: 2;
+            background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(0,0,0,0.4));
             pointer-events: none;
         }
 
-        .hero-eyebrow {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--olive);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            font-size: clamp(3rem, 5vw, 5rem);
             font-weight: 700;
-            line-height: 1.08;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            color: var(--navy);
+            line-height: 1.05;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.04em;
+            color: #f5f5f7;
         }
         .hero h1 .accent {
             background: linear-gradient(135deg, var(--terracotta), #E8875F);
@@ -204,15 +185,17 @@
             background-clip: text;
         }
         .hero-sub {
-            font-size: 1.15rem;
-            color: rgba(16, 42, 51, 0.6);
-            line-height: 1.65;
-            max-width: 480px;
+            font-size: 1.35rem;
+            color: rgba(245,245,247,0.6);
+            line-height: 1.5;
+            max-width: 520px;
             margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -0.01em;
         }
         .hero-cta-row {
             display: flex;
-            gap: 1rem;
+            gap: 1.25rem;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -222,33 +205,43 @@
             gap: 0.5rem;
             background: var(--terracotta);
             color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 12px;
+            padding: 0.9rem 2rem;
+            border-radius: 999px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1rem;
-            transition: all 0.25s;
+            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
             border: none;
             cursor: pointer;
+            letter-spacing: -0.01em;
         }
         .btn-hero:hover {
             background: var(--terracotta-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(214, 107, 69, 0.45);
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(214, 107, 69, 0.35);
         }
         .btn-hero-ghost {
-            color: var(--navy);
+            color: var(--terracotta);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
-            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            padding: 0.9rem 1.25rem;
             transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
         }
-        .btn-hero-ghost:hover { color: var(--terracotta); }
+        .btn-hero-ghost:hover { color: #E8875F; }
+        .btn-hero-ghost .arrow {
+            transition: transform 0.2s;
+        }
+        .btn-hero-ghost:hover .arrow {
+            transform: translateX(3px);
+        }
         .hero-features {
-            margin-top: 2.5rem;
+            margin-top: 3rem;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
         }
         .hero-feature {
@@ -256,142 +249,171 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 0.85rem;
-            color: rgba(16, 42, 51, 0.6);
-            font-weight: 500;
+            color: rgba(245,245,247,0.45);
+            font-weight: 400;
+            letter-spacing: 0.01em;
         }
         .hero-feature .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--terracotta);
+            width: 6px;
+            height: 6px;
+            background: var(--olive);
             border-radius: 50%;
             flex-shrink: 0;
         }
 
-        /* ==================== STATS BAR ==================== */
-        .stats-bar {
-            background: var(--navy);
-            padding: 3rem 4rem;
-            display: flex;
-            justify-content: center;
-            gap: 5rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
+        /* ========== SCROLL ANIMATIONS ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+                        transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .stat { text-align: center; }
-        .stat-num {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--terracotta);
-            letter-spacing: -0.02em;
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .stat-label {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-            margin-top: 0.25rem;
-            font-weight: 500;
-        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
 
-        /* ==================== SECTION COMMON ==================== */
-        section { padding: 6rem 2rem; }
+        /* ========== SECTION COMMON ========== */
+        section { padding: 8rem 2rem; }
         .section-inner { max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .section-badge {
+        .section-header { text-align: center; margin-bottom: 5rem; }
+        .section-label {
             display: inline-block;
-            padding: 0.35rem 1rem;
-            border-radius: 999px;
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1.25rem;
-        }
-        .section-badge.terracotta { background: rgba(214, 107, 69, 0.1); color: var(--terracotta); }
-        .section-badge.olive { background: rgba(120, 134, 107, 0.1); color: var(--olive); }
-        .section-badge.deepblue { background: rgba(23, 74, 91, 0.08); color: var(--deepblue); }
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 3.5vw, 2.75rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            letter-spacing: 0.12em;
+            color: var(--terracotta);
             margin-bottom: 1rem;
         }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.25rem, 3.5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+            line-height: 1.1;
+        }
+        .section-title.light { color: #000; }
         .section-desc {
-            font-size: 1.1rem;
-            color: rgba(16, 42, 51, 0.55);
-            max-width: 600px;
+            font-size: 1.2rem;
+            color: rgba(245,245,247,0.5);
+            max-width: 640px;
             margin: 0 auto;
             line-height: 1.6;
+            font-weight: 300;
+            letter-spacing: -0.01em;
         }
+        .section-desc.dark { color: rgba(0,0,0,0.5); }
 
-        /* ==================== USE CASES ==================== */
-        .usecases { background: var(--sand); }
+        /* ========== USE CASES ========== */
+        .usecases {
+            background: #000;
+        }
         .usecases-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
+            gap: 1rem;
         }
         .uc-card {
-            background: var(--white);
-            border: 1px solid rgba(16, 42, 51, 0.06);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 2.25rem 2rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
+        .uc-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(214, 107, 69, 0.08), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .uc-card:hover::before { opacity: 1; }
         .uc-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(16, 42, 51, 0.08);
             border-color: rgba(214, 107, 69, 0.2);
+            background: rgba(255,255,255,0.06);
         }
         .uc-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.25rem;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
+            position: relative;
+            z-index: 1;
         }
-        .uc-icon.terracotta { background: rgba(214, 107, 69, 0.1); color: var(--terracotta); }
-        .uc-icon.deepblue { background: rgba(23, 74, 91, 0.08); color: var(--deepblue); }
-        .uc-icon.olive { background: rgba(120, 134, 107, 0.12); color: var(--olive); }
+        .uc-icon.terracotta { background: rgba(214, 107, 69, 0.12); }
+        .uc-icon.deepblue { background: rgba(23, 74, 91, 0.2); }
+        .uc-icon.olive { background: rgba(120, 134, 107, 0.15); }
         .uc-card h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
             letter-spacing: -0.01em;
+            color: #f5f5f7;
+            position: relative;
+            z-index: 1;
         }
         .uc-card p {
-            font-size: 0.9rem;
-            color: rgba(16, 42, 51, 0.55);
+            font-size: 0.875rem;
+            color: rgba(245,245,247,0.4);
             line-height: 1.55;
-            margin-bottom: 1.25rem;
+            position: relative;
+            z-index: 1;
         }
-        .uc-link {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--terracotta);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .uc-link:hover { color: var(--deepblue); }
 
-        /* ==================== ROI ==================== */
-        .roi { background: var(--white); }
+        /* ========== STATEMENT SECTION ========== */
+        .statement {
+            background: var(--sand-light);
+            padding: 10rem 2rem;
+            text-align: center;
+        }
+        .statement h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            line-height: 1.1;
+            color: var(--navy);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .statement h2 .accent {
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ========== ROI ========== */
+        .roi {
+            background: #000;
+        }
         .roi-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         .roi-panel {
-            background: var(--sand);
-            border-radius: 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
             padding: 2.5rem;
-            border: 1px solid rgba(16, 42, 51, 0.06);
         }
         .roi-panel--dark {
             background: var(--navy);
@@ -400,31 +422,32 @@
         .roi-panel h3 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.25rem;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 2rem;
             letter-spacing: -0.01em;
         }
-        .roi-panel--dark h3 { color: #fff; }
+        .roi-panel h3.dark { color: #000; }
+        .roi-panel--dark h3 { color: #f5f5f7; }
         .roi-input { margin-bottom: 1.75rem; }
         .roi-label {
             display: flex;
             justify-content: space-between;
-            font-size: 0.875rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 400;
             margin-bottom: 0.5rem;
-            color: rgba(16, 42, 51, 0.7);
+            color: rgba(245,245,247,0.5);
         }
         .roi-label .val {
             color: var(--terracotta);
-            font-weight: 700;
+            font-weight: 600;
         }
         .roi-panel--dark .roi-label .val { color: var(--terracotta); }
         input[type="range"] {
             -webkit-appearance: none;
             width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: rgba(16, 42, 51, 0.1);
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.1);
             outline: none;
         }
         input[type="range"]::-webkit-slider-thumb {
@@ -435,6 +458,10 @@
             background: var(--terracotta);
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(214, 107, 69, 0.3);
+            transition: transform 0.15s;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
         }
         input[type="range"]::-moz-range-thumb {
             width: 20px;
@@ -447,21 +474,24 @@
         }
         .roi-result { margin-bottom: 2rem; }
         .roi-result-box {
-            background: rgba(255,255,255,0.08);
-            border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 14px;
             padding: 1.5rem;
             margin-bottom: 1rem;
         }
         .roi-result-label {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.5);
+            font-size: 0.75rem;
+            color: rgba(245,245,247,0.4);
             margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
         .roi-result-value {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
+            font-size: 2.25rem;
             font-weight: 700;
-            color: #fff;
+            color: #f5f5f7;
+            letter-spacing: -0.02em;
         }
         .roi-grid-small {
             display: grid;
@@ -471,53 +501,101 @@
         .roi-grid-small .roi-result-box { margin-bottom: 0; }
         .roi-grid-small .roi-result-label { font-size: 0.7rem; }
         .roi-grid-small .roi-result-value { font-size: 1.25rem; }
+        .roi-panel--light .roi-result-value { color: #000; }
 
-        /* ==================== FEATURES ==================== */
-        .features { background: var(--navy); padding: 6rem 2rem; }
-        .features .section-title { color: #fff; }
-        .features .section-desc { color: rgba(255,255,255,0.5); }
-        .features .section-badge { background: rgba(120, 134, 107, 0.15); color: #a8c4a0; }
+        /* ========== FEATURES ========== */
+        .features {
+            background: var(--sand-light);
+        }
+        .features .section-title { color: var(--navy); }
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
+            gap: 1.5rem;
             max-width: 1000px;
             margin: 0 auto;
         }
         .feature-card {
-            background: rgba(23, 74, 91, 0.4);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s;
+            background: #fff;
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .feature-card:hover {
-            border-color: rgba(214, 107, 69, 0.3);
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
         }
         .feature-accent {
-            width: 40px;
+            width: 32px;
             height: 3px;
-            background: var(--olive);
+            background: var(--terracotta);
             border-radius: 2px;
             margin-bottom: 1.25rem;
         }
-        .feature-accent.terracotta { background: var(--terracotta); }
+        .feature-accent.olive { background: var(--olive); }
         .feature-card h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--navy);
             margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
         }
         .feature-card p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.5);
+            font-size: 0.925rem;
+            color: rgba(16, 42, 51, 0.55);
             line-height: 1.6;
         }
 
-        /* ==================== PRICING ==================== */
-        .pricing { background: var(--sand); }
+        /* ========== FULL-WIDTH IMAGE SECTION ========== */
+        .hero-showcase {
+            position: relative;
+            height: 85vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--navy);
+        }
+        .hero-showcase img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+        .hero-showcase::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.5) 100%);
+        }
+        .hero-showcase-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        .hero-showcase-text h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: 1rem;
+        }
+        .hero-showcase-text p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 500px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* ========== PRICING ========== */
+        .pricing { background: var(--sand-light); }
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -526,16 +604,16 @@
             margin: 0 auto;
         }
         .pricing-card {
-            background: var(--white);
-            border: 1px solid rgba(16, 42, 51, 0.06);
-            border-radius: 20px;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 24px;
             padding: 2.5rem 2rem;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
         }
         .pricing-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(16, 42, 51, 0.08);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.08);
         }
         .pricing-card--featured {
             background: var(--navy);
@@ -553,26 +631,27 @@
             background: var(--terracotta);
             color: #fff;
             font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.3rem 1rem;
+            font-weight: 600;
+            padding: 0.35rem 1rem;
             border-radius: 999px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
         }
         .pricing-name {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
         }
-        .pricing-card--featured .pricing-name { color: #fff; }
+        .pricing-card--featured .pricing-name { color: #f5f5f7; }
         .pricing-price {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.25rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--terracotta);
             margin-bottom: 0.25rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
         .pricing-price span {
             font-size: 0.9rem;
@@ -581,7 +660,7 @@
         }
         .pricing-card--featured .pricing-price span { color: rgba(255,255,255,0.35); }
         .pricing-desc {
-            font-size: 0.85rem;
+            font-size: 0.875rem;
             color: rgba(16, 42, 51, 0.5);
             margin-bottom: 2rem;
             line-height: 1.5;
@@ -601,8 +680,8 @@
         .pricing-card--featured .pricing-features li { color: rgba(255,255,255,0.7); }
         .pricing-features li::before {
             content: '';
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             background: var(--olive);
             border-radius: 50%;
             flex-shrink: 0;
@@ -615,16 +694,17 @@
             width: 100%;
             text-align: center;
             padding: 0.875rem;
-            border-radius: 10px;
+            border-radius: 999px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             text-decoration: none;
-            transition: all 0.25s;
+            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             border: none;
+            letter-spacing: -0.01em;
         }
         .btn-pricing-outline {
-            border: 2px solid var(--navy);
+            border: 1.5px solid var(--navy);
             color: var(--navy);
             background: transparent;
         }
@@ -639,15 +719,24 @@
         }
         .btn-pricing-solid:hover {
             background: var(--terracotta-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(214, 107, 69, 0.4);
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(214, 107, 69, 0.3);
         }
 
-        /* ==================== FOOTER ==================== */
+        /* ========== CONTACT SECTION ========== */
+        .contact-section {
+            background: #000;
+            text-align: center;
+        }
+        .contact-section .section-title { color: #f5f5f7; }
+        .contact-section .section-desc { color: rgba(245,245,247,0.5); }
+
+        /* ========== FOOTER ========== */
         footer {
-            background: var(--navy);
+            background: var(--navy-soft);
             padding: 4rem 2rem 3rem;
-            color: #fff;
+            color: #f5f5f7;
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
         .footer-inner {
             max-width: 1200px;
@@ -657,43 +746,44 @@
             gap: 3rem;
             margin-bottom: 3rem;
         }
-        .footer-brand .logo { color: #fff; margin-bottom: 1rem; display: inline-block; }
-        .footer-brand p { font-size: 0.875rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+        .footer-brand .logo { color: #f5f5f7; margin-bottom: 1rem; display: inline-block; }
+        .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.6; }
         .footer-col h4 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-size: 0.75rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             margin-bottom: 1rem;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.5);
         }
         .footer-col a {
             display: block;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.35);
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             padding: 0.3rem 0;
             transition: color 0.2s;
         }
-        .footer-col a:hover { color: #fff; }
+        .footer-col a:hover { color: #f5f5f7; }
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid rgba(255,255,255,0.06);
             padding-top: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+        .footer-bottom p { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
 
-        /* ==================== MODAL ==================== */
+        /* ========== MODAL ========== */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 31, 40, 0.85);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 9999;
             display: none;
             align-items: center;
@@ -703,35 +793,35 @@
         }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content {
-            background: var(--white);
+            background: var(--sand-light);
             padding: 2.5rem;
-            border-radius: 20px;
+            border-radius: 24px;
             width: 92%;
-            max-width: 580px;
+            max-width: 560px;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.3);
-            transform: scale(0.95);
-            transition: transform 0.3s;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+            transform: scale(0.96);
+            transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .modal-overlay.active .modal-content { transform: scale(1); }
         .modal-close {
             position: absolute;
             top: 1.25rem; right: 1.25rem;
-            background: var(--sand);
+            background: rgba(0,0,0,0.06);
             border: none;
             border-radius: 50%;
-            width: 36px; height: 36px;
+            width: 32px; height: 32px;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #666;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background 0.2s;
         }
-        .modal-close:hover { background: #e0dcd4; }
+        .modal-close:hover { background: rgba(0,0,0,0.1); }
         .modal-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
@@ -741,7 +831,7 @@
             letter-spacing: -0.02em;
         }
         .modal-subtitle {
-            color: rgba(16, 42, 51, 0.55);
+            color: rgba(16, 42, 51, 0.5);
             font-size: 0.9rem;
             margin-bottom: 2rem;
             line-height: 1.5;
@@ -749,10 +839,10 @@
         .form-group { margin-bottom: 1.25rem; }
         .form-label {
             display: block;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--navy);
-            margin-bottom: 0.5rem;
-            font-size: 0.875rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
         }
         .form-label .optional {
             font-weight: 400;
@@ -762,18 +852,18 @@
         .form-input, .form-textarea, .form-select {
             width: 100%;
             padding: 0.75rem 1rem;
-            border: 2px solid rgba(16, 42, 51, 0.1);
-            border-radius: 10px;
+            border: 1.5px solid rgba(16, 42, 51, 0.1);
+            border-radius: 12px;
             font-size: 1rem;
             color: var(--navy);
             transition: border-color 0.2s, box-shadow 0.2s;
             font-family: inherit;
-            background: var(--white);
+            background: #fff;
         }
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none;
             border-color: var(--terracotta);
-            box-shadow: 0 0 0 3px rgba(214, 107, 69, 0.12);
+            box-shadow: 0 0 0 3px rgba(214, 107, 69, 0.1);
         }
         .form-textarea { resize: vertical; min-height: 100px; }
         .form-btn {
@@ -782,16 +872,16 @@
             background: var(--terracotta);
             color: #fff;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+            letter-spacing: -0.01em;
         }
         .form-btn:hover {
             background: var(--terracotta-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(214, 107, 69, 0.35);
+            transform: scale(1.01);
         }
         .form-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .form-success { text-align: center; padding: 2rem 0; }
@@ -803,46 +893,76 @@
         }
         .form-success p { color: rgba(16, 42, 51, 0.6); line-height: 1.6; }
         .form-success .check-icon {
-            width: 64px; height: 64px;
+            width: 56px; height: 56px;
             background: var(--olive);
             color: #fff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin: 0 auto 1.25rem;
         }
         .form-error {
             background: rgba(220, 50, 50, 0.06);
-            border: 1px solid rgba(220, 50, 50, 0.2);
+            border: 1px solid rgba(220, 50, 50, 0.15);
             color: #b91c1c;
             padding: 0.75rem 1rem;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 1rem;
             font-size: 0.875rem;
         }
 
-        /* ==================== MOBILE ==================== */
+        /* ========== STATS ========== */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 6rem;
+            padding: 4rem 2rem;
+            background: #000;
+        }
+        .stat { text-align: center; }
+        .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(245,245,247,0.35);
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+
+        /* ========== MOBILE ========== */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-toggle { display: block; }
             .hero { grid-template-columns: 1fr; min-height: auto; }
-            .hero-left { padding: 5rem 1.5rem 3rem; }
-            .hero-right { min-height: 280px; }
-            .hero h1 { font-size: 2rem; }
-            .hero-features { gap: 1.25rem; }
-            .stats-bar { flex-wrap: wrap; gap: 2rem; padding: 2.5rem 1.5rem; justify-content: space-around; }
-            .stat-num { font-size: 2rem; }
-            section { padding: 4rem 1.25rem; }
-            .section-header { margin-bottom: 2.5rem; }
+            .hero-left { padding: 5rem 1.5rem 2.5rem; }
+            .hero-right { min-height: 45vh; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-sub { font-size: 1.1rem; }
+            .hero-features { gap: 1rem; }
+            .hero-features { flex-direction: column; gap: 0.75rem; }
+            .stats-row { gap: 2.5rem; padding: 3rem 1.5rem; }
+            .stat-num { font-size: 2.25rem; }
+            section { padding: 5rem 1.25rem; }
+            .section-header { margin-bottom: 3rem; }
+            .statement { padding: 6rem 1.5rem; }
             .usecases-grid { grid-template-columns: 1fr; }
             .roi-grid { grid-template-columns: 1fr; }
             .feature-grid { grid-template-columns: 1fr; }
             .pricing-grid { grid-template-columns: 1fr; }
             .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
             .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-            .modal-content { padding: 1.75rem; border-radius: 16px; width: 96%; }
+            .modal-content { padding: 1.75rem; border-radius: 20px; width: 96%; }
+            .nav-inner { padding: 0 1.25rem; }
+            .hero-showcase { height: 70vh; }
+            .hero-showcase-text h2 { font-size: 2.25rem; }
         }
 
         /* Touch targets */
@@ -857,7 +977,7 @@
 <!-- ========== NAVIGATION ========== -->
 <nav id="mainNav">
     <div class="nav-inner">
-        <a href="#" class="logo">giga<span>top</span></a>
+        <a href="#top" class="logo">giga<span>top</span></a>
         <ul class="nav-links">
             <li><a href="#usecases" data-i18n="nav_usecases">Use Cases</a></li>
             <li><a href="#roi" data-i18n="nav_roi">ROI Rechner</a></li>
@@ -866,11 +986,11 @@
         </ul>
         <div class="nav-actions">
             <select id="langSelect" onchange="setLang(this.value)" class="lang-select">
-                <option value="de">🇨🇭 DE</option>
-                <option value="en">🇬🇧 EN</option>
+                <option value="de">DE</option>
+                <option value="en">EN</option>
             </select>
-            <button class="btn-nav" onclick="openContact('KI-Workshop')" data-i18n="hero_cta1">KI-Potenzial analysieren</button>
-            <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menü">
+            <button class="btn-nav" onclick="openContact('KI-Workshop')" data-i18n="hero_cta1">KI-Potenzial</button>
+            <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menue">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
@@ -882,18 +1002,17 @@
     <a href="#usecases" onclick="toggleMobileMenu()" data-i18n="nav_usecases">Use Cases</a>
     <a href="#roi" onclick="toggleMobileMenu()" data-i18n="nav_roi">ROI Rechner</a>
     <a href="#pricing" onclick="toggleMobileMenu()" data-i18n="nav_pricing">Preise</a>
-    <a href="#about" onclick="toggleMobileMenu()" data-i18n="nav_about">Über uns</a>
+    <a href="#about" onclick="toggleMobileMenu()" data-i18n="nav_about">Ueber uns</a>
 </div>
 
 <!-- ========== HERO ========== -->
-<section class="hero">
+<section class="hero" id="top">
     <div class="hero-left">
-        <div class="hero-eyebrow" data-i18n="hero_badge">KI, die Ihr Unternehmen versteht</div>
         <h1 data-i18n="hero_title_html">Private AI für <span class="accent">Schweizer Unternehmen</span></h1>
         <p class="hero-sub" data-i18n="hero_p1">Wir bringen künstliche Intelligenz sicher in Ihr Unternehmen — lokal, datenschutzkonform und messbar.</p>
         <div class="hero-cta-row">
             <button onclick="openContact('KI-Workshop')" class="btn-hero" data-i18n="hero_cta1">KI-Potenzial analysieren</button>
-            <a href="#contact" class="btn-hero-ghost" onclick="openContact('KI-Workshop')" data-i18n="hero_cta2">Kontakt aufnehmen</a>
+            <a href="#contact" class="btn-hero-ghost" onclick="openContact('KI-Workshop')" data-i18n="hero_cta2">Kontakt aufnehmen <span class="arrow">→</span></a>
         </div>
         <div class="hero-features">
             <div class="hero-feature"><span class="dot"></span><span data-i18n="hero_feat1">100% lokal & privat</span></div>
@@ -902,76 +1021,85 @@
         </div>
     </div>
     <div class="hero-right">
-        <img src="https://images.unsplash.com/photo-1620712943743-e2953b504593?q=80&w=1200&auto=format&fit=crop" alt="Abstract AI Technology">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" alt="Künstliche Intelligenz Visualisierung">
     </div>
 </section>
 
-<!-- ========== STATS BAR ========== -->
-<section class="stats-bar">
-    <div class="stat">
+<!-- ========== STATEMENT ========== -->
+<section class="statement">
+    <h2 class="reveal" data-i18n="statement_text">KI muss nicht in die Cloud. Sie bleibt dort, wo sie hingehört: <span class="accent">in Ihrem Unternehmen.</span></h2>
+</section>
+
+<!-- ========== STATS ========== -->
+<div class="stats-row">
+    <div class="stat reveal reveal-delay-1">
         <div class="stat-num">100%</div>
         <div class="stat-label" data-i18n="stat_local">Lokal verarbeitet</div>
     </div>
-    <div class="stat">
-        <div class="stat-num">0 ms</div>
+    <div class="stat reveal reveal-delay-2">
+        <div class="stat-num">0</div>
         <div class="stat-label" data-i18n="stat_latency">Cloud-Latenz</div>
     </div>
-    <div class="stat">
-        <div class="stat-num">∞</div>
+    <div class="stat reveal reveal-delay-3">
+        <div class="stat-num" style="font-style: italic;">∞</div>
         <div class="stat-label" data-i18n="stat_privacy">Datenschutz</div>
     </div>
-</section>
+</div>
 
 <!-- ========== USE CASES ========== -->
 <section class="usecases" id="usecases">
     <div class="section-inner">
         <div class="section-header">
-            <span class="section-badge terracotta" data-i18n="uc_badge">Anwendungsbereiche</span>
-            <h2 class="section-title" data-i18n="uc_title">KI für Ihr Unternehmen</h2>
-            <p class="section-desc" data-i18n="uc_subtitle">Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.</p>
+            <span class="section-label reveal" data-i18n="uc_badge">Anwendungsbereiche</span>
+            <h2 class="section-title reveal reveal-delay-1" data-i18n="uc_title">KI für Ihr Unternehmen</h2>
+            <p class="section-desc reveal reveal-delay-2" data-i18n="uc_subtitle">Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.</p>
         </div>
         <div class="usecases-grid">
-            <div class="uc-card" onclick="openContact('Starter')">
+            <div class="uc-card reveal reveal-delay-1" onclick="openContact('Starter')">
                 <div class="uc-icon terracotta">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
                 </div>
                 <h3 data-i18n="uc1_title">Sales & Wachstum</h3>
-                <p data-i18n="uc1_desc">Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.</p>
-                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
+                <p data-i18n="uc1_desc">Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestuetzter Datenauswertung.</p>
             </div>
-            <div class="uc-card" onclick="openContact('Starter')">
+            <div class="uc-card reveal reveal-delay-2" onclick="openContact('Starter')">
                 <div class="uc-icon deepblue">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 </div>
                 <h3 data-i18n="uc2_title">Operations & Effizienz</h3>
                 <p data-i18n="uc2_desc">Automatisierung von Prozessen, Dokumentenmanagement und Workflows.</p>
-                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
             </div>
-            <div class="uc-card" onclick="openContact('Starter')">
+            <div class="uc-card reveal reveal-delay-3" onclick="openContact('Starter')">
                 <div class="uc-icon olive">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
                 </div>
                 <h3 data-i18n="uc3_title">Kunden-Support</h3>
                 <p data-i18n="uc3_desc">KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.</p>
-                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
             </div>
-            <div class="uc-card" onclick="openContact('Starter')">
+            <div class="uc-card reveal reveal-delay-4" onclick="openContact('Starter')">
                 <div class="uc-icon deepblue">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
                 </div>
                 <h3 data-i18n="uc4_title">Daten & Intelligence</h3>
                 <p data-i18n="uc4_desc">Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.</p>
-                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
             </div>
-            <div class="uc-card" onclick="openContact('Starter')">
+            <div class="uc-card reveal reveal-delay-5" onclick="openContact('Starter')">
                 <div class="uc-icon terracotta">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <h3 data-i18n="uc5_title">Finance & Controlling</h3>
                 <p data-i18n="uc5_desc">Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.</p>
-                <span class="uc-link" data-i18n="uc_more">Mehr erfahren →</span>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- ========== SHOWCASE IMAGE ========== -->
+<section class="hero-showcase">
+    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2000&auto=format&fit=crop" alt="DGX Server Raum">
+    <div class="hero-showcase-text reveal">
+        <h2 data-i18n="showcase_title">Powered by DGX</h2>
+        <p data-i18n="showcase_desc">Enterprise GPU-Leistung direkt vor Ort. Keine Cloud. Keine Kompromisse.</p>
     </div>
 </section>
 
@@ -979,13 +1107,12 @@
 <section class="roi" id="roi">
     <div class="section-inner">
         <div class="section-header">
-            <span class="section-badge olive" data-i18n="roi_badge">ROI Rechner</span>
-            <h2 class="section-title" data-i18n="roi_title">Berechnen Sie Ihr KI-Potenzial</h2>
-            <p class="section-desc" data-i18n="roi_subtitle">Erhalten Sie in Sekunden eine realistische Kosteneinschätzung durch KI-Automatisierung.</p>
+            <h2 class="section-title reveal" data-i18n="roi_title">Berechnen Sie Ihr KI-Potenzial</h2>
+            <p class="section-desc reveal reveal-delay-1" data-i18n="roi_subtitle">Erhalten Sie in Sekunden eine realistische Kosteneinschaetzung durch KI-Automatisierung.</p>
         </div>
         <div class="roi-grid">
-            <div class="roi-panel">
-                <h3 data-i18n="roi_input">Parameter eingeben</h3>
+            <div class="roi-panel reveal reveal-delay-1">
+                <h3 class="dark" data-i18n="roi_input">Parameter eingeben</h3>
                 <div class="roi-input">
                     <div class="roi-label"><span data-i18n="roi_employees">Mitarbeiter</span><span class="val" id="roi_employees_val">5</span></div>
                     <input type="range" id="roi_employees" min="1" max="200" value="5" oninput="calculateROI()">
@@ -1003,11 +1130,11 @@
                     <input type="range" id="roi_rate" min="10" max="90" value="50" oninput="calculateROI()">
                 </div>
             </div>
-            <div class="roi-panel roi-panel--dark">
+            <div class="roi-panel roi-panel--dark reveal reveal-delay-2">
                 <h3 data-i18n="roi_result">Ergebnis</h3>
                 <div class="roi-result">
                     <div class="roi-result-box">
-                        <div class="roi-result-label" data-i18n="roi_savings_label">Jährliche Einsparung</div>
+                        <div class="roi-result-label" data-i18n="roi_savings_label">Jaehrliche Einsparung</div>
                         <div class="roi-result-value" id="roi_savings">CHF 20'000</div>
                     </div>
                 </div>
@@ -1021,37 +1148,37 @@
                         <div class="roi-result-value" id="roi_proc">10</div>
                     </div>
                 </div>
-                <button onclick="openContact('KI-Workshop')" style="width:100%;margin-top:1.5rem;padding:1rem;background:var(--terracotta);color:#fff;border:none;border-radius:10px;font-weight:600;font-size:1rem;cursor:pointer;transition:all 0.2s;" data-i18n="roi_cta">Details besprechen</button>
+                <button onclick="openContact('KI-Workshop')" style="width:100%;margin-top:1.5rem;padding:1rem;background:var(--terracotta);color:#fff;border:none;border-radius:12px;font-weight:600;font-size:1rem;cursor:pointer;transition:all 0.25s cubic-bezier(0.23,1,0.32,1);" data-i18n="roi_cta">Details besprechen</button>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ========== FEATURES / ABOUT ========== -->
+<!-- ========== FEATURES ========== -->
 <section class="features" id="about">
     <div class="section-inner">
         <div class="section-header">
-            <span class="section-badge" data-i18n="about_badge">Warum Gigatop</span>
-            <h2 class="section-title" data-i18n="about_title">Warum Gigatop?</h2>
-            <p class="section-desc" data-i18n="about_subtitle">Ihr lokaler Partner für private KI-Lösungen in der Schweiz.</p>
+            <span class="section-label reveal" data-i18n="about_badge">Warum Gigatop</span>
+            <h2 class="section-title dark reveal reveal-delay-1" data-i18n="about_title">Warum Gigatop?</h2>
+            <p class="section-desc dark reveal reveal-delay-2" data-i18n="about_subtitle">Ihr lokaler Partner für private KI-Lösungen in der Schweiz.</p>
         </div>
         <div class="feature-grid">
-            <div class="feature-card">
+            <div class="feature-card reveal reveal-delay-1">
                 <div class="feature-accent"></div>
                 <h3 data-i18n="about_1_title">Datenschutz-first</h3>
                 <p data-i18n="about_1_desc">Ihre Daten verlassen niemals Ihr Unternehmen. 100% lokale Verarbeitung, keine Cloud.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card reveal reveal-delay-2">
                 <div class="feature-accent terracotta"></div>
                 <h3 data-i18n="about_2_title">Schnelle Ergebnisse</h3>
                 <p data-i18n="about_2_desc">Messbare Verbesserungen innerhalb der ersten 4 Wochen. Keine langwierigen Pilotphasen.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-accent terracotta"></div>
+            <div class="feature-card reveal reveal-delay-3">
+                <div class="feature-accent olive"></div>
                 <h3 data-i18n="about_3_title">Schweizer Präzision</h3>
-                <p data-i18n="about_3_desc">Verständnis für Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.</p>
+                <p data-i18n="about_3_desc">Verstaendnis fuer Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card reveal reveal-delay-4">
                 <div class="feature-accent"></div>
                 <h3 data-i18n="about_4_title">DGX Station</h3>
                 <p data-i18n="about_4_desc">Enterprise-Grafikleistung für maximale KI-Leistung — direkt vor Ort in Ihrem Rechenzentrum.</p>
@@ -1064,12 +1191,12 @@
 <section class="pricing" id="pricing">
     <div class="section-inner">
         <div class="section-header">
-            <span class="section-badge deepblue" data-i18n="pricing_badge">Preise</span>
-            <h2 class="section-title" data-i18n="pricing_title">Transparente Investition</h2>
-            <p class="section-desc" data-i18n="pricing_subtitle">Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.</p>
+            <span class="section-label reveal" data-i18n="pricing_badge">Preise</span>
+            <h2 class="section-title dark reveal reveal-delay-1" data-i18n="pricing_title">Transparente Investition</h2>
+            <p class="section-desc dark reveal reveal-delay-2" data-i18n="pricing_subtitle">Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.</p>
         </div>
         <div class="pricing-grid">
-            <div class="pricing-card">
+            <div class="pricing-card reveal reveal-delay-1">
                 <div class="pricing-name" data-i18n="pricing_0_title">KI-Workshop</div>
                 <div class="pricing-price">CHF 399 <span data-i18n="pricing_0_unit">/ Session</span></div>
                 <p class="pricing-desc" data-i18n="pricing_0_desc">2 Stunden: Agent-Entwicklung & Launch</p>
@@ -1077,11 +1204,11 @@
                     <li data-i18n="pricing_0_f1">2h intensive Workshop-Sitzung</li>
                     <li data-i18n="pricing_0_f2">Gemeinsam den KI-Agenten bauen</li>
                     <li data-i18n="pricing_0_f3">Auf meiner Station/Testumgebung</li>
-                    <li data-i18n="pricing_0_f4">Sofortiger Start Ihrer KI-Lösung</li>
+                    <li data-i18n="pricing_0_f4">Sofortiger Start Ihrer KI-Loesung</li>
                 </ul>
                 <button onclick="openContact('KI-Workshop')" class="btn-pricing btn-pricing-solid" data-i18n="pricing_cta">Jetzt anfragen</button>
             </div>
-            <div class="pricing-card pricing-card--featured">
+            <div class="pricing-card pricing-card--featured reveal reveal-delay-2">
                 <div class="pricing-badge" data-i18n="pricing_badge_label">Empfohlen</div>
                 <div class="pricing-name" data-i18n="pricing_1_title">Starter</div>
                 <div class="pricing-price">CHF 5'000 <span data-i18n="pricing_1_unit">/ Projekt</span></div>
@@ -1093,10 +1220,10 @@
                 </ul>
                 <button onclick="openContact('Starter')" class="btn-pricing btn-pricing-solid" data-i18n="pricing_cta">Anfragen</button>
             </div>
-            <div class="pricing-card">
+            <div class="pricing-card reveal reveal-delay-3">
                 <div class="pricing-name" data-i18n="pricing_3_title">Enterprise</div>
                 <div class="pricing-price" data-i18n="pricing_3_price">Individuell</div>
-                <p class="pricing-desc" data-i18n="pricing_3_desc">Massgeschneiderte Enterprise-Lösung</p>
+                <p class="pricing-desc" data-i18n="pricing_3_desc">Massgeschneiderte Enterprise-Loesung</p>
                 <ul class="pricing-features">
                     <li data-i18n="pricing_3_f1">Unbegrenzte Use Cases</li>
                     <li data-i18n="pricing_3_f2">DGX Station & On-Premise</li>
@@ -1109,15 +1236,15 @@
     </div>
 </section>
 
-<!-- ========== CONTACT SECTION ========== -->
-<section id="contact" style="background: var(--sand-light);">
-    <div class="section-inner" style="text-align:center;">
-        <h2 class="section-title" data-i18n="contact_title">Kontakt aufnehmen</h2>
-        <p class="section-desc" style="margin-bottom:2rem;" data-i18n="contact_subtitle">Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.</p>
-        <a href="mailto:top@gigatop.io" class="btn-hero" style="margin-bottom:2rem;">top@gigatop.io</a>
-        <div style="color:rgba(16,42,51,0.4);font-size:0.85rem;">
+<!-- ========== CONTACT ========== -->
+<section class="contact-section" id="contact">
+    <div class="section-inner">
+        <h2 class="section-title reveal" data-i18n="contact_title">Kontakt aufnehmen</h2>
+        <p class="section-desc reveal reveal-delay-1" data-i18n="contact_subtitle">Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.</p>
+        <a href="mailto:top@gigatop.io" class="btn-hero reveal reveal-delay-2" style="margin-top:2rem;">top@gigatop.io</a>
+        <div class="reveal reveal-delay-3" style="color:rgba(245,245,247,0.35);font-size:0.85rem;margin-top:2.5rem;">
             <p data-i18n="contact_location">Fabio Serpa, Einzelfirma</p>
-            <p>Hinterhöfenstrasse 8, 6312 Steinhausen</p>
+            <p>Hinterhödenstrasse 8, 6312 Steinhausen</p>
         </div>
     </div>
 </section>
@@ -1126,7 +1253,7 @@
 <footer>
     <div class="footer-inner">
         <div class="footer-brand">
-            <a href="#" class="logo">giga<span>top</span></a>
+            <a href="#top" class="logo">giga<span>top</span></a>
             <p data-i18n="footer_desc">Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.</p>
         </div>
         <div class="footer-col">
@@ -1190,36 +1317,37 @@
 <script>
 var LANGS = {
     de: {
-        nav_usecases: 'Use Cases', nav_roi: 'ROI Rechner', nav_pricing: 'Preise', nav_about: 'Über uns',
+        nav_usecases: 'Use Cases', nav_roi: 'ROI Rechner', nav_pricing: 'Preise', nav_about: 'Ueber uns',
         hero_badge: 'KI, die Ihr Unternehmen versteht', hero_title_html: 'Private AI für <span class="accent">Schweizer Unternehmen</span>',
         hero_p1: 'Wir bringen künstliche Intelligenz sicher in Ihr Unternehmen — lokal, datenschutzkonform und messbar.',
         hero_p2: 'Keine Cloud-Sensibilitäten. Keine Compliance-Risiken. Volle Kontrolle über Ihre Daten.',
         hero_cta1: 'KI-Potenzial analysieren', hero_cta2: 'Kontakt aufnehmen',
         hero_feat1: '100% lokal & privat', hero_feat2: 'Schweizer Datenschutz', hero_feat3: 'Messbare Ergebnisse',
         stat_local: 'Lokal verarbeitet', stat_latency: 'Cloud-Latenz', stat_privacy: 'Datenschutz',
-        uc_badge: 'Anwendungsbereiche', uc_title: 'KI für Ihr Unternehmen', uc_subtitle: 'Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.',
-        uc1_title: 'Sales & Wachstum', uc1_desc: 'Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestützter Datenauswertung.',
+        statement_text: 'KI muss nicht in die Cloud. Sie bleibt dort, wo sie hingehört: <span class="accent">in Ihrem Unternehmen.</span>',
+        showcase_title: 'Powered by DGX', showcase_desc: 'Enterprise GPU-Leistung direkt vor Ort. Keine Cloud. Keine Kompromisse.',
+        uc_badge: 'Anwendungsbereiche', uc_title: 'KI für Ihr Unternehmen', uc_subtitle: 'Waehlen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.',
+        uc1_title: 'Sales & Wachstum', uc1_desc: 'Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestuetzter Datenauswertung.',
         uc2_title: 'Operations & Effizienz', uc2_desc: 'Automatisierung von Prozessen, Dokumentenmanagement und Workflows.',
         uc3_title: 'Kunden-Support', uc3_desc: 'KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.',
         uc4_title: 'Daten & Intelligence', uc4_desc: 'Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.',
         uc5_title: 'Finance & Controlling', uc5_desc: 'Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.',
-        uc_more: 'Mehr erfahren →',
-        roi_badge: 'ROI Rechner', roi_title: 'Berechnen Sie Ihr KI-Potenzial', roi_subtitle: 'Erhalten Sie in Sekunden eine realistische Kosteneinschätzung durch KI-Automatisierung.',
+        roi_badge: 'ROI Rechner', roi_title: 'Berechnen Sie Ihr KI-Potenzial', roi_subtitle: 'Erhalten Sie in Sekunden eine realistische Kosteneinschaetzung durch KI-Automatisierung.',
         roi_input: 'Parameter eingeben', roi_employees: 'Mitarbeiter', roi_hours: 'Stunden/Woche pro Prozess', roi_salary: 'Bruttolohn / Jahr (CHF)', roi_rate: 'Automatisierungsrate (%)',
-        roi_result: 'Ergebnis', roi_savings_label: 'Jährliche Einsparung', roi_time_label: 'Zeit gespart / Jahr', roi_proc_label: 'Prozesse / Monat', roi_cta: 'Details besprechen',
+        roi_result: 'Ergebnis', roi_savings_label: 'Jaehrliche Einsparung', roi_time_label: 'Zeit gespart / Jahr', roi_proc_label: 'Prozesse / Monat', roi_cta: 'Details besprechen',
         about_badge: 'Warum Gigatop', about_title: 'Warum Gigatop?', about_subtitle: 'Ihr lokaler Partner für private KI-Lösungen in der Schweiz.',
         about_1_title: 'Datenschutz-first', about_1_desc: 'Ihre Daten verlassen niemals Ihr Unternehmen. 100% lokale Verarbeitung, keine Cloud.',
         about_2_title: 'Schnelle Ergebnisse', about_2_desc: 'Messbare Verbesserungen innerhalb der ersten 4 Wochen. Keine langwierigen Pilotphasen.',
-        about_3_title: 'Schweizer Präzision', about_3_desc: 'Verständnis für Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.',
+        about_3_title: 'Schweizer Praezision', about_3_desc: 'Verstaendnis fuer Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.',
         about_4_title: 'DGX Station', about_4_desc: 'Enterprise-Grafikleistung für maximale KI-Leistung — direkt vor Ort in Ihrem Rechenzentrum.',
-        pricing_badge: 'Preise', pricing_title: 'Transparente Investition', pricing_subtitle: 'Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.',
+        pricing_badge: 'Preise', pricing_title: 'Transparente Investition', pricing_subtitle: 'Jede Loesung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.',
         pricing_badge_label: 'Empfohlen',
         pricing_0_unit: '/ Session', pricing_1_unit: '/ Projekt', pricing_3_price: 'Individuell',
         pricing_0_title: 'KI-Workshop', pricing_0_desc: '2 Stunden: Agent-Entwicklung & Launch',
-        pricing_0_f1: '2h intensive Workshop-Sitzung', pricing_0_f2: 'Gemeinsam den KI-Agenten bauen', pricing_0_f3: 'Auf meiner Station/Testumgebung', pricing_0_f4: 'Sofortiger Start Ihrer KI-Lösung',
+        pricing_0_f1: '2h intensive Workshop-Sitzung', pricing_0_f2: 'Gemeinsam den KI-Agenten bauen', pricing_0_f3: 'Auf meiner Station/Testumgebung', pricing_0_f4: 'Sofortiger Start Ihrer KI-Loesung',
         pricing_1_title: 'Starter', pricing_1_desc: 'Einzelne KI-Anwendung für den Einstieg',
         pricing_1_f1: 'Ein KI-Use Case', pricing_1_f2: 'Passende Hardware wird geliefert', pricing_1_f3: 'Schulung & Support',
-        pricing_3_title: 'Enterprise', pricing_3_desc: 'Massgeschneiderte Enterprise-Lösung',
+        pricing_3_title: 'Enterprise', pricing_3_desc: 'Massgeschneiderte Enterprise-Loesung',
         pricing_3_f1: 'Unbegrenzte Use Cases', pricing_3_f2: 'DGX Station & On-Premise', pricing_3_f3: 'Dediziertes Team', pricing_3_f4: 'SLA & Priority Support',
         pricing_cta: 'Anfragen', pricing_cta_popular: 'Anfragen',
         contact_title: 'Kontakt aufnehmen', contact_subtitle: 'Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.', contact_email: 'top@gigatop.io', contact_location: 'Fabio Serpa, Einzelfirma',
@@ -1235,13 +1363,14 @@ var LANGS = {
         hero_cta1: 'Analyze AI potential', hero_cta2: 'Contact us',
         hero_feat1: '100% local & private', hero_feat2: 'Swiss data protection', hero_feat3: 'Measurable results',
         stat_local: 'Local processing', stat_latency: 'Zero cloud latency', stat_privacy: 'Privacy',
+        statement_text: 'AI doesn\'t need the cloud. It stays exactly where it belongs: <span class="accent">inside your company.</span>',
+        showcase_title: 'Powered by DGX', showcase_desc: 'Enterprise GPU performance on-site. No cloud. No compromises.',
         uc_badge: 'Application Areas', uc_title: 'AI for Your Business', uc_subtitle: 'Choose a domain and discover how AI can revolutionize your daily work.',
         uc1_title: 'Sales & Growth', uc1_desc: 'Lead generation, sales analysis and customer retention with AI-powered data evaluation.',
         uc2_title: 'Operations & Efficiency', uc2_desc: 'Process automation, document management and workflows.',
         uc3_title: 'Customer Support', uc3_desc: 'AI chatbots, ticket automation and 24/7 customer communication.',
         uc4_title: 'Data & Intelligence', uc4_desc: 'Data analysis, business intelligence and data-driven decisions.',
         uc5_title: 'Finance & Controlling', uc5_desc: 'Financial planning, risk assessment and automated reporting.',
-        uc_more: 'Learn more →',
         roi_badge: 'ROI Calculator', roi_title: 'Calculate Your AI Potential', roi_subtitle: 'Get a realistic cost estimate from AI automation in seconds.',
         roi_input: 'Enter parameters', roi_employees: 'Employees', roi_hours: 'Hours/week per process', roi_salary: 'Gross salary / year (CHF)', roi_rate: 'Automation rate (%)',
         roi_result: 'Result', roi_savings_label: 'Annual savings', roi_time_label: 'Time saved / year', roi_proc_label: 'Processes / month', roi_cta: 'Discuss details',
@@ -1293,6 +1422,30 @@ function setLang(lang) {
     window.addEventListener('scroll', function() {
         if (window.scrollY > 10) { nav.classList.add('scrolled'); }
         else { nav.classList.remove('scrolled'); }
+    });
+
+    // Scroll reveal observer
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+    });
+
+    // Mouse glow on usecase cards
+    document.querySelectorAll('.uc-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+            var rect = card.getBoundingClientRect();
+            var x = ((e.clientX - rect.left) / rect.width) * 100;
+            var y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mx', x + '%');
+            card.style.setProperty('--my', y + '%');
+        });
     });
 })();
 
@@ -1375,7 +1528,7 @@ function renderQuestions(pkg) {
             <div class="form-group">
                 <label class="form-label">Wann passt es Ihnen am besten?</label>
                 <select name="Terminvorliebe" class="form-select">
-                    <option value="">Bitte wählen...</option>
+                    <option value="">Bitte waehlen...</option>
                     <option value="Mo-Mi Vormittag">Montag - Mittwoch Vormittag</option>
                     <option value="Mo-Mi Nachmittag">Montag - Mittwoch Nachmittag</option>
                     <option value="Do-Fri Vormittag">Donnerstag - Freitag Vormittag</option>
@@ -1393,7 +1546,7 @@ function renderQuestions(pkg) {
             </div>
             <div class="form-group">
                 <label class="form-label">Use Case - Beschreibung *</label>
-                <textarea name="Use Case" class="form-textarea" required placeholder="Welchen Prozess möchten Sie mit KI optimieren? Wie läuft es aktuell?"></textarea>
+                <textarea name="Use Case" class="form-textarea" required placeholder="Welchen Prozess moechten Sie mit KI optimieren? Wie laeuft er aktuell?"></textarea>
             </div>
             <div class="form-group">
                 <label class="form-label">Welche Daten liegen vor?</label>
@@ -1401,21 +1554,20 @@ function renderQuestions(pkg) {
             </div>
             <div class="form-group">
                 <label class="form-label">Hardware-Anforderungen?</label>
-                <input type="text" name="Hardware" class="form-input" placeholder="z.B. kein Bedarf, eigener PC, neue Hardware nötig...">
+                <input type="text" name="Hardware" class="form-input" placeholder="z.B. kein Bedarf, eigener PC, neue Hardware noetig...">
             </div>
             <div class="form-group">
                 <label class="form-label">Budgetrahmen</label>
                 <select name="Budget" class="form-select">
-                    <option value="">Bitte wählen...</option>
+                    <option value="">Bitte waehlen...</option>
                     <option value="Unter 3'000 CHF">Unter 3'000 CHF</option>
                     <option value="3'000 - 7'000 CHF">3'000 - 7'000 CHF</option>
                     <option value="7'000 - 15'000 CHF">7'000 - 15'000 CHF</option>
-                    <option value="Über 15'000 CHF">Über 15'000 CHF</option>
+                    <option value="Ueber 15'000 CHF">Ueber 15'000 CHF</option>
                 </select>
             </div>
         `;
     } else {
-        // Enterprise
         title.textContent = 'Enterprise-Lösung anfragen';
         subtitle.textContent = 'Massgeschneiderte KI-Lösung für Ihr Unternehmen. Bitte teilen Sie uns mit, was Sie bewegt.';
         html += `
@@ -1436,7 +1588,7 @@ function renderQuestions(pkg) {
                 <input type="text" name="Systeme" class="form-input" placeholder="z.B. SAP, Microsoft 365, Salesforce, eigene Server...">
             </div>
             <div class="form-group">
-                <label class="form-label">Priorität & Zeitraum</label>
+                <label class="form-label">Prioritaet & Zeitraum</label>
                 <input type="text" name="Zeitrahmen" class="form-input" placeholder="z.B. Hoch / 2 Monate, Mittel / 3 Monate...">
             </div>
             <div class="form-group">
@@ -1463,11 +1615,11 @@ function submitForm(e) {
         body: data,
         headers: { 'Accept': 'application/json' }
     })
-    .then(response => {
+    .then(function(response) {
         document.getElementById('modalFormArea').style.display = 'none';
         document.getElementById('modalSuccess').style.display = 'block';
     })
-    .catch(error => {
+    .catch(function(error) {
         document.getElementById('modalFormArea').innerHTML += '<div class="form-error">Etwas ist schiefgelaufen. Bitte senden Sie uns direkt eine E-Mail an top@gigatop.io</div>';
         btn.disabled = false;
         btn.textContent = 'Anfrage absenden →';

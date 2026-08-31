@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Gigatop - Private AI. Built around your business.</title>
-    <meta name="description" content="Gigatop baut Private AI für Schweizer Unternehmen. Lokale KI-Systeme, die Ihr Wissen mit Ihren Daten verbinden - sicher, kontrollierbar und messbar.">
-    <meta property="og:title" content="Gigatop - Private AI. Built around your business.">
-    <meta property="og:description" content="Gigatop baut Private AI für Schweizer Unternehmen. Lokale KI-Systeme, die Ihr Wissen mit Ihren Daten verbinden - sicher, kontrollierbar und messbar.">
+    <title>Gigatop, Private AI. Built around your business.</title>
+    <meta name="description" content="Gigatop baut Private AI fuer Schweizer Unternehmen. Lokale KI-Systeme, die Ihr Wissen mit Ihren Daten verbinden, sicher, kontrollierbar und messbar.">
+    <meta property="og:title" content="Gigatop, Private AI. Built around your business.">
+    <meta property="og:description" content="Gigatop baut Private AI fuer Schweizer Unternehmen. Lokale KI-Systeme, die Ihr Wissen mit Ihren Daten verbinden, sicher, kontrollierbar und messbar.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gigatop.io">
     <meta property="og:image" content="/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://gigatop.io">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ============================================
-           DESIGN TOKENS — MEDITERRANEAN TECHNOLOGY
-           Swiss precision × Mediterranean energy
+           DESIGN TOKENS, MEDITERRANEAN TECHNOLOGY
            ============================================ */
         :root {
-            /* Colors - Navy as primary, not black */
             --bg-primary: #0E1C25;
             --bg-secondary: #0A1520;
             --bg-elevated: #142230;
@@ -26,25 +27,26 @@
             --surface-hover: #233748;
             --border: rgba(255, 255, 255, 0.08);
             --border-strong: rgba(255, 255, 255, 0.15);
-            
-            /* Mediterranean accent */
+
+            /* Accent, Terracotta (ONE accent, used throughout) */
             --accent: #D66B45;
             --accent-hover: #E07B55;
             --accent-light: rgba(214, 107, 69, 0.1);
-            
-            /* Olive for secondary */
+
+            /* Olive secondary */
             --olive: #78866B;
-            
+            --olive-light: rgba(120, 134, 107, 0.1);
+
             /* Text */
             --text-primary: #F6F1E8;
-            --text-secondary: rgba(246, 241, 232, 0.6);
-            --text-tertiary: rgba(246, 241, 232, 0.4);
-            
-            /* Typography - Using system fonts for performance, no Inter */
-            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            --text-secondary: rgba(246, 241, 232, 0.7);
+            --text-tertiary: rgba(246, 241, 232, 0.45);
+
+            /* Font */
+            --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, monospace;
-            
-            /* Rhythm - 8px base grid */
+
+            /* Space */
             --space-xs: 0.25rem;
             --space-sm: 0.5rem;
             --space-md: 1rem;
@@ -53,22 +55,22 @@
             --space-2xl: 3rem;
             --space-3xl: 4rem;
             --space-4xl: 6rem;
-            
+
             /* Layout */
             --max-width: 1200px;
-            --max-width-narrow: 800px;
+            --max-width-narrow: 780px;
+
+            /* Radius */
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
-            
+
             /* Motion */
             --duration-fast: 150ms;
             --duration-normal: 250ms;
-            --duration-slow: 500ms;
             --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        
+
         /* ============================================
            RESET & BASE
            ============================================ */
@@ -77,13 +79,12 @@
             margin: 0;
             padding: 0;
         }
-        
+
         html {
             scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
             scroll-padding-top: 80px;
         }
-        
+
         body {
             font-family: var(--font-sans);
             background: var(--bg-primary);
@@ -93,27 +94,27 @@
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
-        
+
         /* ============================================
            TYPOGRAPHY
            ============================================ */
         h1, h2, h3, h4 {
-            line-height: 1.2;
+            line-height: 1.15;
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
-        
-        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; }
-        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
-        h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
-        h4 { font-size: 1.25rem; }
-        
+
+        h1 { font-size: clamp(2.25rem, 5.5vw, 4.25rem); font-weight: 700; }
+        h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
+
         p {
-            font-size: 1.125rem;
+            font-size: 1.0625rem;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.65;
+            max-width: 65ch;
         }
-        
+
         /* ============================================
            LAYOUT UTILITIES
            ============================================ */
@@ -123,31 +124,15 @@
             margin: 0 auto;
             padding: 0 var(--space-xl);
         }
-        
-        .container-narrow {
+
+        .container--narrow {
             max-width: var(--max-width-narrow);
         }
-        
+
         .section {
             padding: var(--space-4xl) 0;
         }
-        
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto var(--space-3xl);
-        }
-        
-        .section-title {
-            margin-bottom: var(--space-md);
-        }
-        
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-lg);
-        }
-        
+
         /* ============================================
            NAVIGATION
            ============================================ */
@@ -158,1231 +143,687 @@
             right: 0;
             z-index: 1000;
             padding: var(--space-md) 0;
-            background: rgba(14, 28, 37, 0.8);
+            background: rgba(14, 28, 37, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             transition: transform var(--duration-normal) var(--ease-out);
         }
-        
-        .nav-container {
+
+        .nav--hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav__inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
         }
-        
-        .nav-logo {
-            font-size: 1.5rem;
+
+        .nav__logo {
+            font-size: 1.375rem;
             font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
+            letter-spacing: -0.02em;
         }
-        
-        .nav-logo span {
+
+        .nav__logo span {
             color: var(--accent);
         }
-        
-        .nav-links {
+
+        .nav__links {
             display: none;
+            align-items: center;
             gap: var(--space-xl);
         }
-        
+
         @media (min-width: 768px) {
-            .nav-links { display: flex; }
+            .nav__links { display: flex; }
         }
-        
-        .nav-link {
+
+        .nav__link {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.9375rem;
             font-weight: 500;
-            transition: color var(--duration-fast);
+            transition: color var(--duration-fast) var(--ease-out);
         }
-        
-        .nav-link:hover { color: var(--text-primary); }
-        
-        .nav-cta {
-            display: none;
+
+        .nav__link:hover {
+            color: var(--text-primary);
         }
-        
-        @media (min-width: 768px) {
-            .nav-cta { display: inline-flex; }
-        }
-        
-        .mobile-menu-btn {
+
+        /* Mobile menu button */
+        .nav__menu-btn {
             display: block;
             background: none;
             border: none;
             color: var(--text-primary);
-            font-size: 1.5rem;
             cursor: pointer;
             padding: var(--space-sm);
         }
-        
+
         @media (min-width: 768px) {
-            .mobile-menu-btn { display: none; }
+            .nav__menu-btn { display: none; }
         }
-        
+
+        /* Mobile menu */
+        .nav__mobile {
+            display: none;
+            padding: var(--space-md) 0 var(--space-lg);
+        }
+
+        .nav__mobile.open {
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .nav__mobile { display: none !important; }
+        }
+
+        .nav__mobile-link {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--border);
+        }
+
         /* ============================================
-           BUTTONS
+           BUTTONS (unified sizing)
            ============================================ */
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: var(--space-sm);
-            padding: 0.875rem 2rem;
-            font-family: var(--font-sans);
-            font-size: 1rem;
+            padding: 0.625rem 1.5rem;
+            font-size: 0.9375rem;
             font-weight: 600;
-            text-decoration: none;
+            font-family: var(--font-sans);
+            border-radius: var(--radius-sm);
             border: none;
             cursor: pointer;
-            transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-            overflow: hidden;
+            text-decoration: none;
+            transition: transform 250ms var(--ease-out), background 250ms var(--ease-out), box-shadow 250ms var(--ease-out);
             white-space: nowrap;
         }
-        
-        .btn-primary {
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn--primary {
             background: var(--accent);
-            color: #fff;
-            box-shadow: 0 4px 14px rgba(214, 107, 69, 0.25);
+            color: var(--text-primary);
         }
-        .btn-primary:hover { 
-            background: var(--accent-hover); 
+
+        .btn--primary:hover {
+            background: var(--accent-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(214, 107, 69, 0.35);
+            box-shadow: 0 8px 24px rgba(214, 107, 69, 0.25);
         }
-        .btn-primary:active { 
-            transform: scale(0.97) translateY(0);
-            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.2);
-        }
-        
-        .btn-secondary {
+
+        .btn--secondary {
             background: transparent;
             color: var(--text-primary);
             border: 1px solid var(--border-strong);
         }
-        .btn-secondary:hover { 
-            border-color: var(--text-secondary); 
+
+        .btn--secondary:hover {
             background: var(--surface);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
-        .btn-secondary:active { 
-            transform: scale(0.97);
+
+        /* ============================================
+           SECTION HEADERS
+           ============================================ */
+        .section__header {
+            text-align: center;
+            max-width: var(--max-width-narrow);
+            margin: 0 auto var(--space-3xl);
         }
-        
-        .btn .arrow {
-            display: inline-block;
-            transition: transform var(--duration-fast) var(--ease-out);
+
+        .section__title {
+            margin-bottom: var(--space-md);
         }
-        .btn:hover .arrow { transform: translateX(4px); }
-        .btn:active .arrow { transform: translateX(2px); }
-        
-        /* Hero CTA — same size as all other buttons */
-        .btn-hero {
-            padding: 0.875rem 2rem;
-            font-size: 1rem;
+
+        .section__subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
         }
-        
-        /* Remove any inline style overrides */
-        .btn[style] {
-            all: revert;
+
+        /* ============================================
+           ANIMATIONS (reduced motion)
+           ============================================ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
         }
-        
-.btn-full { width: 100%; justify-content: center; }
-        
+
+        .fade-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-up {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
         /* ============================================
            HERO
            ============================================ */
         .hero {
-            padding: var(--space-4xl) 0 var(--space-3xl);
-            position: relative;
-            min-height: 85vh;
+            min-height: 100dvh;
             display: flex;
             align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .hero-container {
+
+        .hero__grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: var(--space-3xl);
-            align-items: center;
-        }
-        
-        @media (min-width: 1024px) {
-            .hero-container { grid-template-columns: 1fr 1fr; }
-        }
-        
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-xs) var(--space-md);
-            background: var(--accent-light);
-            border: 1px solid rgba(214, 107, 69, 0.2);
-            border-radius: 100px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: var(--space-xl);
-        }
-        
-        .hero-title {
-            margin-bottom: var(--space-lg);
-            background: linear-gradient(to bottom, var(--text-primary), var(--text-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-xl);
-            max-width: 600px;
-        }
-        
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-md);
-            margin-bottom: var(--space-2xl);
-        }
-        
-        .hero-stats {
-            display: flex;
             gap: var(--space-2xl);
+        }
+
+        @media (min-width: 1024px) {
+            .hero__grid {
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: var(--space-3xl);
+            }
+        }
+
+        .hero__eyebrow {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero__headline {
+            font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            line-height: 1.08;
+            margin-bottom: var(--space-lg);
+            color: var(--text-primary);
+        }
+
+        .hero__subtext {
+            font-size: 1.1875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-2xl);
+            max-width: 52ch;
+        }
+
+        .hero__ctas {
+            display: flex;
+            gap: var(--space-md);
             flex-wrap: wrap;
         }
-        
-        .hero-stat {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .hero-stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        
-        .hero-stat-label {
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-        }
-        
-        /* Hero System Visual */
-        .hero-visual {
+
+        .hero__visual {
             position: relative;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            aspect-ratio: 4/3;
             overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background: var(--bg-secondary);
         }
-        
-        .hero-system {
-            position: relative;
+
+        .hero__visual img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
-        
-        .system-node {
-            position: absolute;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: var(--space-md);
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            animation: node-appear 0.6s var(--ease-out) both;
-        }
-        
-        .system-node:nth-child(1) { top: 10%; left: 10%; animation-delay: 0.1s; }
-        .system-node:nth-child(2) { top: 10%; right: 10%; animation-delay: 0.2s; }
-        .system-node:nth-child(3) { bottom: 25%; left: 20%; animation-delay: 0.3s; }
-        .system-node:nth-child(4) { bottom: 25%; right: 20%; animation-delay: 0.4s; }
-        .system-node:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 0.5s; }
-        
-        @keyframes node-appear {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .system-node:nth-child(5) {
-            animation-name: node-center-appear;
-        }
-        
-        @keyframes node-center-appear {
-            from { opacity: 0; transform: translate(-50%, -40%); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
-        }
-        
-        .node-icon {
-            font-size: 1.25rem;
-        }
-        
-        .node-label {
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-        
-        .system-line {
-            position: absolute;
-            background: var(--border);
-            transform-origin: left center;
-            animation: line-draw 0.8s var(--ease-out) both;
-        }
-        
-        .system-line:nth-child(6) {
-            top: 15%; left: 25%; width: 50%; height: 1px;
-            animation-delay: 0.3s;
-        }
-        .system-line:nth-child(7) {
-            top: 60%; left: 30%; width: 40%; height: 1px;
-            animation-delay: 0.4s;
-        }
-        .system-line:nth-child(8) {
-            top: 35%; left: 20%; height: 25%; width: 1px;
-            animation-delay: 0.5s;
-        }
-        
-        @keyframes line-draw {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
+
         /* ============================================
-           PROBLEM SECTION
+           PROBLEM SECTION (Cloud AI risks)
            ============================================ */
-        .problem-section {
-            background: var(--bg-primary);
-        }
-        
-        .problem-grid {
-            display: grid;
-            gap: var(--space-2xl);
-        }
-        
-        @media (min-width: 768px) {
-            .problem-grid { grid-template-columns: 1fr 1fr; }
-        }
-        
-        .problem-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .problem-list {
-            list-style: none;
-        }
-        
-        .problem-item {
-            display: flex;
-            gap: var(--space-md);
-            padding: var(--space-lg);
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            margin-bottom: var(--space-md);
-            transition: all var(--duration-normal) var(--ease-out);
-        }
-        
-        .problem-item:hover {
-            border-color: var(--border-strong);
-            transform: translateX(4px);
-        }
-        
-        .problem-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-light);
-            border-radius: var(--radius-sm);
-        }
-        
-        .problem-text h4 {
-            font-size: 1rem;
-            margin-bottom: var(--space-xs);
-        }
-        
-        .problem-text p {
-            font-size: 0.9rem;
-        }
-        
-        /* ============================================
-           USE CASES - DIVERSE CARDS (anti-template)
-           ============================================ */
-        .usecases-section {
+        .problem {
             background: var(--bg-secondary);
         }
-        
-        .usecase-grid {
+
+        .problem__grid {
             display: grid;
+            grid-template-columns: 1fr;
             gap: var(--space-lg);
         }
-        
+
         @media (min-width: 768px) {
-            .usecase-grid { grid-template-columns: 1fr 1fr; }
+            .problem__grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-xl);
+            }
         }
-        
-        .usecase-card {
-            background: var(--surface);
+
+        .problem__item {
+            padding: var(--space-xl);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: var(--space-xl);
-            cursor: pointer;
-            transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .usecase-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform var(--duration-normal) var(--ease-out);
-        }
-        
-        .usecase-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-        }
-        
-        .usecase-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .usecase-card:first-child {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, var(--surface), var(--bg-elevated));
-            border-color: var(--border-strong);
-        }
-        
-        .usecase-card:first-child h3 {
-            font-size: 1.5rem;
-        }
-        
-        .usecase-icon {
-            font-size: 2rem;
-            margin-bottom: var(--space-md);
-        }
-        
-        .usecase-title {
-            font-size: 1.25rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .usecase-desc {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-        
-        .usecase-action {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: var(--space-md);
-        }
-        
-        /* ============================================
-           AI USE CASE FINDERS (Interactive)
-           ============================================ */
-        .finder-section {
             background: var(--bg-primary);
+            transition: border-color var(--duration-normal) var(--ease-out);
         }
-        
-        .finder-widget {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: var(--space-2xl);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .finder-question {
-            font-size: 1.125rem;
-            color: var(--text-primary);
-            margin-bottom: var(--space-lg);
-            font-weight: 500;
-        }
-        
-        .finder-options {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-        }
-        
-        .finder-option {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: var(--space-md) var(--space-lg);
-            cursor: pointer;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            text-align: left;
-            font-family: var(--font-sans);
-            transition: all var(--duration-fast) var(--ease-out);
-        }
-        
-        .finder-option:hover {
+
+        .problem__item:hover {
             border-color: var(--accent);
-            color: var(--text-primary);
-            background: var(--accent-light);
         }
-        
-        .finder-option.selected {
-            border-color: var(--accent);
-            background: var(--accent-light);
-            color: var(--text-primary);
-        }
-        
-        .finder-result {
-            display: none;
-            margin-top: var(--space-xl);
-            padding: var(--space-lg);
-            background: var(--bg-elevated);
-            border-radius: var(--radius-sm);
-            border-left: 3px solid var(--accent);
-        }
-        
-        .finder-result.visible {
+
+        .problem__icon {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
             display: block;
-            animation: result-appear 0.4s var(--ease-out);
         }
-        
-        @keyframes result-appear {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .finder-result h4 {
-            color: var(--accent);
+
+        .problem__title {
+            font-size: 1.125rem;
+            font-weight: 600;
             margin-bottom: var(--space-sm);
+            color: var(--text-primary);
         }
-        
+
+        .problem__desc {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         /* ============================================
-           PRIVATE AI SECTION
+           SOLUTION PILLARS (3 pillars)
            ============================================ */
-        .private-section {
-            background: var(--bg-secondary);
-        }
-        
-        .features-grid {
+        .pillars__grid {
             display: grid;
+            grid-template-columns: 1fr;
             gap: var(--space-xl);
         }
-        
-        @media (min-width: 768px) {
-            .features-grid { grid-template-columns: repeat(3, 1fr); }
+
+        @media (min-width: 1024px) {
+            .pillars__grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-2xl);
+            }
         }
-        
-        .feature-item {
-            padding: var(--space-xl);
-            border-left: 2px solid var(--accent);
-            background: var(--surface);
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            transition: all var(--duration-normal) var(--ease-out);
+
+        .pillar {
+            text-align: center;
+            padding: var(--space-2xl) var(--space-lg);
         }
-        
-        .feature-item:hover {
-            background: var(--surface-hover);
-            transform: translateX(4px);
-        }
-        
-        .feature-icon {
-            font-size: 1.5rem;
-            margin-bottom: var(--space-md);
-        }
-        
-        .feature-title {
-            font-size: 1.125rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .feature-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        
-        /* ============================================
-           AI AGENTS SECTION
-           ============================================ */
-        .agents-section {
-            background: var(--bg-primary);
-        }
-        
-        .agents-grid {
-            display: grid;
-            gap: var(--space-lg);
-        }
-        
-        @media (min-width: 768px) {
-            .agents-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        .agent-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: var(--space-xl);
-            position: relative;
-            overflow: hidden;
-            transition: all var(--duration-normal) var(--ease-out);
-        }
-        
-        .agent-card:hover {
-            border-color: var(--border-strong);
-            transform: translateY(-2px);
-        }
-        
-        .agent-status {
+
+        .pillar__icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--accent-light);
             display: flex;
             align-items: center;
-            gap: var(--space-xs);
-            font-size: 0.75rem;
-            color: var(--olive);
-            margin-bottom: var(--space-md);
+            justify-content: center;
+            margin: 0 auto var(--space-lg);
+            font-size: 1.5rem;
         }
-        
-        .agent-title {
-            font-size: 1.125rem;
+
+        .pillar__title {
+            font-size: 1.375rem;
+            font-weight: 600;
             margin-bottom: var(--space-sm);
         }
-        
-        .agent-desc {
-            font-size: 0.9rem;
+
+        .pillar__desc {
+            font-size: 1rem;
             color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 28ch;
         }
-        
-        .agent-tags {
-            display: flex;
-            gap: var(--space-sm);
-            flex-wrap: wrap;
-            margin-top: var(--space-md);
-        }
-        
-        .agent-tag {
-            font-size: 0.75rem;
-            padding: var(--space-xs) var(--space-sm);
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            color: var(--text-secondary);
-        }
-        
+
         /* ============================================
-           ARCHITECTURE VISUALIZATION
+           USE CASES (bento-style)
            ============================================ */
-        .arch-section {
+        .usecases {
             background: var(--bg-secondary);
         }
-        
-        .arch-visual {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: var(--space-2xl);
-            position: relative;
-            min-height: 400px;
-            overflow: hidden;
-        }
-        
-        .arch-layer {
-            display: flex;
-            justify-content: center;
+
+        .usecases__grid {
+            display: grid;
+            grid-template-columns: 1fr;
             gap: var(--space-lg);
-            padding: var(--space-lg) 0;
-            position: relative;
         }
-        
-        .arch-block {
-            background: var(--bg-elevated);
+
+        @media (min-width: 768px) {
+            .usecases__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-xl);
+            }
+        }
+
+        .usecase {
+            padding: var(--space-2xl);
             border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: var(--space-lg);
-            text-align: center;
-            transition: all var(--duration-normal) var(--ease-out);
-            max-width: 200px;
+            border-radius: var(--radius-md);
+            background: var(--bg-primary);
+            transition: border-color var(--duration-normal) var(--ease-out), background var(--duration-normal) var(--ease-out);
         }
-        
-        .arch-block:hover {
-            border-color: var(--accent);
-            background: var(--accent-light);
+
+        .usecase:hover {
+            border-color: var(--border-strong);
+            background: var(--surface);
         }
-        
-        .arch-block-icon {
-            font-size: 1.5rem;
+
+        .usecase__title {
+            font-size: 1.375rem;
+            font-weight: 600;
             margin-bottom: var(--space-sm);
         }
-        
-        .arch-block-label {
+
+        .usecase__desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-lg);
+        }
+
+        .usecase__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+
+        .usecase__tag {
+            font-size: 0.8125rem;
+            font-family: var(--font-mono);
+            color: var(--text-tertiary);
+            background: var(--bg-secondary);
+            padding: 0.25rem 0.625rem;
+            border-radius: 999px;
+        }
+
+        /* ============================================
+           ARCHITECTURE SECTION
+           ============================================ */
+        .arch {
+            text-align: center;
+        }
+
+        .arch__image {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .arch__image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .arch__caption {
+            font-size: 0.9375rem;
+            color: var(--text-tertiary);
+            margin-top: var(--space-md);
+            font-style: italic;
+        }
+
+        /* ============================================
+           COMPLIANCE BADGES
+           ============================================ */
+        .compliance {
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .compliance__badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-2xl);
+            align-items: center;
+            margin-top: var(--space-2xl);
+        }
+
+        .compliance__badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--text-tertiary);
             font-size: 0.875rem;
             font-weight: 500;
-            color: var(--text-primary);
         }
-        
-        .arch-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-tertiary);
-            margin-bottom: var(--space-md);
-            text-align: center;
-        }
-        
-        .arch-connector {
-            position: absolute;
-            left: 50%;
-            width: 1px;
-            height: 40px;
-            background: var(--border);
-            transform: translateX(-50%);
-        }
-        
-        /* ============================================
-           HOW IT WORKS
-           ============================================ */
-        .steps-section {
+
+        .compliance__badge-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-sm);
             background: var(--bg-primary);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
         }
-        
-        .steps-grid {
-            display: grid;
+
+        /* ============================================
+           INTEGRATIONS (logo wall)
+           ============================================ */
+        .integrations__logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: var(--space-2xl);
-        }
-        
-        @media (min-width: 768px) {
-            .steps-grid { grid-template-columns: repeat(5, 1fr); }
-        }
-        
-        .step-card {
-            text-align: center;
-            padding: var(--space-xl);
-            position: relative;
-        }
-        
-        .step-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent);
-            opacity: 0.3;
-            line-height: 1;
-            margin-bottom: var(--space-md);
-        }
-        
-        .step-title {
-            font-size: 1.125rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .step-desc {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-        
-        .step-arrow {
-            position: absolute;
-            right: -1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-tertiary);
-            font-size: 1.5rem;
-        }
-        
-        @media (min-width: 768px) {
-            .step-card:not(:last-child) .step-arrow { display: block; }
-        }
-        
-        @media (max-width: 767px) {
-            .step-card:not(:last-child) { margin-bottom: var(--space-xl); }
-            .step-arrow { display: none; }
-        }
-        
-        /* ============================================
-           DEPLOYMENT OPTIONS
-           ============================================ */
-        .deploy-section {
-            background: var(--bg-secondary);
-        }
-        
-        .deploy-grid {
-            display: grid;
-            gap: var(--space-lg);
-        }
-        
-        @media (min-width: 768px) {
-            .deploy-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        
-        .deploy-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: var(--space-xl);
-            transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .deploy-card.featured {
-            border-color: var(--accent);
-        }
-        
-        .deploy-card.featured::before {
-            content: 'BELIEBT';
-            position: absolute;
-            top: var(--space-md);
-            right: var(--space-md);
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent);
-            background: var(--accent-light);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: 100px;
-        }
-        
-        .deploy-card:hover {
-            border-color: var(--border-strong);
-            transform: translateY(-2px);
-        }
-        
-        .deploy-icon {
-            font-size: 2rem;
-            margin-bottom: var(--space-md);
-        }
-        
-        .deploy-title {
-            font-size: 1.25rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .deploy-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-lg);
-        }
-        
-        .deploy-features {
-            list-style: none;
-        }
-        
-        .deploy-features li {
-            display: flex;
             align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-xs) 0;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
+            margin-top: var(--space-2xl);
         }
-        
-        .deploy-features li::before {
-            content: '✓';
-            color: var(--accent);
-            font-weight: 700;
+
+        .integrations__logo {
+            width: 80px;
+            height: 32px;
+            opacity: 0.45;
+            transition: opacity var(--duration-normal) var(--ease-out);
         }
-        
+
+        .integrations__logo:hover {
+            opacity: 0.8;
+        }
+
         /* ============================================
-           PRICING SECTION
-           ============================================ */
-        .pricing-section {
-            background: var(--bg-primary);
-        }
-        
-        .pricing-grid {
-            display: grid;
-            gap: var(--space-lg);
-        }
-        
-        @media (min-width: 768px) {
-            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        .pricing-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: var(--space-2xl);
-            position: relative;
-            transition: all var(--duration-normal) var(--ease-out);
-        }
-        
-        .pricing-card:hover {
-            border-color: var(--border-strong);
-            transform: translateY(-4px);
-        }
-        
-        .pricing-card.featured {
-            border-color: var(--accent);
-        }
-        
-        .pricing-card.featured::before {
-            content: 'EMPFOHLEN';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: white;
-            padding: var(--space-xs) var(--space-md);
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        
-        .pricing-title {
-            font-size: 1.25rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .pricing-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-lg);
-        }
-        
-        .pricing-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .pricing-price span {
-            font-size: 1rem;
-            color: var(--text-tertiary);
-            font-weight: 400;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            margin-bottom: var(--space-xl);
-        }
-        
-        .pricing-features li {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-xs) 0;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        
-        .pricing-features li::before {
-            content: '✓';
-            color: var(--accent);
-            font-weight: 700;
-        }
-        
-        /* ============================================
-           ROI CALCULATOR (Slider)
-           ============================================ */
-        .roi-section {
-            background: var(--bg-secondary);
-        }
-        
-        .roi-widget {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: var(--space-2xl);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .roi-range-group {
-            margin-bottom: var(--space-lg);
-        }
-        
-        .roi-range-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .roi-range-label span:first-child {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        
-        .roi-range-label span:last-child {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--accent);
-        }
-        
-        .roi-range-wrapper {
-            position: relative;
-            height: 22px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .roi-range-track {
-            position: relative;
-            width: 100%;
-            height: 6px;
-            background: var(--bg-elevated);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        
-        .roi-range-fill {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            background: var(--accent);
-            border-radius: 3px;
-            width: 25%;
-            transition: width var(--duration-fast) var(--ease-out);
-        }
-        
-        .roi-range {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 22px;
-            margin-top: -8px;
-            appearance: none;
-            -webkit-appearance: none;
-            background: transparent;
-            cursor: pointer;
-            z-index: 2;
-        }
-        
-        .roi-range::-webkit-slider-runnable-track {
-            height: 6px;
-            background: transparent;
-        }
-        
-        .roi-range::-webkit-slider-thumb {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid var(--bg-elevated);
-            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.4);
-            margin-top: -9px;
-            transition: transform var(--duration-fast) var(--ease-out);
-        }
-        
-        .roi-range::-moz-range-track {
-            height: 6px;
-            background: transparent;
-            border: none;
-        }
-        
-        .roi-range::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid var(--bg-elevated);
-            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.4);
-            margin-top: -9px;
-        }
-        
-        .roi-range:hover::-webkit-slider-thumb {
-            transform: scale(1.1);
-        }
-        
-        .roi-result {
-            margin-top: var(--space-xl);
-            padding: var(--space-lg);
-            background: var(--accent-light);
-            border: 1px solid rgba(214, 107, 69, 0.2);
-            border-radius: var(--radius-md);
-            text-align: center;
-        }
-        
-        .roi-result-label {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-xs);
-        }
-        
-        .roi-result-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            line-height: 1.2;
-        }
-        
-        .roi-result-note {
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-            margin-top: var(--space-xs);
-        }
-        
-        /* ============================================
-           FINAL CTA
+           CTA SECTION
            ============================================ */
         .cta-section {
-            background: var(--bg-primary);
+            background: var(--accent);
             text-align: center;
+            color: var(--text-primary);
         }
-        
-        .cta-title {
-            margin-bottom: var(--space-lg);
+
+        .cta-section__title {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
         }
-        
-        .cta-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
+
+        .cta-section__sub {
+            font-size: 1.1875rem;
+            color: rgba(246, 241, 232, 0.85);
             margin-bottom: var(--space-2xl);
-            max-width: 600px;
+            max-width: 52ch;
             margin-left: auto;
             margin-right: auto;
         }
-        
+
+        .cta-section .btn--outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(246, 241, 232, 0.7);
+        }
+
+        .cta-section .btn--outline:hover {
+            background: rgba(246, 241, 232, 0.1);
+            border-color: var(--text-primary);
+        }
+
+        /* ============================================
+           FAQ
+           ============================================ */
+        .faq {
+            background: var(--bg-secondary);
+        }
+
+        .faq__list {
+            max-width: var(--max-width-narrow);
+            margin: 0 auto;
+        }
+
+        .faq__item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq__question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-lg) 0;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.0625rem;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faq__question:hover {
+            color: var(--accent);
+        }
+
+        .faq__icon {
+            font-size: 1.25rem;
+            font-weight: 300;
+            transition: transform var(--duration-normal) var(--ease-out);
+            flex-shrink: 0;
+            margin-left: var(--space-md);
+        }
+
+        .faq__item.open .faq__icon {
+            transform: rotate(45deg);
+        }
+
+        .faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--duration-normal) var(--ease-out), padding var(--duration-normal) var(--ease-out);
+        }
+
+        .faq__item.open .faq__answer {
+            max-height: 300px;
+            padding-bottom: var(--space-lg);
+        }
+
+        .faq__answer p {
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+
         /* ============================================
            FOOTER
            ============================================ */
         .footer {
-            background: var(--bg-secondary);
+            padding: var(--space-3xl) 0;
             border-top: 1px solid var(--border);
-            padding: var(--space-2xl) 0;
         }
-        
-        .footer-grid {
-            display: grid;
-            gap: var(--space-2xl);
-            grid-template-columns: 1fr;
+
+        .footer__inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: var(--space-xl);
         }
-        
-        @media (min-width: 768px) {
-            .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+
+        .footer__brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
         }
-        
-        .footer-brand p {
+
+        .footer__brand span {
+            color: var(--accent);
+        }
+
+        .footer__copy {
             font-size: 0.875rem;
             color: var(--text-tertiary);
-            margin-top: var(--space-md);
         }
-        
-        .footer-title {
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-tertiary);
-            margin-bottom: var(--space-md);
+
+        .footer__links {
+            display: flex;
+            gap: var(--space-xl);
         }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li { margin-bottom: var(--space-sm); }
-        
-        .footer-links a {
+
+        .footer__link {
+            font-size: 0.9375rem;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: color var(--duration-fast);
         }
-        
-        .footer-links a:hover { color: var(--text-primary); }
-        
-        .footer-bottom {
-            margin-top: var(--space-2xl);
-            padding-top: var(--space-xl);
-            border-top: 1px solid var(--border);
-            text-align: center;
+
+        .footer__link:hover {
+            color: var(--text-primary);
         }
-        
-        .footer-bottom p {
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-        }
-        
-        .footer-legal {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-xl);
-            margin-top: var(--space-md);
-            flex-wrap: wrap;
-        }
-        
-        .footer-legal a {
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-            text-decoration: none;
-            transition: color var(--duration-fast);
-        }
-        
-        .footer-legal a:hover { color: var(--text-secondary); }
-        
+
         /* ============================================
-           CONTACT MODAL
+           CONTACT FORM MODAL
            ============================================ */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            padding: var(--space-lg);
+            padding: var(--space-md);
         }
-        
-        .modal-overlay.active {
+
+        .modal-overlay.open {
             display: flex;
-            animation: modal-overlay-in var(--duration-normal) var(--ease-out);
         }
-        
-        @keyframes modal-overlay-in {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
+
         .modal {
             background: var(--bg-elevated);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: var(--space-2xl);
-            width: 100%;
             max-width: 500px;
+            width: 100%;
             position: relative;
-            animation: modal-in var(--duration-normal) var(--ease-out);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
         }
-        
-        @keyframes modal-in {
-            from { opacity: 0; transform: translateY(20px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+
+        .modal-overlay.open .modal {
+            transform: scale(1);
+            opacity: 1;
         }
-        
-        .modal-close {
+
+        .modal__close {
             position: absolute;
             top: var(--space-md);
             right: var(--space-md);
@@ -1391,27 +832,30 @@
             color: var(--text-tertiary);
             font-size: 1.5rem;
             cursor: pointer;
-            padding: var(--space-sm);
-            transition: color var(--duration-fast);
+            padding: var(--space-xs);
+            line-height: 1;
         }
-        
-        .modal-close:hover { color: var(--text-primary); }
-        
-        .modal h3 {
+
+        .modal__close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal__title {
             font-size: 1.5rem;
-            margin-bottom: var(--space-sm);
+            font-weight: 700;
+            margin-bottom: var(--space-xs);
         }
-        
-        .modal p {
-            font-size: 0.95rem;
+
+        .modal__subtitle {
+            font-size: 0.9375rem;
             color: var(--text-secondary);
             margin-bottom: var(--space-xl);
         }
-        
+
         .form-group {
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-md);
         }
-        
+
         .form-label {
             display: block;
             font-size: 0.875rem;
@@ -1419,989 +863,567 @@
             color: var(--text-secondary);
             margin-bottom: var(--space-xs);
         }
-        
-        .form-input, .form-textarea, .form-select {
+
+        .form-input,
+        .form-textarea,
+        .form-select {
             width: 100%;
-            background: var(--surface);
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
-            padding: 0.75rem var(--space-md);
-            font-family: var(--font-sans);
-            font-size: 1rem;
             color: var(--text-primary);
-            transition: border-color var(--duration-fast);
+            transition: border-color var(--duration-fast) var(--ease-out);
         }
-        
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
             outline: none;
             border-color: var(--accent);
         }
-        
+
         .form-textarea {
-            min-height: 120px;
             resize: vertical;
+            min-height: 120px;
         }
-        
+
         .form-submit {
             width: 100%;
-        }
-        
-        .form-status {
-            display: none;
-            text-align: center;
-            padding: var(--space-md);
-            border-radius: var(--radius-sm);
             margin-top: var(--space-md);
-        }
-        
-        .form-status.success {
-            display: block;
-            background: rgba(120, 134, 107, 0.1);
-            border: 1px solid rgba(120, 134, 107, 0.2);
-            color: var(--olive);
-        }
-        
-        .form-status.error {
-            display: block;
-            background: rgba(214, 107, 69, 0.1);
-            border: 1px solid rgba(214, 107, 69, 0.2);
-            color: var(--accent);
-        }
-        
-        /* ============================================
-           SCROLL REVEAL ANIMATIONS
-           ============================================ */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-        }
-        
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        
-        /* ============================================
-           MOBILE OPTIMIZATIONS
-           ============================================ */
-        @media (max-width: 767px) {
-            .container { padding: 0 var(--space-md); }
-            .hero { padding: var(--space-2xl) 0 var(--space-xl); }
-            .hero-actions { flex-direction: column; }
-            .btn { width: 100%; justify-content: center; }
-            .hero-stats { justify-content: flex-start; }
-            .hero-stat { flex: 1; min-width: 100px; }
-            .mission-bar { flex-direction: column; }
-            .finder-widget { padding: var(--space-lg); }
-            .roi-widget { padding: var(--space-lg); }
-        }
-        
-        /* ============================================
-           ACCESSIBILITY
-           ============================================ */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-            .reveal { opacity: 1; transform: none; }
-        }
-        
-        :focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
-        
-        /* ============================================
-           MOBILE MENU
-           ============================================ */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--bg-primary);
-            z-index: 1500;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-xl);
-        }
-        
-        .mobile-menu.active {
-            display: flex;
-            animation: menu-in var(--duration-normal) var(--ease-out);
-        }
-        
-        @keyframes menu-in {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .mobile-menu-close {
-            position: absolute;
-            top: var(--space-lg);
-            right: var(--space-lg);
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .mobile-menu a {
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
         }
 
         /* ============================================
-           MOBILE OPTIMIZATIONS
+           RESPONSIVE ADJUSTMENTS
            ============================================ */
         @media (max-width: 767px) {
-            /* Typography */
-            h1 { font-size: 2.25rem; }
-            h2 { font-size: 1.75rem; }
-            h3 { font-size: 1.25rem; }
-            
-            /* Layout */
-            .container { padding: 0 1.25rem; }
-            .hero { padding: 6rem 0 3rem; min-height: auto; }
-            .section { padding: 3rem 0; }
-            
-            /* Hero adjustments */
-            .hero-container { grid-template-columns: 1fr; }
-            .hero-eyebrow { font-size: 0.8rem; padding: 0.25rem 0.75rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .hero-stats { gap: 1.5rem; }
-            .hero-stat-number { font-size: 1.5rem; }
-            
-            /* All buttons full-width on mobile */
-            .btn { 
-                width: 100%; 
+            .section {
+                padding: var(--space-3xl) 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 120px 0 var(--space-2xl);
+            }
+
+            .hero__headline {
+                font-size: clamp(2rem, 8vw, 2.75rem);
+            }
+
+            .hero__subtext {
+                font-size: 1.0625rem;
+            }
+
+            .hero__visual {
+                aspect-ratio: 16 / 9;
+            }
+
+            .hero__ctas {
+                flex-direction: column;
+            }
+
+            .hero__ctas .btn {
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
                 justify-content: center;
-                padding: 0.875rem 1.5rem;
             }
-            .hero-actions { flex-direction: column; }
-            
-            /* Cards */
-            .usecase-card { padding: 1.25rem; }
-            .pricing-card { padding: 1.5rem; }
-            .deploy-card { padding: 1.25rem; }
-            
-            /* Problem section */
-            .problem-grid { grid-template-columns: 1fr; }
-            .problem-item { padding: 1rem; }
-            
-            /* Features grid */
-            .features-grid { grid-template-columns: 1fr; }
-            
-            /* Agents grid */
-            .agents-grid { grid-template-columns: 1fr; }
-            
-            /* How it works */
-            .steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .step-arrow { display: none; }
-            
-            /* Deploy grid */
-            .deploy-grid { grid-template-columns: 1fr; }
-            
-            /* Pricing grid */
-            .pricing-grid { grid-template-columns: 1fr; }
-            
-            /* Footer */
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-legal { flex-direction: column; gap: 0.5rem; }
-            
-            /* Modal */
-            .modal { padding: 1.5rem; }
-            .form-input, .form-textarea, .form-select { padding: 0.75rem; }
-            
-            /* Finder widget */
-            .finder-widget { padding: 1.25rem; }
-            
-            /* ROI */
-            .roi-widget { padding: 1.25rem; }
-            
-            /* Mobile menu */
-            .mobile-menu { 
-                display: none; 
-                position: fixed; 
-                top: 0; 
-                left: 0; 
-                right: 0; 
-                bottom: 0; 
-                background: var(--bg-primary); 
-                z-index: 1500; 
-                flex-direction: column; 
-                align-items: center; 
-                justify-content: center; 
-                gap: 1.5rem; 
+
+            .footer__inner {
+                flex-direction: column;
+                text-align: center;
             }
-            .mobile-menu.active { 
-                display: flex; 
+
+            .footer__links {
+                justify-content: center;
             }
-            .mobile-menu a { 
-                font-size: 1.25rem; 
-                color: var(--text-primary); 
-                text-decoration: none; 
-                font-weight: 500; 
-                padding: 0.75rem;
+        }
+
+        /* ============================================
+           LIGHT MODE (auto)
+           ============================================ */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-primary: #FAFAF8;
+                --bg-secondary: #F4F2EE;
+                --bg-elevated: #FFFFFF;
+                --surface: #F0EDE8;
+                --surface-hover: #EAE7E1;
+                --border: rgba(0, 0, 0, 0.08);
+                --border-strong: rgba(0, 0, 0, 0.15);
+
+                --text-primary: #1A1A1A;
+                --text-secondary: rgba(26, 26, 26, 0.65);
+                --text-tertiary: rgba(26, 26, 26, 0.45);
             }
-            .mobile-menu-close { 
-                position: absolute; 
-                top: 1rem; 
-                right: 1rem; 
-                background: none; 
-                border: none; 
-                color: var(--text-primary); 
-                font-size: 1.5rem; 
-                cursor: pointer; 
+
+            .modal {
+                background: var(--bg-elevated);
+            }
+
+            .form-input,
+            .form-textarea,
+            .form-select {
+                background: var(--bg-primary);
+            }
+
+            .nav {
+                background: rgba(250, 250, 248, 0.85);
             }
         }
     </style>
-    <script data-i18n="true">
-        // ============================================
-        // SCROLL REVEAL SYSTEM
-        // ============================================
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-            
-            // Nav hide/show on scroll
-            let lastScroll = 0;
-            const nav = document.querySelector('.nav');
-            window.addEventListener('scroll', () => {
-                const current = window.pageYOffset;
-                if (current > lastScroll && current > 100) {
-                    nav.style.transform = 'translateY(-100%)';
-                } else {
-                    nav.style.transform = 'translateY(0)';
-                }
-                lastScroll = current;
-            });
-        });
-        
-        // ============================================
-        // CONTACT MODAL
-        // ============================================
-        function openContact(topic) {
-            document.getElementById('modalTopic').value = topic;
-            document.getElementById('contactModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeModal() {
-            document.getElementById('contactModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        document.getElementById('contactModal').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('contactModal')) {
-                closeModal();
-            }
-        });
-        
-        function closeBtn(e) {
-            e.stopPropagation();
-            closeModal();
-        }
-        
-        // ============================================
-        // FORM SUBMISSION
-        // ============================================
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            const statusEl = document.getElementById('formStatus');
-            
-            try {
-                const response = await fetch('https://formsubmit.co/ajax/top@gigatop.io', {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-                
-                if (response.ok) {
-                    statusEl.className = 'form-status success';
-                    statusEl.textContent = 'Vielen Dank! Wir melden uns innerhalb von 24 Stunden.';
-                    form.reset();
-                } else {
-                    throw new Error('Network error');
-                }
-            } catch {
-                statusEl.className = 'form-status error';
-                statusEl.textContent = 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.';
-            }
-        });
-        
-        // ============================================
-        // ROI CALCULATOR
-        // ============================================
-        function calculateROI() {
-            const emp = document.getElementById('employees').value;
-            const hours = document.getElementById('weeklyHours').value;
-            const hourlyCost = document.getElementById('hourlyCost').value;
-            
-            const yearlyCost = emp * hours * 52 * hourlyCost;
-            const savingsPercent = 0.4;
-            const savings = yearlyCost * savingsPercent;
-            
-            const savingsEl = document.getElementById('roiSavings');
-            savingsEl.textContent = Math.round(savings).toLocaleString('de-CH') + ' CHF';
-            
-            // Update slider fill
-            const rangeFills = document.querySelectorAll('.roi-range-fill');
-            const range1 = document.getElementById('employees');
-            const range2 = document.getElementById('weeklyHours');
-            const range3 = document.getElementById('hourlyCost');
-            
-            if (range1 && rangeFills[0]) {
-                const pct1 = ((range1.value - 5) / 45) * 100;
-                rangeFills[0].style.width = pct1 + '%';
-            }
-            if (range2 && rangeFills[1]) {
-                const pct2 = ((range2.value - 5) / 45) * 100;
-                rangeFills[1].style.width = pct2 + '%';
-            }
-            if (range3 && rangeFills[2]) {
-                const pct3 = ((range3.value - 30) / 170) * 100;
-                rangeFills[2].style.width = pct3 + '%';
-            }
-        }
-        
-        // ============================================
-        // AI USE CASE FINDER
-        // ============================================
-        function selectFinder(option) {
-            document.querySelectorAll('.finder-option').forEach(o => o.classList.remove('selected'));
-            option.classList.add('selected');
-            
-            setTimeout(() => {
-                const result = document.getElementById('finderResult');
-                result.classList.add('visible');
-            }, 200);
-        }
-        
-        // Close modal on Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-    </script>
 </head>
 <body>
-    <!-- ========== NAVIGATION ========== -->
+
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
     <nav class="nav" id="nav">
-        <div class="container">
-            <div class="nav-container">
-                <a href="#" class="nav-logo">Giga<span>top</span></a>
-                <div class="nav-links">
-                    <a href="#usecases" class="nav-link" data-i18n="nav_usecases">Use Cases</a>
-                    <a href="#architecture" class="nav-link" data-i18n="nav_architecture">Technologie</a>
-                    <a href="#pricing" class="nav-link" data-i18n="nav_pricing">Preise</a>
-                    <a href="#roi" class="nav-link" data-i18n="nav_roi">ROI</a>
-                </div>
-                <a href="#" class="btn btn-primary nav-cta" onclick="openContact('General Inquiry'); return false;" data-i18n="nav_contact">Kontakt aufnehmen</a>
-                <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.add('active')" aria-label="Menu öffnen">☰</button>
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">giga<span>top</span></a>
+            <button class="nav__menu-btn" onclick="toggleMobileMenu()" aria-label="Menue oeffnen">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+            <div class="nav__links">
+                <a href="#probleme" class="nav__link">Herausforderungen</a>
+                <a href="#loesung" class="nav__link">Loesung</a>
+                <a href="#usecases" class="nav__link">Use Cases</a>
+                <a href="#faq" class="nav__link">FAQ</a>
+                <a href="#" class="btn btn--primary" onclick="openModal(); return false;" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Gespraech vereinbaren</a>
+            </div>
+            <div class="nav__mobile" id="mobile-menu">
+                <a href="#probleme" class="nav__mobile-link" onclick="toggleMobileMenu()">Herausforderungen</a>
+                <a href="#loesung" class="nav__mobile-link" onclick="toggleMobileMenu()">Loesung</a>
+                <a href="#usecases" class="nav__mobile-link" onclick="toggleMobileMenu()">Use Cases</a>
+                <a href="#faq" class="nav__mobile-link" onclick="toggleMobileMenu()">FAQ</a>
+                <a href="#" class="btn btn--primary" onclick="openModal(); toggleMobileMenu(); return false;" style="margin-top: var(--space-md);">Gespraech vereinbaren</a>
             </div>
         </div>
     </nav>
-    
-    <!-- ========== MOBILE MENU ========== -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('active')" aria-label="Menü schliessen">✕</button>
-        <a href="#usecases" onclick="document.getElementById('mobileMenu').classList.remove('active')">Use Cases</a>
-        <a href="#architecture" onclick="document.getElementById('mobileMenu').classList.remove('active')">Technologie</a>
-        <a href="#pricing" onclick="document.getElementById('mobileMenu').classList.remove('active')">Preise</a>
-        <a href="#roi" onclick="document.getElementById('mobileMenu').classList.remove('active')">ROI</a>
-        <a href="#" class="btn btn-primary" onclick="openContact('General Inquiry'); document.getElementById('mobileMenu').classList.remove('active'); return false;">Kontakt aufnehmen</a>
-    </div>
-    
-    <!-- ========== HERO ========== -->
-    <section class="hero">
+
+    <!-- ============================================
+         HERO
+         ============================================ -->
+    <section class="hero" id="hero">
         <div class="container">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-eyebrow">
-                        PRIVATE AI · SWITZERLAND
-                    </div>
-                    <h1 class="hero-title reveal">Private AI.<br>Built around your business.</h1>
-                    <p class="hero-subtitle reveal reveal-delay-1">
-                        Wir bauen KI-Systeme, die Ihr Unternehmenswissen mit Ihren Daten verbinden — sicher, kontrollierbar und messbar.
-                    </p>
-                    <div class="hero-actions reveal reveal-delay-2">
-                        <a href="#" class="btn btn-primary" onclick="openContact('Beratung anfragen'); return false;">
-                            Beratung starten <span class="arrow">→</span>
-                        </a>
-                        <a href="#architecture" class="btn btn-secondary" data-i18n="hero_how">So funktioniert's</a>
-                    </div>
-                    <div class="hero-stats reveal reveal-delay-3">
-                        <div class="hero-stat">
-                            <span class="hero-stat-number">100%</span>
-                            <span class="hero-stat-label" data-i18n="hero_local">Lokale Verarbeitung</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="hero-stat-number">&lt;24h</span>
-                            <span class="hero-stat-label" data-i18n="hero_setup">Erste Ergebnisse</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="hero-stat-number">0</span>
-                            <span class="hero-stat-label" data-i18n="hero_cloud">Cloud-Anbieter</span>
-                        </div>
+            <div class="hero__grid">
+                <div>
+                    <div class="hero__eyebrow fade-up">Private AI fuer Schweizer Unternehmen</div>
+                    <h1 class="hero__headline fade-up">KI, die nie das Haus verlaesst.</h1>
+                    <p class="hero__subtext fade-up">Ihre Daten bleiben bei Ihnen. Ihre KI wird besser, jeden Tag. Gigatop baut Private AI-Systeme, die lokal laufen, voll unter Ihrer Kontrolle sind und genau auf Ihr Unternehmen zugeschnitten werden.</p>
+                    <div class="hero__ctas fade-up">
+                        <a href="#" class="btn btn--primary" onclick="openModal(); return false;">Gespraech vereinbaren</a>
+                        <a href="#loesung" class="btn btn--secondary">Mehr erfahren</a>
                     </div>
                 </div>
-                <div class="hero-visual reveal">
-                    <img 
-                        src="hero-visual-ai.png" 
-                        alt="Private AI System Visualisierung - Neuronale Netzwerke und Datenverarbeitung" 
-                        style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); opacity: 0.85;"
-                    >
+                <div class="hero__visual fade-up">
+                    <img src="hero-visual-ai.png" alt="Visuelle Darstellung einer sicheren, lokalen KI-Architektur mit dunklem Design und Terracotta-Akzenten" loading="eager">
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- ========== PROBLEM ========== -->
-    <section class="problem-section section">
+
+    <!-- ============================================
+         PROBLEM: Cloud AI risks
+         ============================================ -->
+    <section class="section problem" id="probleme">
         <div class="container">
-            <div class="problem-grid">
-                <div class="problem-content reveal">
-                    <h2 class="section-title" data-i18n="problem_title">Das Problem Ihres Unternehmens</h2>
-                    <p class="section-subtitle" data-i18n="problem_subtitle">
-                        Das Wissen Ihres Unternehmens ist verteilt und unzuganglich fur AI-Systeme. Gigatop verbindet alle Quellen mit intelligenter KI.
-                    </p>
-                    <a href="#" class="btn btn-secondary" onclick="openContact('Data Integration Inquiry'); return false;"  data-i18n="problem_cta">
-                        Datenquellen verbinden <span class="arrow">→</span>
-                    </a>
+            <div class="section__header">
+                <h2 class="section__title fade-up">Wofuer bezahlen Sie Cloud-KI eigentlich?</h2>
+                <p class="section__subtitle fade-up">Die meisten Schweizer Unternehmen nutzen Cloud-KI. Das bringt drei Risiken mit sich, die Sie nicht ignorieren sollten.</p>
+            </div>
+            <div class="problem__grid">
+                <div class="problem__item fade-up">
+                    <span class="problem__icon">&#128274;</span>
+                    <h3 class="problem__title">Daten verlassen Ihr Unternehmen</h3>
+                    <p class="problem__desc">Prompts, Dokumente und Antworten gehen an externe Server. Selbst wenn die Anbieter es versprechen, rechtlich koennte anders sein.</p>
                 </div>
-                <div class="reveal reveal-delay-1">
-                    <ul class="problem-list">
-                        <li class="problem-item">
-                            <div class="problem-icon">🗄️</div>
-                            <div class="problem-text">
-                                <h4 data-i18n="problem_databases">Datenbanken</h4>
-                                <p data-i18n="problem_databases_desc">Strukturierte Daten sind isoliert und nicht mit KI verknupfbar.</p>
-                            </div>
-                        </li>
-                        <li class="problem-item">
-                            <div class="problem-icon">📁</div>
-                            <div class="problem-text">
-                                <h4 data-i18n="problem_files">Dokumente & Dateien</h4>
-                                <p data-i18n="problem_files_desc">PDF, Word, Excel liegen auf Festplatten und in Cloud-Storage.</p>
-                            </div>
-                        </li>
-                        <li class="problem-item">
-                            <div class="problem-icon">💬</div>
-                            <div class="problem-text">
-                                <h4 data-i18n="problem_comm">Kommunikation</h4>
-                                <p data-i18n="problem_comm_desc">E-Mails, Chats und Meetings enthalten wertvolles implizites Wissen.</p>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="problem__item fade-up">
+                    <span class="problem__icon">&#128176;</span>
+                    <h3 class="problem__title">Kosten sind unkontrollierbar</h3>
+                    <p class="problem__desc">Pro-Token-Preise wachsen mit der Nutzung. Was heute noch verstaendlich ist, kann morgen einBUROKRatisches Problem werden.</p>
+                </div>
+                <div class="problem__item fade-up">
+                    <span class="problem__icon">&#128203;</span>
+                    <h3 class="problem__title">Keine Anpassung an Ihr Unternehmen</h3>
+                    <p class="problem__desc">Standard-KIs kennen Ihr Know-how, Ihre Prozesse und Ihre Sprache nicht. Sie muessen immer von vorne erklaren, was Sie brauchen.</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- ========== USE CASES ========== -->
-    <section class="usecases-section section" id="usecases">
+
+    <!-- ============================================
+         SOLUTION: 3 Pillars
+         ============================================ -->
+    <section class="section" id="loesung">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="usecases_title">Use Cases, die messbar sind</h2>
-                <p class="section-subtitle" data-i18n="usecases_subtitle">Jeder Use Case basiert auf Ihrem spezifischen Setup und liefert konkrete Ergebnisse.</p>
+            <div class="section__header">
+                <h2 class="section__title fade-up">KI ohne Kompromisse.</h2>
+                <p class="section__subtitle fade-up">Drei Prinzipien, nach denen wir Gigatop bauen, und die Ihr Unternehmen schuetzen.</p>
             </div>
-            <div class="usecase-grid">
-                <div class="usecase-card reveal" onclick="openContact('AI Sales Intelligence')">
-                    <div class="usecase-icon">📊</div>
-                    <h3 class="usecase-title" data-i18n="uc1_title">AI Sales Intelligence</h3>
-                    <p class="usecase-desc" data-i18n="uc1_desc">Automatische Analyse Ihrer Verkaufsfunnels, Lead-Scoring und Vorhersage von Upsell-Chancen — basierend auf Ihren historischen Daten.</p>
-                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
+            <div class="pillars__grid">
+                <div class="pillar fade-up">
+                    <div class="pillar__icon">&#127919;</div>
+                    <h3 class="pillar__title">Lokal</h3>
+                    <p class="pillar__desc">Ihre KI laeuft auf Ihrer Infrastruktur. Kein Cloud-Abhaengigkeit, keine Datenweitergabe. Sie behalten die volle Kontrolle.</p>
                 </div>
-                <div class="usecase-card reveal reveal-delay-1" onclick="openContact('Private Company Knowledge')">
-                    <div class="usecase-icon">🧠</div>
-                    <h3 class="usecase-title" data-i18n="uc2_title">Private Company Knowledge</h3>
-                    <p class="usecase-desc" data-i18n="uc2_desc">Ein KI-Assistent, der Ihr gesamtes Unternehmenswissen versteht und beantworten kann — von HR-Richtlinien bis zu technischen Spezifikationen.</p>
-                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
+                <div class="pillar fade-up">
+                    <div class="pillar__icon">&#128737;</div>
+                    <h3 class="pillar__title">Sicher</h3>
+                    <p class="pillar__desc">DSG-konform, nDSG-ready, ISO 27001. Ihre Daten verbleiben immer in Ihrem Unternehmen, immer unter Ihrer Hoheit.</p>
                 </div>
-                <div class="usecase-card reveal reveal-delay-2" onclick="openContact('AI Document Operations')">
-                    <div class="usecase-icon">📄</div>
-                    <h3 class="usecase-title" data-i18n="uc3_title">AI Document Operations</h3>
-                    <p class="usecase-desc" data-i18n="uc3_desc">Automatische Verarbeitung, Zusammenfassung und Extraktion aus hunderten von Dokumenten — in Sekunden.</p>
-                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
-                </div>
-                <div class="usecase-card reveal reveal-delay-1" onclick="openContact('CRM, E-Mail, Meetings')">
-                    <div class="usecase-icon">💼</div>
-                    <h3 class="usecase-title" data-i18n="uc4_title">CRM, E-Mail und Meetings</h3>
-                    <p class="usecase-desc" data-i18n="uc4_desc">Die AI erkennt Muster in Ihrer Kommunikation, priorisiert Aufgaben und erstellt automatisch Meeting-Notizen.</p>
-                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
-                </div>
-                <div class="usecase-card reveal reveal-delay-2" onclick="openContact('AI Customer Support')">
-                    <div class="usecase-icon">🤖</div>
-                    <h3 class="usecase-title" data-i18n="uc5_title">AI Customer Support</h3>
-                    <p class="usecase-desc" data-i18n="uc5_desc">Intelligenter Support-Assistent, der Ihre Produkte, FAQ und historischen Tickets versteht — immer verfugbar, immer genau.</p>
-                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
+                <div class="pillar fade-up">
+                    <div class="pillar__icon">&#128218;</div>
+                    <h3 class="pillar__title">Massgeschneidert</h3>
+                    <p class="pillar__desc">Gigatop lernt Ihre Prozesse, Ihr Wissen und Ihre Sprache. Ihre KI wird besser, jeden Tag, mit Ihrer Hilfe.</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- ========== AI USE CASE FINDER ========== -->
-    <section class="finder-section section" id="finders">
-        <div class="container container-narrow">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="finder_title">Finden Sie Ihren AI Use Case</h2>
-                <p class="section-subtitle" data-i18n="finder_subtitle">Wählen Sie Ihre Branche und wir zeigen Ihnen, wo AI den grossten Impact hat.</p>
-            </div>
-            <div class="finder-widget reveal reveal-delay-1">
-                <p class="finder-question" data-i18n="finder_question">Welche Branche beschreibt Ihr Unternehmen am besten?</p>
-                <div class="finder-options">
-                    <button class="finder-option" onclick="selectFinder(this)">Manufacturing & Production</button>
-                    <button class="finder-option" onclick="selectFinder(this)">Healthcare & Life Sciences</button>
-                    <button class="finder-option" onclick="selectFinder(this)">Financial Services</button>
-                    <button class="finder-option" onclick="selectFinder(this)">Professional Services & Consulting</button>
-                </div>
-                <div class="finder-result" id="finderResult">
-                    <h4 data-i18n="finder_result_title">Empfohlener Use Case</h4>
-                    <p data-i18n="finder_result_desc">Auf Basis Ihrer Auswahl empfehlen wir einen Private AI Assistant fur Ihre Document Operations mit 73% Potential zur Zeiteinsparung.</p>
-                    <a href="#" class="btn btn-primary" onclick="openContact('Use Case Finder Result'); return false;" >
-                        Beratung starten <span class="arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== PRIVATE AI FEATURES ========== -->
-    <section class="private-section section" id="architecture">
+
+    <!-- ============================================
+         USE CASES (bento-style)
+         ============================================ -->
+    <section class="section usecases" id="usecases">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="private_title">Private AI. Voll unter Ihrer Kontrolle.</h2>
-                <p class="section-subtitle" data-i18n="private_subtitle">Lokale Verarbeitung, transparente Architektur, keine Cloud-Anbieter.</p>
+            <div class="section__header">
+                <h2 class="section__title fade-up">Wo Gigatop den Unterschied macht.</h2>
+                <p class="section__subtitle fade-up">Von SAP bis HR, Gigatop integriert sich nahtlos in Ihre bestehende IT-Landschaft.</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-item reveal">
-                    <div class="feature-icon">🔒</div>
-                    <h3 class="feature-title" data-i18n="f1_title">Datenschutz by Design</h3>
-                    <p class="feature-desc" data-i18n="f1_desc">Keine Daten verlassen Ihre Infrastruktur. 100% lokal, 100% kontrollierbar.</p>
+            <div class="usecases__grid">
+                <div class="usecase fade-up">
+                    <h3 class="usecase__title">SAP-Integration</h3>
+                    <p class="usecase__desc">Ihre ERP-Daten in Echtzeit, ohne Datenexport. Gigatop liest SAP lokal und liefert Antworten, die Ihr Team sofort verwenden kann.</p>
+                    <div class="usecase__tags">
+                        <span class="usecase__tag">SAP</span>
+                        <span class="usecase__tag">ERP</span>
+                        <span class="usecase__tag">Echtzeit</span>
+                    </div>
                 </div>
-                <div class="feature-item reveal reveal-delay-1">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title" data-i18n="f2_title">Echtzeit-Inferenz</h3>
-                    <p class="feature-desc" data-i18n="f2_desc">Keine Warteschlangen, keine Latenz durch Cloud-Provider. Antworten in Millisekunden.</p>
+                <div class="usecase fade-up">
+                    <h3 class="usecase__title">HR-Automation</h3>
+                    <p class="usecase__desc">Personalakten, Richtlinien und Onboarding-Workflows, Ihre KI kennt jedes Detail, ohne dass Mitarbeiterdaten in die Cloud gehen.</p>
+                    <div class="usecase__tags">
+                        <span class="usecase__tag">HR</span>
+                        <span class="usecase__tag">Onboarding</span>
+                        <span class="usecase__tag">DSG</span>
+                    </div>
                 </div>
-                <div class="feature-item reveal reveal-delay-2">
-                    <div class="feature-icon">🎯</div>
-                    <h3 class="feature-title" data-i18n="f3_title">Maigeschneidert</h3>
-                    <p class="feature-desc" data-i18n="f3_desc">Jedes System wird auf Ihre Daten, Prozesse und Anforderungen trainiert und angepasst.</p>
+                <div class="usecase fade-up">
+                    <h3 class="usecase__title">Kundensupport</h3>
+                    <p class="usecase__desc">FAQs, Produktdaten und Support-Logs, lokal gespeichert, sofort beantwortet. Ihre Kunden bekommen Antworten, ohne dass deren Fragen external gehen.</p>
+                    <div class="usecase__tags">
+                        <span class="usecase__tag">Support</span>
+                        <span class="usecase__tag">FAQ</span>
+                        <span class="usecase__tag">24/7</span>
+                    </div>
                 </div>
-                <div class="feature-item reveal reveal-delay-1">
-                    <div class="feature-icon">📊</div>
-                    <h3 class="feature-title" data-i18n="f4_title">Transparente Metriken</h3>
-                    <p class="feature-desc" data-i18n="f4_desc">Jede AI-Entscheidung ist nachvollziehbar. Full Audit Trail, Zero Black Box.</p>
-                </div>
-                <div class="feature-item reveal reveal-delay-2">
-                    <div class="feature-icon">🔄</div>
-                    <h3 class="feature-title" data-i18n="f5_title">Kontinuierliche Optimierung</h3>
-                    <p class="feature-desc" data-i18n="f5_desc">Wir arbeiten, testen und verbessern. Kein monatelanges Projektmanagement — wir liefern Ergebnisse.</p>
-                </div>
-                <div class="feature-item reveal reveal-delay-3">
-                    <div class="feature-icon">🌐</div>
-                    <h3 class="feature-title" data-i18n="f6_title">Hybrid Flexibel</h3>
-                    <p class="feature-desc" data-i18n="f6_desc">Arbeiten, auf Wunsch komplett innerhalb Ihrer eigenen Infrastruktur.</p>
+                <div class="usecase fade-up">
+                    <h3 class="usecase__title">Wissensmanagement</h3>
+                    <p class="usecase__desc">SharePoint, Confluence, lokale Server, Gigatop durchsucht Ihr gesamtes Wissen, nicht nur einen Teil. Ihre Mitarbeiter finden schneller, was sie brauchen.</p>
+                    <div class="usecase__tags">
+                        <span class="usecase__tag">SharePoint</span>
+                        <span class="usecase__tag">Confluence</span>
+                        <span class="usecase__tag">Wissen</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- ========== AI AGENTS ========== -->
-    <section class="agents-section section">
+
+    <!-- ============================================
+         ARCHITECTURE
+         ============================================ -->
+    <section class="section arch" id="architektur">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="agents_title">AI Agents, die fur Sie arbeiten</h2>
-                <p class="section-subtitle" data-i18n="agents_subtitle">Spezialisierte KI-Agenten, die in Ihrem System laufen und Ihre Daten verstehen.</p>
+            <div class="section__header">
+                <h2 class="section__title fade-up">So funktioniert Gigatop.</h2>
+                <p class="section__subtitle fade-up">Drei Schichten, eine Architektur, die unter Ihrer Kontrolle bleibt.</p>
             </div>
-            <div class="agents-grid">
-                <div class="agent-card reveal">
-                    <div class="agent-status">
-                        <span data-i18n="agent_available">Verfugbar</span>
-                    </div>
-                    <h3 class="agent-title" data-i18n="a1_title">Knowledge Retrieval Agent</h3>
-                    <p class="agent-desc" data-i18n="a1_desc">Findet und kombiniert Informationen aus allen Ihren Datenquellen — automatisch, relevant und kontextuell.</p>
-                    <div class="agent-tags">
-                        <span class="agent-tag">RAG</span>
-                        <span class="agent-tag">Multi-Source</span>
-                        <span class="agent-tag">On-Premise</span>
-                    </div>
-                </div>
-                <div class="agent-card reveal reveal-delay-1">
-                    <div class="agent-status">
-                        <span data-i18n="agent_available">Verfugbar</span>
-                    </div>
-                    <h3 class="agent-title" data-i18n="a2_title">Document Operations Agent</h3>
-                    <p class="agent-desc" data-i18n="a2_desc">Verarbeitet, analysiert und extrahiert Informationen aus Dokumenten — PDF, Word, Excel, E-Mails.</p>
-                    <div class="agent-tags">
-                        <span class="agent-tag">PDF</span>
-                        <span class="agent-tag">OCR</span>
-                        <span class="agent-tag">Extraction</span>
-                    </div>
-                </div>
-                <div class="agent-card reveal reveal-delay-2">
-                    <div class="agent-status">
-                        <span data-i18n="agent_available">Verfugbar</span>
-                    </div>
-                    <h3 class="agent-title" data-i18n="a3_title">Sales Intelligence Agent</h3>
-                    <p class="agent-desc" data-i18n="a3_desc">Analysiert Verkaufszahlen, identifiziert Muster und liefert konkrete Handlungsempfehlungen.</p>
-                    <div class="agent-tags">
-                        <span class="agent-tag">Analytics</span>
-                        <span class="agent-tag">Predictive</span>
-                        <span class="agent-tag">CRM</span>
-                    </div>
-                </div>
-                <div class="agent-card reveal reveal-delay-3">
-                    <div class="agent-status">
-                        <span data-i18n="agent_available">Verfugbar</span>
-                    </div>
-                    <h3 class="agent-title" data-i18n="a4_title">Customer Support Agent</h3>
-                    <p class="agent-desc" data-i18n="a4_desc">Versteht Ihre Produkte, FAQ und historischen Tickets — immer verfugbar, immer genau.</p>
-                    <div class="agent-tags">
-                        <span class="agent-tag">Support</span>
-                        <span class="agent-tag">24/7</span>
-                        <span class="agent-tag">Multi-Channel</span>
-                    </div>
-                </div>
+            <div class="arch__image fade-up">
+                <img src="architecture-visual.png" alt="Architektur-Diagramm von Gigatop: drei Schichten, Datenquelle, Gigatop-Engine und Ausgabe, alles lokal deployed." loading="lazy">
             </div>
+            <p class="arch__caption fade-up">Vereinfachte Darstellung der Gigatop-Architektur. Jede Komponente laeuft auf Ihrer Infrastruktur.</p>
         </div>
     </section>
-    
-    <!-- ========== ARCHITECTURE VISUALIZATION ========== -->
-    <section class="arch-section section">
-        <div class="container container-narrow">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="arch_title">Architecture, die Vertrauen schafft</h2>
-                <p class="section-subtitle" data-i18n="arch_subtitle">Jede Schicht ist transparent, kontrollierbar und vollständig unter Ihrer Hoheit.</p>
-            </div>
-            <div class="arch-visual reveal">
-                <img 
-                    src="architecture-visual.png" 
-                    alt="AI Architektur Diagramm - Schichten und Verbindungen" 
-                    style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--space-xl);"
-                >
-                <div class="arch-label" data-i18n="arch_layer1">Anwendungsschicht</div>
-                <div class="arch-layer">
-                    <div class="arch-block">
-                        <div class="arch-block-icon">💬</div>
-                        <div class="arch-block-label" data-i18n="arch_block1">Chat Interface</div>
-                    </div>
-                    <div class="arch-block">
-                        <div class="arch-block-icon">📊</div>
-                        <div class="arch-block-label" data-i18n="arch_block2">Dashboard</div>
-                    </div>
-                    <div class="arch-block">
-                        <div class="arch-block-icon">🔌</div>
-                        <div class="arch-block-label" data-i18n="arch_block3">API</div>
-                    </div>
-                </div>
-                <div class="arch-connector"></div>
-                <div class="arch-label" data-i18n="arch_layer2">AI-Schicht</div>
-                <div class="arch-layer">
-                    <div class="arch-block">
-                        <div class="arch-block-icon">🧠</div>
-                        <div class="arch-block-label" data-i18n="arch_block4">LLM Inference</div>
-                    </div>
-                    <div class="arch-block">
-                        <div class="arch-block-icon">🔍</div>
-                        <div class="arch-block-label" data-i18n="arch_block5">RAG Pipeline</div>
-                    </div>
-                    <div class="arch-block">
-                        <div class="arch-block-icon">🤖</div>
-                        <div class="arch-block-label" data-i18n="arch_block6">Agent System</div>
-                    </div>
-                </div>
-                <div class="arch-connector"></div>
-                <div class="arch-label" data-i18n="arch_layer3">Datenschicht</div>
-                <div class="arch-layer">
-                    <div class="arch-block">
-                        <div class="arch-block-icon">🗄️</div>
-                        <div class="arch-block-label" data-i18n="arch_block7">Databases</div>
-                    </div>
-                    <div class="arch-block">
-                        <div class="arch-block-icon">📁</div>
-                        <div class="arch-block-label" data-i18n="arch_block8">Files & Docs</div>
-                    </div>
-                    <div class="arch-block">
-                        <div class="arch-block-icon">💬</div>
-                        <div class="arch-block-label" data-i18n="arch_block9">Communications</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== HOW IT WORKS ========== -->
-    <section class="steps-section section" id="how-it-works">
+
+    <!-- ============================================
+         COMPLIANCE
+         ============================================ -->
+    <section class="section compliance" id="compliance">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="steps_title">Von der Beratung zum fertigen System</h2>
-                <p class="section-subtitle" data-i18n="steps_subtitle">In 5 Schritten zu Ihrer individuellen Private AI-Losung.</p>
+            <div class="section__header">
+                <h2 class="section__title fade-up">Compliance first.</h2>
+                <p class="section__subtitle fade-up">Swiss Made. DSG-konform. Built for enterprises that cannot afford risk.</p>
             </div>
-            <div class="steps-grid">
-                <div class="step-card reveal">
-                    <div class="step-number" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; opacity: 0.25;">STEP 01</div>
-                    <h3 class="step-title" data-i18n="step1_title">Analyse</h3>
-                    <p class="step-desc" data-i18n="step1_desc">Wir analysieren Ihre Daten, Prozesse und Anforderungen.</p>
-                    <div class="step-arrow">→</div>
+            <div class="compliance__badges">
+                <div class="compliance__badge fade-up">
+                    <div class="compliance__badge-icon">&#127482;&#127498;</div>
+                    <span>Swiss Made</span>
                 </div>
-                <div class="step-card reveal reveal-delay-1">
-                    <div class="step-number" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; opacity: 0.25;">STEP 02</div>
-                    <h3 class="step-title" data-i18n="step2_title">Konzept</h3>
-                    <p class="step-desc" data-i18n="step2_desc">Maigeschneidertes AI-Konzept mit klarem ROI.</p>
-                    <div class="step-arrow">→</div>
+                <div class="compliance__badge fade-up">
+                    <div class="compliance__badge-icon">&#128274;</div>
+                    <span>DSG / nDSG</span>
                 </div>
-                <div class="step-card reveal reveal-delay-2">
-                    <div class="step-number" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; opacity: 0.25;">STEP 03</div>
-                    <h3 class="step-title" data-i18n="step3_title">Implementierung</h3>
-                    <p class="step-desc" data-i18n="step3_desc">Schnelle Umsetzung mit ersten Ergebnissen in Tagen.</p>
-                    <div class="step-arrow">→</div>
+                <div class="compliance__badge fade-up">
+                    <div class="compliance__badge-icon">&#9989;</div>
+                    <span>ISO 27001</span>
                 </div>
-                <div class="step-card reveal reveal-delay-3">
-                    <div class="step-number" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; opacity: 0.25;">STEP 04</div>
-                    <h3 class="step-title" data-i18n="step4_title">Integration</h3>
-                    <p class="step-desc" data-i18n="step4_desc">Nahtlose Anbindung an Ihre bestehende Infrastruktur.</p>
-                    <div class="step-arrow">→</div>
-                </div>
-                <div class="step-card reveal reveal-delay-3">
-                    <div class="step-number">05</div>
-                    <h3 class="step-title" data-i18n="step5_title">Optimierung</h3>
-                    <p class="step-desc" data-i18n="step5_desc">Kontinuierliche Verbesserung basierend auf Ihren Daten.</p>
+                <div class="compliance__badge fade-up">
+                    <div class="compliance__badge-icon">&#128161;</div>
+                    <span>Schulung inklusive</span>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- ========== DEPLOYMENT ========== -->
-    <section class="deploy-section section" id="deployment">
+
+    <!-- ============================================
+         INTEGRATIONS
+         ============================================ -->
+    <section class="section" id="integration">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="deploy_title">Deployment, das zu Ihnen passt</h2>
-                <p class="section-subtitle" data-i18n="deploy_subtitle">Wahlweise lokal, hybrid oder Cloud — immer unter Ihrer Kontrolle.</p>
+            <div class="section__header">
+                <h2 class="section__title fade-up">Integriert, was Sie bereits nutzen.</h2>
+                <p class="section__subtitle fade-up">Gigatop verbindet sich mit Ihren bestehenden Systemen, lokal, ohne Datenexport.</p>
             </div>
-            <div class="deploy-grid">
-                <div class="deploy-card reveal">
-                    <div class="deploy-icon">🏢</div>
-                    <h3 class="deploy-title" data-i18n="d1_title">On-Premise</h3>
-                    <p class="deploy-desc" data-i18n="d1_desc">Volle Kontrolle, 100% Ihre Infrastruktur. Kein externer Zugriff.</p>
-                    <ul class="deploy-features">
-                        <li data-i18n="d1_f1">100% Data Sovereignty</li>
-                        <li data-i18n="d1_f2">Kein Internetzugang erforderlich</li>
-                        <li data-i18n="d1_f3">Certified & Auditable</li>
-                    </ul>
-                </div>
-                <div class="deploy-card featured reveal reveal-delay-1">
-                    <div class="deploy-icon">☁️</div>
-                    <h3 class="deploy-title" data-i18n="d2_title">Hybrid</h3>
-                    <p class="deploy-desc" data-i18n="d2_desc">Sensible Daten lokal, Rechenleistung skalierbar.</p>
-                    <ul class="deploy-features">
-                        <li data-i18n="d2_f1">Flexibel skalierbar</li>
-                        <li data-i18n="d2_f2">Best of both worlds</li>
-                        <li data-i18n="d2_f3">Optimierte Kosten</li>
-                    </ul>
-                </div>
-                <div class="deploy-card reveal reveal-delay-2">
-                    <div class="deploy-icon">🖥️</div>
-                    <h3 class="deploy-title" data-i18n="d3_title">Edge Computing</h3>
-                    <p class="deploy-desc" data-i18n="d3_desc">KI direkt am Rand Ihres Netzwerks — schnell, lokal, effizient.</p>
-                    <ul class="deploy-features">
-                        <li data-i18n="d3_f1">Ultra-niedrige Latenz</li>
-                        <li data-i18n="d3_f2">Keine Cloud-Abhangigkeit</li>
-                        <li data-i18n="d3_f3">Optimiert fur Edge-Hardware</li>
-                    </ul>
-                </div>
+            <div class="integrations__logos">
+                <!-- SAP -->
+                <svg class="integrations__logo" viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
+                    <rect fill="#0F4C75" rx="4" width="120" height="32"/>
+                    <text x="60" y="21" text-anchor="middle" fill="white" font-family="sans-serif" font-size="14" font-weight="bold">SAP</text>
+                </svg>
+                <!-- Microsoft 365 -->
+                <svg class="integrations__logo" viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
+                    <rect fill="#00A4EF" rx="4" width="120" height="32"/>
+                    <text x="60" y="21" text-anchor="middle" fill="white" font-family="sans-serif" font-size="11" font-weight="bold">Microsoft 365</text>
+                </svg>
+                <!-- Active Directory -->
+                <svg class="integrations__logo" viewBox="0 0 140 32" xmlns="http://www.w3.org/2000/svg">
+                    <rect fill="#0078D4" rx="4" width="140" height="32"/>
+                    <text x="70" y="21" text-anchor="middle" fill="white" font-family="sans-serif" font-size="10" font-weight="bold">Active Directory</text>
+                </svg>
+                <!-- SharePoint -->
+                <svg class="integrations__logo" viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
+                    <rect fill="#0078D4" rx="4" width="120" height="32"/>
+                    <text x="60" y="21" text-anchor="middle" fill="white" font-family="sans-serif" font-size="13" font-weight="bold">SharePoint</text>
+                </svg>
+                <!-- Confluence -->
+                <svg class="integrations__logo" viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
+                    <rect fill="#172B4D" rx="4" width="120" height="32"/>
+                    <text x="60" y="21" text-anchor="middle" fill="white" font-family="sans-serif" font-size="12" font-weight="bold">Confluence</text>
+                </svg>
             </div>
         </div>
     </section>
-    
-    <!-- ========== PRICING ========== -->
-    <section class="pricing-section section" id="pricing">
+
+    <!-- ============================================
+         CTA SECTION
+         ============================================ -->
+    <section class="section cta-section">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="pricing_title">Transparente Investition</h2>
-                <p class="section-subtitle" data-i18n="pricing_subtitle">Maigeschneiderte Pakete, die zu Ihrem Unternehmen passen. Alle Preise inkl. Implementation und Support.</p>
+            <h2 class="cta-section__title fade-up">Bereit, Ihre KI unter Kontrolle zu bringen?</h2>
+            <p class="cta-section__sub fade-up">Lassen Sie uns darueber sprechen, wie Gigatop Ihr Unternehmen entlastet, schuetzt und zukunftsfahig macht.</p>
+            <a href="#" class="btn btn--outline fade-up" onclick="openModal(); return false;" style="padding: 0.75rem 2rem; font-size: 1rem;">Gespraech vereinbaren</a>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FAQ
+         ============================================ -->
+    <section class="section faq" id="faq">
+        <div class="container container--narrow">
+            <div class="section__header">
+                <h2 class="section__title fade-up">Haeufige Fragen.</h2>
             </div>
-            <div class="pricing-grid">
-                <div class="pricing-card reveal">
-                    <h3 class="pricing-title" data-i18n="p1_title">Starter</h3>
-                    <p class="pricing-desc" data-i18n="p1_desc">Idealer Einstieg fur kleine Unternehmen und erste AI-Use-Cases.</p>
-                    <div class="pricing-price">CHF 5'000<span data-i18n="p1_span">/ Projekt</span></div>
-                    <ul class="pricing-features">
-                        <li data-i18n="p1_f1">1 Use Case</li>
-                        <li data-i18n="p1_f2">Bis zu 3 Datenquellen</li>
-                        <li data-i18n="p1_f3">On-Premise Deployment</li>
-                        <li data-i18n="p1_f4">30 Tage Support</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary" onclick="openContact('Starter Plan'); return false;"  data-i18n="pricing_cta">Anfragen</a>
+            <div class="faq__list">
+                <div class="faq__item fade-up">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Muss ich eine Cloud-Loesung aufgeben?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Nicht zwingend. Gigatop kann neben bestehenden Cloud-Tools laufen und diese intelligent ergaenzen. Viele Kunden nutzen Gigatop primar fuer sensible Daten und behalten Cloud-KI fuer nicht-kritische Aufgaben.</p>
+                    </div>
                 </div>
-                <div class="pricing-card featured reveal reveal-delay-1">
-                    <h3 class="pricing-title" data-i18n="p2_title">Enterprise</h3>
-                    <p class="pricing-desc" data-i18n="p2_desc">Umfassende Losung fur groessere Unternehmen mit komplexen Anforderungen.</p>
-                    <div class="pricing-price">CHF 25'000<span data-i18n="p2_span">/ Projekt</span></div>
-                    <ul class="pricing-features">
-                        <li data-i18n="p2_f1">Bis zu 5 Use Cases</li>
-                        <li data-i18n="p2_f2">Unbegrenzte Datenquellen</li>
-                        <li data-i18n="p2_f3">Hybrid/Cloud-Deployment</li>
-                        <li data-i18n="p2_f4">90 Tage Support & Optimierung</li>
-                        <li data-i18n="p2_f5">Dedizierter AI Engineer</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" onclick="openContact('Enterprise Plan'); return false;"  data-i18n="pricing_cta">Anfragen</a>
+                <div class="faq__item fade-up">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Wie lange dauert die Installation?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Die Grundinstallation dauert wenige Stunden. Die Anpassung an Ihre spezifischen Daten und Prozesse kann mehrere Wochen dauern. Wir begleiten Sie Schritt fuer Schritt.</p>
+                    </div>
+                </div>
+                <div class="faq__item fade-up">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Welche Hardware benoetige ich?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Das haengt vom Umfang ab. Fuer kleinere Use Cases reichen Standard-Server. Fuer komplexere Szenarien empfehlen wir eine GPU-gestuetzte Infrastruktur. Wir beraten Sie gerne vor Ort.</p>
+                    </div>
+                </div>
+                <div class="faq__item fade-up">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Kann ich Gigatop auch vor Ort bekommen?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Ja. Wir bieten Vor-Ort-Onboarding, Schulungen und Support in der Schweiz an. Unser Team spricht Deutsch, Franzoesisch und Englisch.</p>
+                    </div>
+                </div>
+                <div class="faq__item fade-up">
+                    <button class="faq__question" onclick="toggleFaq(this)">
+                        <span>Wie sieht die Preisgestaltung aus?</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Gigatop basiert auf einer Einmalinvestition, keine laufenden Token-Kosten. Der genaue Preis haengt vom Umfang und der Komplexitaet ab. Wir erstellen gerne ein individuelles Angebot.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- ========== ROI CALCULATOR ========== -->
-    <section class="roi-section section" id="roi">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="roi_title">Berechnen Sie Ihren ROI</h2>
-                <p class="section-subtitle" data-i18n="roi_subtitle">Simulieren Sie die Einsparungen basierend auf Ihrem Setup.</p>
-            </div>
-            <div class="roi-widget reveal reveal-delay-1">
-                <div class="roi-range-group">
-                    <div class="roi-range-label">
-                        <span data-i18n="roi_employees">Mitarbeiter im Support / Knowledge Work</span>
-                        <span id="employeesValue">25</span>
-                    </div>
-                    <div class="roi-range-wrapper">
-                        <div class="roi-range-track">
-                            <div class="roi-range-fill" id="rangeFill1"></div>
-                        </div>
-                        <input type="range" id="employees" class="roi-range" min="5" max="50" value="25" oninput="document.getElementById('employeesValue').textContent=this.value; calculateROI();">
-                    </div>
-                </div>
-                <div class="roi-range-group">
-                    <div class="roi-range-label">
-                        <span data-i18n="roi_hours">Stunden pro Woche pro Mitarbeiter</span>
-                        <span id="hoursValue">15h</span>
-                    </div>
-                    <div class="roi-range-wrapper">
-                        <div class="roi-range-track">
-                            <div class="roi-range-fill" id="rangeFill2"></div>
-                        </div>
-                        <input type="range" id="weeklyHours" class="roi-range" min="5" max="50" value="15" oninput="document.getElementById('hoursValue').textContent=this.value+'h'; calculateROI();">
-                    </div>
-                </div>
-                <div class="roi-range-group">
-                    <div class="roi-range-label">
-                        <span data-i18n="roi_cost">Stundensatz (CHF)</span>
-                        <span id="costValue">120 CHF</span>
-                    </div>
-                    <div class="roi-range-wrapper">
-                        <div class="roi-range-track">
-                            <div class="roi-range-fill" id="rangeFill3"></div>
-                        </div>
-                        <input type="range" id="hourlyCost" class="roi-range" min="30" max="200" value="120" oninput="document.getElementById('costValue').textContent=this.value+' CHF'; calculateROI();">
-                    </div>
-                </div>
-                <div class="roi-result">
-                    <div class="roi-result-label" data-i18n="roi_potential">Potenzielle jahrliche Einsparung</div>
-                    <div class="roi-result-value" id="roiSavings">CHF 312'000</div>
-                    <div class="roi-result-note" data-i18n="roi_note">Basierend auf 40% Zeiteinsparung durch Private AI</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== FINAL CTA ========== -->
-    <section class="cta-section section">
-        <div class="container container-narrow">
-            <h2 class="cta-title reveal" data-i18n="cta_title">Bereit fur Private AI?</h2>
-            <p class="cta-subtitle reveal reveal-delay-1" data-i18n="cta_subtitle">Lassen Sie uns uber Ihr Unternehmen sprechen. In einem kostenlosen Erstgesprach zeigen wir Ihnen, wo AI den grossten Impact hat.</p>
-            <div class="reveal reveal-delay-2">
-                <a href="#" class="btn btn-primary" onclick="openContact('Beratung anfragen'); return false;" class="btn-hero">
-                    Erstgesprach buchen <span class="arrow">→</span>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== FOOTER ========== -->
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="nav-logo">Giga<span>top</span></a>
-                    <p data-i18n="footer_desc">Private AI. Built around your business. Lokale, sichere und kontrollierbare KI-Losungen fur Schweizer Unternehmen.</p>
-                </div>
+            <div class="footer__inner">
                 <div>
-                    <h4 class="footer-title" data-i18n="footer_product">Produkt</h4>
-                    <ul class="footer-links">
-                        <li><a href="#usecases" data-i18n="footer_usecases">Use Cases</a></li>
-                        <li><a href="#architecture" data-i18n="footer_architecture">Technologie</a></li>
-                        <li><a href="#pricing" data-i18n="footer_pricing">Preise</a></li>
-                        <li><a href="#roi" data-i18n="footer_roi">ROI</a></li>
-                    </ul>
+                    <div class="footer__brand">giga<span>top</span></div>
+                    <p class="footer__copy">Private AI. Built around your business.</p>
                 </div>
-                <div>
-                    <h4 class="footer-title" data-i18n="footer_legal">Rechtliches</h4>
-                    <ul class="footer-links">
-                        <li><a href="impressum.html" data-i18n="footer_impressum">Impressum</a></li>
-                        <li><a href="datenschutz.html" data-i18n="footer_datenschutz">Datenschutz</a></li>
-                        <li><a href="agb.html" data-i18n="footer_agb">AGB</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p data-i18n="footer_copy">© 2025 Gigatop. Alle Rechte vorbehalten.</p>
-                <div class="footer-legal">
-                    <a href="impressum.html" data-i18n="footer_impressum">Impressum</a>
-                    <a href="datenschutz.html" data-i18n="footer_datenschutz">Datenschutz</a>
-                    <a href="agb.html" data-i18n="footer_agb">AGB</a>
+                <div class="footer__links">
+                    <a href="#" class="footer__link">Impressum</a>
+                    <a href="#" class="footer__link">Datenschutz</a>
+                    <a href="#" class="footer__link" onclick="openModal(); return false;">Kontakt</a>
                 </div>
             </div>
         </div>
     </footer>
-    
-    <!-- ========== CONTACT MODAL ========== -->
-    <div class="modal-overlay" id="contactModal">
+
+    <!-- ============================================
+         CONTACT MODAL
+         ============================================ -->
+    <div class="modal-overlay" id="contact-modal">
         <div class="modal">
-            <button class="modal-close" onclick="closeBtn(event)" aria-label="Schliessen">✕</button>
-            <h3 data-i18n="modal_title">Kontakt aufnehmen</h3>
-            <p data-i18n="modal_subtitle">Erzahlen Sie uns von Ihrem Projekt. Wir melden uns innerhalb von 24 Stunden.</p>
-            <form id="contactForm" action="https://formsubmit.co/ajax/top@gigatop.io" method="POST">
+            <button class="modal__close" onclick="closeModal()" aria-label="Schliessen">&times;</button>
+            <h3 class="modal__title">Gespraech vereinbaren</h3>
+            <p class="modal__subtitle">Erzaehlen Sie uns von Ihren Herausforderungen, wir melden uns innert 24 Stunden.</p>
+            <form action="https://formsubmit.co/info@gigatop.io" method="POST">
+                <input type="hidden" name="_subject" value="Neue Anfrage von gigatop.io">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="box">
-                <input type="hidden" name="topic" id="modalTopic" value="General Inquiry">
+                <input type="hidden" name="_template" value="table">
                 <div class="form-group">
-                    <label class="form-label" for="formName" data-i18n="form_name">Name</label>
-                    <input type="text" id="formName" name="name" class="form-input" required>
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required placeholder="Ihr Name">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="formEmail" data-i18n="form_email">E-Mail</label>
-                    <input type="email" id="formEmail" name="email" class="form-input" required>
+                    <label for="email" class="form-label">E-Mail</label>
+                    <input type="email" id="email" name="email" class="form-input" required placeholder="ihre@email.ch">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="formMessage" data-i18n="form_message">Nachricht</label>
-                    <textarea id="formMessage" name="message" class="form-textarea" required></textarea>
+                    <label for="company" class="form-label">Unternehmen</label>
+                    <input type="text" id="company" name="company" class="form-input" placeholder="Firmenname">
                 </div>
-                <button type="submit" class="btn btn-primary form-submit" data-i18n="form_submit">Nachricht senden</button>
-                <div id="formStatus" class="form-status"></div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Nachricht</label>
+                    <textarea id="message" name="message" class="form-textarea" placeholder="Wovon sollen wir sprechen?" required></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary form-submit">Nachricht senden</button>
             </form>
         </div>
     </div>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <script>
+        // --- Nav hide on scroll down ---
+        let lastScroll = 0;
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            const current = window.scrollY;
+            if (current > lastScroll && current > 100) {
+                nav.classList.add('nav--hidden');
+            } else {
+                nav.classList.remove('nav--hidden');
+            }
+            lastScroll = current;
+        }, { passive: true });
+
+        // --- Mobile menu toggle ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('open');
+        }
+
+        // --- FAQ accordion ---
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq__item');
+            const wasOpen = item.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq__item.open').forEach(el => {
+                el.classList.remove('open');
+            });
+            // Toggle current
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // --- Modal ---
+        function openModal() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) {
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modal on overlay click
+        document.getElementById('contact-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Close modal on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // --- Fade-up on scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+
 </body>
 </html>

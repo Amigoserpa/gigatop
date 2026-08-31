@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Private AI Schweiz — Lokale KI, On-Premise AI, Data Sovereignty | Gigatop</title>
+    <meta name="description" content="Gigatop baut Private AI-Systeme für Schweizer Unternehmen. Lokale KI, die Ihre Daten nie verlasst. On-Premise AI, model-agnostic, DSGVO-konform.">
+    <meta name="keywords" content="Private AI Schweiz, Lokale KI, On-Premise AI, Schweizer KI, Data Sovereignty, lokale Sprachmodelle, Unternehmens-KI, DSGVO-konforme KI">
+    <meta property="og:title" content="Private AI Schweiz — Lokale KI, On-Premise AI | Gigatop">
+    <meta property="og:description" content="Gigatop baut Private AI-Systeme für Schweizer Unternehmen. Lokale KI, die Ihre Daten nie verlasst.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gigatop.io/private-ai">
+    <link rel="canonical" href="https://gigatop.io/private-ai">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"Gigatop","url":"https://gigatop.io","description":"Private AI für Schweizer Unternehmen","sameAs":["https://gigatop.io"]}
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #102A33; --bg-secondary: #0E2229; --bg-elevated: #142C35;
+            --surface: #183340; --border: rgba(240, 235, 226, 0.07);
+            --border-strong: rgba(240, 235, 226, 0.14); --border-accent: rgba(214, 107, 69, 0.2);
+            --accent: #D66B45; --accent-hover: #E07850; --accent-glow: rgba(214, 107, 69, 0.2);
+            --olive: #78866B; --text-primary: #F6F1E8;
+            --text-secondary: rgba(246, 241, 232, 0.55); --text-tertiary: rgba(246, 241, 232, 0.32);
+            --font-sans: 'Geist', -apple-system, sans-serif;
+            --font-mono: SF Mono, SFMono-Regular, ui-monospace, monospace;
+            --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2rem;
+            --space-2xl: 3rem; --space-3xl: 5rem; --space-4xl: 7rem;
+            --max-width: 900px; --radius: 12px;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+        ::selection { background: var(--accent); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-hover); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 64px; display: flex; align-items: center; background: rgba(16, 42, 51, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .nav__inner { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-xl); }
+        .nav__logo { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+        .nav__logo span { color: var(--accent); }
+        .nav__back { color: var(--text-secondary); font-size: 0.9375rem; font-weight: 500; display: inline-flex; align-items: center; gap: var(--space-xs); }
+
+        .seo-page { padding-top: 128px; padding-bottom: var(--space-4xl); }
+        .seo-page__header { text-align: center; max-width: 720px; margin: 0 auto var(--space-3xl); }
+        .seo-page__header h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); margin-bottom: var(--space-md); }
+        .seo-page__header p { font-size: 1.25rem; color: var(--text-secondary); margin: 0 auto; }
+
+        .seo-section { max-width: var(--max-width); margin: 0 auto; padding: var(--space-2xl) 0; border-top: 1px solid var(--border); }
+        .seo-section h2 { font-size: 1.75rem; margin-bottom: var(--space-lg); }
+        .seo-section h3 { font-size: 1.25rem; font-weight: 600; margin: var(--space-xl) 0 var(--space-sm); }
+        .seo-section p { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: var(--space-md); }
+        .seo-section ul { padding-left: var(--space-xl); margin-bottom: var(--space-md); }
+        .seo-section li { color: var(--text-secondary); margin-bottom: var(--space-xs); }
+        .seo-section blockquote { border-left: 3px solid var(--accent); padding-left: var(--space-lg); margin: var(--space-xl) 0; color: var(--text-secondary); font-style: italic; }
+
+        .seo-cta { text-align: center; padding: var(--space-3xl) 0; }
+        .seo-cta h2 { font-size: 2rem; margin-bottom: var(--space-md); }
+        .seo-cta p { font-size: 1.125rem; color: var(--text-secondary); margin: 0 auto var(--space-xl); }
+        .seo-cta .btn { display: inline-block; padding: 0.875rem 2.5rem; background: var(--accent); color: var(--text-primary); border-radius: var(--radius); font-weight: 600; font-size: 1.0625rem; }
+        .seo-cta .btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+        .footer { padding: var(--space-3xl) 0; border-top: 1px solid var(--border); }
+        .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-xl); max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-xl); }
+        .footer__brand { font-size: 1.25rem; font-weight: 700; }
+        .footer__brand span { color: var(--accent); }
+        .footer__copy { font-size: 0.875rem; color: var(--text-tertiary); margin-top: var(--space-xs); }
+        .footer__links { display: flex; gap: var(--space-xl); flex-wrap: wrap; }
+        .footer__link { font-size: 0.9375rem; color: var(--text-secondary); }
+
+        @media (max-width: 767px) {
+            .seo-page { padding-top: 112px; }
+            .seo-page__header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">giga<span>top</span></a>
+            <a href="/" class="nav__back">← Zurück zur Startseite</a>
+        </div>
+    </nav>
+
+    <main class="seo-page">
+        <div class="container">
+            <div class="seo-page__header">
+                <h1>Private AI Schweiz</h1>
+                <p>Lokale KI, die Ihre Daten nie verlasst. On-Premise AI, model-agnostic, DSGVO-konform. Gebaut für Schweizer Unternehmen.</p>
+            </div>
+
+            <div class="seo-section">
+                <h2>Was ist Private AI?</h2>
+                <p>Private AI bezeichnet KI-Systeme, die vollständig innerhalb der Infrastruktur eines Unternehmens laufen — ohne Daten an externe Cloud-Provider zu senden. Bei Gigatop bauen wir solche Systeme massgeschneidert für Schweizer Unternehmen.</p>
+                <p>Im Gegensatz zu Public AI (wie ChatGPT, Claude oder Google Gemini) bedeutet Private AI:</p>
+                <ul>
+                    <li>Ihre Daten verlassen niemals Ihr Netzwerk</li>
+                    <li>Sie kontrollieren welches Modell verwendet wird</li>
+                    <li>Compliance mit Schweizer Datenschutz (DSG/nDSG) ist garantiert</li>
+                    <li>Kosten sind vorhersehbar und planbar</li>
+                    <li>Die KI kennt Ihr Unternehmenswissen</li>
+                </ul>
+            </div>
+
+            <div class="seo-section">
+                <h2>Warum Schweizer Unternehmen Private AI brauchen</h2>
+                <p>Der US CLOUD Act ermöglicht US-Behörden den Zugriff auf Daten, die über amerikanische Cloud-Provider gespeichert werden. Für Schweizer Unternehmen mit sensiblen Kunden- und Geschäftsdaten bedeutet das: Cloud-AI kann ein Compliance-Risiko sein.</p>
+                <p>Private AI löst dieses Problem, indem alle Datenverarbeitung innerhalb der eigenen Infrastruktur stattfindet — im eigenen Serverraum, im eigenen Rechenzentrum, oder auf einer dedizierten Schweizer Infrastruktur.</p>
+                <blockquote>Nicht jede Aufgabe braucht Cloud AI. Aber jede sensible Aufgabe braucht Private AI.</blockquote>
+            </div>
+
+            <div class="seo-section">
+                <h2>Unsere Lösung</h2>
+                <p>Gigatop baut Private AI-Systeme, die:</p>
+                <ul>
+                    <li><strong>Lokal laufen</strong> — auf Ihrer Hardware oder einer dedizierten Umgebung</li>
+                    <li><strong>Model-agnostic sind</strong> — Sie sind nicht an einen Anbieter gebunden</li>
+                    <li><strong>Unternehmensdaten verbinden</strong> — CRM, ERP, SharePoint, E-Mail, Dokumente</li>
+                    <li><strong>Intelligente Agents bauen</strong> — die nicht nur antworten, sondern handeln</li>
+                    <li><strong>DSG/nDSG-konform</strong> — Schweizer Datenschutz ist kein Feature, sondern die Basis</li>
+                    <li><strong>Messbare Ergebnisse liefern</strong> — Produktivität, Automatisierung, bessere Entscheidungen</li>
+                </ul>
+            </div>
+
+            <div class="seo-section">
+                <h2>Einsatzgebiete</h2>
+                <h3>AI Sales Intelligence</h3>
+                <p>CRM, E-Mail und Leads verbinden, um Prioritäts-Leads, Kaufsignale und Pipeline-Risiken zu erkennen. Die AI gibt die nächste beste Aktion vor — lokal und DSGVO-konform.</p>
+
+                <h3>Privates Unternehmenswissen</h3>
+                <p>SharePoint, PDF, Word, ERP und Fileserver mit einer einzigen Abfrage verbinden. Mitarbeiter fragen in natürlicher Sprache — mit Quellenangaben.</p>
+
+                <h3>AI Document Operations</h3>
+                <p>Rechnungen, Verträge, Angebote und Formulare automatisch extrahieren, validieren und an ERP oder CRM weiterleiten — mit menschlicher Freigabe.</p>
+            </div>
+
+            <div class="seo-section">
+                <h2>Wie unterscheidet sich Gigatop von anderen?</h2>
+                <p>Andere Anbieter verkaufen Cloud-AI-Abonnements. Wir bauen lokale KI-Systeme, die innerhalb Ihrer Infrastruktur laufen. Das bedeutet:</p>
+                <ul>
+                    <li>Keine pro-Token-Preise — fixe Investition</li>
+                    <li>Kein Datenexport — alles bleibt lokal</li>
+                    <li>Kein Anbieter-Locking — model-agnostic</li>
+                    <li>Schweizer Support und Onboarding vor Ort</li>
+                    <li>Hands-on — wir bauen, wir reden nicht</li>
+                </ul>
+            </div>
+
+            <div class="seo-cta">
+                <h2>Bereit, Ihre Daten unter Kontrolle zu bringen?</h2>
+                <p>Lassen Sie uns über Ihre Herausforderungen sprechen — unverbindlich, konkret, messbar.</p>
+                <a href="/" class="btn">AI Session buchen →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div>
+                <div class="footer__brand">giga<span>top</span></div>
+                <p class="footer__copy">Private AI. Built around your business.</p>
+            </div>
+            <div class="footer__links">
+                <a href="/" class="footer__link">Startseite</a>
+                <a href="/insights.html" class="footer__link">Insights</a>
+                <a href="/private-ai.html" class="footer__link">Private AI</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

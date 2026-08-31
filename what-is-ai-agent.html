@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>What is an AI Agent? — Gigatop Insights</title>
+    <meta name="description" content="{{DESCRIPTION}}">
+    <meta property="og:title" content="What is an AI Agent? — Gigatop Insights">
+    <meta property="og:description" content="{{DESCRIPTION}}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://gigatop.io/what-is-ai-agent">
+    <link rel="canonical" href="https://gigatop.io/what-is-ai-agent">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #102A33; --bg-secondary: #0E2229; --bg-elevated: #142C35;
+            --surface: #183340; --border: rgba(240, 235, 226, 0.07);
+            --border-strong: rgba(240, 235, 226, 0.14); --border-accent: rgba(214, 107, 69, 0.2);
+            --accent: #D66B45; --accent-hover: #E07850; --accent-glow: rgba(214, 107, 69, 0.2);
+            --olive: #78866B; --text-primary: #F6F1E8;
+            --text-secondary: rgba(246, 241, 232, 0.55); --text-tertiary: rgba(246, 241, 232, 0.32);
+            --font-sans: 'Geist', -apple-system, sans-serif;
+            --font-mono: SF Mono, SFMono-Regular, ui-monospace, monospace;
+            --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2rem;
+            --space-2xl: 3rem; --space-3xl: 5rem; --space-4xl: 7rem;
+            --max-width: 680px; --max-width-wide: 960px;
+            --radius: 12px; --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); line-height: 1.7; }
+        ::selection { background: var(--accent); }
+        a { color: var(--accent); }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 64px; display: flex; align-items: center; background: rgba(16, 42, 51, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        nav__inner { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: var(--max-width-wide); margin: 0 auto; padding: 0 var(--space-xl); }
+        nav__logo { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+        nav__logo span { color: var(--accent); }
+        nav__back { color: var(--text-secondary); font-size: 0.9375rem; font-weight: 500; }
+
+        .article { padding-top: 128px; padding-bottom: var(--space-4xl); max-width: var(--max-width); margin: 0 auto; padding-left: var(--space-xl); padding-right: var(--space-xl); }
+        .article__category { font-size: 0.75rem; font-family: var(--font-mono); color: var(--olive); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-md); }
+        .article__title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: var(--space-md); letter-spacing: -0.03em; }
+        .article__subtitle { font-size: 1.25rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: var(--space-lg); }
+        .article__meta { font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: var(--space-2xl); display: flex; gap: var(--space-lg); }
+        .article__content { font-size: 1.125rem; line-height: 1.75; }
+        .article__content h2 { font-size: 1.5rem; font-weight: 700; margin: var(--space-2xl) 0 var(--space-md); letter-spacing: -0.02em; }
+        .article__content h3 { font-size: 1.25rem; font-weight: 600; margin: var(--space-xl) 0 var(--space-sm); }
+        .article__content p { margin-bottom: var(--space-md); color: var(--text-secondary); }
+        .article__content ul, .article__content ol { margin-bottom: var(--space-md); padding-left: var(--space-xl); }
+        .article__content li { margin-bottom: var(--space-xs); color: var(--text-secondary); }
+        .article__content strong { color: var(--text-primary); }
+        .article__content code { background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px; font-size: 0.9375rem; }
+        .article__content blockquote { border-left: 3px solid var(--accent); padding-left: var(--space-lg); margin: var(--space-xl) 0; color: var(--text-secondary); font-style: italic; }
+        .article__divider { border: none; border-top: 1px solid var(--border); margin: var(--space-2xl) 0; }
+        .article__cta { background: var(--accent-muted); border: 1px solid var(--border-accent); border-radius: var(--radius); padding: var(--space-xl); margin-top: var(--space-2xl); text-align: center; }
+        .article__cta p { color: var(--text-primary); font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-md); }
+        .article__cta .btn { display: inline-block; padding: 0.75rem 2rem; background: var(--accent); color: var(--text-primary); border-radius: var(--radius); font-weight: 600; font-size: 1rem; }
+
+        footer { padding: var(--space-3xl) 0; border-top: 1px solid var(--border); }
+        footer__inner { display: flex; justify-content: space-between; align-items: center; max-width: var(--max-width-wide); margin: 0 auto; padding: 0 var(--space-xl); }
+        footer__brand { font-size: 1.25rem; font-weight: 700; }
+        footer__brand span { color: var(--accent); }
+        footer__copy { font-size: 0.875rem; color: var(--text-tertiary); }
+        footer__links { display: flex; gap: var(--space-xl); }
+        footer__link { font-size: 0.9375rem; color: var(--text-secondary); }
+
+        @media (max-width: 767px) {
+            .article { padding-top: 112px; padding-bottom: var(--space-2xl); }
+            .article__title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav><div class="nav__inner"><a href="/" class="nav__logo">giga<span>top</span></a><a href="/insights.html" class="nav__back">← Insights</a></div></nav>
+
+    <main class="article">
+        <div class="article__category">AI Agents</div>
+        <h1 class="article__title">What is an AI Agent?</h1>
+        <p class="article__subtitle">Ein Chatbot antwortet. Ein Agent handelt. Der Unterschied ist graesser, als die meisten denken. Und gerade dieser Unterschied ist es, der Unternehmen von einer Kostenstelle zu einer Produktivitaetsmaschine macht.</p>
+        <div class="article__meta"><span>August 2026</span><span>6 Min. Lesezeit</span></div>
+        <div class="article__content">
+<p>Die meisten Menschen kennen Chatbots. Sie stellen eine Frage und bekommen eine Antwort. Das ist eine grosse Verbesserung gegenueber dem alten Support. Aber es ist noch lange kein AI Agent.</p>
+
+<h2>Der fundamentale Unterschied</h2>
+
+<p>Ein Chatbot nimmt Input und gibt Output. Er weiss nicht, was mit dem Output passiert. Er weiss nicht, was der Nutzer als Naechstes tun wird. Er antwortet.</p>
+
+<p>Ein AI Agent geht weiter. Er beobachtet seine Umgebung, versteht den Kontext, entscheidet ueber eine Handlung und fuehrt sie aus. Das ist der Unterschied zwischen einem Werkzeug und einem Mitarbeiter.</p>
+
+<h3>Chatbot</h3>
+<ul>
+<li>Mensch fragt</li>
+<li>Bot antwortet</li>
+<li>Fertig. Punkt.</li>
+</ul>
+
+<h3>AI Agent</h3>
+<ul>
+<li>Beobachten — Daten in CRM, E-Mail, SharePoint lesen und verstehen</li>
+<li>Verstehen — Kontext, Muster, Absichten erkennen</li>
+<li>Entscheiden — Regelwerk und Erfahrung anwenden, um die naechste beste Aktion zu waehlen</li>
+<li>Handeln — Aktionen ausfuehren: E-Mail schreiben, Record updaten, Meeting planen, Report erstellen</li>
+</ul>
+
+<blockquote>Ein Chatbot ist wie ein Buch. Ein AI Agent ist wie ein Mitarbeiter mit Zugriff auf Ihre Systeme.</blockquote>
+
+<h2>Warum das Unternehmen unterscheidet</h2>
+
+<p>Die meisten Unternehmen nutzen AI heute als Nachschlagewerk. Sie fragen: "Fasse diesen Bericht zusammen" oder "Schreibe eine E-Mail". Das ist nuetzlich. Aber es ist kein Produktivitaetssprung.</p>
+
+<p>Echte AI Agents arbeiten autonom. Sie ueberwachen Systeme, erkennen Probleme, und loesen sie, bevor der Mensch etwas merkt. Ein Sales Agent erkennt, dass ein Key Account das Risiko hat, zu wechseln — und sendet automatisch ein Massgeschneidertes Angebot. Ein Document Agent verarbeitet eine Rechnung, validiert sie gegen die Vertragsbedingungen, und leitet sie an ERP weiter.</p>
+
+<p>Das ist der Unterschied. Chatbots ergaenzen. Agents ersetzen.</p>
+</div>
+        <div class="article__cta">
+            <p>Möchten Sie mehr über AI Agents erfahren?</p>
+            <a href="/" class="btn">AI Session buchen →</a>
+        </div>
+    </main>
+
+    <footer><div class="footer__inner"><div><div class="footer__brand">giga<span>top</span></div><p class="footer__copy">Private AI. Built around your business.</p></div><div class="footer__links"><a href="/" class="footer__link">Startseite</a><a href="/insights.html" class="footer__link">Insights</a></div></div></footer>
+</body>
+</html>

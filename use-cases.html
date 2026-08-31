@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Use Cases — Gigatop | Private AI für Schweizer Unternehmen</title>
+    <meta name="description" content="Konkrete Use Cases für Private AI in Schweizer Unternehmen. Sales Intelligence, Company Knowledge, Document Operations, Executive Intelligence.">
+    <meta name="keywords" content="AI Use Cases Schweiz, KI Use Cases Unternehmen, Private AI Anwendungsfälle, Schweizer KI, On-Premise AI Use Cases">
+    <meta property="og:title" content="Use Cases — Gigatop | Private AI für Schweizer Unternehmen">
+    <meta property="og:description" content="Konkrete Use Cases für Private AI in Schweizer Unternehmen. Sales Intelligence, Company Knowledge, Document Operations, Executive Intelligence.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gigatop.io/use-cases">
+    <link rel="canonical" href="https://gigatop.io/use-cases">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"Gigatop","url":"https://gigatop.io","description":"Private AI Use Cases für Schweizer Unternehmen","sameAs":["https://gigatop.io"]}
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #102A33; --bg-secondary: #0E2229; --bg-elevated: #142C35;
+            --surface: #183340; --border: rgba(240, 235, 226, 0.07);
+            --border-strong: rgba(240, 235, 226, 0.14); --border-accent: rgba(214, 107, 69, 0.2);
+            --accent: #D66B45; --accent-hover: #E07850; --accent-glow: rgba(214, 107, 69, 0.2);
+            --olive: #78866B; --text-primary: #F6F1E8;
+            --text-secondary: rgba(246, 241, 232, 0.55); --text-tertiary: rgba(246, 241, 232, 0.32);
+            --font-sans: 'Geist', -apple-system, sans-serif;
+            --font-mono: SF Mono, SFMono-Regular, ui-monospace, monospace;
+            --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2rem;
+            --space-2xl: 3rem; --space-3xl: 5rem; --space-4xl: 7rem;
+            --max-width: 900px; --radius: 12px;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+        ::selection { background: var(--accent); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-hover); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 64px; display: flex; align-items: center; background: rgba(16, 42, 51, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .nav__inner { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-xl); }
+        .nav__logo { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+        .nav__logo span { color: var(--accent); }
+        .nav__back { color: var(--text-secondary); font-size: 0.9375rem; font-weight: 500; display: inline-flex; align-items: center; gap: var(--space-xs); }
+
+        .seo-page { padding-top: 128px; padding-bottom: var(--space-4xl); }
+        .seo-page__header { text-align: center; max-width: 720px; margin: 0 auto var(--space-3xl); }
+        .seo-page__header h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); margin-bottom: var(--space-md); }
+        .seo-page__header p { font-size: 1.25rem; color: var(--text-secondary); margin: 0 auto; }
+
+        .seo-section { max-width: var(--max-width); margin: 0 auto; padding: var(--space-2xl) 0; border-top: 1px solid var(--border); }
+        .seo-section h2 { font-size: 1.75rem; margin-bottom: var(--space-lg); }
+        .seo-section h3 { font-size: 1.25rem; font-weight: 600; margin: var(--space-xl) 0 var(--space-sm); }
+        .seo-section p { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: var(--space-md); }
+        .seo-section ul { padding-left: var(--space-xl); margin-bottom: var(--space-md); }
+        .seo-section li { color: var(--text-secondary); margin-bottom: var(--space-xs); }
+        .seo-section blockquote { border-left: 3px solid var(--accent); padding-left: var(--space-lg); margin: var(--space-xl) 0; color: var(--text-secondary); font-style: italic; }
+
+        .seo-cta { text-align: center; padding: var(--space-3xl) 0; }
+        .seo-cta h2 { font-size: 2rem; margin-bottom: var(--space-md); }
+        .seo-cta p { font-size: 1.125rem; color: var(--text-secondary); margin: 0 auto var(--space-xl); }
+        .seo-cta .btn { display: inline-block; padding: 0.875rem 2.5rem; background: var(--accent); color: var(--text-primary); border-radius: var(--radius); font-weight: 600; font-size: 1.0625rem; }
+        .seo-cta .btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+        .footer { padding: var(--space-3xl) 0; border-top: 1px solid var(--border); }
+        .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-xl); max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-xl); }
+        .footer__brand { font-size: 1.25rem; font-weight: 700; }
+        .footer__brand span { color: var(--accent); }
+        .footer__copy { font-size: 0.875rem; color: var(--text-tertiary); margin-top: var(--space-xs); }
+        .footer__links { display: flex; gap: var(--space-xl); flex-wrap: wrap; }
+        .footer__link { font-size: 0.9375rem; color: var(--text-secondary); }
+
+        @media (max-width: 767px) {
+            .seo-page { padding-top: 112px; }
+            .seo-page__header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">giga<span>top</span></a>
+            <a href="/" class="nav__back">← Zurück zur Startseite</a>
+        </div>
+    </nav>
+
+    <main class="seo-page">
+        <div class="container">
+            <div class="seo-page__header">
+                <h1>Use Cases für Private AI</h1>
+                <p>Konkrete Anwendungsfälle, wo Private AI in Schweizer Unternehmen den grössten Unterschied macht. Von Sales Intelligence bis Executive Insights.</p>
+            </div>
+
+            <div class="seo-section">
+                <h2>1. AI Sales Intelligence</h2>
+                <p><strong>Datenquellen:</strong> CRM, E-Mail, Meetings, Website Leads</p>
+                <p><strong>Was die AI erkennt:</strong> Prioritäts-Leads, Kaufsignale, nächste beste Aktion, Pipeline-Risiken</p>
+                <p>Sales Teams verbringen mehr Zeit mit Datenanalyse als mit Verkauf. Ein AI Sales Agent automatisiert die intelligente Auswertung — und zeigt dem Sales Team exakt, wo er sich konzentrieren soll.</p>
+                <blockquote>Sales Intelligence heisst nicht, mehr Leads zu generieren. Es heisst, die richtigen Leads zu erkennen und die richtige Aktion auszuwählen.</blockquote>
+                <p><strong>Typischer ROI:</strong> 30% mehr convertierte Leads, 40% schnellere Pipeline, 50% weniger manuelle Analysezeit.</p>
+            </div>
+
+            <div class="seo-section">
+                <h2>2. Private Company Knowledge</h2>
+                <p><strong>Datenquellen:</strong> SharePoint, PDF, Word, ERP, Fileserver, Wiki</p>
+                <p><strong>Was Mitarbeiter fragen können:</strong> "Was gilt für Kunde X?", "Fasse Projekt Y zusammen", "Wo ist Vertrag Z?"</p>
+                <p>Unternehmenswissen ist verstreut über 10-50 Systeme verteilt. Ein Private Knowledge Agent verbindet all diese Quellen und gibt präzise Antworten mit Quellenangaben. Lokal, DSGVO-konform, immer verfügbar.</p>
+            </div>
+
+            <div class="seo-section">
+                <h2>3. AI Document Operations</h2>
+                <p><strong>Dokumente:</strong> PDF, Rechnungen, Verträge, Angebote, Formulare</p>
+                <p><strong>Workflow:</strong> Document → Extraction → Validation → ERP/CRM → Human Approval</p>
+                <p>Rechnungen, Verträge und Angebote manuell zu verarbeiten ist einer der grössten Engpässe im Schweizer KMU. AI Document Operations automatisieren den gesamten Prozess — mit menschlicher Freigabe als Qualitätssicherung.</p>
+            </div>
+
+            <div class="seo-section">
+                <h2>4. AI Executive Intelligence</h2>
+                <p><strong>Morning Brief:</strong> Revenue, Pipeline, Risiken, Operations, Kundenaktivität, Prioritäten</p>
+                <p>Nicht nur Zahlen. Die AI erklärt: Was hat sich geändert? Warum ist es wichtig? Was sollten wir tun?</p>
+                <p>Für Geschäftsleitungen bedeutet das nicht ein weiteres Dashboard — sondern ein präziser, kontextueller Briefing, das um 6 Uhr morgens auf dem Tisch liegt. Mit Erklärungen, nicht nur Daten.</p>
+            </div>
+
+            <div class="seo-cta">
+                <h2>Gibt es einen Use Case für Ihr Unternehmen?</h2>
+                <p>Lassen Sie uns über Ihre Herausforderungen sprechen — unverbindlich, konkret, messbar.</p>
+                <a href="/" class="btn">AI Session buchen →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div>
+                <div class="footer__brand">giga<span>top</span></div>
+                <p class="footer__copy">Private AI. Built around your business.</p>
+            </div>
+            <div class="footer__links">
+                <a href="/" class="footer__link">Startseite</a>
+                <a href="/insights.html" class="footer__link">Insights</a>
+                <a href="/use-cases.html" class="footer__link">Use Cases</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

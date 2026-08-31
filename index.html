@@ -2,1634 +2,2362 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gigatop - Private AI & Local AI Solutions</title>
-    <meta name="description" content="Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Gigatop - Private AI. Built around your business.</title>
+    <meta name="description" content="Gigatop baut Private AI für Schweizer Unternehmen. Lokale KI-Systeme, die Ihr Wissen mit Ihren Daten verbinden - sicher, kontrollierbar und messbar.">
+    <meta property="og:title" content="Gigatop - Private AI. Built around your business.">
+    <meta property="og:description" content="Gigatop baut Private AI für Schweizer Unternehmen. Lokale KI-Systeme, die Ihr Wissen mit Ihren Daten verbinden - sicher, kontrollierbar und messbar.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gigatop.io">
+    <meta property="og:image" content="/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://gigatop.io">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        /* ============================================
+           DESIGN TOKENS — MEDITERRANEAN TECHNOLOGY
+           Swiss precision × Mediterranean energy
+           ============================================ */
         :root {
-            --sand: #F6F1E8;
-            --sand-light: #FAFAF6;
-            --terracotta: #D66B45;
-            --terracotta-hover: #C45A35;
-            --deepblue: #174A5B;
+            /* Colors - Navy as primary, not black */
+            --bg-primary: #0E1C25;
+            --bg-secondary: #0A1520;
+            --bg-elevated: #142230;
+            --surface: #1A2A38;
+            --surface-hover: #233748;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.15);
+            
+            /* Mediterranean accent */
+            --accent: #D66B45;
+            --accent-hover: #E07B55;
+            --accent-light: rgba(214, 107, 69, 0.1);
+            
+            /* Olive for secondary */
             --olive: #78866B;
-            --navy: #102A33;
-            --navy-soft: #0A1F28;
-            --white: #FAFAF8;
+            
+            /* Text */
+            --text-primary: #F6F1E8;
+            --text-secondary: rgba(246, 241, 232, 0.6);
+            --text-tertiary: rgba(246, 241, 232, 0.4);
+            
+            /* Typography - Using system fonts for performance, no Inter */
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, monospace;
+            
+            /* Rhythm - 8px base grid */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --space-4xl: 6rem;
+            
+            /* Layout */
+            --max-width: 1200px;
+            --max-width-narrow: 800px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            
+            /* Motion */
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --duration-slow: 500ms;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-
-        html { scroll-behavior: smooth; }
+        
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            scroll-padding-top: 80px;
+        }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #000;
-            color: #f5f5f7;
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
-
-        .font-display {
-            font-family: 'Space Grotesk', 'Inter', sans-serif;
+        
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            font-weight: 600;
+            letter-spacing: -0.02em;
         }
-
-        /* ========== NAVIGATION ========== */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.72);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            transition: background 0.3s;
+        
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+        h4 { font-size: 1.25rem; }
+        
+        p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
-        .nav-inner {
-            max-width: 1200px;
+        
+        /* ============================================
+           LAYOUT UTILITIES
+           ============================================ */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 56px;
+            padding: 0 var(--space-xl);
         }
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
+        
+        .container-narrow {
+            max-width: var(--max-width-narrow);
+        }
+        
+        .section {
+            padding: var(--space-4xl) 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-3xl);
+        }
+        
+        .section-title {
+            margin-bottom: var(--space-md);
+        }
+        
+        .section-subtitle {
             font-size: 1.25rem;
-            font-weight: 700;
-            color: #f5f5f7;
-            text-decoration: none;
-            letter-spacing: -0.03em;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
         }
-        .logo span { color: var(--terracotta); }
-        .nav-links {
+        
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--space-md) 0;
+            background: rgba(14, 28, 37, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+        
+        .nav-container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 2.25rem;
-            list-style: none;
         }
-        .nav-links a {
-            color: rgba(245,245,247,0.8);
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 400;
-            transition: color 0.2s;
         }
-        .nav-links a:hover { color: #fff; }
-        .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
-        .lang-select {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 6px;
-            padding: 0.3rem 0.6rem;
-            font-size: 0.75rem;
+        
+        .nav-logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: none;
+            gap: var(--space-xl);
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+        }
+        
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
-            color: #f5f5f7;
+            transition: color var(--duration-fast);
+        }
+        
+        .nav-link:hover { color: var(--text-primary); }
+        
+        .nav-cta {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-cta { display: inline-flex; }
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: border-color 0.2s;
+            padding: var(--space-sm);
         }
-        .lang-select:focus { outline: none; border-color: var(--terracotta); }
-        .btn-nav {
-            background: var(--terracotta);
-            color: #fff;
-            padding: 0.4rem 1rem;
-            border-radius: 999px;
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn { display: none; }
+        }
+        
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 0.875rem 2rem;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.8rem;
-            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
             border: none;
             cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out);
+            position: relative;
+            overflow: hidden;
         }
-        .btn-nav:hover {
-            background: var(--terracotta-hover);
-            transform: scale(1.02);
+        
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(214, 107, 69, 0.25);
         }
-
-        /* Mobile menu */
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-        .mobile-toggle svg { width: 20px; height: 20px; color: #f5f5f7; }
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 56px; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.97);
-            backdrop-filter: blur(30px);
-            z-index: 99;
-            padding: 2rem;
-            overflow-y: auto;
+        .btn-primary:hover { 
+            background: var(--accent-hover); 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(214, 107, 69, 0.35);
         }
-        .mobile-menu.open { display: block; }
-        .mobile-menu a {
-            display: block;
-            padding: 1rem 0;
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: #f5f5f7;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+        .btn-primary:active { 
+            transform: scale(0.97) translateY(0);
+            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.2);
         }
-
-        /* ========== HERO ========== */
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-strong);
+        }
+        .btn-secondary:hover { 
+            border-color: var(--text-secondary); 
+            background: var(--surface);
+            transform: translateY(-1px);
+        }
+        .btn-secondary:active { 
+            transform: scale(0.97);
+        }
+        
+        .btn .arrow {
+            display: inline-block;
+            transition: transform var(--duration-fast) var(--ease-out);
+        }
+        .btn:hover .arrow { transform: translateX(4px); }
+        .btn:active .arrow { transform: translateX(2px); }
+        
+        /* ============================================
+           HERO
+           ============================================ */
         .hero {
-            min-height: 100dvh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding-top: 56px;
-            background: #000;
+            padding: var(--space-4xl) 0 var(--space-3xl);
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
         }
-        .hero-left {
+        
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-container { grid-template-columns: 1fr 1fr; }
+        }
+        
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs) var(--space-md);
+            background: var(--accent-light);
+            border: 1px solid rgba(214, 107, 69, 0.2);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .hero-title {
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(to bottom, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            max-width: 600px;
+        }
+        
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: var(--space-2xl);
+            flex-wrap: wrap;
+        }
+        
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .hero-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+        
+        /* Hero System Visual */
+        .hero-visual {
+            position: relative;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+        
+        .hero-system {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .system-node {
+            position: absolute;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            animation: node-appear 0.6s var(--ease-out) both;
+        }
+        
+        .system-node:nth-child(1) { top: 10%; left: 10%; animation-delay: 0.1s; }
+        .system-node:nth-child(2) { top: 10%; right: 10%; animation-delay: 0.2s; }
+        .system-node:nth-child(3) { bottom: 25%; left: 20%; animation-delay: 0.3s; }
+        .system-node:nth-child(4) { bottom: 25%; right: 20%; animation-delay: 0.4s; }
+        .system-node:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 0.5s; }
+        
+        @keyframes node-appear {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .system-node:nth-child(5) {
+            animation-name: node-center-appear;
+        }
+        
+        @keyframes node-center-appear {
+            from { opacity: 0; transform: translate(-50%, -40%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        
+        .node-icon {
+            font-size: 1.25rem;
+        }
+        
+        .node-label {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .system-line {
+            position: absolute;
+            background: var(--border);
+            transform-origin: left center;
+            animation: line-draw 0.8s var(--ease-out) both;
+        }
+        
+        .system-line:nth-child(6) {
+            top: 15%; left: 25%; width: 50%; height: 1px;
+            animation-delay: 0.3s;
+        }
+        .system-line:nth-child(7) {
+            top: 60%; left: 30%; width: 40%; height: 1px;
+            animation-delay: 0.4s;
+        }
+        .system-line:nth-child(8) {
+            top: 35%; left: 20%; height: 25%; width: 1px;
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes line-draw {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* ============================================
+           MISSION LOG (DECORATIVE SHOWCASE)
+           ============================================ */
+        .mission-section {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .mission-bar {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: var(--space-lg);
+            padding: var(--space-xl) 0;
+        }
+        
+        .mission-item {
+            text-align: center;
+            padding: var(--space-md);
+        }
+        
+        .mission-item h4 {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .mission-item p {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-top: var(--space-xs);
+        }
+        
+        /* ============================================
+           PROBLEM SECTION
+           ============================================ */
+        .problem-section {
+            background: var(--bg-primary);
+        }
+        
+        .problem-grid {
+            display: grid;
+            gap: var(--space-2xl);
+        }
+        
+        @media (min-width: 768px) {
+            .problem-grid { grid-template-columns: 1fr 1fr; }
+        }
+        
+        .problem-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 5rem 4rem 4rem 5rem;
         }
-        .hero-right {
-            position: relative;
-            overflow: hidden;
+        
+        .problem-list {
+            list-style: none;
+        }
+        
+        .problem-item {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            transition: all var(--duration-normal) var(--ease-out);
         }
-        .hero-right img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.9);
+        
+        .problem-item:hover {
+            border-color: var(--border-strong);
+            transform: translateX(4px);
         }
-        .hero-right::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(0,0,0,0.4));
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3rem, 5vw, 5rem);
-            font-weight: 700;
-            line-height: 1.05;
-            margin-bottom: 1.25rem;
-            letter-spacing: -0.04em;
-            color: #f5f5f7;
-        }
-        .hero h1 .accent {
-            background: linear-gradient(135deg, var(--terracotta), #E8875F);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero-sub {
-            font-size: 1.35rem;
-            color: rgba(245,245,247,0.6);
-            line-height: 1.5;
-            max-width: 520px;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            letter-spacing: -0.01em;
-        }
-        .hero-cta-row {
-            display: flex;
-            gap: 1.25rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .btn-hero {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--terracotta);
-            color: #fff;
-            padding: 0.9rem 2rem;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-            border: none;
-            cursor: pointer;
-            letter-spacing: -0.01em;
-        }
-        .btn-hero:hover {
-            background: var(--terracotta-hover);
-            transform: scale(1.03);
-            box-shadow: 0 8px 30px rgba(214, 107, 69, 0.35);
-        }
-        .btn-hero-ghost {
-            color: var(--terracotta);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            padding: 0.9rem 1.25rem;
-            transition: color 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-        .btn-hero-ghost:hover { color: #E8875F; }
-        .btn-hero-ghost .arrow {
-            transition: transform 0.2s;
-        }
-        .btn-hero-ghost:hover .arrow {
-            transform: translateX(3px);
-        }
-        .hero-features {
-            margin-top: 3rem;
-            display: flex;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-        }
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: rgba(245,245,247,0.45);
-            font-weight: 400;
-            letter-spacing: 0.01em;
-        }
-        .hero-feature .dot {
-            width: 6px;
-            height: 6px;
-            background: var(--olive);
-            border-radius: 50%;
+        
+        .problem-icon {
+            font-size: 1.5rem;
             flex-shrink: 0;
-        }
-
-        /* ========== SCROLL ANIMATIONS ========== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
-                        transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-        .reveal-delay-5 { transition-delay: 0.5s; }
-
-        /* ========== SECTION COMMON ========== */
-        section { padding: 8rem 2rem; }
-        .section-inner { max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 5rem; }
-        .section-label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--terracotta);
-            margin-bottom: 1rem;
-        }
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.25rem, 3.5vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.25rem;
-            line-height: 1.1;
-        }
-        .section-title.light { color: #000; }
-        .section-desc {
-            font-size: 1.2rem;
-            color: rgba(245,245,247,0.5);
-            max-width: 640px;
-            margin: 0 auto;
-            line-height: 1.6;
-            font-weight: 300;
-            letter-spacing: -0.01em;
-        }
-        .section-desc.dark { color: rgba(0,0,0,0.5); }
-
-        /* ========== USE CASES ========== */
-        .usecases {
-            background: #000;
-        }
-        .usecases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-        }
-        .uc-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 20px;
-            padding: 2.25rem 2rem;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        .uc-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(214, 107, 69, 0.08), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .uc-card:hover::before { opacity: 1; }
-        .uc-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(214, 107, 69, 0.2);
-            background: rgba(255,255,255,0.06);
-        }
-        .uc-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.25rem;
-            font-size: 1.15rem;
-            position: relative;
-            z-index: 1;
+            background: var(--accent-light);
+            border-radius: var(--radius-sm);
         }
-        .uc-icon.terracotta { background: rgba(214, 107, 69, 0.12); }
-        .uc-icon.deepblue { background: rgba(23, 74, 91, 0.2); }
-        .uc-icon.olive { background: rgba(120, 134, 107, 0.15); }
-        .uc-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-            color: #f5f5f7;
-            position: relative;
-            z-index: 1;
+        
+        .problem-text h4 {
+            font-size: 1rem;
+            margin-bottom: var(--space-xs);
         }
-        .uc-card p {
-            font-size: 0.875rem;
-            color: rgba(245,245,247,0.4);
-            line-height: 1.55;
-            position: relative;
-            z-index: 1;
+        
+        .problem-text p {
+            font-size: 0.9rem;
         }
-
-        /* ========== STATEMENT SECTION ========== */
-        .statement {
-            background: var(--sand-light);
-            padding: 10rem 2rem;
-            text-align: center;
+        
+        /* ============================================
+           USE CASES - DIVERSE CARDS (anti-template)
+           ============================================ */
+        .usecases-section {
+            background: var(--bg-secondary);
         }
-        .statement h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 4vw, 4rem);
-            font-weight: 700;
-            letter-spacing: -0.035em;
-            line-height: 1.1;
-            color: var(--navy);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .statement h2 .accent {
-            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-hover));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* ========== ROI ========== */
-        .roi {
-            background: #000;
-        }
-        .roi-grid {
+        
+        .usecase-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: var(--space-lg);
         }
-        .roi-panel {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
-            padding: 2.5rem;
+        
+        @media (min-width: 768px) {
+            .usecase-grid { grid-template-columns: 1fr 1fr; }
         }
-        .roi-panel--dark {
-            background: var(--navy);
-            border-color: transparent;
-        }
-        .roi-panel h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            letter-spacing: -0.01em;
-        }
-        .roi-panel h3.dark { color: #000; }
-        .roi-panel--dark h3 { color: #f5f5f7; }
-        .roi-input { margin-bottom: 1.75rem; }
-        .roi-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            color: rgba(245,245,247,0.5);
-        }
-        .roi-label .val {
-            color: var(--terracotta);
-            font-weight: 600;
-        }
-        .roi-panel--dark .roi-label .val { color: var(--terracotta); }
-        input[type="range"] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 4px;
-            border-radius: 2px;
-            background: rgba(255,255,255,0.1);
-            outline: none;
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--terracotta);
+        
+        .usecase-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.3);
-            transition: transform 0.15s;
+            transition: all var(--duration-normal) var(--ease-out);
+            position: relative;
+            overflow: hidden;
         }
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-        }
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--terracotta);
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.3);
-        }
-        .roi-result { margin-bottom: 2rem; }
-        .roi-result-box {
-            background: rgba(255,255,255,0.06);
-            border-radius: 14px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .roi-result-label {
-            font-size: 0.75rem;
-            color: rgba(245,245,247,0.4);
-            margin-bottom: 0.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        .roi-result-value {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: #f5f5f7;
-            letter-spacing: -0.02em;
-        }
-        .roi-grid-small {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        .roi-grid-small .roi-result-box { margin-bottom: 0; }
-        .roi-grid-small .roi-result-label { font-size: 0.7rem; }
-        .roi-grid-small .roi-result-value { font-size: 1.25rem; }
-        .roi-panel--light .roi-result-value { color: #000; }
-
-        /* ========== FEATURES ========== */
-        .features {
-            background: var(--sand-light);
-        }
-        .features .section-title { color: var(--navy); }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .feature-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 2.5rem;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-        }
-        .feature-accent {
-            width: 32px;
+        
+        .usecase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 3px;
-            background: var(--terracotta);
-            border-radius: 2px;
-            margin-bottom: 1.25rem;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform var(--duration-normal) var(--ease-out);
         }
-        .feature-accent.olive { background: var(--olive); }
-        .feature-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
+        
+        .usecase-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
         }
-        .feature-card p {
-            font-size: 0.925rem;
-            color: rgba(16, 42, 51, 0.55);
-            line-height: 1.6;
+        
+        .usecase-card:hover::before {
+            transform: scaleX(1);
         }
-
-        /* ========== FULL-WIDTH IMAGE SECTION ========== */
-        .hero-showcase {
+        
+        .usecase-card:first-child {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--surface), var(--bg-elevated));
+            border-color: var(--border-strong);
+        }
+        
+        .usecase-card:first-child h3 {
+            font-size: 1.5rem;
+        }
+        
+        .usecase-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .usecase-title {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .usecase-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        
+        .usecase-action {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: var(--space-md);
+        }
+        
+        /* ============================================
+           AI USE CASE FINDERS (Interactive)
+           ============================================ */
+        .finder-section {
+            background: var(--bg-primary);
+        }
+        
+        .finder-widget {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .finder-question {
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            font-weight: 500;
+        }
+        
+        .finder-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        
+        .finder-option {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: var(--space-md) var(--space-lg);
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-align: left;
+            font-family: var(--font-sans);
+            transition: all var(--duration-fast) var(--ease-out);
+        }
+        
+        .finder-option:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+            background: var(--accent-light);
+        }
+        
+        .finder-option.selected {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            color: var(--text-primary);
+        }
+        
+        .finder-result {
+            display: none;
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: var(--bg-elevated);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent);
+        }
+        
+        .finder-result.visible {
+            display: block;
+            animation: result-appear 0.4s var(--ease-out);
+        }
+        
+        @keyframes result-appear {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .finder-result h4 {
+            color: var(--accent);
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* ============================================
+           PRIVATE AI SECTION
+           ============================================ */
+        .private-section {
+            background: var(--bg-secondary);
+        }
+        
+        .features-grid {
+            display: grid;
+            gap: var(--space-xl);
+        }
+        
+        @media (min-width: 768px) {
+            .features-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        
+        .feature-item {
+            padding: var(--space-xl);
+            border-left: 2px solid var(--accent);
+            background: var(--surface);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+        
+        .feature-item:hover {
+            background: var(--surface-hover);
+            transform: translateX(4px);
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .feature-title {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .feature-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* ============================================
+           AI AGENTS SECTION
+           ============================================ */
+        .agents-section {
+            background: var(--bg-primary);
+        }
+        
+        .agents-grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        
+        @media (min-width: 768px) {
+            .agents-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        .agent-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
             position: relative;
-            height: 85vh;
             overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+        
+        .agent-card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
+        }
+        
+        .agent-status {
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: var(--navy);
+            gap: var(--space-xs);
+            font-size: 0.75rem;
+            color: var(--olive);
+            margin-bottom: var(--space-md);
         }
-        .hero-showcase img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.5;
+        
+        .agent-title {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-sm);
         }
-        .hero-showcase::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.5) 100%);
+        
+        .agent-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
-        .hero-showcase-text {
+        
+        .agent-tags {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            margin-top: var(--space-md);
+        }
+        
+        .agent-tag {
+            font-size: 0.75rem;
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--text-secondary);
+        }
+        
+        /* ============================================
+           ARCHITECTURE VISUALIZATION
+           ============================================ */
+        .arch-section {
+            background: var(--bg-secondary);
+        }
+        
+        .arch-visual {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
             position: relative;
-            z-index: 2;
+            min-height: 400px;
+            overflow: hidden;
+        }
+        
+        .arch-layer {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            padding: var(--space-lg) 0;
+            position: relative;
+        }
+        
+        .arch-block {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: var(--space-lg);
             text-align: center;
-            padding: 0 2rem;
+            transition: all var(--duration-normal) var(--ease-out);
+            max-width: 200px;
         }
-        .hero-showcase-text h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 5rem);
+        
+        .arch-block:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+        }
+        
+        .arch-block-icon {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .arch-block-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .arch-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+            margin-bottom: var(--space-md);
+            text-align: center;
+        }
+        
+        .arch-connector {
+            position: absolute;
+            left: 50%;
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+            transform: translateX(-50%);
+        }
+        
+        /* ============================================
+           HOW IT WORKS
+           ============================================ */
+        .steps-section {
+            background: var(--bg-primary);
+        }
+        
+        .steps-grid {
+            display: grid;
+            gap: var(--space-2xl);
+        }
+        
+        @media (min-width: 768px) {
+            .steps-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+        
+        .step-card {
+            text-align: center;
+            padding: var(--space-xl);
+            position: relative;
+        }
+        
+        .step-number {
+            font-size: 3rem;
             font-weight: 700;
-            color: #fff;
-            letter-spacing: -0.04em;
-            line-height: 1.05;
-            margin-bottom: 1rem;
+            color: var(--accent);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: var(--space-md);
         }
-        .hero-showcase-text p {
+        
+        .step-title {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .step-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .step-arrow {
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            font-size: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .step-card:not(:last-child) .step-arrow { display: block; }
+        }
+        
+        @media (max-width: 767px) {
+            .step-card:not(:last-child) { margin-bottom: var(--space-xl); }
+            .step-arrow { display: none; }
+        }
+        
+        /* ============================================
+           DEPLOYMENT OPTIONS
+           ============================================ */
+        .deploy-section {
+            background: var(--bg-secondary);
+        }
+        
+        .deploy-grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        
+        @media (min-width: 768px) {
+            .deploy-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        
+        .deploy-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            transition: all var(--duration-normal) var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .deploy-card.featured {
+            border-color: var(--accent);
+        }
+        
+        .deploy-card.featured::before {
+            content: 'BELIEBT';
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 100px;
+        }
+        
+        .deploy-card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
+        }
+        
+        .deploy-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .deploy-title {
             font-size: 1.25rem;
-            color: rgba(255,255,255,0.6);
-            max-width: 500px;
-            margin: 0 auto;
-            font-weight: 300;
+            margin-bottom: var(--space-sm);
         }
-
-        /* ========== PRICING ========== */
-        .pricing { background: var(--sand-light); }
+        
+        .deploy-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .deploy-features {
+            list-style: none;
+        }
+        
+        .deploy-features li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs) 0;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .deploy-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        /* ============================================
+           PRICING SECTION
+           ============================================ */
+        .pricing-section {
+            background: var(--bg-primary);
+        }
+        
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            max-width: 1000px;
-            margin: 0 auto;
+            gap: var(--space-lg);
         }
+        
+        @media (min-width: 768px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
         .pricing-card {
-            background: #fff;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
             position: relative;
+            transition: all var(--duration-normal) var(--ease-out);
         }
+        
         .pricing-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+            border-color: var(--border-strong);
+            transform: translateY(-4px);
         }
-        .pricing-card--featured {
-            background: var(--navy);
-            border-color: transparent;
-            box-shadow: 0 8px 40px rgba(16, 42, 51, 0.15);
+        
+        .pricing-card.featured {
+            border-color: var(--accent);
         }
-        .pricing-card--featured:hover {
-            box-shadow: 0 16px 50px rgba(16, 42, 51, 0.25);
-        }
-        .pricing-badge {
+        
+        .pricing-card.featured::before {
+            content: 'EMPFOHLEN';
             position: absolute;
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--terracotta);
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.35rem 1rem;
-            border-radius: 999px;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-        .pricing-name {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-        }
-        .pricing-card--featured .pricing-name { color: #f5f5f7; }
-        .pricing-price {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--terracotta);
-            margin-bottom: 0.25rem;
-            letter-spacing: -0.03em;
-        }
-        .pricing-price span {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: rgba(16, 42, 51, 0.4);
-        }
-        .pricing-card--featured .pricing-price span { color: rgba(255,255,255,0.35); }
-        .pricing-desc {
-            font-size: 0.875rem;
-            color: rgba(16, 42, 51, 0.5);
-            margin-bottom: 2rem;
-            line-height: 1.5;
-        }
-        .pricing-card--featured .pricing-desc { color: rgba(255,255,255,0.4); }
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        .pricing-features li {
-            font-size: 0.875rem;
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .pricing-card--featured .pricing-features li { color: rgba(255,255,255,0.7); }
-        .pricing-features li::before {
-            content: '';
-            width: 5px;
-            height: 5px;
-            background: var(--olive);
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        .pricing-card--featured .pricing-features li::before {
-            background: var(--terracotta);
-        }
-        .btn-pricing {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 0.875rem;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-decoration: none;
-            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-            cursor: pointer;
-            border: none;
-            letter-spacing: -0.01em;
-        }
-        .btn-pricing-outline {
-            border: 1.5px solid var(--navy);
-            color: var(--navy);
-            background: transparent;
-        }
-        .btn-pricing-outline:hover {
-            background: var(--navy);
-            color: #fff;
-        }
-        .btn-pricing-solid {
-            background: var(--terracotta);
-            color: #fff;
-            border: none;
-        }
-        .btn-pricing-solid:hover {
-            background: var(--terracotta-hover);
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(214, 107, 69, 0.3);
-        }
-
-        /* ========== CONTACT SECTION ========== */
-        .contact-section {
-            background: #000;
-            text-align: center;
-        }
-        .contact-section .section-title { color: #f5f5f7; }
-        .contact-section .section-desc { color: rgba(245,245,247,0.5); }
-
-        /* ========== FOOTER ========== */
-        footer {
-            background: var(--navy-soft);
-            padding: 4rem 2rem 3rem;
-            color: #f5f5f7;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        .footer-brand .logo { color: #f5f5f7; margin-bottom: 1rem; display: inline-block; }
-        .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.6; }
-        .footer-col h4 {
-            font-family: 'Space Grotesk', sans-serif;
+            background: var(--accent);
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 100px;
             font-size: 0.75rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-            color: rgba(255,255,255,0.5);
+            white-space: nowrap;
         }
-        .footer-col a {
-            display: block;
-            color: rgba(255,255,255,0.35);
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 0.3rem 0;
-            transition: color 0.2s;
+        
+        .pricing-title {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
         }
-        .footer-col a:hover { color: #f5f5f7; }
-        .footer-bottom {
-            max-width: 1200px;
+        
+        .pricing-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+            font-weight: 400;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs) 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        /* ============================================
+           ROI CALCULATOR (Slider)
+           ============================================ */
+        .roi-section {
+            background: var(--bg-secondary);
+        }
+        
+        .roi-widget {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            max-width: 700px;
             margin: 0 auto;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding-top: 2rem;
+        }
+        
+        .roi-range-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .roi-range-label {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            margin-bottom: var(--space-sm);
         }
-        .footer-bottom p { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
-
-        /* ========== MODAL ========== */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content {
-            background: var(--sand-light);
-            padding: 2.5rem;
-            border-radius: 24px;
-            width: 92%;
-            max-width: 560px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
-            transform: scale(0.96);
-            transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .modal-overlay.active .modal-content { transform: scale(1); }
-        .modal-close {
-            position: absolute;
-            top: 1.25rem; right: 1.25rem;
-            background: rgba(0,0,0,0.06);
-            border: none;
-            border-radius: 50%;
-            width: 32px; height: 32px;
-            cursor: pointer;
-            font-size: 1rem;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        .modal-close:hover { background: rgba(0,0,0,0.1); }
-        .modal-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-        .modal-subtitle {
-            color: rgba(16, 42, 51, 0.5);
+        
+        .roi-range-label span:first-child {
             font-size: 0.9rem;
-            margin-bottom: 2rem;
-            line-height: 1.5;
+            color: var(--text-secondary);
         }
-        .form-group { margin-bottom: 1.25rem; }
-        .form-label {
-            display: block;
-            font-weight: 500;
-            color: var(--navy);
-            margin-bottom: 0.4rem;
-            font-size: 0.85rem;
-        }
-        .form-label .optional {
-            font-weight: 400;
-            color: #999;
-            font-size: 0.8rem;
-        }
-        .form-input, .form-textarea, .form-select {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1.5px solid rgba(16, 42, 51, 0.1);
-            border-radius: 12px;
-            font-size: 1rem;
-            color: var(--navy);
-            transition: border-color 0.2s, box-shadow 0.2s;
-            font-family: inherit;
-            background: #fff;
-        }
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
-            outline: none;
-            border-color: var(--terracotta);
-            box-shadow: 0 0 0 3px rgba(214, 107, 69, 0.1);
-        }
-        .form-textarea { resize: vertical; min-height: 100px; }
-        .form-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--terracotta);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
+        
+        .roi-range-label span:last-child {
             font-size: 1rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-            letter-spacing: -0.01em;
+            color: var(--accent);
         }
-        .form-btn:hover {
-            background: var(--terracotta-hover);
-            transform: scale(1.01);
-        }
-        .form-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        .form-success { text-align: center; padding: 2rem 0; }
-        .form-success h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            color: var(--olive);
-            margin-bottom: 0.75rem;
-        }
-        .form-success p { color: rgba(16, 42, 51, 0.6); line-height: 1.6; }
-        .form-success .check-icon {
-            width: 56px; height: 56px;
-            background: var(--olive);
-            color: #fff;
-            border-radius: 50%;
+        
+        .roi-range-wrapper {
+            position: relative;
+            height: 22px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin: 0 auto 1.25rem;
         }
-        .form-error {
-            background: rgba(220, 50, 50, 0.06);
-            border: 1px solid rgba(220, 50, 50, 0.15);
-            color: #b91c1c;
-            padding: 0.75rem 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
+        
+        .roi-range-track {
+            position: relative;
+            width: 100%;
+            height: 6px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .roi-range-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 25%;
+            transition: width var(--duration-fast) var(--ease-out);
+        }
+        
+        .roi-range {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 22px;
+            margin-top: -8px;
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .roi-range::-webkit-slider-runnable-track {
+            height: 6px;
+            background: transparent;
+        }
+        
+        .roi-range::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-elevated);
+            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.4);
+            margin-top: -9px;
+            transition: transform var(--duration-fast) var(--ease-out);
+        }
+        
+        .roi-range::-moz-range-track {
+            height: 6px;
+            background: transparent;
+            border: none;
+        }
+        
+        .roi-range::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-elevated);
+            box-shadow: 0 2px 8px rgba(214, 107, 69, 0.4);
+            margin-top: -9px;
+        }
+        
+        .roi-range:hover::-webkit-slider-thumb {
+            transform: scale(1.1);
+        }
+        
+        .roi-result {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: var(--accent-light);
+            border: 1px solid rgba(214, 107, 69, 0.2);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        
+        .roi-result-label {
             font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xs);
         }
-
-        /* ========== STATS ========== */
-        .stats-row {
+        
+        .roi-result-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+        
+        .roi-result-note {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            margin-top: var(--space-xs);
+        }
+        
+        /* ============================================
+           FINAL CTA
+           ============================================ */
+        .cta-section {
+            background: var(--bg-primary);
+            text-align: center;
+        }
+        
+        .cta-title {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2xl);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: var(--space-2xl) 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            gap: var(--space-2xl);
+            grid-template-columns: 1fr;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+        }
+        
+        .footer-brand p {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            margin-top: var(--space-md);
+        }
+        
+        .footer-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-tertiary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li { margin-bottom: var(--space-sm); }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--duration-fast);
+        }
+        
+        .footer-links a:hover { color: var(--text-primary); }
+        
+        .footer-bottom {
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+        
+        .footer-legal {
             display: flex;
             justify-content: center;
-            gap: 6rem;
-            padding: 4rem 2rem;
-            background: #000;
+            gap: var(--space-xl);
+            margin-top: var(--space-md);
+            flex-wrap: wrap;
         }
-        .stat { text-align: center; }
-        .stat-num {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--terracotta);
-            letter-spacing: -0.03em;
-            line-height: 1;
+        
+        .footer-legal a {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            text-decoration: none;
+            transition: color var(--duration-fast);
         }
-        .stat-label {
-            font-size: 0.85rem;
-            color: rgba(245,245,247,0.35);
-            margin-top: 0.5rem;
-            font-weight: 400;
+        
+        .footer-legal a:hover { color: var(--text-secondary); }
+        
+        /* ============================================
+           CONTACT MODAL
+           ============================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-lg);
         }
-
-        /* ========== MOBILE ========== */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .mobile-toggle { display: block; }
-            .hero { grid-template-columns: 1fr; min-height: auto; }
-            .hero-left { padding: 5rem 1.5rem 2.5rem; }
-            .hero-right { min-height: 45vh; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero-sub { font-size: 1.1rem; }
-            .hero-features { gap: 1rem; }
-            .hero-features { flex-direction: column; gap: 0.75rem; }
-            .stats-row { gap: 2.5rem; padding: 3rem 1.5rem; }
-            .stat-num { font-size: 2.25rem; }
-            section { padding: 5rem 1.25rem; }
-            .section-header { margin-bottom: 3rem; }
-            .statement { padding: 6rem 1.5rem; }
-            .usecases-grid { grid-template-columns: 1fr; }
-            .roi-grid { grid-template-columns: 1fr; }
-            .feature-grid { grid-template-columns: 1fr; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-            .modal-content { padding: 1.75rem; border-radius: 20px; width: 96%; }
-            .nav-inner { padding: 0 1.25rem; }
-            .hero-showcase { height: 70vh; }
-            .hero-showcase-text h2 { font-size: 2.25rem; }
+        
+        .modal-overlay.active {
+            display: flex;
+            animation: modal-overlay-in var(--duration-normal) var(--ease-out);
         }
-
-        /* Touch targets */
-        button, a, .btn-pricing, .btn-hero, select, input[type="text"], input[type="email"], input[type="tel"], input[type="range"] {
-            min-height: 44px;
+        
+        @keyframes modal-overlay-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            animation: modal-in var(--duration-normal) var(--ease-out);
+        }
+        
+        @keyframes modal-in {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: var(--space-sm);
+            transition: color var(--duration-fast);
+        }
+        
+        .modal-close:hover { color: var(--text-primary); }
+        
+        .modal h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .modal p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem var(--space-md);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: border-color var(--duration-fast);
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            width: 100%;
+        }
+        
+        .form-status {
+            display: none;
+            text-align: center;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-md);
+        }
+        
+        .form-status.success {
+            display: block;
+            background: rgba(120, 134, 107, 0.1);
+            border: 1px solid rgba(120, 134, 107, 0.2);
+            color: var(--olive);
+        }
+        
+        .form-status.error {
+            display: block;
+            background: rgba(214, 107, 69, 0.1);
+            border: 1px solid rgba(214, 107, 69, 0.2);
+            color: var(--accent);
+        }
+        
+        /* ============================================
+           SCROLL REVEAL ANIMATIONS
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        
+        /* ============================================
+           MOBILE OPTIMIZATIONS
+           ============================================ */
+        @media (max-width: 767px) {
+            .container { padding: 0 var(--space-md); }
+            .hero { padding: var(--space-2xl) 0 var(--space-xl); }
+            .hero-actions { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .hero-stats { justify-content: flex-start; }
+            .hero-stat { flex: 1; min-width: 100px; }
+            .mission-bar { flex-direction: column; }
+            .finder-widget { padding: var(--space-lg); }
+            .roi-widget { padding: var(--space-lg); }
+        }
+        
+        /* ============================================
+           ACCESSIBILITY
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+        
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        
+        /* ============================================
+           MOBILE MENU
+           ============================================ */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 1500;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xl);
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+            animation: menu-in var(--duration-normal) var(--ease-out);
+        }
+        
+        @keyframes menu-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-menu a {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
         }
     </style>
-</head>
-
-<body>
-
-<!-- ========== NAVIGATION ========== -->
-<nav id="mainNav">
-    <div class="nav-inner">
-        <a href="#top" class="logo">giga<span>top</span></a>
-        <ul class="nav-links">
-            <li><a href="#usecases" data-i18n="nav_usecases">Use Cases</a></li>
-            <li><a href="#roi" data-i18n="nav_roi">ROI Rechner</a></li>
-            <li><a href="#pricing" data-i18n="nav_pricing">Preise</a></li>
-            <li><a href="#about" data-i18n="nav_about">Über uns</a></li>
-        </ul>
-        <div class="nav-actions">
-            <select id="langSelect" onchange="setLang(this.value)" class="lang-select">
-                <option value="de">DE</option>
-                <option value="en">EN</option>
-            </select>
-            <button class="btn-nav" onclick="openContact('KI-Workshop')" data-i18n="hero_cta1">KI-Potenzial</button>
-            <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menue">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-        </div>
-    </div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-    <a href="#usecases" onclick="toggleMobileMenu()" data-i18n="nav_usecases">Use Cases</a>
-    <a href="#roi" onclick="toggleMobileMenu()" data-i18n="nav_roi">ROI Rechner</a>
-    <a href="#pricing" onclick="toggleMobileMenu()" data-i18n="nav_pricing">Preise</a>
-    <a href="#about" onclick="toggleMobileMenu()" data-i18n="nav_about">Ueber uns</a>
-</div>
-
-<!-- ========== HERO ========== -->
-<section class="hero" id="top">
-    <div class="hero-left">
-        <h1 data-i18n="hero_title_html">Private AI für <span class="accent">Schweizer Unternehmen</span></h1>
-        <p class="hero-sub" data-i18n="hero_p1">Wir bringen künstliche Intelligenz sicher in Ihr Unternehmen — lokal, datenschutzkonform und messbar.</p>
-        <div class="hero-cta-row">
-            <button onclick="openContact('KI-Workshop')" class="btn-hero" data-i18n="hero_cta1">KI-Potenzial analysieren</button>
-            <a href="#contact" class="btn-hero-ghost" onclick="openContact('KI-Workshop')" data-i18n="hero_cta2">Kontakt aufnehmen <span class="arrow">→</span></a>
-        </div>
-        <div class="hero-features">
-            <div class="hero-feature"><span class="dot"></span><span data-i18n="hero_feat1">100% lokal & privat</span></div>
-            <div class="hero-feature"><span class="dot"></span><span data-i18n="hero_feat2">Schweizer Datenschutz</span></div>
-            <div class="hero-feature"><span class="dot"></span><span data-i18n="hero_feat3">Messbare Ergebnisse</span></div>
-        </div>
-    </div>
-    <div class="hero-right">
-        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" alt="Künstliche Intelligenz Visualisierung">
-    </div>
-</section>
-
-<!-- ========== STATEMENT ========== -->
-<section class="statement">
-    <h2 class="reveal" data-i18n="statement_text">KI muss nicht in die Cloud. Sie bleibt dort, wo sie hingehört: <span class="accent">in Ihrem Unternehmen.</span></h2>
-</section>
-
-<!-- ========== STATS ========== -->
-<div class="stats-row">
-    <div class="stat reveal reveal-delay-1">
-        <div class="stat-num">100%</div>
-        <div class="stat-label" data-i18n="stat_local">Lokal verarbeitet</div>
-    </div>
-    <div class="stat reveal reveal-delay-2">
-        <div class="stat-num">0</div>
-        <div class="stat-label" data-i18n="stat_latency">Cloud-Latenz</div>
-    </div>
-    <div class="stat reveal reveal-delay-3">
-        <div class="stat-num" style="font-style: italic;">∞</div>
-        <div class="stat-label" data-i18n="stat_privacy">Datenschutz</div>
-    </div>
-</div>
-
-<!-- ========== USE CASES ========== -->
-<section class="usecases" id="usecases">
-    <div class="section-inner">
-        <div class="section-header">
-            <span class="section-label reveal" data-i18n="uc_badge">Anwendungsbereiche</span>
-            <h2 class="section-title reveal reveal-delay-1" data-i18n="uc_title">KI für Ihr Unternehmen</h2>
-            <p class="section-desc reveal reveal-delay-2" data-i18n="uc_subtitle">Wählen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.</p>
-        </div>
-        <div class="usecases-grid">
-            <div class="uc-card reveal reveal-delay-1" onclick="openContact('Starter')">
-                <div class="uc-icon terracotta">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                </div>
-                <h3 data-i18n="uc1_title">Sales & Wachstum</h3>
-                <p data-i18n="uc1_desc">Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestuetzter Datenauswertung.</p>
-            </div>
-            <div class="uc-card reveal reveal-delay-2" onclick="openContact('Starter')">
-                <div class="uc-icon deepblue">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
-                <h3 data-i18n="uc2_title">Operations & Effizienz</h3>
-                <p data-i18n="uc2_desc">Automatisierung von Prozessen, Dokumentenmanagement und Workflows.</p>
-            </div>
-            <div class="uc-card reveal reveal-delay-3" onclick="openContact('Starter')">
-                <div class="uc-icon olive">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
-                </div>
-                <h3 data-i18n="uc3_title">Kunden-Support</h3>
-                <p data-i18n="uc3_desc">KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.</p>
-            </div>
-            <div class="uc-card reveal reveal-delay-4" onclick="openContact('Starter')">
-                <div class="uc-icon deepblue">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
-                </div>
-                <h3 data-i18n="uc4_title">Daten & Intelligence</h3>
-                <p data-i18n="uc4_desc">Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.</p>
-            </div>
-            <div class="uc-card reveal reveal-delay-5" onclick="openContact('Starter')">
-                <div class="uc-icon terracotta">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <h3 data-i18n="uc5_title">Finance & Controlling</h3>
-                <p data-i18n="uc5_desc">Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== SHOWCASE IMAGE ========== -->
-<section class="hero-showcase">
-    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2000&auto=format&fit=crop" alt="DGX Server Raum">
-    <div class="hero-showcase-text reveal">
-        <h2 data-i18n="showcase_title">Powered by DGX</h2>
-        <p data-i18n="showcase_desc">Enterprise GPU-Leistung direkt vor Ort. Keine Cloud. Keine Kompromisse.</p>
-    </div>
-</section>
-
-<!-- ========== ROI ========== -->
-<section class="roi" id="roi">
-    <div class="section-inner">
-        <div class="section-header">
-            <h2 class="section-title reveal" data-i18n="roi_title">Berechnen Sie Ihr KI-Potenzial</h2>
-            <p class="section-desc reveal reveal-delay-1" data-i18n="roi_subtitle">Erhalten Sie in Sekunden eine realistische Kosteneinschaetzung durch KI-Automatisierung.</p>
-        </div>
-        <div class="roi-grid">
-            <div class="roi-panel reveal reveal-delay-1">
-                <h3 class="dark" data-i18n="roi_input">Parameter eingeben</h3>
-                <div class="roi-input">
-                    <div class="roi-label"><span data-i18n="roi_employees">Mitarbeiter</span><span class="val" id="roi_employees_val">5</span></div>
-                    <input type="range" id="roi_employees" min="1" max="200" value="5" oninput="calculateROI()">
-                </div>
-                <div class="roi-input">
-                    <div class="roi-label"><span data-i18n="roi_hours">Stunden/Woche pro Prozess</span><span class="val" id="roi_hours_val">10</span></div>
-                    <input type="range" id="roi_hours" min="1" max="40" value="10" oninput="calculateROI()">
-                </div>
-                <div class="roi-input">
-                    <div class="roi-label"><span data-i18n="roi_salary">Bruttolohn / Jahr (CHF)</span><span class="val" id="roi_salary_val">80'000</span></div>
-                    <input type="range" id="roi_salary" min="40000" max="200000" value="80000" step="5000" oninput="calculateROI()">
-                </div>
-                <div class="roi-input">
-                    <div class="roi-label"><span data-i18n="roi_rate">Automatisierungsrate (%)</span><span class="val" id="roi_rate_val">50%</span></div>
-                    <input type="range" id="roi_rate" min="10" max="90" value="50" oninput="calculateROI()">
-                </div>
-            </div>
-            <div class="roi-panel roi-panel--dark reveal reveal-delay-2">
-                <h3 data-i18n="roi_result">Ergebnis</h3>
-                <div class="roi-result">
-                    <div class="roi-result-box">
-                        <div class="roi-result-label" data-i18n="roi_savings_label">Jaehrliche Einsparung</div>
-                        <div class="roi-result-value" id="roi_savings">CHF 20'000</div>
-                    </div>
-                </div>
-                <div class="roi-grid-small">
-                    <div class="roi-result-box">
-                        <div class="roi-result-label" data-i18n="roi_time_label">Zeit gespart / Jahr</div>
-                        <div class="roi-result-value" id="roi_time">520 Std.</div>
-                    </div>
-                    <div class="roi-result-box">
-                        <div class="roi-result-label" data-i18n="roi_proc_label">Prozesse / Monat</div>
-                        <div class="roi-result-value" id="roi_proc">10</div>
-                    </div>
-                </div>
-                <button onclick="openContact('KI-Workshop')" style="width:100%;margin-top:1.5rem;padding:1rem;background:var(--terracotta);color:#fff;border:none;border-radius:12px;font-weight:600;font-size:1rem;cursor:pointer;transition:all 0.25s cubic-bezier(0.23,1,0.32,1);" data-i18n="roi_cta">Details besprechen</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== FEATURES ========== -->
-<section class="features" id="about">
-    <div class="section-inner">
-        <div class="section-header">
-            <span class="section-label reveal" data-i18n="about_badge">Warum Gigatop</span>
-            <h2 class="section-title dark reveal reveal-delay-1" data-i18n="about_title">Warum Gigatop?</h2>
-            <p class="section-desc dark reveal reveal-delay-2" data-i18n="about_subtitle">Ihr lokaler Partner für private KI-Lösungen in der Schweiz.</p>
-        </div>
-        <div class="feature-grid">
-            <div class="feature-card reveal reveal-delay-1">
-                <div class="feature-accent"></div>
-                <h3 data-i18n="about_1_title">Datenschutz-first</h3>
-                <p data-i18n="about_1_desc">Ihre Daten verlassen niemals Ihr Unternehmen. 100% lokale Verarbeitung, keine Cloud.</p>
-            </div>
-            <div class="feature-card reveal reveal-delay-2">
-                <div class="feature-accent terracotta"></div>
-                <h3 data-i18n="about_2_title">Schnelle Ergebnisse</h3>
-                <p data-i18n="about_2_desc">Messbare Verbesserungen innerhalb der ersten 4 Wochen. Keine langwierigen Pilotphasen.</p>
-            </div>
-            <div class="feature-card reveal reveal-delay-3">
-                <div class="feature-accent olive"></div>
-                <h3 data-i18n="about_3_title">Schweizer Präzision</h3>
-                <p data-i18n="about_3_desc">Verstaendnis fuer Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.</p>
-            </div>
-            <div class="feature-card reveal reveal-delay-4">
-                <div class="feature-accent"></div>
-                <h3 data-i18n="about_4_title">DGX Station</h3>
-                <p data-i18n="about_4_desc">Enterprise-Grafikleistung für maximale KI-Leistung — direkt vor Ort in Ihrem Rechenzentrum.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== PRICING ========== -->
-<section class="pricing" id="pricing">
-    <div class="section-inner">
-        <div class="section-header">
-            <span class="section-label reveal" data-i18n="pricing_badge">Preise</span>
-            <h2 class="section-title dark reveal reveal-delay-1" data-i18n="pricing_title">Transparente Investition</h2>
-            <p class="section-desc dark reveal reveal-delay-2" data-i18n="pricing_subtitle">Jede Lösung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.</p>
-        </div>
-        <div class="pricing-grid">
-            <div class="pricing-card reveal reveal-delay-1">
-                <div class="pricing-name" data-i18n="pricing_0_title">KI-Workshop</div>
-                <div class="pricing-price">CHF 399 <span data-i18n="pricing_0_unit">/ Session</span></div>
-                <p class="pricing-desc" data-i18n="pricing_0_desc">2 Stunden: Agent-Entwicklung & Launch</p>
-                <ul class="pricing-features">
-                    <li data-i18n="pricing_0_f1">2h intensive Workshop-Sitzung</li>
-                    <li data-i18n="pricing_0_f2">Gemeinsam den KI-Agenten bauen</li>
-                    <li data-i18n="pricing_0_f3">Auf meiner Station/Testumgebung</li>
-                    <li data-i18n="pricing_0_f4">Sofortiger Start Ihrer KI-Loesung</li>
-                </ul>
-                <button onclick="openContact('KI-Workshop')" class="btn-pricing btn-pricing-solid" data-i18n="pricing_cta">Jetzt anfragen</button>
-            </div>
-            <div class="pricing-card pricing-card--featured reveal reveal-delay-2">
-                <div class="pricing-badge" data-i18n="pricing_badge_label">Empfohlen</div>
-                <div class="pricing-name" data-i18n="pricing_1_title">Starter</div>
-                <div class="pricing-price">CHF 5'000 <span data-i18n="pricing_1_unit">/ Projekt</span></div>
-                <p class="pricing-desc" data-i18n="pricing_1_desc">Einzelne KI-Anwendung für den Einstieg</p>
-                <ul class="pricing-features">
-                    <li data-i18n="pricing_1_f1">Ein KI-Use Case</li>
-                    <li data-i18n="pricing_1_f2">Passende Hardware wird geliefert</li>
-                    <li data-i18n="pricing_1_f3">Schulung & Support</li>
-                </ul>
-                <button onclick="openContact('Starter')" class="btn-pricing btn-pricing-solid" data-i18n="pricing_cta">Anfragen</button>
-            </div>
-            <div class="pricing-card reveal reveal-delay-3">
-                <div class="pricing-name" data-i18n="pricing_3_title">Enterprise</div>
-                <div class="pricing-price" data-i18n="pricing_3_price">Individuell</div>
-                <p class="pricing-desc" data-i18n="pricing_3_desc">Massgeschneiderte Enterprise-Loesung</p>
-                <ul class="pricing-features">
-                    <li data-i18n="pricing_3_f1">Unbegrenzte Use Cases</li>
-                    <li data-i18n="pricing_3_f2">DGX Station & On-Premise</li>
-                    <li data-i18n="pricing_3_f3">Dediziertes Team</li>
-                    <li data-i18n="pricing_3_f4">SLA & Priority Support</li>
-                </ul>
-                <button onclick="openContact('Enterprise')" class="btn-pricing btn-pricing-outline" data-i18n="pricing_cta">Kontakt aufnehmen</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== CONTACT ========== -->
-<section class="contact-section" id="contact">
-    <div class="section-inner">
-        <h2 class="section-title reveal" data-i18n="contact_title">Kontakt aufnehmen</h2>
-        <p class="section-desc reveal reveal-delay-1" data-i18n="contact_subtitle">Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.</p>
-        <a href="mailto:top@gigatop.io" class="btn-hero reveal reveal-delay-2" style="margin-top:2rem;">top@gigatop.io</a>
-        <div class="reveal reveal-delay-3" style="color:rgba(245,245,247,0.35);font-size:0.85rem;margin-top:2.5rem;">
-            <p data-i18n="contact_location">Fabio Serpa, Einzelfirma</p>
-            <p>Hinterhödenstrasse 8, 6312 Steinhausen</p>
-        </div>
-    </div>
-</section>
-
-<!-- ========== FOOTER ========== -->
-<footer>
-    <div class="footer-inner">
-        <div class="footer-brand">
-            <a href="#top" class="logo">giga<span>top</span></a>
-            <p data-i18n="footer_desc">Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.</p>
-        </div>
-        <div class="footer-col">
-            <h4 data-i18n="footer_nav">Navigation</h4>
-            <a href="#usecases" data-i18n="nav_usecases">Use Cases</a>
-            <a href="#roi" data-i18n="nav_roi">ROI Rechner</a>
-            <a href="#pricing" data-i18n="nav_pricing">Preise</a>
-        </div>
-        <div class="footer-col">
-            <h4 data-i18n="footer_legal">Legal</h4>
-            <a href="datenschutz.html" data-i18n="footer_privacy">Datenschutz</a>
-            <a href="impressum.html" data-i18n="footer_imprint">Impressum</a>
-            <a href="agb.html" data-i18n="footer_terms">AGB</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2025 Gigatop. <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></p>
-    </div>
-</footer>
-
-<!-- ========== CONTACT MODAL ========== -->
-<div id="contactModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">✕</button>
-        <div id="modalFormArea">
-            <div class="modal-title" id="modalTitle">Anfrage senden</div>
-            <div class="modal-subtitle" id="modalSubtitle">Füllen Sie das Formular aus — wir melden uns innerhalb von 24 Stunden.</div>
-            <form id="contactForm" onsubmit="submitForm(event)" action="https://formsubmit.co/top@gigatop.io" method="POST">
-                <input type="hidden" name="_subject" value="Neue Anfrage - Gigatop Website">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" id="redirectUrl">
-                <input type="hidden" name="Package" id="formPackage">
-
-                <div class="form-group">
-                    <label class="form-label" data-i18n="form_name">Name *</label>
-                    <input type="text" name="Name" class="form-input" required placeholder="Ihr vollständiger Name">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" data-i18n="form_email">E-Mail *</label>
-                    <input type="email" name="Email" class="form-input" required placeholder="ihre@email.ch">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" data-i18n="form_phone">Telefon <span class="optional">(optional)</span></label>
-                    <input type="tel" name="Telefon" class="form-input" placeholder="+41 XX XXX XX XX">
-                </div>
-
-                <div id="dynamicQuestions"></div>
-
-                <button type="submit" class="form-btn" id="submitBtn" data-i18n="form_submit">Anfrage absenden →</button>
-            </form>
-        </div>
-        <div id="modalSuccess" class="form-success" style="display:none;">
-            <div class="check-icon">✓</div>
-            <h3>Vielen Dank!</h3>
-            <p data-i18n="form_success">Ihre Anfrage wurde erfolgreich gesendet.<br>Wir melden uns schnellstmöglich bei Ihnen.</p>
-        </div>
-    </div>
-</div>
-
-<script>
-var LANGS = {
-    de: {
-        nav_usecases: 'Use Cases', nav_roi: 'ROI Rechner', nav_pricing: 'Preise', nav_about: 'Ueber uns',
-        hero_badge: 'KI, die Ihr Unternehmen versteht', hero_title_html: 'Private AI für <span class="accent">Schweizer Unternehmen</span>',
-        hero_p1: 'Wir bringen künstliche Intelligenz sicher in Ihr Unternehmen — lokal, datenschutzkonform und messbar.',
-        hero_p2: 'Keine Cloud-Sensibilitäten. Keine Compliance-Risiken. Volle Kontrolle über Ihre Daten.',
-        hero_cta1: 'KI-Potenzial analysieren', hero_cta2: 'Kontakt aufnehmen',
-        hero_feat1: '100% lokal & privat', hero_feat2: 'Schweizer Datenschutz', hero_feat3: 'Messbare Ergebnisse',
-        stat_local: 'Lokal verarbeitet', stat_latency: 'Cloud-Latenz', stat_privacy: 'Datenschutz',
-        statement_text: 'KI muss nicht in die Cloud. Sie bleibt dort, wo sie hingehört: <span class="accent">in Ihrem Unternehmen.</span>',
-        showcase_title: 'Powered by DGX', showcase_desc: 'Enterprise GPU-Leistung direkt vor Ort. Keine Cloud. Keine Kompromisse.',
-        uc_badge: 'Anwendungsbereiche', uc_title: 'KI für Ihr Unternehmen', uc_subtitle: 'Waehlen Sie einen Bereich und erfahren Sie, wie KI Ihren Arbeitsalltag revolutionieren kann.',
-        uc1_title: 'Sales & Wachstum', uc1_desc: 'Lead-Generierung, Verkaufsanalyse und Kundenbindung mit KI-gestuetzter Datenauswertung.',
-        uc2_title: 'Operations & Effizienz', uc2_desc: 'Automatisierung von Prozessen, Dokumentenmanagement und Workflows.',
-        uc3_title: 'Kunden-Support', uc3_desc: 'KI-Chatbots, Ticket-Automatisierung und 24/7 Kundenkommunikation.',
-        uc4_title: 'Daten & Intelligence', uc4_desc: 'Datenanalyse, Business Intelligence und datengetriebene Entscheidungen.',
-        uc5_title: 'Finance & Controlling', uc5_desc: 'Finanzplanung, Risikobewertung und automatisierte Reporting-Prozesse.',
-        roi_badge: 'ROI Rechner', roi_title: 'Berechnen Sie Ihr KI-Potenzial', roi_subtitle: 'Erhalten Sie in Sekunden eine realistische Kosteneinschaetzung durch KI-Automatisierung.',
-        roi_input: 'Parameter eingeben', roi_employees: 'Mitarbeiter', roi_hours: 'Stunden/Woche pro Prozess', roi_salary: 'Bruttolohn / Jahr (CHF)', roi_rate: 'Automatisierungsrate (%)',
-        roi_result: 'Ergebnis', roi_savings_label: 'Jaehrliche Einsparung', roi_time_label: 'Zeit gespart / Jahr', roi_proc_label: 'Prozesse / Monat', roi_cta: 'Details besprechen',
-        about_badge: 'Warum Gigatop', about_title: 'Warum Gigatop?', about_subtitle: 'Ihr lokaler Partner für private KI-Lösungen in der Schweiz.',
-        about_1_title: 'Datenschutz-first', about_1_desc: 'Ihre Daten verlassen niemals Ihr Unternehmen. 100% lokale Verarbeitung, keine Cloud.',
-        about_2_title: 'Schnelle Ergebnisse', about_2_desc: 'Messbare Verbesserungen innerhalb der ersten 4 Wochen. Keine langwierigen Pilotphasen.',
-        about_3_title: 'Schweizer Praezision', about_3_desc: 'Verstaendnis fuer Schweizer Markt, Compliance und Mehrsprachigkeit. DE/FR/EN/IT.',
-        about_4_title: 'DGX Station', about_4_desc: 'Enterprise-Grafikleistung für maximale KI-Leistung — direkt vor Ort in Ihrem Rechenzentrum.',
-        pricing_badge: 'Preise', pricing_title: 'Transparente Investition', pricing_subtitle: 'Jede Loesung wird individuell kalkuliert. Orientieren Sie sich an diesen Richtwerten.',
-        pricing_badge_label: 'Empfohlen',
-        pricing_0_unit: '/ Session', pricing_1_unit: '/ Projekt', pricing_3_price: 'Individuell',
-        pricing_0_title: 'KI-Workshop', pricing_0_desc: '2 Stunden: Agent-Entwicklung & Launch',
-        pricing_0_f1: '2h intensive Workshop-Sitzung', pricing_0_f2: 'Gemeinsam den KI-Agenten bauen', pricing_0_f3: 'Auf meiner Station/Testumgebung', pricing_0_f4: 'Sofortiger Start Ihrer KI-Loesung',
-        pricing_1_title: 'Starter', pricing_1_desc: 'Einzelne KI-Anwendung für den Einstieg',
-        pricing_1_f1: 'Ein KI-Use Case', pricing_1_f2: 'Passende Hardware wird geliefert', pricing_1_f3: 'Schulung & Support',
-        pricing_3_title: 'Enterprise', pricing_3_desc: 'Massgeschneiderte Enterprise-Loesung',
-        pricing_3_f1: 'Unbegrenzte Use Cases', pricing_3_f2: 'DGX Station & On-Premise', pricing_3_f3: 'Dediziertes Team', pricing_3_f4: 'SLA & Priority Support',
-        pricing_cta: 'Anfragen', pricing_cta_popular: 'Anfragen',
-        contact_title: 'Kontakt aufnehmen', contact_subtitle: 'Schreiben Sie uns eine E-Mail — wir antworten innerhalb von 24 Stunden.', contact_email: 'top@gigatop.io', contact_location: 'Fabio Serpa, Einzelfirma',
-        footer_desc: 'Private KI-Lösungen für Schweizer Unternehmen. Lokale Verarbeitung, maximale Sicherheit.',
-        footer_nav: 'Navigation', footer_legal: 'Legal', footer_privacy: 'Datenschutz', footer_imprint: 'Impressum', footer_terms: 'AGB', footer_rights: 'Alle Rechte vorbehalten.',
-        form_name: 'Name *', form_email: 'E-Mail *', form_phone: 'Telefon', form_submit: 'Anfrage absenden →', form_success: 'Ihre Anfrage wurde erfolgreich gesendet.<br>Wir melden uns schnellstmöglich bei Ihnen.',
-    },
-    en: {
-        nav_usecases: 'Use Cases', nav_roi: 'ROI Calculator', nav_pricing: 'Pricing', nav_about: 'About',
-        hero_badge: 'AI that understands your business', hero_title_html: 'Private AI for <span class="accent">Swiss Companies</span>',
-        hero_p1: 'We bring artificial intelligence securely into your business — local, compliant and measurable.',
-        hero_p2: 'No cloud sensitivities. No compliance risks. Full control over your data.',
-        hero_cta1: 'Analyze AI potential', hero_cta2: 'Contact us',
-        hero_feat1: '100% local & private', hero_feat2: 'Swiss data protection', hero_feat3: 'Measurable results',
-        stat_local: 'Local processing', stat_latency: 'Zero cloud latency', stat_privacy: 'Privacy',
-        statement_text: 'AI doesn\'t need the cloud. It stays exactly where it belongs: <span class="accent">inside your company.</span>',
-        showcase_title: 'Powered by DGX', showcase_desc: 'Enterprise GPU performance on-site. No cloud. No compromises.',
-        uc_badge: 'Application Areas', uc_title: 'AI for Your Business', uc_subtitle: 'Choose a domain and discover how AI can revolutionize your daily work.',
-        uc1_title: 'Sales & Growth', uc1_desc: 'Lead generation, sales analysis and customer retention with AI-powered data evaluation.',
-        uc2_title: 'Operations & Efficiency', uc2_desc: 'Process automation, document management and workflows.',
-        uc3_title: 'Customer Support', uc3_desc: 'AI chatbots, ticket automation and 24/7 customer communication.',
-        uc4_title: 'Data & Intelligence', uc4_desc: 'Data analysis, business intelligence and data-driven decisions.',
-        uc5_title: 'Finance & Controlling', uc5_desc: 'Financial planning, risk assessment and automated reporting.',
-        roi_badge: 'ROI Calculator', roi_title: 'Calculate Your AI Potential', roi_subtitle: 'Get a realistic cost estimate from AI automation in seconds.',
-        roi_input: 'Enter parameters', roi_employees: 'Employees', roi_hours: 'Hours/week per process', roi_salary: 'Gross salary / year (CHF)', roi_rate: 'Automation rate (%)',
-        roi_result: 'Result', roi_savings_label: 'Annual savings', roi_time_label: 'Time saved / year', roi_proc_label: 'Processes / month', roi_cta: 'Discuss details',
-        about_badge: 'Why Gigatop', about_title: 'Why Gigatop?', about_subtitle: 'Your local partner for private AI solutions in Switzerland.',
-        about_1_title: 'Privacy-first', about_1_desc: 'Your data never leaves your company. 100% local processing, no cloud.',
-        about_2_title: 'Fast results', about_2_desc: 'Measurable improvements within the first 4 weeks. No lengthy pilot phases.',
-        about_3_title: 'Swiss precision', about_3_desc: 'Understanding of Swiss market, compliance and multilingualism. DE/FR/EN/IT.',
-        about_4_title: 'DGX Station', about_4_desc: 'Enterprise-grade graphics performance for maximum AI power — directly on-site in your data center.',
-        pricing_badge: 'Pricing', pricing_title: 'Transparent Investment', pricing_subtitle: 'Each solution is individually calculated. Use these as reference values.',
-        pricing_badge_label: 'Recommended',
-        pricing_0_unit: '/ session', pricing_1_unit: '/ project', pricing_3_price: 'Custom',
-        pricing_0_title: 'AI Workshop', pricing_0_desc: '2 Hours: Agent Development & Launch',
-        pricing_0_f1: '2h intensive workshop session', pricing_0_f2: 'Build the AI agent together', pricing_0_f3: 'On my station/test environment', pricing_0_f4: 'Immediate start of your AI solution',
-        pricing_1_title: 'Starter', pricing_1_desc: 'Single AI application for getting started',
-        pricing_1_f1: 'One AI use case', pricing_1_f2: 'Matching hardware is delivered', pricing_1_f3: 'Training & support',
-        pricing_3_title: 'Enterprise', pricing_3_desc: 'Custom enterprise solution',
-        pricing_3_f1: 'Unlimited use cases', pricing_3_f2: 'DGX Station & on-premise', pricing_3_f3: 'Dedicated team', pricing_3_f4: 'SLA & priority support',
-        pricing_cta: 'Inquire', pricing_cta_popular: 'Inquire',
-        contact_title: 'Contact Us', contact_subtitle: 'Send us an email — we respond within 24 hours.', contact_email: 'top@gigatop.io', contact_location: 'Fabio Serpa, Sole Proprietorship',
-        footer_desc: 'Private AI solutions for Swiss companies. Local processing, maximum security.',
-        footer_nav: 'Navigation', footer_legal: 'Legal', footer_privacy: 'Privacy', footer_imprint: 'Imprint', footer_terms: 'Terms', footer_rights: 'All rights reserved.',
-        form_name: 'Name *', form_email: 'Email *', form_phone: 'Phone', form_submit: 'Send inquiry →', form_success: 'Your inquiry has been sent successfully.<br>We will contact you as soon as possible.',
-    }
-};
-
-function setLang(lang) {
-    localStorage.setItem('gigatop-lang', lang);
-    document.documentElement.lang = lang;
-    var els = document.querySelectorAll('[data-i18n]');
-    for (var i = 0; i < els.length; i++) {
-        var k = els[i].getAttribute('data-i18n');
-        var v = LANGS[lang] && LANGS[lang][k];
-        if (v) {
-            if (els[i].tagName === 'INPUT' || els[i].tagName === 'TEXTAREA') {
-                els[i].placeholder = v;
-            } else {
-                els[i].innerHTML = v;
+    <script data-i18n="true">
+        // ============================================
+        // SCROLL REVEAL SYSTEM
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            
+            // Nav hide/show on scroll
+            let lastScroll = 0;
+            const nav = document.querySelector('.nav');
+            window.addEventListener('scroll', () => {
+                const current = window.pageYOffset;
+                if (current > lastScroll && current > 100) {
+                    nav.style.transform = 'translateY(-100%)';
+                } else {
+                    nav.style.transform = 'translateY(0)';
+                }
+                lastScroll = current;
+            });
+        });
+        
+        // ============================================
+        // CONTACT MODAL
+        // ============================================
+        function openContact(topic) {
+            document.getElementById('modalTopic').value = topic;
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.getElementById('contactModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('contactModal')) {
+                closeModal();
+            }
+        });
+        
+        function closeBtn(e) {
+            e.stopPropagation();
+            closeModal();
+        }
+        
+        // ============================================
+        // FORM SUBMISSION
+        // ============================================
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const statusEl = document.getElementById('formStatus');
+            
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/top@gigatop.io', {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    statusEl.className = 'form-status success';
+                    statusEl.textContent = 'Vielen Dank! Wir melden uns innerhalb von 24 Stunden.';
+                    form.reset();
+                } else {
+                    throw new Error('Network error');
+                }
+            } catch {
+                statusEl.className = 'form-status error';
+                statusEl.textContent = 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.';
+            }
+        });
+        
+        // ============================================
+        // ROI CALCULATOR
+        // ============================================
+        function calculateROI() {
+            const emp = document.getElementById('employees').value;
+            const hours = document.getElementById('weeklyHours').value;
+            const hourlyCost = document.getElementById('hourlyCost').value;
+            
+            const yearlyCost = emp * hours * 52 * hourlyCost;
+            const savingsPercent = 0.4;
+            const savings = yearlyCost * savingsPercent;
+            
+            const savingsEl = document.getElementById('roiSavings');
+            savingsEl.textContent = Math.round(savings).toLocaleString('de-CH') + ' CHF';
+            
+            // Update slider fill
+            const rangeFills = document.querySelectorAll('.roi-range-fill');
+            const range1 = document.getElementById('employees');
+            const range2 = document.getElementById('weeklyHours');
+            const range3 = document.getElementById('hourlyCost');
+            
+            if (range1 && rangeFills[0]) {
+                const pct1 = ((range1.value - 5) / 45) * 100;
+                rangeFills[0].style.width = pct1 + '%';
+            }
+            if (range2 && rangeFills[1]) {
+                const pct2 = ((range2.value - 5) / 45) * 100;
+                rangeFills[1].style.width = pct2 + '%';
+            }
+            if (range3 && rangeFills[2]) {
+                const pct3 = ((range3.value - 30) / 170) * 100;
+                rangeFills[2].style.width = pct3 + '%';
             }
         }
-    }
-}
-
-(function() {
-    var lang = localStorage.getItem('gigatop-lang') || 'de';
-    setLang(lang);
-    calculateROI();
-
-    var nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 10) { nav.classList.add('scrolled'); }
-        else { nav.classList.remove('scrolled'); }
-    });
-
-    // Scroll reveal observer
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+        
+        // ============================================
+        // AI USE CASE FINDER
+        // ============================================
+        function selectFinder(option) {
+            document.querySelectorAll('.finder-option').forEach(o => o.classList.remove('selected'));
+            option.classList.add('selected');
+            
+            setTimeout(() => {
+                const result = document.getElementById('finderResult');
+                result.classList.add('visible');
+            }, 200);
+        }
+        
+        // Close modal on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(function(el) {
-        observer.observe(el);
-    });
-
-    // Mouse glow on usecase cards
-    document.querySelectorAll('.uc-card').forEach(function(card) {
-        card.addEventListener('mousemove', function(e) {
-            var rect = card.getBoundingClientRect();
-            var x = ((e.clientX - rect.left) / rect.width) * 100;
-            var y = ((e.clientY - rect.top) / rect.height) * 100;
-            card.style.setProperty('--mx', x + '%');
-            card.style.setProperty('--my', y + '%');
-        });
-    });
-})();
-
-function toggleMobileMenu() {
-    var m = document.getElementById('mobileMenu');
-    m.classList.toggle('open');
-}
-
-function calculateROI() {
-    var employees = parseInt(document.getElementById('roi_employees').value);
-    var hours = parseInt(document.getElementById('roi_hours').value);
-    var salary = parseInt(document.getElementById('roi_salary').value);
-    var rate = parseInt(document.getElementById('roi_rate').value) / 100;
-    var lang = localStorage.getItem('gigatop-lang') || 'de';
-
-    document.getElementById('roi_employees_val').textContent = employees;
-    document.getElementById('roi_hours_val').textContent = hours;
-    document.getElementById('roi_salary_val').textContent = salary.toLocaleString(lang === 'de' ? 'de-CH' : 'en-US');
-    document.getElementById('roi_rate_val').textContent = (rate * 100) + '%';
-
-    var annualHours = hours * 52;
-    var hourlyRate = salary / 2080;
-    var savings = Math.round(employees * annualHours * hourlyRate * rate);
-    var timeSaved = Math.round(employees * annualHours * rate);
-    var processesPerMonth = Math.round(employees * rate);
-
-    var format = function(n) { return 'CHF ' + n.toLocaleString(lang === 'de' ? 'de-CH' : 'en-US'); };
-
-    document.getElementById('roi_savings').textContent = format(savings);
-    document.getElementById('roi_time').textContent = timeSaved.toLocaleString(lang === 'de' ? 'de-CH' : 'en-US') + ' Std.';
-    document.getElementById('roi_proc').textContent = processesPerMonth;
-}
-
-// === CONTACT MODAL ===
-function openContact(packageName) {
-    var modal = document.getElementById('contactModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    document.getElementById('redirectUrl').value = window.location.href + '#thank-you';
-
-    if (packageName) {
-        document.getElementById('formPackage').value = packageName;
-        renderQuestions(packageName);
-    } else {
-        document.getElementById('formPackage').value = '';
-        renderQuestions('');
-    }
-
-    document.getElementById('modalFormArea').style.display = 'block';
-    document.getElementById('modalSuccess').style.display = 'none';
-    document.getElementById('contactForm').reset();
-}
-
-function closeModal() {
-    var modal = document.getElementById('contactModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-function renderQuestions(pkg) {
-    var container = document.getElementById('dynamicQuestions');
-    var title = document.getElementById('modalTitle');
-    var subtitle = document.getElementById('modalSubtitle');
-
-    var html = '';
-
-    if (pkg === 'KI-Workshop' || pkg === 'pricing_0') {
-        title.textContent = 'KI-Workshop anfragen';
-        subtitle.textContent = 'Wir bauen gemeinsam Ihren KI-Agenten — in nur 2 Stunden.';
-        html += `
-            <div class="form-group">
-                <label class="form-label">Was wollen Sie automatisieren?</label>
-                <textarea name="Use Case" class="form-textarea" required placeholder="Beschreiben Sie kurz Ihr Ziel, z.B. 'Automatische E-Mail-Beantwortung'..."></textarea>
+    </script>
+</head>
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="nav-logo">Giga<span>top</span></a>
+                <div class="nav-links">
+                    <a href="#usecases" class="nav-link" data-i18n="nav_usecases">Use Cases</a>
+                    <a href="#architecture" class="nav-link" data-i18n="nav_architecture">Technologie</a>
+                    <a href="#pricing" class="nav-link" data-i18n="nav_pricing">Preise</a>
+                    <a href="#roi" class="nav-link" data-i18n="nav_roi">ROI</a>
+                </div>
+                <a href="#" class="btn btn-primary nav-cta" onclick="openContact('General Inquiry'); return false;" data-i18n="nav_contact">Kontakt aufnehmen</a>
+                <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.add('active')" aria-label="Menu öffnen">☰</button>
             </div>
-            <div class="form-group">
-                <label class="form-label">Welche Tools / Programme nutzen Sie?</label>
-                <input type="text" name="Tools" class="form-input" placeholder="z.B. Outlook, Excel, CRM-System, Notion...">
+        </div>
+    </nav>
+    
+    <!-- ========== MOBILE MENU ========== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('active')" aria-label="Menü schliessen">✕</button>
+        <a href="#usecases" onclick="document.getElementById('mobileMenu').classList.remove('active')">Use Cases</a>
+        <a href="#architecture" onclick="document.getElementById('mobileMenu').classList.remove('active')">Technologie</a>
+        <a href="#pricing" onclick="document.getElementById('mobileMenu').classList.remove('active')">Preise</a>
+        <a href="#roi" onclick="document.getElementById('mobileMenu').classList.remove('active')">ROI</a>
+        <a href="#" class="btn btn-primary" onclick="openContact('General Inquiry'); document.getElementById('mobileMenu').classList.remove('active'); return false;">Kontakt aufnehmen</a>
+    </div>
+    
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">
+                        PRIVATE AI · SWITZERLAND
+                    </div>
+                    <h1 class="hero-title reveal">Private AI.<br>Built around your business.</h1>
+                    <p class="hero-subtitle reveal reveal-delay-1">
+                        Wir bauen KI-Systeme, die Ihr Unternehmenswissen mit Ihren Daten verbinden — sicher, kontrollierbar und messbar.
+                    </p>
+                    <div class="hero-actions reveal reveal-delay-2">
+                        <a href="#" class="btn btn-primary" onclick="openContact('Beratung anfragen'); return false;">
+                            Beratung starten <span class="arrow">→</span>
+                        </a>
+                        <a href="#architecture" class="btn btn-secondary" data-i18n="hero_how">So funktioniert's</a>
+                    </div>
+                    <div class="hero-stats reveal reveal-delay-3">
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">100%</span>
+                            <span class="hero-stat-label" data-i18n="hero_local">Lokale Verarbeitung</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">&lt;24h</span>
+                            <span class="hero-stat-label" data-i18n="hero_setup">Erste Ergebnisse</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">0</span>
+                            <span class="hero-stat-label" data-i18n="hero_cloud">Cloud-Anbieter</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual reveal">
+                    <div class="hero-system">
+                        <div class="system-node">
+                            <span class="node-icon">📊</span>
+                            <span class="node-label" data-i18n="node_data">Daten</span>
+                        </div>
+                        <div class="system-node">
+                            <span class="node-icon">🧠</span>
+                            <span class="node-label" data-i18n="node_ai">AI Engine</span>
+                        </div>
+                        <div class="system-node">
+                            <span class="node-icon">💼</span>
+                            <span class="node-label" data-i18n="node_business">Business</span>
+                        </div>
+                        <div class="system-node">
+                            <span class="node-icon">🔒</span>
+                            <span class="node-label" data-i18n="node_security">Sicherheit</span>
+                        </div>
+                        <div class="system-node">
+                            <span class="node-icon">🚀</span>
+                            <span class="node-label" data-i18n="node_result">Ergebnis</span>
+                        </div>
+                        <div class="system-line"></div>
+                        <div class="system-line"></div>
+                        <div class="system-line"></div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Wann passt es Ihnen am besten?</label>
-                <select name="Terminvorliebe" class="form-select">
-                    <option value="">Bitte waehlen...</option>
-                    <option value="Mo-Mi Vormittag">Montag - Mittwoch Vormittag</option>
-                    <option value="Mo-Mi Nachmittag">Montag - Mittwoch Nachmittag</option>
-                    <option value="Do-Fri Vormittag">Donnerstag - Freitag Vormittag</option>
-                    <option value="Do-Fri Nachmittag">Donnerstag - Freitag Nachmittag</option>
-                </select>
+        </div>
+    </section>
+    
+    <!-- ========== MISSION LOG ========== -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-bar">
+                <div class="mission-item reveal">
+                    <h4 data-i18n="mission_local">Lokal & Sicher</h4>
+                    <p data-i18n="mission_local_val">100% On-Premise</p>
+                </div>
+                <div class="mission-item reveal reveal-delay-1">
+                    <h4 data-i18n="mission_agile">Schnell</h4>
+                    <p data-i18n="mission_agile_val">Erste Ergebnisse in 48h</p>
+                </div>
+                <div class="mission-item reveal reveal-delay-2">
+                    <h4 data-i18n="mission_measurable">Messbar</h4>
+                    <p data-i18n="mission_measurable_val">ROI in Echtzeit</p>
+                </div>
+                <div class="mission-item reveal reveal-delay-3">
+                    <h4 data-i18n="mission_scalable">Skalierbar</h4>
+                    <p data-i18n="mission_scalable_val">Von 1 bis 10.000 Users</p>
+                </div>
             </div>
-        `;
-    } else if (pkg === 'Starter' || pkg === 'pricing_1') {
-        title.textContent = 'Starter-Paket anfragen';
-        subtitle.textContent = 'Eine einzelne KI-Anwendung für Ihren Einstieg. Bitte geben Sie uns eine gute Übersicht.';
-        html += `
-            <div class="form-group">
-                <label class="form-label">Firma / Organisation</label>
-                <input type="text" name="Firma" class="form-input" placeholder="Name Ihres Unternehmens">
+        </div>
+    </section>
+    
+    <!-- ========== PROBLEM ========== -->
+    <section class="problem-section section">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-content reveal">
+                    <h2 class="section-title" data-i18n="problem_title">Das Problem Ihres Unternehmens</h2>
+                    <p class="section-subtitle" data-i18n="problem_subtitle">
+                        Das Wissen Ihres Unternehmens ist verteilt und unzuganglich fur AI-Systeme. Gigatop verbindet alle Quellen mit intelligenter KI.
+                    </p>
+                    <a href="#" class="btn btn-secondary" onclick="openContact('Data Integration Inquiry'); return false;" style="margin-top: var(--space-xl);" data-i18n="problem_cta">
+                        Datenquellen verbinden <span class="arrow">→</span>
+                    </a>
+                </div>
+                <div class="reveal reveal-delay-1">
+                    <ul class="problem-list">
+                        <li class="problem-item">
+                            <div class="problem-icon">🗄️</div>
+                            <div class="problem-text">
+                                <h4 data-i18n="problem_databases">Datenbanken</h4>
+                                <p data-i18n="problem_databases_desc">Strukturierte Daten sind isoliert und nicht mit KI verknupfbar.</p>
+                            </div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-icon">📁</div>
+                            <div class="problem-text">
+                                <h4 data-i18n="problem_files">Dokumente & Dateien</h4>
+                                <p data-i18n="problem_files_desc">PDF, Word, Excel liegen auf Festplatten und in Cloud-Storage.</p>
+                            </div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-icon">💬</div>
+                            <div class="problem-text">
+                                <h4 data-i18n="problem_comm">Kommunikation</h4>
+                                <p data-i18n="problem_comm_desc">E-Mails, Chats und Meetings enthalten wertvolles implizites Wissen.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Use Case - Beschreibung *</label>
-                <textarea name="Use Case" class="form-textarea" required placeholder="Welchen Prozess moechten Sie mit KI optimieren? Wie laeuft er aktuell?"></textarea>
+        </div>
+    </section>
+    
+    <!-- ========== USE CASES ========== -->
+    <section class="usecases-section section" id="usecases">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="usecases_title">Use Cases, die messbar sind</h2>
+                <p class="section-subtitle" data-i18n="usecases_subtitle">Jeder Use Case basiert auf Ihrem spezifischen Setup und liefert konkrete Ergebnisse.</p>
             </div>
-            <div class="form-group">
-                <label class="form-label">Welche Daten liegen vor?</label>
-                <input type="text" name="Daten" class="form-input" placeholder="z.B. Excel-Tabellen, E-Mails, Dokumente, CRM-Exporte...">
+            <div class="usecase-grid">
+                <div class="usecase-card reveal" onclick="openContact('AI Sales Intelligence')">
+                    <div class="usecase-icon">📊</div>
+                    <h3 class="usecase-title" data-i18n="uc1_title">AI Sales Intelligence</h3>
+                    <p class="usecase-desc" data-i18n="uc1_desc">Automatische Analyse Ihrer Verkaufsfunnels, Lead-Scoring und Vorhersage von Upsell-Chancen — basierend auf Ihren historischen Daten.</p>
+                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
+                </div>
+                <div class="usecase-card reveal reveal-delay-1" onclick="openContact('Private Company Knowledge')">
+                    <div class="usecase-icon">🧠</div>
+                    <h3 class="usecase-title" data-i18n="uc2_title">Private Company Knowledge</h3>
+                    <p class="usecase-desc" data-i18n="uc2_desc">Ein KI-Assistent, der Ihr gesamtes Unternehmenswissen versteht und beantworten kann — von HR-Richtlinien bis zu technischen Spezifikationen.</p>
+                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
+                </div>
+                <div class="usecase-card reveal reveal-delay-2" onclick="openContact('AI Document Operations')">
+                    <div class="usecase-icon">📄</div>
+                    <h3 class="usecase-title" data-i18n="uc3_title">AI Document Operations</h3>
+                    <p class="usecase-desc" data-i18n="uc3_desc">Automatische Verarbeitung, Zusammenfassung und Extraktion aus hunderten von Dokumenten — in Sekunden.</p>
+                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
+                </div>
+                <div class="usecase-card reveal reveal-delay-1" onclick="openContact('CRM, E-Mail, Meetings')">
+                    <div class="usecase-icon">💼</div>
+                    <h3 class="usecase-title" data-i18n="uc4_title">CRM, E-Mail und Meetings</h3>
+                    <p class="usecase-desc" data-i18n="uc4_desc">Die AI erkennt Muster in Ihrer Kommunikation, priorisiert Aufgaben und erstellt automatisch Meeting-Notizen.</p>
+                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
+                </div>
+                <div class="usecase-card reveal reveal-delay-2" onclick="openContact('AI Customer Support')">
+                    <div class="usecase-icon">🤖</div>
+                    <h3 class="usecase-title" data-i18n="uc5_title">AI Customer Support</h3>
+                    <p class="usecase-desc" data-i18n="uc5_desc">Intelligenter Support-Assistent, der Ihre Produkte, FAQ und historischen Tickets versteht — immer verfugbar, immer genau.</p>
+                    <div class="usecase-action" data-i18n="usecase_action">Details →</div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Hardware-Anforderungen?</label>
-                <input type="text" name="Hardware" class="form-input" placeholder="z.B. kein Bedarf, eigener PC, neue Hardware noetig...">
+        </div>
+    </section>
+    
+    <!-- ========== AI USE CASE FINDER ========== -->
+    <section class="finder-section section" id="finders">
+        <div class="container container-narrow">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="finder_title">Finden Sie Ihren AI Use Case</h2>
+                <p class="section-subtitle" data-i18n="finder_subtitle">Wählen Sie Ihre Branche und wir zeigen Ihnen, wo AI den grossten Impact hat.</p>
             </div>
-            <div class="form-group">
-                <label class="form-label">Budgetrahmen</label>
-                <select name="Budget" class="form-select">
-                    <option value="">Bitte waehlen...</option>
-                    <option value="Unter 3'000 CHF">Unter 3'000 CHF</option>
-                    <option value="3'000 - 7'000 CHF">3'000 - 7'000 CHF</option>
-                    <option value="7'000 - 15'000 CHF">7'000 - 15'000 CHF</option>
-                    <option value="Ueber 15'000 CHF">Ueber 15'000 CHF</option>
-                </select>
+            <div class="finder-widget reveal reveal-delay-1">
+                <p class="finder-question" data-i18n="finder_question">Welche Branche beschreibt Ihr Unternehmen am besten?</p>
+                <div class="finder-options">
+                    <button class="finder-option" onclick="selectFinder(this)">Manufacturing & Production</button>
+                    <button class="finder-option" onclick="selectFinder(this)">Healthcare & Life Sciences</button>
+                    <button class="finder-option" onclick="selectFinder(this)">Financial Services</button>
+                    <button class="finder-option" onclick="selectFinder(this)">Professional Services & Consulting</button>
+                </div>
+                <div class="finder-result" id="finderResult">
+                    <h4 data-i18n="finder_result_title">Empfohlener Use Case</h4>
+                    <p data-i18n="finder_result_desc">Auf Basis Ihrer Auswahl empfehlen wir einen Private AI Assistant fur Ihre Document Operations mit 73% Potential zur Zeiteinsparung.</p>
+                    <a href="#" class="btn btn-primary" onclick="openContact('Use Case Finder Result'); return false;" style="margin-top: var(--space-md);">
+                        Beratung starten <span class="arrow">→</span>
+                    </a>
+                </div>
             </div>
-        `;
-    } else {
-        title.textContent = 'Enterprise-Lösung anfragen';
-        subtitle.textContent = 'Massgeschneiderte KI-Lösung für Ihr Unternehmen. Bitte teilen Sie uns mit, was Sie bewegt.';
-        html += `
-            <div class="form-group">
-                <label class="form-label">Firma / Organisation *</label>
-                <input type="text" name="Firma" class="form-input" required placeholder="Name Ihres Unternehmens">
+        </div>
+    </section>
+    
+    <!-- ========== PRIVATE AI FEATURES ========== -->
+    <section class="private-section section" id="architecture">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="private_title">Private AI. Voll unter Ihrer Kontrolle.</h2>
+                <p class="section-subtitle" data-i18n="private_subtitle">Lokale Verarbeitung, transparente Architektur, keine Cloud-Anbieter.</p>
             </div>
-            <div class="form-group">
-                <label class="form-label">Anzahl Mitarbeiter</label>
-                <input type="text" name="Mitarbeiter" class="form-input" placeholder="z.B. 25, 150, 500+">
+            <div class="features-grid">
+                <div class="feature-item reveal">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title" data-i18n="f1_title">Datenschutz by Design</h3>
+                    <p class="feature-desc" data-i18n="f1_desc">Keine Daten verlassen Ihre Infrastruktur. 100% lokal, 100% kontrollierbar.</p>
+                </div>
+                <div class="feature-item reveal reveal-delay-1">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title" data-i18n="f2_title">Echtzeit-Inferenz</h3>
+                    <p class="feature-desc" data-i18n="f2_desc">Keine Warteschlangen, keine Latenz durch Cloud-Provider. Antworten in Millisekunden.</p>
+                </div>
+                <div class="feature-item reveal reveal-delay-2">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title" data-i18n="f3_title">Maigeschneidert</h3>
+                    <p class="feature-desc" data-i18n="f3_desc">Jedes System wird auf Ihre Daten, Prozesse und Anforderungen trainiert und angepasst.</p>
+                </div>
+                <div class="feature-item reveal reveal-delay-1">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title" data-i18n="f4_title">Transparente Metriken</h3>
+                    <p class="feature-desc" data-i18n="f4_desc">Jede AI-Entscheidung ist nachvollziehbar. Full Audit Trail, Zero Black Box.</p>
+                </div>
+                <div class="feature-item reveal reveal-delay-2">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title" data-i18n="f5_title">Kontinuierliche Optimierung</h3>
+                    <p class="feature-desc" data-i18n="f5_desc">Wir arbeiten, testen und verbessern. Kein monatelanges Projektmanagement — wir liefern Ergebnisse.</p>
+                </div>
+                <div class="feature-item reveal reveal-delay-3">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title" data-i18n="f6_title">Hybrid Flexibel</h3>
+                    <p class="feature-desc" data-i18n="f6_desc">Arbeiten, auf Wunsch komplett innerhalb Ihrer eigenen Infrastruktur.</p>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Beschreiben Sie Ihr Ziel *</label>
-                <textarea name="Ziel" class="form-textarea" required placeholder="Was möchten Sie erreichen? Welche Bereiche sollen optimiert werden?"></textarea>
+        </div>
+    </section>
+    
+    <!-- ========== AI AGENTS ========== -->
+    <section class="agents-section section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="agents_title">AI Agents, die fur Sie arbeiten</h2>
+                <p class="section-subtitle" data-i18n="agents_subtitle">Spezialisierte KI-Agenten, die in Ihrem System laufen und Ihre Daten verstehen.</p>
             </div>
-            <div class="form-group">
-                <label class="form-label">Bestehende Systeme</label>
-                <input type="text" name="Systeme" class="form-input" placeholder="z.B. SAP, Microsoft 365, Salesforce, eigene Server...">
+            <div class="agents-grid">
+                <div class="agent-card reveal">
+                    <div class="agent-status">
+                        <span data-i18n="agent_available">Verfugbar</span>
+                    </div>
+                    <h3 class="agent-title" data-i18n="a1_title">Knowledge Retrieval Agent</h3>
+                    <p class="agent-desc" data-i18n="a1_desc">Findet und kombiniert Informationen aus allen Ihren Datenquellen — automatisch, relevant und kontextuell.</p>
+                    <div class="agent-tags">
+                        <span class="agent-tag">RAG</span>
+                        <span class="agent-tag">Multi-Source</span>
+                        <span class="agent-tag">On-Premise</span>
+                    </div>
+                </div>
+                <div class="agent-card reveal reveal-delay-1">
+                    <div class="agent-status">
+                        <span data-i18n="agent_available">Verfugbar</span>
+                    </div>
+                    <h3 class="agent-title" data-i18n="a2_title">Document Operations Agent</h3>
+                    <p class="agent-desc" data-i18n="a2_desc">Verarbeitet, analysiert und extrahiert Informationen aus Dokumenten — PDF, Word, Excel, E-Mails.</p>
+                    <div class="agent-tags">
+                        <span class="agent-tag">PDF</span>
+                        <span class="agent-tag">OCR</span>
+                        <span class="agent-tag">Extraction</span>
+                    </div>
+                </div>
+                <div class="agent-card reveal reveal-delay-2">
+                    <div class="agent-status">
+                        <span data-i18n="agent_available">Verfugbar</span>
+                    </div>
+                    <h3 class="agent-title" data-i18n="a3_title">Sales Intelligence Agent</h3>
+                    <p class="agent-desc" data-i18n="a3_desc">Analysiert Verkaufszahlen, identifiziert Muster und liefert konkrete Handlungsempfehlungen.</p>
+                    <div class="agent-tags">
+                        <span class="agent-tag">Analytics</span>
+                        <span class="agent-tag">Predictive</span>
+                        <span class="agent-tag">CRM</span>
+                    </div>
+                </div>
+                <div class="agent-card reveal reveal-delay-3">
+                    <div class="agent-status">
+                        <span data-i18n="agent_available">Verfugbar</span>
+                    </div>
+                    <h3 class="agent-title" data-i18n="a4_title">Customer Support Agent</h3>
+                    <p class="agent-desc" data-i18n="a4_desc">Versteht Ihre Produkte, FAQ und historischen Tickets — immer verfugbar, immer genau.</p>
+                    <div class="agent-tags">
+                        <span class="agent-tag">Support</span>
+                        <span class="agent-tag">24/7</span>
+                        <span class="agent-tag">Multi-Channel</span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Prioritaet & Zeitraum</label>
-                <input type="text" name="Zeitrahmen" class="form-input" placeholder="z.B. Hoch / 2 Monate, Mittel / 3 Monate...">
+        </div>
+    </section>
+    
+    <!-- ========== ARCHITECTURE VISUALIZATION ========== -->
+    <section class="arch-section section">
+        <div class="container container-narrow">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="arch_title">Architecture, die Vertrauen schafft</h2>
+                <p class="section-subtitle" data-i18n="arch_subtitle">Jede Schicht ist transparent, kontrollierbar und vollständig unter Ihrer Hoheit.</p>
             </div>
-            <div class="form-group">
-                <label class="form-label">Besondere Anforderungen</label>
-                <textarea name="Anforderungen" class="form-textarea" placeholder="Datenschutz, Zertifizierungen, Compliance, DGX-Station, etc."></textarea>
+            <div class="arch-visual reveal">
+                <div class="arch-label" data-i18n="arch_layer1">Anwendungsschicht</div>
+                <div class="arch-layer">
+                    <div class="arch-block">
+                        <div class="arch-block-icon">💬</div>
+                        <div class="arch-block-label" data-i18n="arch_block1">Chat Interface</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-icon">📊</div>
+                        <div class="arch-block-label" data-i18n="arch_block2">Dashboard</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-icon">🔌</div>
+                        <div class="arch-block-label" data-i18n="arch_block3">API</div>
+                    </div>
+                </div>
+                <div class="arch-connector"></div>
+                <div class="arch-label" data-i18n="arch_layer2">AI-Schicht</div>
+                <div class="arch-layer">
+                    <div class="arch-block">
+                        <div class="arch-block-icon">🧠</div>
+                        <div class="arch-block-label" data-i18n="arch_block4">LLM Inference</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-icon">🔍</div>
+                        <div class="arch-block-label" data-i18n="arch_block5">RAG Pipeline</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-icon">🤖</div>
+                        <div class="arch-block-label" data-i18n="arch_block6">Agent System</div>
+                    </div>
+                </div>
+                <div class="arch-connector"></div>
+                <div class="arch-label" data-i18n="arch_layer3">Datenschicht</div>
+                <div class="arch-layer">
+                    <div class="arch-block">
+                        <div class="arch-block-icon">🗄️</div>
+                        <div class="arch-block-label" data-i18n="arch_block7">Databases</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-icon">📁</div>
+                        <div class="arch-block-label" data-i18n="arch_block8">Files & Docs</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-icon">💬</div>
+                        <div class="arch-block-label" data-i18n="arch_block9">Communications</div>
+                    </div>
+                </div>
             </div>
-        `;
-    }
-
-    container.innerHTML = html;
-}
-
-function submitForm(e) {
-    e.preventDefault();
-    var btn = document.getElementById('submitBtn');
-    var form = document.getElementById('contactForm');
-    var data = new FormData(form);
-
-    btn.disabled = true;
-    btn.textContent = 'Wird gesendet...';
-
-    fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-    })
-    .then(function(response) {
-        document.getElementById('modalFormArea').style.display = 'none';
-        document.getElementById('modalSuccess').style.display = 'block';
-    })
-    .catch(function(error) {
-        document.getElementById('modalFormArea').innerHTML += '<div class="form-error">Etwas ist schiefgelaufen. Bitte senden Sie uns direkt eine E-Mail an top@gigatop.io</div>';
-        btn.disabled = false;
-        btn.textContent = 'Anfrage absenden →';
-    });
-}
-
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-});
-</script>
-
+        </div>
+    </section>
+    
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="steps-section section" id="how-it-works">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="steps_title">Von der Beratung zum fertigen System</h2>
+                <p class="section-subtitle" data-i18n="steps_subtitle">In 5 Schritten zu Ihrer individuellen Private AI-Losung.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card reveal">
+                    <div class="step-number" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; opacity: 0.25;">STEP 01</div>
+                    <h3 class="step-title" data-i18n="step1_title">Analyse</h3>
+                    <p class="step-desc" data-i18n="step1_desc">Wir analysieren Ihre Daten, Prozesse und Anforderungen.</p>
+                    <div class="step-arrow">→</div>
+                </div>
+                <div class="step-card reveal reveal-delay-1">
+                    <div class="step-number" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; opacity: 0.25;">STEP 02</div>
+                    <h3 class="step-title" data-i18n="step2_title">Konzept</h3>
+                    <p class="step-desc" data-i18n="step2_desc">Maigeschneidertes AI-Konzept mit klarem ROI.</p>
+                    <div class="step-arrow">→</div>
+                </div>
+                <div class="step-card reveal reveal-delay-2">
+                    <div class="step-number" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; opacity: 0.25;">STEP 03</div>
+                    <h3 class="step-title" data-i18n="step3_title">Implementierung</h3>
+                    <p class="step-desc" data-i18n="step3_desc">Schnelle Umsetzung mit ersten Ergebnissen in Tagen.</p>
+                    <div class="step-arrow">→</div>
+                </div>
+                <div class="step-card reveal reveal-delay-3">
+                    <div class="step-number">04</div>
+                    <h3 class="step-title" data-i18n="step4_title">Integration</h3>
+                    <p class="step-desc" data-i18n="step4_desc">Nahtlose Anbindung an Ihre bestehende Infrastruktur.</p>
+                    <div class="step-arrow">→</div>
+                </div>
+                <div class="step-card reveal reveal-delay-3">
+                    <div class="step-number">05</div>
+                    <h3 class="step-title" data-i18n="step5_title">Optimierung</h3>
+                    <p class="step-desc" data-i18n="step5_desc">Kontinuierliche Verbesserung basierend auf Ihren Daten.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== DEPLOYMENT ========== -->
+    <section class="deploy-section section" id="deployment">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="deploy_title">Deployment, das zu Ihnen passt</h2>
+                <p class="section-subtitle" data-i18n="deploy_subtitle">Wahlweise lokal, hybrid oder Cloud — immer unter Ihrer Kontrolle.</p>
+            </div>
+            <div class="deploy-grid">
+                <div class="deploy-card reveal">
+                    <div class="deploy-icon">🏢</div>
+                    <h3 class="deploy-title" data-i18n="d1_title">On-Premise</h3>
+                    <p class="deploy-desc" data-i18n="d1_desc">Volle Kontrolle, 100% Ihre Infrastruktur. Kein externer Zugriff.</p>
+                    <ul class="deploy-features">
+                        <li data-i18n="d1_f1">100% Data Sovereignty</li>
+                        <li data-i18n="d1_f2">Kein Internetzugang erforderlich</li>
+                        <li data-i18n="d1_f3">Certified & Auditable</li>
+                    </ul>
+                </div>
+                <div class="deploy-card featured reveal reveal-delay-1">
+                    <div class="deploy-icon">☁️</div>
+                    <h3 class="deploy-title" data-i18n="d2_title">Hybrid</h3>
+                    <p class="deploy-desc" data-i18n="d2_desc">Sensible Daten lokal, Rechenleistung skalierbar.</p>
+                    <ul class="deploy-features">
+                        <li data-i18n="d2_f1">Flexibel skalierbar</li>
+                        <li data-i18n="d2_f2">Best of both worlds</li>
+                        <li data-i18n="d2_f3">Optimierte Kosten</li>
+                    </ul>
+                </div>
+                <div class="deploy-card reveal reveal-delay-2">
+                    <div class="deploy-icon">🖥️</div>
+                    <h3 class="deploy-title" data-i18n="d3_title">Edge Computing</h3>
+                    <p class="deploy-desc" data-i18n="d3_desc">KI direkt am Rand Ihres Netzwerks — schnell, lokal, effizient.</p>
+                    <ul class="deploy-features">
+                        <li data-i18n="d3_f1">Ultra-niedrige Latenz</li>
+                        <li data-i18n="d3_f2">Keine Cloud-Abhangigkeit</li>
+                        <li data-i18n="d3_f3">Optimiert fur Edge-Hardware</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== PRICING ========== -->
+    <section class="pricing-section section" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="pricing_title">Transparente Investition</h2>
+                <p class="section-subtitle" data-i18n="pricing_subtitle">Maigeschneiderte Pakete, die zu Ihrem Unternehmen passen. Alle Preise inkl. Implementation und Support.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <h3 class="pricing-title" data-i18n="p1_title">Starter</h3>
+                    <p class="pricing-desc" data-i18n="p1_desc">Idealer Einstieg fur kleine Unternehmen und erste AI-Use-Cases.</p>
+                    <div class="pricing-price">CHF 5'000<span data-i18n="p1_span">/ Projekt</span></div>
+                    <ul class="pricing-features">
+                        <li data-i18n="p1_f1">1 Use Case</li>
+                        <li data-i18n="p1_f2">Bis zu 3 Datenquellen</li>
+                        <li data-i18n="p1_f3">On-Premise Deployment</li>
+                        <li data-i18n="p1_f4">30 Tage Support</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary" onclick="openContact('Starter Plan'); return false;" style="width: 100%; justify-content: center;" data-i18n="pricing_cta">Anfragen</a>
+                </div>
+                <div class="pricing-card featured reveal reveal-delay-1">
+                    <h3 class="pricing-title" data-i18n="p2_title">Enterprise</h3>
+                    <p class="pricing-desc" data-i18n="p2_desc">Umfassende Losung fur groessere Unternehmen mit komplexen Anforderungen.</p>
+                    <div class="pricing-price">CHF 25'000<span data-i18n="p2_span">/ Projekt</span></div>
+                    <ul class="pricing-features">
+                        <li data-i18n="p2_f1">Bis zu 5 Use Cases</li>
+                        <li data-i18n="p2_f2">Unbegrenzte Datenquellen</li>
+                        <li data-i18n="p2_f3">Hybrid/Cloud-Deployment</li>
+                        <li data-i18n="p2_f4">90 Tage Support & Optimierung</li>
+                        <li data-i18n="p2_f5">Dedizierter AI Engineer</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" onclick="openContact('Enterprise Plan'); return false;" style="width: 100%; justify-content: center;" data-i18n="pricing_cta">Anfragen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== ROI CALCULATOR ========== -->
+    <section class="roi-section section" id="roi">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="roi_title">Berechnen Sie Ihren ROI</h2>
+                <p class="section-subtitle" data-i18n="roi_subtitle">Simulieren Sie die Einsparungen basierend auf Ihrem Setup.</p>
+            </div>
+            <div class="roi-widget reveal reveal-delay-1">
+                <div class="roi-range-group">
+                    <div class="roi-range-label">
+                        <span data-i18n="roi_employees">Mitarbeiter im Support / Knowledge Work</span>
+                        <span id="employeesValue">25</span>
+                    </div>
+                    <div class="roi-range-wrapper">
+                        <div class="roi-range-track">
+                            <div class="roi-range-fill" id="rangeFill1"></div>
+                        </div>
+                        <input type="range" id="employees" class="roi-range" min="5" max="50" value="25" oninput="document.getElementById('employeesValue').textContent=this.value; calculateROI();">
+                    </div>
+                </div>
+                <div class="roi-range-group">
+                    <div class="roi-range-label">
+                        <span data-i18n="roi_hours">Stunden pro Woche pro Mitarbeiter</span>
+                        <span id="hoursValue">15h</span>
+                    </div>
+                    <div class="roi-range-wrapper">
+                        <div class="roi-range-track">
+                            <div class="roi-range-fill" id="rangeFill2"></div>
+                        </div>
+                        <input type="range" id="weeklyHours" class="roi-range" min="5" max="50" value="15" oninput="document.getElementById('hoursValue').textContent=this.value+'h'; calculateROI();">
+                    </div>
+                </div>
+                <div class="roi-range-group">
+                    <div class="roi-range-label">
+                        <span data-i18n="roi_cost">Stundensatz (CHF)</span>
+                        <span id="costValue">120 CHF</span>
+                    </div>
+                    <div class="roi-range-wrapper">
+                        <div class="roi-range-track">
+                            <div class="roi-range-fill" id="rangeFill3"></div>
+                        </div>
+                        <input type="range" id="hourlyCost" class="roi-range" min="30" max="200" value="120" oninput="document.getElementById('costValue').textContent=this.value+' CHF'; calculateROI();">
+                    </div>
+                </div>
+                <div class="roi-result">
+                    <div class="roi-result-label" data-i18n="roi_potential">Potenzielle jahrliche Einsparung</div>
+                    <div class="roi-result-value" id="roiSavings">CHF 312'000</div>
+                    <div class="roi-result-note" data-i18n="roi_note">Basierend auf 40% Zeiteinsparung durch Private AI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== FINAL CTA ========== -->
+    <section class="cta-section section">
+        <div class="container container-narrow">
+            <h2 class="cta-title reveal" data-i18n="cta_title">Bereit fur Private AI?</h2>
+            <p class="cta-subtitle reveal reveal-delay-1" data-i18n="cta_subtitle">Lassen Sie uns uber Ihr Unternehmen sprechen. In einem kostenlosen Erstgesprach zeigen wir Ihnen, wo AI den grossten Impact hat.</p>
+            <div class="reveal reveal-delay-2">
+                <a href="#" class="btn btn-primary" onclick="openContact('Beratung anfragen'); return false;" style="font-size: 1.125rem; padding: 1rem 2.5rem;">
+                    Erstgesprach buchen <span class="arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">Giga<span>top</span></a>
+                    <p data-i18n="footer_desc">Private AI. Built around your business. Lokale, sichere und kontrollierbare KI-Losungen fur Schweizer Unternehmen.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title" data-i18n="footer_product">Produkt</h4>
+                    <ul class="footer-links">
+                        <li><a href="#usecases" data-i18n="footer_usecases">Use Cases</a></li>
+                        <li><a href="#architecture" data-i18n="footer_architecture">Technologie</a></li>
+                        <li><a href="#pricing" data-i18n="footer_pricing">Preise</a></li>
+                        <li><a href="#roi" data-i18n="footer_roi">ROI</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title" data-i18n="footer_legal">Rechtliches</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html" data-i18n="footer_impressum">Impressum</a></li>
+                        <li><a href="datenschutz.html" data-i18n="footer_datenschutz">Datenschutz</a></li>
+                        <li><a href="agb.html" data-i18n="footer_agb">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copy">© 2025 Gigatop. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="impressum.html" data-i18n="footer_impressum">Impressum</a>
+                    <a href="datenschutz.html" data-i18n="footer_datenschutz">Datenschutz</a>
+                    <a href="agb.html" data-i18n="footer_agb">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- ========== CONTACT MODAL ========== -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeBtn(event)" aria-label="Schliessen">✕</button>
+            <h3 data-i18n="modal_title">Kontakt aufnehmen</h3>
+            <p data-i18n="modal_subtitle">Erzahlen Sie uns von Ihrem Projekt. Wir melden uns innerhalb von 24 Stunden.</p>
+            <form id="contactForm" action="https://formsubmit.co/ajax/top@gigatop.io" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="box">
+                <input type="hidden" name="topic" id="modalTopic" value="General Inquiry">
+                <div class="form-group">
+                    <label class="form-label" for="formName" data-i18n="form_name">Name</label>
+                    <input type="text" id="formName" name="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="formEmail" data-i18n="form_email">E-Mail</label>
+                    <input type="email" id="formEmail" name="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="formMessage" data-i18n="form_message">Nachricht</label>
+                    <textarea id="formMessage" name="message" class="form-textarea" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary form-submit" data-i18n="form_submit">Nachricht senden</button>
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

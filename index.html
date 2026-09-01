@@ -425,6 +425,21 @@
             .nav { background: rgba(250, 250, 248, 0.85); }
             ::-webkit-scrollbar-thumb { background: var(--border-strong); }
         }
+
+        /* === NOISE OVERLAY (fixed, pointer-events-none for perf) === */
+        .noise-overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            pointer-events: none; mix-blend-mode: overlay; opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat; background-size: 256px 256px;
+        }
+
+        /* === SCROLL PROGRESS BAR === */
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; height: 2px; z-index: 10001;
+            background: var(--accent); width: 0%; transition: width 80ms linear;
+            will-change: width;
+        }
     </style>
 </head>
 <body>
@@ -489,11 +504,7 @@
                     </div>
                 </div>
                 <div class="hero__visual reveal reveal-delay-2">
-                    <div class="hero__visual-layer hero__visual-layer--data">CRM &bull; ERP &bull; SharePoint &bull; E-Mail &bull; SQL</div>
-                    <div class="hero__visual-arrow">&#8595; &nbsp; Ihre Daten &nbsp; &#8593;</div>
-                    <div class="hero__visual-layer hero__visual-layer--ai">&#9632; GIGATOP AI LAYER &#9632;</div>
-                    <div class="hero__visual-arrow">&#8595; &nbsp; Agents &bull; RAG &bull; Automation &nbsp; &#8593;</div>
-                    <div class="hero__visual-layer hero__visual-layer--agents">Sales Agent &bull; Knowledge Agent &bull; Document Agent</div>
+                    <img src="../../generated/comfyui/20260901-090111-abstract-technology-visualization-of-data-flowin-6527396377975195524.png" alt="Gigatop AI Architektur — Private AI System" loading="eager" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius);">
                 </div>
             </div>
         </div>
@@ -551,26 +562,14 @@
                     <a href="#" class="spread__link" onclick="openModal(); return false;" data-lang-de="Gespräch anfragen" data-lang-en="Request a call">Gespräch anfragen</a>
                 </div>
                 <div class="spread__visual">
-                    <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
-                        <div style="color: var(--accent); font-size: 0.875rem; margin-bottom: var(--space-xs);" data-lang-de="Pipeline-Analyse" data-lang-en="Pipeline Analysis">Pipeline-Analyse</div>
-                        <div data-lang-de="Priorität: HÖCHST" data-lang-en="Priority: HIGHEST">Priorität: HÖCHST</div>
-                        <div data-lang-de="Buying Signal: +3" data-lang-en="Buying Signal: +3">Buying Signal: +3</div>
-                        <div data-lang-de="Risiko: Mässig" data-lang-en="Risk: Moderate">Risiko: Mässig</div>
-                        <div data-lang-de="Next Action: Follow-up" data-lang-en="Next Action: Follow-up">Next Action: Follow-up</div>
-                    </div>
+                    <img src="../../generated/comfyui/20260901-090129-abstract-visualization-of-sales-data-streams-con-2207359941252993491.png" alt="AI Sales Intelligence — Visualisierung" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius);">
                 </div>
             </div>
 
             <!-- Spread 2: Knowledge -->
             <div class="spread spread--tint-b reverse reveal-stagger">
                 <div class="spread__visual">
-                    <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
-                        <div style="color: var(--olive); font-size: 0.875rem; margin-bottom: var(--space-xs);" data-lang-de="Wissensabfrage" data-lang-en="Knowledge Query">Wissensabfrage</div>
-                        <div>»Was gilt für Kunde X?«</div>
-                        <div>»Fasse Projekt Y zusammen«</div>
-                        <div>»Wo ist Vertrag Z?«</div>
-                        <div style="margin-top: var(--space-sm); color: var(--olive);" data-lang-de="→ Antworten mit Quellen" data-lang-en="→ Answers with sources">→ Antworten mit Quellen</div>
-                    </div>
+                    <img src="../../generated/comfyui/20260901-090137-abstract-visualization-of-knowledge-connecting-d-875866607679384504.png" alt="Privates Unternehmenswissen — Visualisierung" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius);">
                 </div>
                 <div class="spread__content">
                     <div class="spread__label" data-lang-de="Wissensmanagement" data-lang-en="Knowledge Management">Wissensmanagement</div>
@@ -589,11 +588,7 @@
                     <a href="#" class="spread__link" onclick="openModal(); return false;" data-lang-de="Gespräch anfragen" data-lang-en="Request a call">Gespräch anfragen</a>
                 </div>
                 <div class="spread__visual">
-                    <div style="text-align: center; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-tertiary); line-height: 2;">
-                        <div style="color: var(--accent); font-size: 0.875rem; margin-bottom: var(--space-xs);" data-lang-de="Dokumenten-Pipeline" data-lang-en="Document Pipeline">Dokumenten-Pipeline</div>
-                        <div data-lang-de="PDF / Rechnung → Extraktion → Validierung → ERP" data-lang-en="PDF / Invoice → Extraction → Validation → ERP">PDF / Rechnung → Extraktion → Validierung → ERP</div>
-                        <div style="margin-top: var(--space-sm);" data-lang-de="Status: Freigabe offen" data-lang-en="Status: Approval pending">Status: Freigabe offen</div>
-                    </div>
+                    <img src="../../generated/comfyui/20260901-090145-abstract-visualization-of-document-processing-pi-6001685046804955420.png" alt="AI Document Operations — Visualisierung" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius);">
                 </div>
             </div>
 
@@ -646,7 +641,7 @@
                 <div class="compare__card compare__card--public reveal">
                     <h3 data-lang-de="Public AI" data-lang-en="Public AI">Public AI</h3>
                     <div class="compare__flow">
-                        <div class="compare__flow-step" style="background: var(--bg-primary);" data-lang-de="Ihrer Unternehmen" data-lang-en="Your Company">Ihrer Unternehmen</div>
+                        <div class="compare__flow-step" style="background: var(--bg-primary);" data-lang-de="Ihrer Unternehmen" data-lang-en="Your Company">Ihr Unternehmen</div>
                         <div class="compare__flow-arrow" data-lang-de="Daten wandern ab" data-lang-en="Data travels out">Daten wandern ab</div>
                         <div class="compare__flow-step" style="background: var(--surface);">Internet</div>
                         <div class="compare__flow-arrow">&#8595;</div>
@@ -658,7 +653,7 @@
                 <div class="compare__card compare__card--private reveal reveal-delay-1">
                     <h3 data-lang-de="Private AI" data-lang-en="Private AI">Private AI</h3>
                     <div class="compare__flow">
-                        <div class="compare__flow-step" style="background: var(--bg-primary);" data-lang-de="Ihrer Unternehmen" data-lang-en="Your Company">Ihrer Unternehmen</div>
+                        <div class="compare__flow-step" style="background: var(--bg-primary);" data-lang-de="Ihrer Unternehmen" data-lang-en="Your Company">Ihr Unternehmen</div>
                         <div class="compare__flow-arrow" data-lang-de="Bleibt lokal" data-lang-en="Stays local">Bleibt lokal</div>
                         <div class="compare__flow-step" style="background: var(--accent-muted); border: 1px solid var(--border-accent);" data-lang-de="Lokale KI-Engine" data-lang-en="Local AI Engine">Lokale KI-Engine</div>
                         <div class="compare__flow-arrow">&#8595;</div>
@@ -876,7 +871,7 @@
                     <div class="pricing__price" data-lang-de="ab CHF 4'900" data-lang-en="from CHF 4'900">ab CHF 4'900</div>
                     <p data-lang-de="Einmalige Investition. Ein Use Case. Ein konkretes Ergebnis." data-lang-en="One-time investment. One use case. One concrete result.">Einmalige Investition. Ein Use Case. Ein konkretes Ergebnis.</p>
                     <ul class="pricing__features">
-                        <li data-lang-de="AI Assessmen" data-lang-en="AI Assessment">AI Assessmen</li>
+                        <li data-lang-de="AI Assessment" data-lang-en="AI Assessment">AI Assessment</li>
                         <li data-lang-de="Proof of Concept" data-lang-en="Proof of Concept">Proof of Concept</li>
                         <li data-lang-de="Integration einer Datenquelle" data-lang-en="Single data source integration">Integration einer Datenquelle</li>
                         <li data-lang-de="Schulung für Ihr Team" data-lang-en="Team training">Schulung für Ihr Team</li>
@@ -910,7 +905,7 @@
                 </div>
             </div>
             <div class="pricing__note reveal">
-                <p data-lang-de="Jedes Unternehmen ist anders. Wir erstellen gerne ein individuelles Angebot nach einem unverbindlichen AI Assessmen." data-lang-en="Every company is different. We are happy to create a custom quote after a non-binding AI assessment.">Jedes Unternehmen ist anders. Wir erstellen gerne ein individuelles Angebot nach einem unverbindlichen AI Assessmen.</p>
+                <p data-lang-de="Jedes Unternehmen ist anders. Wir erstellen gerne ein individuelles Angebot nach einem unverbindlichen AI Assessment." data-lang-en="Every company is different. We are happy to create a custom quote after a non-binding AI assessment.">Jedes Unternehmen ist anders. Wir erstellen gerne ein individuelles Angebot nach einem unverbindlichen AI Assessment.</p>
             </div>
         </div>
     </section>
@@ -1002,8 +997,8 @@
                 </div>
                 <div class="founder__text reveal reveal-delay-1">
                     <h2 data-lang-de="Built by people who actually build AI." data-lang-en="Built by people who actually build AI.">Built by people who actually build AI.</h2>
-                    <p data-lang-de="Gigatop ist keine anonym Corporation. Es ist ein kleines, ambitions Team, das echte AI-Systeme baut. Hands-on. Pragmatisch. Business-driven. Technology-driven." data-lang-en="Gigatop is not an anonymous corporation. It is a small, ambitious team that builds real AI systems. Hands-on. Pragmatic. Business-driven. Technology-driven.">Gigatop ist keine anonym Corporation. Es ist ein kleines, ambitions Team, das echte AI-Systeme baut. Hands-on. Pragmatisch. Business-driven. Technology-driven.</p>
-                    <p data-lang-de="Kein AI Guru. Kein Visionär. Jemand, der liebers Baut als redet." data-lang-en="No AI guru. No visionary. Someone who prefers building to talking.">Kein AI Guru. Kein Visionär. Jemand, der liebers Baut als redet.</p>
+                    <p data-lang-de="Gigatop ist keine anonym Corporation. Es ist ein kleines, ambitioniertes Team, das echte AI-Systeme baut. Hands-on. Pragmatisch. Business-driven. Technology-driven." data-lang-en="Gigatop is not an anonymous corporation. It is a small, ambitious team that builds real AI systems. Hands-on. Pragmatic. Business-driven. Technology-driven.">Gigatop ist keine anonym Corporation. Es ist ein kleines, ambitioniertes Team, das echte AI-Systeme baut. Hands-on. Pragmatisch. Business-driven. Technology-driven.</p>
+                    <p data-lang-de="Kein AI Guru. Kein Visionär. Jemand, der lieber baut als redet." data-lang-en="No AI guru. No visionary. Someone who prefers building to talking.">Kein AI Guru. Kein Visionär. Jemand, der lieber baut als redet.</p>
                     <div class="founder__name">Fabio &bull; Gründer, Gigatop</div>
                 </div>
             </div>
@@ -1051,7 +1046,7 @@
                         <span data-lang-de="Muss ich eine Cloud-Lösung aufgeben?" data-lang-en="Do I have to give up cloud solutions?">Muss ich eine Cloud-Lösung aufgeben?</span>
                         <span class="faq__icon">+</span>
                     </button>
-                    <div class="faq__answer"><p data-lang-de="Nicht zwingend. Gigatop kann neben bestehenden Cloud-Tools laufen und diese intelligent ergänzen. Viele Kunden nutzen Gigatop primar für sensible Daten und behalten Cloud-KI für nicht-kritische Aufgaben." data-lang-en="Not necessarily. Gigatop can run alongside existing cloud tools and intelligently complement them. Many clients use Gigatop primarily for sensitive data and keep cloud AI for non-critical tasks.">Nicht zwingend. Gigatop kann neben bestehenden Cloud-Tools laufen und diese intelligent ergänzen. Viele Kunden nutzen Gigatop primar für sensible Daten und behalten Cloud-KI für nicht-kritische Aufgaben.</p></div>
+                    <div class="faq__answer"><p data-lang-de="Nicht zwingend. Gigatop kann neben bestehenden Cloud-Tools laufen und diese intelligent ergänzen. Viele Kunden nutzen Gigatop primär für sensible Daten und behalten Cloud-KI für nicht-kritische Aufgaben." data-lang-en="Not necessarily. Gigatop can run alongside existing cloud tools and intelligently complement them. Many clients use Gigatop primarily for sensitive data and keep cloud AI for non-critical tasks.">Nicht zwingend. Gigatop kann neben bestehenden Cloud-Tools laufen und diese intelligent ergänzen. Viele Kunden nutzen Gigatop primär für sensible Daten und behalten Cloud-KI für nicht-kritische Aufgaben.</p></div>
                 </div>
                 <div class="faq__item reveal reveal-delay-1">
                     <button class="faq__question" onclick="toggleFaq(this)">
@@ -1072,7 +1067,7 @@
                         <span data-lang-de="Kann ich Gigatop auch vor Ort bekommen?" data-lang-en="Can I get Gigatop on-site?">Kann ich Gigatop auch vor Ort bekommen?</span>
                         <span class="faq__icon">+</span>
                     </button>
-                    <div class="faq__answer"><p data-lang-de="Ja. Wir bieten Vor-Ort-Onboarding, Schulungen und Support in der Schweiz an. Unser Team spricht Deutsch, Franzosisch und Englisch." data-lang-en="Yes. We offer on-site onboarding, training, and support throughout Switzerland. Our team speaks German, French, and English.">Ja. Wir bieten Vor-Ort-Onboarding, Schulungen und Support in der Schweiz an. Unser Team spricht Deutsch, Franzosisch und Englisch.</p></div>
+                    <div class="faq__answer"><p data-lang-de="Ja. Wir bieten Vor-Ort-Onboarding, Schulungen und Support in der Schweiz an. Unser Team spricht Deutsch, Französisch und Englisch." data-lang-en="Yes. We offer on-site onboarding, training, and support throughout Switzerland. Our team speaks German, French, and English.">Ja. Wir bieten Vor-Ort-Onboarding, Schulungen und Support in der Schweiz an. Unser Team spricht Deutsch, Französisch und Englisch.</p></div>
                 </div>
             </div>
         </div>

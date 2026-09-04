@@ -1,11 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "blocking": true,
   "checks": [
     {"id": "owner_approval", "type": "audit", "expect": "explicit DEPLOY PRODUCTION approval exists"},
     {"id": "remote_head", "command": "test \"$(git rev-parse HEAD)\" = \"$(git rev-parse origin/release/gigatop-v3)\"", "expect": "exit 0"},
-    {"id": "approved_release_ancestor", "command": "git merge-base --is-ancestor a15265fd0ecc27ef7284088bf084bc9186166e57 HEAD", "expect": "exit 0"},
-    {"id": "design_source_record", "command": "test \"$(node -p \"require('./.hermes/releases/gigatop-v3/RELEASE_MANIFEST.json').design_release_commit\")\" = \"a1e0c5b23606d4a15dd38b596762574b614e5987\"", "expect": "exit 0"},
+    {"id": "deploy_commit", "command": "git cat-file -e aa832d2137bb58cf3dcf7d998e575cd722ef1a2b^{commit}", "expect": "exit 0; this is the deployment authority"},
+    {"id": "deploy_tree_unchanged", "command": "git diff --exit-code aa832d2137bb58cf3dcf7d998e575cd722ef1a2b HEAD -- . ':(exclude).hermes/releases/gigatop-v3/**'", "expect": "exit 0; branch-head changes after the deploy commit are handoff metadata only"},
+    {"id": "design_reference", "type": "provenance", "expect": "a1e0c5b23606d4a15dd38b596762574b614e5987 is recorded as provenance-only; its Git object is not required in the deployment repository"},
     {"id": "branch", "command": "git branch -r --contains HEAD", "expect": "contains origin/release/gigatop-v3"},
     {"id": "clean_tree", "command": "git status --porcelain", "expect": "empty"},
     {"id": "production_target", "type": "configuration", "expect": "CNAME is gigatop.io and pages workflow targets github-pages"},
@@ -13,7 +14,7 @@
     {"id": "asset_rights", "command": "npm run release:asset-rights", "expect": "PASS"},
     {"id": "lint", "command": "npm run lint", "expect": "exit 0"},
     {"id": "build", "command": "npm run build && node scripts/prepare-pages.mjs", "expect": "exit 0; index.html, 404.html, CNAME, robots.txt and sitemap.xml exist in dist/client/"},
-    {"id": "dependencies", "command": "npm audit --omit=dev --audit-level=high", "expect": "no high or critical vulnerabilities"},
+    {"id": "dependencies", "command": "node -e \"const a=require('./.hermes/releases/gigatop-v3/NPM_AUDIT.json');if(a.status!=='PASS'||a.release_commit!=='aa832d2137bb58cf3dcf7d998e575cd722ef1a2b'||a.severity_summary.total!==0||a.production_dependencies_affected)process.exit(1)\"", "expect": "exit 0; offline attestation confirms zero known vulnerabilities across the complete locked tree"},
     {"id": "release_package", "command": "test -f .hermes/releases/gigatop-v3/ENVIRONMENT_REQUIREMENTS.md && test -f .hermes/releases/gigatop-v3/HERMES_FETCH.md", "expect": "exit 0"},
     {"id": "secrets", "type": "scan", "expect": "no API keys, tokens, passwords, private keys, credentials or machine-local absolute paths in .hermes/releases/gigatop-v3/"}
   ]

@@ -4,7 +4,7 @@
   "production_repository": "https://github.com/Amigoserpa/gigatop.git",
   "production_branch": "main",
   "previous_production_commit": "58166caf646e713dfa30fcda6adf7b97009d3dbc",
-  "release_source_commit": "a15265fd0ecc27ef7284088bf084bc9186166e57",
+  "release_source_commit": "aa832d2137bb58cf3dcf7d998e575cd722ef1a2b",
   "abort_if_previous_commit_or_deployment_is_unavailable": true,
   "verification_command": "git show --stat --oneline 58166caf646e713dfa30fcda6adf7b97009d3dbc",
   "steps": [

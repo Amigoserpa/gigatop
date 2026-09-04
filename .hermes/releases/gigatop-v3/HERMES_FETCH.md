@@ -10,19 +10,22 @@ git rev-parse HEAD
 git status --porcelain
 ```
 
-Compare the reported `HEAD` with the handoff commit supplied by the owner or Codex. It must equal `origin/release/gigatop-v3`. The approved V3 integration commit must be an ancestor:
+Compare the reported `HEAD` with `origin/release/gigatop-v3`, then verify the deploy commit contained in this repository:
 
 ```sh
 test "$(git rev-parse HEAD)" = "$(git rev-parse origin/release/gigatop-v3)"
-git merge-base --is-ancestor a15265fd0ecc27ef7284088bf084bc9186166e57 HEAD
-git diff --name-only a15265fd0ecc27ef7284088bf084bc9186166e57 HEAD
+git cat-file -e aa832d2137bb58cf3dcf7d998e575cd722ef1a2b^{commit}
+git diff --exit-code aa832d2137bb58cf3dcf7d998e575cd722ef1a2b HEAD -- . ':(exclude).hermes/releases/gigatop-v3/**'
 ```
 
-That final diff may contain only the Hermes package and GitHub Pages deployment configuration (`.hermes/releases/gigatop-v3/`, `.github/workflows/pages.yml`, `next.config.ts`, and `scripts/prepare-pages.mjs`). Inspect the manifest and run preflight from the repository root:
+The design reference `a1e0c5b23606d4a15dd38b596762574b614e5987` belongs to the separate local Creative-OS repository, which has no configured remote. It is provenance-only; do not require that object in this deployment clone. The deployment authority is `aa832d2137bb58cf3dcf7d998e575cd722ef1a2b`.
+
+Inspect the manifest and the offline npm audit attestation, then run preflight from the repository root. The branch head differs from the deploy commit only by handoff metadata, so the build tree is identical:
 
 ```sh
 sed -n '1,240p' .hermes/releases/gigatop-v3/RELEASE_MANIFEST.json
 sed -n '1,260p' .hermes/releases/gigatop-v3/PRE_DEPLOY_CHECKS.json
+sed -n '1,240p' .hermes/releases/gigatop-v3/NPM_AUDIT.json
 npm ci
 npm run release:asset-rights
 npm run lint

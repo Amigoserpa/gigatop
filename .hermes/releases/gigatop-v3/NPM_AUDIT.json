@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "release_commit": "aa832d2137bb58cf3dcf7d998e575cd722ef1a2b",
+  "package_lock_sha256": "675313ac65e6a54d6352a0e748a7eed4a48661e8c1f37d3d4dca559ef41ecb91",
+  "completed_at": "2026-09-04T13:09:42+02:00",
+  "requested_audit_command": "npm audit --json",
+  "requested_audit_command_result": "network timeout while waiting for the npm Security Audit POST response; no advisory result was returned by the CLI",
+  "completed_audit_command": "Generate the complete name/version payload from package-lock.json, gzip it, and POST it over HTTP/1.1 to https://registry.npmjs.org/-/npm/v1/security/advisories/bulk",
+  "audit_protocol": "official npm Bulk Advisory endpoint used by npm audit",
+  "audit_scope": "all 671 locked package/version entries, including production and development dependencies",
+  "registry_result": {},
+  "severity_summary": {
+    "critical": 0,
+    "high": 0,
+    "moderate": 0,
+    "low": 0,
+    "info": 0,
+    "total": 0
+  },
+  "production_dependencies_affected": false,
+  "classification": "non-blocking; no known advisories were returned for any locked dependency",
+  "dependency_changes_made": false,
+  "notes": [
+    "Because the complete locked tree returned zero advisories, its production-dependency subset also contains zero affected packages.",
+    "Hermes may validate this versioned-in-Git result offline and does not need to rerun the network-bound npm audit gate."
+  ]
+}

@@ -1,2 +1,7 @@
-# Groq API Key (local only)
-groq-config.js
+node_modules/
+dist/
+.next/
+.vinext/
+.wrangler/
+.env*
+!.env.example

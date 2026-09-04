@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "route": "/v3",
+  "reducedMotion": true,
+  "files": [
+    {
+      "file": "homepage-1440x1000.png",
+      "sha256": "de5fc0354054d0256626812d4c94218aa3e25b7881c150874c3dd611fb506fe0"
+    },
+    {
+      "file": "homepage-1920x1080.png",
+      "sha256": "a17c3be0aa7036686911682f9fb931dc7ee7ddb1527805c1eb7018b6e3ec2b39"
+    },
+    {
+      "file": "homepage-390x844.png",
+      "sha256": "29273ecd83e584a93119608f9f79261b9d967e16c11ffff31dbcd91dd16fa8d5"
+    },
+    {
+      "file": "homepage-768x1024.png",
+      "sha256": "e12220635b9551295562785ef92c2d9a56682bc8af994b4dcc5e40445e2b49e5"
+    },
+    {
+      "file": "scenes/01-hero.png",
+      "sha256": "0a5845e02eaa985aead8a2fb2167bf0f8e262d3a30843c8d47e6a85c6e253e7d"
+    },
+    {
+      "file": "scenes/02-business-reality.png",
+      "sha256": "b91ebf3eadb1868db71f039a917c21c4e6d4f4a6a1e063829904556d6f08767e"
+    },
+    {
+      "file": "scenes/03-product-proof-approved.png",
+      "sha256": "9f343aae8182dc3e3611f0bfcee79d4afa29df5c41eca194d5c1df7ffa9bcd60"
+    },
+    {
+      "file": "scenes/03-product-proof.png",
+      "sha256": "b80aae385cf08c04b69ab93490875ef89ab39efb3054befc8c10aca61fa31114"
+    },
+    {
+      "file": "scenes/04-private-ai.png",
+      "sha256": "32a21347b5b01a5bbb8f7ef859e0549f18ee096aaf45c444a2badfed556553d0"
+    },
+    {
+      "file": "scenes/05-solutions.png",
+      "sha256": "8325f8b6ce2542963a39cad51c63d0ef25f9d672fa309782e77233a021c87215"
+    },
+    {
+      "file": "scenes/06-infrastructure.png",
+      "sha256": "a5acff97c0c79f860297e4a7fb6d5257f947eb1c2d7f8862e125f2e9caafe377"
+    },
+    {
+      "file": "scenes/07-how-we-build.png",
+      "sha256": "9bae960cc7daeaa350f4987d4de7a0f1d6b653afaf65f5b7b787863f78a5158e"
+    },
+    {
+      "file": "scenes/08-final-cta.png",
+      "sha256": "583e28f2695505408c61addaf45344ccedb5b26bee133c400654abe7e7b1903f"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "hero": {
+    "opacity": "1",
+    "animationIterationCount": "1"
+  },
+  "approval": {
+    "disabled": true,
+    "accessibleLabel": "Autorisiert – Meeting wird vorbereitet",
+    "background": "rgb(174, 71, 45)"
+  },
+  "reducedMotion": {
+    "opacity": "1",
+    "animationDuration": "1e-06s",
+    "animationDelay": "0s"
+  },
+  "findings": [
+    "Hero sequence resolves once and stops.",
+    "Approval is user-initiated and commits to a stable state.",
+    "Reduced motion exposes the final state immediately.",
+    "No particles, perpetual loops, bounce, or scroll hijacking detected."
+  ]
+}

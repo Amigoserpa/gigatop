@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "claims": [
+    {"claim": "NVIDIA GB10 Grace Blackwell infrastructure", "classification": "VERIFIED", "evidence": ["owner-controlled system verification", "NVIDIA DGX Spark specifications"]},
+    {"claim": "128 GB Unified Memory", "classification": "VERIFIED", "evidence": ["NVIDIA hardware specification"], "qualification": "Hardware-Spezifikation; not a system-reported usable-memory value"},
+    {"claim": "Qwen local GPU-accelerated inference", "classification": "VERIFIED", "evidence": ["owner-controlled local inference verification"]},
+    {"claim": "Hermes orchestrates workflows", "classification": "VERIFIED", "evidence": ["owner-controlled Amigo/Hermes deployment"]},
+    {"claim": "Product proof and solution examples", "classification": "DEMO", "qualification": "LÖSUNGSBLUEPRINT · DEMO-DATEN appears visibly"},
+    {"claim": "Solution and architecture descriptions", "classification": "MARKETING INTERPRETATION", "qualification": "No guaranteed outcome or invented metric"}
+  ],
+  "unverified_public_claims": [],
+  "nvidia_asset_status": "REPLACED",
+  "replacement": {
+    "type": "original code-native non-representational editorial diagram",
+    "source": ["app/v3/homepage-v3.tsx", "app/globals.css"],
+    "provenance": "Authored for Gigatop; no vendor or internet image is used",
+    "label": "TECHNISCHE REFERENZ · KEIN PRODUKTBILD"
+  },
+  "nvidia_marketing_assets_shipped": false,
+  "nvidia_product_image_shipped": false
+}

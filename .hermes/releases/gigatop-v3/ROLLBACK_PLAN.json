@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "automatic_on_critical_failure": true,
+  "production_repository": "https://github.com/Amigoserpa/gigatop.git",
+  "production_branch": "main",
+  "previous_production_commit": "58166caf646e713dfa30fcda6adf7b97009d3dbc",
+  "release_source_commit": "a15265fd0ecc27ef7284088bf084bc9186166e57",
+  "abort_if_previous_commit_or_deployment_is_unavailable": true,
+  "verification_command": "git show --stat --oneline 58166caf646e713dfa30fcda6adf7b97009d3dbc",
+  "steps": [
+    "Mark the candidate deployment DEGRADED and stop further promotion or retries.",
+    "Select the GitHub Pages deployment produced from commit 58166caf646e713dfa30fcda6adf7b97009d3dbc as the rollback reference.",
+    "Use the repository's owner-approved rollback procedure to redeploy that exact reference; do not force-push main.",
+    "Run homepage, CTA, TLS, mobile and unknown-route checks against https://gigatop.io/.",
+    "Record the restored deployment identifier and failure details; do not automatically redeploy V3."
+  ]
+}

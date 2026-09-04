@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "public_assets": [
+    {"path": "public/og.png", "sha256": "1c3babd54986715a0034782aa4b4fcfd5691b5b5a1056d617b4899b290bd2793", "rights": "original Gigatop release asset"},
+    {"path": "public/icon.svg", "sha256": "6099234879eb614886141fc2846a7e0f7c5c8cc4c6601aac04b9eabc4ce6c60a", "rights": "original Gigatop release asset"},
+    {"path": "public/assets/visual-critic-ui.png", "sha256": "9a6b265965939841ef4aa9400744823b7b3d075b21f131b13e0b0cd8f9cd0539", "rights": "owner-controlled Gigatop system screenshot; demo-labelled"},
+    {"path": "public/fonts/instrument-sans-latin-wght-normal.woff2", "sha256": "2ee17598a98d8a59e4df8152d015bec9ab8e4d5672cc0ab42bef806b568e3971", "rights": "SIL Open Font License 1.1"},
+    {"path": "public/fonts/ibm-plex-mono-latin-400-normal.woff2", "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7", "rights": "SIL Open Font License 1.1"}
+  ],
+  "forbidden_assets": [
+    {"filename": "dgx-exploded-view.png", "reason": "NVIDIA reuse rights unclear; must remain absent"},
+    {"filename": "dgx-front-angle-2.png", "reason": "NVIDIA reuse rights unclear; must remain absent"}
+  ],
+  "infrastructure_replacement": {
+    "type": "code-native editorial diagram",
+    "source": ["app/v3/homepage-v3.tsx", "app/globals.css"],
+    "provenance": "original Gigatop release work; no downloaded or vendor raster asset",
+    "represents_product_appearance": false,
+    "visible_disclosure": "TECHNISCHE REFERENZ · KEIN PRODUKTBILD"
+  },
+  "release_contains_nvidia_product_image": false,
+  "asset_rights_check": "npm run release:asset-rights"
+}

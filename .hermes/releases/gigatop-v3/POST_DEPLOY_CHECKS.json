@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "base_url": "https://gigatop.io",
+  "critical_checks": [
+    {"id": "homepage", "method": "GET", "path": "/", "expect_status": 200},
+    {"id": "review_route", "method": "GET", "path": "/v3", "expect_status": 404},
+    {"id": "compare_route", "method": "GET", "path": "/v3/compare", "expect_status": 404},
+    {"id": "unknown_route", "method": "GET", "path": "/this-route-does-not-exist", "expect_status": 404},
+    {"id": "robots", "method": "GET", "path": "/robots.txt", "expect_status": 200},
+    {"id": "sitemap", "method": "GET", "path": "/sitemap.xml", "expect_status": 200},
+    {"id": "custom_domain", "method": "GET", "url": "https://amigoserpa.github.io/gigatop/", "expect": "redirects to https://gigatop.io/"},
+    {"id": "cta", "type": "dom", "selector": ".final-action", "expect_attribute": {"href": "mailto:top@gigatop.io?subject=AI-Potenzial%20klären"}},
+    {"id": "human_gate_before", "type": "accessibility", "selector": ".human-gate", "expect_name": "Meeting vorbereiten – Freigabe erforderlich"},
+    {"id": "human_gate_after", "type": "interaction", "selector": ".human-gate", "action": "click", "expect_name": "Autorisiert – Meeting wird vorbereitet"},
+    {"id": "infrastructure_asset", "type": "dom", "selector": ".hardware-figure", "expect": "contains no img element and caption equals TECHNISCHE REFERENZ · KEIN PRODUKTBILD"},
+    {"id": "memory_claim", "type": "dom", "selector": ".infrastructure", "expect": "contains 128 GB Unified Memory and Hardware-Spezifikation; does not contain 121 GiB"},
+    {"id": "desktop_wide", "type": "viewport", "width": 1920, "height": 1080, "expect": "no overflow, clipping or failed images; no meaningful regression from approved V3"},
+    {"id": "desktop", "type": "viewport", "width": 1440, "height": 1000, "expect": "no overflow, clipping or failed images; no meaningful regression from approved V3"},
+    {"id": "mobile", "type": "viewport", "width": 390, "height": 844, "expect": "no overflow, clipping or failed images; mobile score remains at least 8"}
+  ],
+  "on_failure": "mark DEGRADED and execute .hermes/releases/gigatop-v3/ROLLBACK_PLAN.json"
+}

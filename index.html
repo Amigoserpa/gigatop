@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gigatop — Private AI Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-warm: #FBF7F0;
+            --bg-sand: #E3D4C2;
+            --bg-dark: #2A2926;
+            --bg-darker: #1F1E1B;
+            --text-dark: #2A2926;
+            --text-light: #FBF7F0;
+            --text-muted: #6B6966;
+            --accent-clay: #B95F43;
+            --accent-clay-light: #C96F52;
+            --accent-olive: #7A8067;
+            --accent-sage: #98A18A;
+            --accent-apricot: #E5B58B;
+            --border-light: rgba(0,0,0,0.06);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(251, 247, 240, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dark);
+        }
+
+        .logo span { color: var(--accent-clay); }
+
+        nav { display: flex; gap: 2.5rem; align-items: center; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--text-dark); }
+
+        .nav-cta {
+            padding: 0.6rem 1.5rem;
+            background: var(--bg-dark);
+            color: var(--bg-warm) !important;
+            border-radius: 4px;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-clay);
+            transform: translateY(-1px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            padding: 6rem 4rem 6rem 6rem;
+            max-width: 640px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-clay);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--accent-clay);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.08;
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        h1 em {
+            font-style: normal;
+            color: var(--accent-clay);
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 440px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--bg-dark);
+            color: var(--bg-warm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: all 0.25s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-clay);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(185, 95, 67, 0.25);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            transition: all 0.25s;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-dark);
+            background: rgba(0,0,0,0.03);
+        }
+
+        .hero-image {
+            height: 100vh;
+            background-image: url('images/v4-hero-a2-refined.png');
+            background-size: cover;
+            background-position: center left;
+            background-repeat: no-repeat;
+            position: relative;
+            border-radius: 0;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, var(--bg-warm) 0%, transparent 15%);
+        }
+
+        /* ===== METRICS BAR ===== */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .metric {
+            padding: 2.5rem 3rem;
+            text-align: center;
+            border-right: 1px solid var(--border-light);
+        }
+
+        .metric:last-child { border-right: none; }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--accent-clay);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        section { padding: 7rem 6rem; }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--accent-olive);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        .section-header { margin-bottom: 4rem; }
+
+        /* ===== SERVICES ===== */
+        .services { background: white; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            padding: 2.5rem;
+            background: var(--bg-warm);
+            border-radius: 12px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-light);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-dark);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        .service-tag {
+            display: inline-block;
+            margin-top: 1.25rem;
+            font-size: 0.75rem;
+            color: var(--accent-clay);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* ===== DARK SECTION (Advantage) ===== */
+        .advantage { background: var(--bg-dark); color: var(--bg-warm); }
+        .advantage .section-label { color: var(--accent-sage); }
+        .advantage .section-subtitle { color: rgba(251, 247, 240, 0.6); }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .advantage-card {
+            padding: 2.5rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .advantage-card:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .advantage-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-clay);
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .advantage-card p {
+            font-size: 0.92rem;
+            color: rgba(251, 247, 240, 0.55);
+            line-height: 1.65;
+        }
+
+        /* ===== WORK / CASE STUDIES ===== */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .work-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: var(--bg-dark);
+            height: 400px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .work-card:hover { transform: scale(1.02); }
+
+        .work-card-image {
+            width: 100%;
+            height: 65%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .work-card-content {
+            padding: 2rem;
+            height: 35%;
+        }
+
+        .work-card-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-clay);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .work-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: -0.01em;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: var(--bg-warm);
+            text-align: center;
+            padding: 8rem 6rem;
+        }
+
+        .cta-section .section-title {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .cta-section .section-subtitle {
+            max-width: 480px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-section .btn-primary {
+            padding: 1.25rem 3rem;
+            font-size: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 4rem 6rem;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+        }
+
+        .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+        .footer-links { display: flex; gap: 2rem; }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text-dark); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-content { padding: 8rem 3rem 3rem; }
+            .hero-image { height: 50vh; }
+            .hero-image::after { display: none; }
+            .services-grid,
+            .advantage-grid { grid-template-columns: 1fr; }
+            .work-grid { grid-template-columns: 1fr; }
+            .metrics { grid-template-columns: repeat(2, 1fr); }
+            section { padding: 4rem 2rem; }
+            header { padding: 1rem 2rem; }
+            nav { gap: 1.5rem; }
+            .metric { padding: 2rem; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">GIGA<span>TOP</span></div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#advantage">Advantage</a>
+            <a href="#work">Work</a>
+            <a href="#contact" class="nav-cta">Start Project</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">Private AI Engineering</div>
+            <h1>Local Intelligence.<br><em>Zero Compromise.</em></h1>
+            <p class="hero-desc">
+                We build secure, private AI infrastructure for European enterprises. 
+                No cloud dependencies. No data leaks. Just serious engineering 
+                on your own hardware.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Explore Capabilities →</a>
+                <a href="#work" class="btn-secondary">View Work</a>
+            </div>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <div class="metrics">
+        <div class="metric">
+            <div class="metric-value">99.7%</div>
+            <div class="metric-label">Uptime SLA</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">&lt;2ms</div>
+            <div class="metric-label">Inference</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">0</div>
+            <div class="metric-label">Data Exits Building</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">24/7</div>
+            <div class="metric-label">Local Support</div>
+        </div>
+    </div>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <div class="section-label">What We Build</div>
+            <div class="section-title">AI Infrastructure,<br>Designed for Control</div>
+            <p class="section-subtitle">
+                Every system we deliver runs entirely on your hardware. 
+                You own the data, the models, and the outcome.
+            </p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🖥</div>
+                <h3>On-Premise LLMs</h3>
+                <p>
+                    Deploy Qwen, Llama, or custom models directly in your infrastructure. 
+                    Full control over context windows, safety filters, and data pipelines.
+                </p>
+                <span class="service-tag">Core Platform →</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>Autonomous Agents</h3>
+                <p>
+                    Multi-agent systems that plan, execute, and self-correct. 
+                    From research workflows to operational automation — zero human loop.
+                </p>
+                <span class="service-tag">Agent Framework →</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Editorial Design</h3>
+                <p>
+                    Interfaces that respect attention. Clean, functional, precise. 
+                    Every pixel serves a purpose. No visual noise.
+                </p>
+                <span class="service-tag">Digital Products →</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantage" id="advantage">
+        <div class="section-header">
+            <div class="section-label">Why Local</div>
+            <div class="section-title">The Infrastructure<br>Shift</div>
+            <p class="section-subtitle">
+                European enterprises are moving AI from the cloud to the edge. 
+                Here's why the leading companies choose local.
+            </p>
+        </div>
+        <div class="advantage-grid">
+            <div class="advantage-card">
+                <div class="advantage-number">01</div>
+                <h3>Data Sovereignty</h3>
+                <p>
+                    Your data never leaves your building. Fully GDPR-compliant by design, 
+                    not by contract. No third-party API calls, no data brokers.
+                </p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-number">02</div>
+                <h3>Zero Latency</h3>
+                <p>
+                    Instant inference. No network hops. Your models respond in 
+                    milliseconds because they live on the same rack as your data.
+                </p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-number">03</div>
+                <h3>Hardware Freedom</h3>
+                <p>
+                    NVIDIA, AMD, or Apple Silicon. No vendor lock-in, no sudden 
+                    pricing changes. Your infrastructure, your rules, your budget.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="work">
+        <div class="section-header">
+            <div class="section-label">Selected Work</div>
+            <div class="section-title">Engineering That Speaks<br>for Itself</div>
+        </div>
+        <div class="work-grid">
+            <div class="work-card">
+                <div class="work-card-image" style="background: linear-gradient(135deg, #2A2926 0%, #3A3935 100%);"></div>
+                <div class="work-card-content">
+                    <div class="work-card-tag">Financial Services</div>
+                    <h3>Real-time Fraud Analysis Engine</h3>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="work-card-image" style="background: linear-gradient(135deg, #7A8067 0%, #2A2926 100%);"></div>
+                <div class="work-card-content">
+                    <div class="work-card-tag">Industrial IoT</div>
+                    <h3>Predictive Maintenance AI</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="section-label">Start a Project</div>
+        <div class="section-title">Ready to go local?</div>
+        <p class="section-subtitle">
+            Tell us about your use case. We'll design a private AI infrastructure 
+            that fits your data, your team, and your timeline.
+        </p>
+        <a href="mailto:top@gigatop.io" class="btn-primary">Get in Touch →</a>
+    </section>
+
+    <footer>
+        <div class="logo">GIGA<span>TOP</span></div>
+        <div class="footer-links">
+            <a href="#">GitHub</a>
+            <a href="#">Privacy</a>
+            <a href="#">Imprint</a>
+        </div>
+        <div class="footer-copy">© 2026 Gigatop. All rights reserved.</div>
+    </footer>
+
+</body>
+</html>

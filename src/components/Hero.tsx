@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'motion/react'
-import heroImage from '../assets/hero.png'
+
 import { Monitor, Lock, GraduationCap } from '@phosphor-icons/react'
 
 export function Hero() {
@@ -16,7 +16,7 @@ export function Hero() {
         style={{ y: y1, opacity }}
       >
         <img
-          src={heroImage}
+          src="/assets/hero.png"
           alt="Gigatop - Lokale KI Infrastruktur"
           className="w-full h-full object-cover"
           style={{ transform: 'scale(1.1)' }}

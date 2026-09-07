@@ -1,2 +1,16 @@
-# Groq API Key (local only)
-groq-config.js
+# Build artifacts
+dist/
+node_modules/
+
+# Environment
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+

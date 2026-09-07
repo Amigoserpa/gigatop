@@ -1,4 +1,4 @@
-import { motion, useInView } from 'motion/react'
+import { motion } from 'motion/react'
 import { useRef } from 'react'
 
 const steps = [
@@ -57,40 +57,8 @@ function ProgressLine() {
   )
 }
 
-// Circular progress indicator
-function StepProgress({ progress, label }: { progress: number; label: string }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div className="relative w-12 h-12">
-        <svg className="w-12 h-12 -rotate-90" viewBox="0 0 36 36">
-          <circle cx="18" cy="18" r="15" fill="none" stroke="rgba(227,212,194,0.08)" strokeWidth="2" />
-          <motion.circle
-            cx="18"
-            cy="18"
-            r="15"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            className="text-gigatop-clay"
-            initial={{ strokeDasharray: '94.2', strokeDashoffset: '94.2' }}
-            whileInView={{ strokeDashoffset: 94.2 - (94.2 * progress) / 100 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: 'easeOut', delay: 0.3 }}
-          />
-        </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xs font-bold text-gigatop-sand/50">{progress}%</span>
-        </div>
-      </div>
-      <span className="text-xs text-gigatop-sand/30 font-mono">{label}</span>
-    </div>
-  )
-}
-
 export function Process() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
     <section

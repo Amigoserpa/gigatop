@@ -1,4 +1,6 @@
-import { motion, useInView } from 'motion/react'
+/** @jsxImportSource react */
+
+import { motion } from 'motion/react'
 import { useRef } from 'react'
 import {
   ShieldCheck,
@@ -9,11 +11,16 @@ import {
   Brain,
 } from '@phosphor-icons/react'
 
+interface StatData {
+  value: string
+  label: string
+}
+
 // --- Floating particles background ---
 function ParticleField() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(20)].map((_, i) => (
+      {[...Array(20)].map((_: unknown, i: number) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 rounded-full bg-gigatop-clay/20"
@@ -40,7 +47,7 @@ function ParticleField() {
 }
 
 // --- Animated stat counter ---
-function StatCounter({ value, label }: { value: string; label: string }) {
+function StatCounter({ value, label }: StatData) {
   return (
     <div className="text-center">
       <div className="text-4xl md:text-5xl font-bold text-[#1A2321] mb-1">{value}</div>
@@ -49,8 +56,16 @@ function StatCounter({ value, label }: { value: string; label: string }) {
   )
 }
 
+interface FeatureItem {
+  icon: typeof ShieldCheck
+  title: string
+  desc: string
+  accent: string
+  iconBg: string
+}
+
 // --- Feature cards ---
-const features = [
+const features: FeatureItem[] = [
   {
     icon: ShieldCheck,
     title: 'Datenschutz (DSG/GDPR)',
@@ -90,7 +105,7 @@ const features = [
     icon: Brain,
     title: 'Adaptiv',
     desc: 'Der Agent lernt aus Ihrer Branche und passt sich Ihren Prozessen an. Je länger, desto besser.',
-    accent: 'from-gigatap-dust/10 to-transparent',
+    accent: 'from-gigatop-dust/10 to-transparent',
     iconBg: 'bg-gigatop-dust/10',
   },
 ]
@@ -99,11 +114,11 @@ const features = [
 function FeatureVisual() {
   return (
     <motion.div
+      className="relative"
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6 }}
-      className="relative"
     >
       {/* Main card */}
       <div className="gigatop-card-light-dark p-6 rounded-2xl shadow-2xl">
@@ -117,27 +132,14 @@ function FeatureVisual() {
 
         {/* Terminal output */}
         <div className="space-y-3 font-mono text-sm">
-          {[
-            { text: '>> initializing local-ai-agent...', color: 'text-gigatop-sand/40' },
-            { text: '>> loading knowledge-base...', color: 'text-gigatop-sand/40' },
-            { text: '✓ 2,847 documents indexed', color: 'text-gigatop-olive' },
-            { text: '>> training on-sector model...', color: 'text-gigatop-sand/40' },
-            { text: '✓ model accuracy: 94.7%', color: 'text-gigatop-olive' },
-            { text: '>> running health-check...', color: 'text-gigatop-sand/40' },
-            <motion.span
-              key="pulse"
-              className="text-gigatop-clay"
-            >
-              ✓ all systems operational
-            </motion.span>,
-          ].map((line, i) => (
+          {['>> initializing local-ai-agent...', '>> loading knowledge-base...', '✓ 2,847 documents indexed', '>> training on-sector model...', '✓ model accuracy: 94.7%', '>> running health-check...', <motion.span key="pulse" className="text-gigatop-clay">✓ all systems operational</motion.span>].map((line, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 + i * 0.15, duration: 0.4 }}
-              className={`${typeof line === 'string' ? 'text-gigatop-sand/40' : ''}`}
+              className={typeof line === 'string' ? 'text-gigatop-sand/40' : ''}
             >
               {line}
             </motion.div>
@@ -167,7 +169,6 @@ function FeatureVisual() {
 
 export function Features() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
     <section
@@ -226,7 +227,7 @@ export function Features() {
                 <div className="flex items-center gap-5 p-5">
                   {/* Icon with gradient bg */}
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${f.iconBg} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
-                    <f.icon size={20} className={`text-gigatop-sand/70`} />
+                    <f.icon size={20} className="text-gigatop-sand/70" />
                   </div>
 
                   {/* Content */}

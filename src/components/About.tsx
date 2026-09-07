@@ -1,10 +1,9 @@
-import { motion, useInView } from 'motion/react'
+import { motion } from 'motion/react'
 import { useRef } from 'react'
 import {
   Users,
   Globe,
   BookOpen,
-  MapPin,
   Shield,
   Cpu,
   Database,
@@ -123,7 +122,6 @@ function DataFlow() {
 
 export function About() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
     <section

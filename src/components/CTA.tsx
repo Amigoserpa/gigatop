@@ -1,4 +1,4 @@
-import { motion, useInView } from 'motion/react'
+import { motion } from 'motion/react'
 import { useRef, useState } from 'react'
 import {
   Envelope,
@@ -118,7 +118,6 @@ function FormField({
 
 export function CTA() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [formState, setFormState] = useState('idle' as 'idle' | 'sending' | 'sent')
 
   const handleSubmit = (e: React.FormEvent) => {

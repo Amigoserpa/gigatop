@@ -1,11 +1,5 @@
 import { motion } from 'motion/react'
-import {
-  HardDrive,
-  Clock as ClockIcon,
-  Headset,
-  ChartBar,
-  Check,
-} from '@phosphor-icons/react'
+import { Check } from '@phosphor-icons/react'
 
 const packages = [
   {

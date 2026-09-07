@@ -1,0 +1,325 @@
+@import "tailwindcss";
+
+/* === GIGATOP DESIGN TOKENS === */
+/* Mediterranean Editorial Palette on Dark-Tech Base */
+
+@theme {
+  /* Background palette */
+  --color-gigatop-bg: #0A0F0D;
+  --color-gigatop-bg-alt: #111917;
+  --color-gigatop-bg-elevated: #1A2321;
+  
+  /* Warm neutrals (Mediterranean Editorial) */
+  --color-gigatop-warm-white: #FBF7F0;
+  --color-gigatop-sand: #E3D4C2;
+  --color-gigatop-limestone: #EFE8DE;
+  --color-gigatop-dust: #D4C8BC;
+  
+  /* Dark stone */
+  --color-gigatop-ds-dark: #1F1E1B;
+  --color-gigatop-ds-sand: #252420;
+  --color-gigatop-ds-graphite: #2A2926;
+  --color-gigatop-ds-graphite-alt: #2D2B27;
+  --color-gigatop-ds-warm: #34312C;
+  --color-gigatop-ds-warm-gr: #3A3935;
+  
+  /* Accent colors */
+  --color-gigatop-clay: #B95F43;
+  --color-gigatop-terracotta: #C96F52;
+  --color-gigatop-apricot: #E5B58B;
+  --color-gigatop-olive: #7A8067;
+  --color-gigatop-sage: #98A18A;
+  
+  /* Animation */
+  --animation-duration: 200ms;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-fast: cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+/* Base typography */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Geist', sans-serif;
+}
+
+/* Grain overlay (fixed, not scrolling) */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* === GIGATOP COMPONENT BASES === */
+
+/* CTA Button */
+.gigatop-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--color-gigatop-clay), var(--color-gigatop-terracotta));
+  color: var(--color-gigatop-warm-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  transition: transform 160ms var(--ease-out);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.gigatop-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.gigatop-cta:hover::before {
+  opacity: 1;
+}
+
+.gigatop-cta:hover {
+  transform: scale(1.02);
+}
+
+.gigatop-cta:active {
+  transform: scale(0.97);
+}
+
+.gigatop-cta-secondary {
+  background: transparent;
+  border: 1px solid var(--color-gigatop-dust);
+  color: var(--color-gigatop-warm-white);
+}
+
+.gigatop-cta-secondary:hover {
+  border-color: var(--color-gigatop-terracotta);
+  background: rgba(185, 95, 67, 0.08);
+}
+
+/* Glass panel */
+.gigatop-glass {
+  background: rgba(26, 35, 33, 0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(227, 212, 194, 0.1);
+  border-radius: 16px;
+}
+
+/* Section header eyebrow */
+.section-eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gigatop-clay);
+  font-weight: 600;
+  font-family: 'Geist Mono', monospace;
+}
+
+/* Feature icon */
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--color-gigatop-bg-elevated);
+  border: 1px solid rgba(227, 212, 194, 0.08);
+}
+
+.feature-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-gigatop-clay);
+}
+
+/* === AMBIENT GLOW EFFECTS === */
+
+/* Floating gradient orbs (decorative, z-index behind content) */
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  opacity: 0.12;
+  pointer-events: none;
+  animation: ambient-float 20s ease-in-out infinite alternate;
+}
+
+.ambient-orb--clay { background: var(--color-gigatop-clay); }
+.ambient-orb--terracotta { background: var(--color-gigatop-terracotta); }
+.ambient-orb--apricot { background: var(--color-gigatop-apricot); }
+.ambient-orb--olive { background: var(--color-gigatop-olive); }
+.ambient-orb--sage { background: var(--color-gigatop-sage); }
+.ambient-orb--sand { background: var(--color-gigatop-sand); }
+
+@keyframes ambient-float {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(30px, -20px) scale(1.05); }
+  66%  { transform: translate(-20px, 15px) scale(0.95); }
+  100% { transform: translate(10px, -10px) scale(1.02); }
+}
+
+/* Light section (for Features and similar) */
+.section-light {
+  background: linear-gradient(180deg, var(--color-gigatop-bg) 0%, var(--color-gigatop-bg) 15%, var(--color-gigatop-limestone) 50%, var(--color-gigatop-bg) 85%, var(--color-gigatop-bg) 100%);
+}
+
+/* Card glow on hover */
+.gigatop-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.gigatop-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle, 0deg), transparent 0%, transparent 80%, var(--color-gigatop-clay) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  animation: rotate-border 4s linear infinite;
+}
+
+.gigatop-glow:hover::before {
+  opacity: 0.5;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-border {
+  to { --angle: 360deg; }
+}
+
+/* Fade-in animation for sections */
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide-in from left */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide-in from right */
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale-in */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Grid dot pattern overlay */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(227, 212, 194, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Gradient border accent */
+.gradient-border {
+  position: relative;
+  border: 1px solid rgba(227, 212, 194, 0.1);
+  border-radius: 16px;
+  background: rgba(26, 35, 33, 0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+}
+
+.gradient-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, var(--color-gigatop-clay) 0%, transparent 40%, transparent 60%, var(--color-gigatop-olive) 100%);
+  opacity: 0.2;
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+/* Shimmer effect for cards */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(227, 212, 194, 0.04) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Light card for light sections */
+.gigatop-card-light {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(227, 212, 194, 0.3);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.gigatop-card-light-dark {
+  background: rgba(10, 15, 13, 0.8);
+  border: 1px solid rgba(227, 212, 194, 0.12);
+  border-radius: 16px;
+  backdrop-filter: blur(24px) saturate(180%);
+}

@@ -1,8 +1,8 @@
 'use client';
 
-import './v4/globals-v4.css';
+import './globals-v4.css';
 
-import { HomepageV4 } from './v4/homepage-v4';
+import { HomepageV4 } from './homepage-v4';
 
 export default function RootPage() {
   return <HomepageV4 />;

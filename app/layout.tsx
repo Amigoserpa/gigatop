@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import './v4/globals-v4.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://gigatop.io'),

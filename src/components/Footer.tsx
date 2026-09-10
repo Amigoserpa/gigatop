@@ -1,49 +1,37 @@
-import {
-  Globe,
-} from '@phosphor-icons/react'
-
-// --- Footer ---
+import { Globe } from '@phosphor-icons/react'
 
 export function Footer() {
-  const navLinks = [
-    { label: 'Startseite', href: '#' },
-    { label: 'Leistungen', href: '#services' },
-    { label: 'Über uns', href: '#about' },
-    { label: 'Kontakt', href: '#kontakt' },
-  ]
-
-  const legalLinks = [
-    { label: 'Impressum', href: '#impressum' },
-    { label: 'Datenschutz', href: '#privacy' },
-  ]
-
   return (
-    <footer className="border-t border-gigatop-dust/5">
-      {/* Main footer */}
-      <div className="max-w-6xl mx-auto px-6 py-14">
+    <footer className="border-t border-[#E3D4C2]/5">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand column */}
+          {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-gigatop-clay to-gigatop-terracotta flex items-center justify-center">
-                <span className="text-gigatop-warm-white font-bold text-xs">G</span>
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#B95F43] to-[#C96F52] flex items-center justify-center">
+                <span className="text-[#FBF7F0] font-bold text-xs">G</span>
               </div>
-              <span className="font-semibold">Gigatop</span>
+              <span className="font-semibold text-[#FBF7F0]">Gigatop</span>
             </div>
-            <p className="text-sm text-gigatop-sand/40 leading-relaxed max-w-xs">
+            <p className="text-sm text-[#E3D4C2]/30 leading-relaxed max-w-xs">
               Lokale KI für Unternehmen in der Schweiz. Datenschutzkonform. Swiss Made.
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="text-sm font-medium mb-4 text-gigatop-sand/60">Navigation</h4>
+            <h4 className="text-sm font-medium mb-4 text-[#E3D4C2]/40">Navigation</h4>
             <ul className="space-y-2">
-              {navLinks.map((item) => (
+              {[
+                { label: 'Startseite', href: '#' },
+                { label: 'Leistungen', href: '#services' },
+                { label: 'Prozess', href: '#process' },
+                { label: 'Kontakt', href: '#kontakt' },
+              ].map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="text-sm text-gigatop-sand/40 hover:text-gigatop-warm-white transition-colors"
+                    className="text-sm text-[#E3D4C2]/25 hover:text-[#E3D4C2]/50 transition-colors"
                   >
                     {item.label}
                   </a>
@@ -54,13 +42,16 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-sm font-medium mb-4 text-gigatop-sand/60">Legal</h4>
+            <h4 className="text-sm font-medium mb-4 text-[#E3D4C2]/40">Legal</h4>
             <ul className="space-y-2">
-              {legalLinks.map((item) => (
+              {[
+                { label: 'Impressum', href: '#impressum' },
+                { label: 'Datenschutz', href: '#privacy' },
+              ].map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="text-sm text-gigatop-sand/40 hover:text-gigatop-warm-white transition-colors"
+                    className="text-sm text-[#E3D4C2]/25 hover:text-[#E3D4C2]/50 transition-colors"
                   >
                     {item.label}
                   </a>
@@ -71,8 +62,8 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-medium mb-4 text-gigatop-sand/60">Kontakt</h4>
-            <ul className="space-y-2 text-sm text-gigatop-sand/40">
+            <h4 className="text-sm font-medium mb-4 text-[#E3D4C2]/40">Kontakt</h4>
+            <ul className="space-y-2 text-sm text-[#E3D4C2]/25">
               <li>top@gigatop.io</li>
               <li>Schweiz</li>
             </ul>
@@ -81,14 +72,14 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gigatop-dust/5">
-        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gigatop-sand/25">
+      <div className="border-t border-[#E3D4C2]/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[11px] text-[#E3D4C2]/15">
             © 2025 Gigatop. Alle Rechte vorbehalten.
           </p>
-          <div className="flex items-center gap-4">
-            <Globe size={14} className="text-gigatop-sand/20" />
-            <span className="text-xs text-gigatop-sand/20 font-mono">
+          <div className="flex items-center gap-3">
+            <Globe size={14} className="text-[#E3D4C2]/15" />
+            <span className="text-[11px] text-[#E3D4C2]/15 font-mono">
               www.gigatop.io
             </span>
           </div>

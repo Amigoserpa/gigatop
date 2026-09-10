@@ -2,116 +2,16 @@ import { motion } from 'motion/react'
 import { useRef, useState } from 'react'
 import {
   Envelope,
-  Phone,
-  MapPin,
   ArrowRight,
   CheckCircle,
 } from '@phosphor-icons/react'
 
-// --- Animated background pattern ---
 function CTABackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Gradient mesh */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-gigatop-clay/5 blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-gigatop-olive/5 blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gigatop-terracotta/3 blur-3xl" />
-
-      {/* Grid pattern */}
-      <div className="absolute inset-0 dot-grid opacity-20" />
-
-      {/* Animated dots */}
-      {[...Array(12)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 rounded-full bg-gigatop-clay/20"
-          style={{
-            left: `${10 + Math.random() * 80}%`,
-            top: `${10 + Math.random() * 80}%`,
-          }}
-          animate={{
-            scale: [1, 2, 1],
-            opacity: [0.2, 0.6, 0.2],
-          }}
-          transition={{
-            duration: 3 + Math.random() * 2,
-            repeat: Infinity,
-            delay: Math.random() * 3,
-          }}
-        />
-      ))}
-    </div>
-  )
-}
-
-// --- Step indicator ---
-function ContactSteps() {
-  const steps = [
-    { num: '1', label: 'Anfrage' },
-    { num: '2', label: 'Gespräch' },
-    { num: '3', label: 'Konzept' },
-    { num: '4', label: 'Go Live' },
-  ]
-
-  return (
-    <div className="flex items-center justify-center gap-1 mb-8">
-      {steps.map((step, i) => (
-        <motion.div
-          key={step.num}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 + i * 0.1 }}
-          className="flex items-center"
-        >
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/10">
-            <div className="w-5 h-5 rounded-full bg-gradient-to-br from-gigatop-clay to-gigatop-terracotta flex items-center justify-center">
-              <span className="text-[10px] font-bold text-white">{step.num}</span>
-            </div>
-            <span className="text-xs text-white/70 font-medium">{step.label}</span>
-          </div>
-          {i < steps.length - 1 && (
-            <ArrowRight size={14} className="text-white/20 ml-1" weight="thin" />
-          )}
-        </motion.div>
-      ))}
-    </div>
-  )
-}
-
-// --- Form field with floating label ---
-function FormField({
-  id,
-  label,
-  type = 'text',
-  placeholder,
-  icon: Icon,
-}: {
-  id: string
-  label: string
-  type?: string
-  placeholder: string
-  icon: typeof Envelope
-}) {
-  return (
-    <div className="relative group">
-      <label
-        htmlFor={id}
-        className="block text-sm font-medium text-white/70 mb-2"
-      >
-        {label}
-      </label>
-      <div className="relative">
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-gigatop-clay transition-colors">
-          <Icon size={18} />
-        </div>
-        <input
-          id={id}
-          type={type}
-          placeholder={placeholder}
-          className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/20 focus:outline-none focus:border-gigatop-clay/50 focus:bg-white/8 transition-all text-sm"
-        />
-      </div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#B95F43]/4 blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-[#7A8067]/3 blur-3xl" />
+      <div className="absolute inset-0 dot-grid opacity-[0.02]" />
     </div>
   )
 }
@@ -132,102 +32,85 @@ export function CTA() {
       ref={ref}
       className="relative py-24 md:py-32 overflow-hidden"
     >
-      {/* Darker background for CTA section */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F0D] via-[#0D0D0D] to-[#0A0F0D] pointer-events-none" />
+      {/* CTA background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F0D] via-[#0D0D0B] to-[#0A0F0D] pointer-events-none" />
       <CTABackground />
 
-      <div className="relative max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left: Copy + Contact Info */}
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left: Copy + Contact */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="section-eyebrow mb-4 block text-gigatop-apricot">Kontakt</span>
-            </motion.div>
-
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6"
+              transition={{ duration: 0.6 }}
+              className="text-3xl md:text-[3.5rem] lg:text-[4rem] font-bold tracking-tight leading-[1.05] mb-6"
             >
-              <span className="text-white">Bereit für</span>{' '}
-              <span className="text-gigatop-terracotta">lokale KI?</span>
+              <span className="text-[#FBF7F0]">Bereit für </span>
+              <span className="text-[#C96F52]">lokale KI?</span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-white/60 leading-relaxed mb-8 max-w-md"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-[#E3D4C2]/45 leading-relaxed max-w-md mb-10"
             >
-              Ein konkretes AI-Potenzial. Ein klarer nächster Schritt.
-              Persönlich, diskret, unverbindlich.
+              Ein persönliches Gespräch. Ein klares nächstes Schritt.
+              Unverbindlich, diskret, Schweizer Qualität.
             </motion.p>
-
-            {/* Contact steps */}
-            <ContactSteps />
 
             {/* Contact info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="space-y-4 mt-10"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-4"
             >
               {[
-                { icon: Envelope, label: 'E-Mail', value: 'top@gigatop.io', href: 'mailto:top@gigatop.io' },
-                { icon: Phone, label: 'Telefon', value: '+41 CH', href: 'tel:+41' },
-                { icon: MapPin, label: 'Standort', value: 'Schweiz', href: '#' },
-              ].map((item, i) => (
+                { label: 'E-Mail', value: 'top@gigatop.io', href: 'mailto:top@gigatop.io' },
+                { label: 'Standort', value: 'Schweiz', href: '#' },
+              ].map((item) => (
                 <motion.a
                   key={item.label}
                   href={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 + i * 0.1 }}
                   whileHover={{ x: 4 }}
                   className="flex items-center gap-4 group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-gigatop-clay/10 group-hover:border-gigatop-clay/20 transition-all">
-                    <item.icon size={18} className="text-white/50 group-hover:text-gigatop-clay transition-colors" />
+                  <div className="w-10 h-10 rounded-xl bg-[#E3D4C2]/5 border border-[#E3D4C2]/5 flex items-center justify-center group-hover:bg-[#B95F43]/10 group-hover:border-[#B95F43]/20 transition-all">
+                    <Envelope size={16} className="text-[#E3D4C2]/40 group-hover:text-[#B95F43] transition-colors" />
                   </div>
                   <div>
-                    <div className="text-xs text-white/30">{item.label}</div>
-                    <div className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">{item.value}</div>
+                    <div className="text-[11px] text-[#E3D4C2]/20 uppercase tracking-wider">{item.label}</div>
+                    <div className="text-sm font-medium text-[#E3D4C2]/70 group-hover:text-[#E3D4C2] transition-colors">{item.value}</div>
                   </div>
                 </motion.a>
               ))}
             </motion.div>
 
-            {/* Trust badges */}
+            {/* Trust line */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              className="mt-10 flex items-center gap-4 text-xs text-white/30"
+              transition={{ delay: 0.4 }}
+              className="mt-10 flex items-center gap-6 text-[11px] text-[#E3D4C2]/20 font-mono"
             >
-              <div className="flex items-center gap-1.5">
-                <CheckCircle size={14} className="text-gigatop-olive" />
+              <span className="flex items-center gap-1.5">
+                <CheckCircle size={12} className="text-[#7A8067]" />
                 Unverbindlich
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle size={14} className="text-gigatop-olive" />
-                DSGVO-konform
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle size={14} className="text-gigatop-olive" />
-                Schweizer Support
-              </div>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle size={12} className="text-[#7A8067]" />
+                DSGVO
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle size={12} className="text-[#7A8067]" />
+                CH Support
+              </span>
             </motion.div>
           </div>
 
@@ -236,37 +119,50 @@ export function CTA() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
           >
             <form
-              className="gigatop-card-light-dark p-8 rounded-2xl"
+              className="bg-[#1A2321]/60 border border-[#E3D4C2]/5 rounded-2xl p-8"
               onSubmit={handleSubmit}
             >
-              {/* Card accent line */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gigatop-clay/30 to-transparent rounded-t-2xl" />
-
-              <h3 className="text-xl font-semibold mb-6">Nachricht senden</h3>
+              <h3 className="text-lg font-semibold mb-6 text-[#E3D4C2]/60">Nachricht senden</h3>
 
               <div className="space-y-4">
-                <FormField
-                  id="name"
-                  label="Name"
-                  placeholder="Ihr Name"
-                  icon={Envelope}
-                />
-                <FormField
-                  id="email"
-                  label="E-Mail"
-                  type="email"
-                  placeholder="ihre@email.ch"
-                  icon={Envelope}
-                />
-                <FormField
-                  id="message"
-                  label="Nachricht"
-                  placeholder="Wie können wir Ihnen helfen?"
-                  icon={Envelope}
-                />
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-[#E3D4C2]/40 mb-2">
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="Ihr Name"
+                    className="w-full px-4 py-3 bg-[#0A0F0D]/60 border border-[#E3D4C2]/5 rounded-xl text-[#E3D4C2] placeholder:text-[#E3D4C2]/15 focus:outline-none focus:border-[#B95F43]/40 transition-all text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-[#E3D4C2]/40 mb-2">
+                    E-Mail
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="ihre@email.ch"
+                    className="w-full px-4 py-3 bg-[#0A0F0D]/60 border border-[#E3D4C2]/5 rounded-xl text-[#E3D4C2] placeholder:text-[#E3D4C2]/15 focus:outline-none focus:border-[#B95F43]/40 transition-all text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-[#E3D4C2]/40 mb-2">
+                    Nachricht
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    placeholder="Wie können wir Ihnen helfen?"
+                    className="w-full px-4 py-3 bg-[#0A0F0D]/60 border border-[#E3D4C2]/5 rounded-xl text-[#E3D4C2] placeholder:text-[#E3D4C2]/15 focus:outline-none focus:border-[#B95F43]/40 transition-all resize-none text-sm"
+                  />
+                </div>
               </div>
 
               <motion.button
@@ -277,7 +173,7 @@ export function CTA() {
               >
                 {formState === 'sent' ? (
                   <span className="flex items-center justify-center gap-2">
-                    <CheckCircle size={18} className="text-gigatop-olive" />
+                    <CheckCircle size={18} className="text-[#7A8067]" />
                     Gesendet!
                   </span>
                 ) : (
@@ -288,7 +184,7 @@ export function CTA() {
                 )}
               </motion.button>
 
-              <p className="text-xs text-white/20 text-center mt-4">
+              <p className="text-[10px] text-[#E3D4C2]/15 text-center mt-4">
                 Wir antworten innerhalb von 24 Stunden.
               </p>
             </form>

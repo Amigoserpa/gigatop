@@ -1,178 +1,119 @@
 import { motion } from 'motion/react'
-import { useRef } from 'react'
 
 const steps = [
   {
-    num: '01',
     title: 'Beratungsgespräch',
-    desc: 'Wir analysieren Ihre Infrastruktur und verstehen Ihre Anforderungen.',
-    icon: '🔍',
-    color: 'text-gigatop-clay',
+    desc: 'Wir analysieren Ihre Infrastruktur und verstehen Ihre Anforderungen – persönlich, vor Ort oder remote.',
     duration: '1-2 Tage',
+    color: 'from-[#B95F43] to-[#C96F52]',
   },
   {
-    num: '02',
     title: 'Setup & Integration',
-    desc: 'Wir installieren und konfigurieren Ihre KI-Hardware und Software.',
-    icon: '⚙️',
-    color: 'text-gigatop-terracotta',
+    desc: 'Wir installieren und konfigurieren Ihre KI-Hardware und Software nahtlos in Ihre bestehende Landschaft.',
     duration: '3-5 Tage',
+    color: 'from-[#C96F52] to-[#E5B58B]',
   },
   {
-    num: '03',
     title: 'Wissens-Import',
-    desc: 'Ihr Agent liest und versteht Ihre Daten: PDFs, Excel, Wikis.',
-    icon: '📚',
-    color: 'text-gigatop-apricot',
+    desc: 'Ihr Agent liest und versteht Ihre Daten: PDFs, Excel, Wikis. Er wird zum Experten Ihrer Branche.',
     duration: '1-2 Wochen',
+    color: 'from-[#E5B58B] to-[#7A8067]',
   },
   {
-    num: '04',
     title: 'Go Live',
-    desc: 'Ihr KI-Assistent arbeitet aktiv in Ihrem Netzwerk — 24/7.',
-    icon: '🚀',
-    color: 'text-gigatop-olive',
-    duration: 'Go-Live Tag',
+    desc: 'Ihr KI-Assistent arbeitet aktiv in Ihrem Netzwerk. 24/7. Lernen Sie den Unterschied.',
+    duration: 'Tag X',
+    color: 'from-[#7A8067] to-[#98A18A]',
   },
 ]
 
-// Animated progress line
-function ProgressLine() {
-  return (
-    <motion.div
-      className="absolute left-8 top-0 bottom-0 w-px bg-gigatop-dust/10"
-      initial={{ scaleY: 0 }}
-      whileInView={{ scaleY: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1, delay: 0.5 }}
-    >
-      <motion.div
-        className="absolute inset-x-0 bg-gradient-to-b from-gigatop-clay via-gigatop-terracotta to-gigatop-olive"
-        initial={{ height: 0 }}
-        whileInView={{ height: '100%' }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.5 }}
-      />
-    </motion.div>
-  )
-}
-
 export function Process() {
-  const ref = useRef(null)
-
   return (
     <section
       id="process"
-      ref={ref}
       className="relative py-24 md:py-32 overflow-hidden"
     >
-      {/* Background accent */}
+      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gigatop-dust/5 to-transparent" />
-        <div className="ambient-orb ambient-orb--clay w-[400px] h-[400px] top-1/4 -left-20" style={{ animationDelay: '-3s' }} />
-        <div className="ambient-orb ambient-orb--olive w-[350px] h-[350px] bottom-1/4 right-0" style={{ animationDelay: '-12s' }} />
+        <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] rounded-full bg-[#7A8067]/3 blur-[150px]" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6">
-        {/* Section header */}
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        {/* NO eyebrow - this is section 2, eyebrow was at Hero(0) → Services(1), this is section 3, so eyebrow OK here */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.5 }}
+          className="mb-20"
         >
           <span className="section-eyebrow mb-4 block">So funktioniert es</span>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-4 mb-4">
-            Vier Schritte zu Ihrer{' '}
-            <span className="text-gigatop-terracotta">KI-Landschaft.</span>
+          <h2 className="text-3xl md:text-[3.5rem] font-bold tracking-tight leading-[1.1] text-[#FBF7F0] max-w-xl">
+            Vier Schritte. <span className="text-[#C96F52]">Null Überraschungen.</span>
           </h2>
-          <p className="text-gigatop-sand/50 max-w-lg mx-auto">
-            Transparent, strukturiert, ohne Überraschungen.
-          </p>
         </motion.div>
 
-        {/* Steps with connecting line */}
-        <div className="relative">
-          <ProgressLine />
+        {/* Timeline - clean, bold */}
+        <div className="space-y-0">
+          {steps.map((step, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              whileHover={{ x: 6 }}
+              className="group relative py-8 border-b border-[#E3D4C2]/5 last:border-b-0"
+            >
+              {/* Accent line on hover */}
+              <div className={`absolute top-0 left-0 h-px bg-gradient-to-r ${step.color} w-0 group-hover:w-[80px] transition-all duration-500`} />
 
-          <div className="space-y-12">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                whileHover={{ x: i % 2 === 0 ? 8 : -8 }}
-                className={`relative flex items-start gap-6 group ${
-                  i % 2 === 0 ? '' : 'lg:justify-end'
-                }`}
-              >
-                {/* Number badge */}
-                <motion.div
-                  className={`relative z-10 shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-gigatop-bg-elevated to-gigatop-bg border border-gigatop-dust/10 flex items-center justify-center group-hover:border-gigatop-clay/20 transition-colors`}
-                  whileHover={{ scale: 1.05, rotate: 2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <span className={`text-2xl`}>{step.icon}</span>
-                </motion.div>
+              <div className="grid grid-cols-[80px_1fr_auto] items-center gap-8">
+                {/* Number */}
+                <div className="text-5xl font-bold text-[#E3D4C2]/8 font-mono">
+                  {String(i + 1).padStart(2, '0')}
+                </div>
 
-                {/* Content card */}
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  className="gigatop-glass group relative"
-                >
-                  <div className="absolute -top-px left-6 right-6 h-px bg-gradient-to-r from-transparent via-gigatop-clay/30 to-transparent" />
-                  <div className="p-6 md:p-8">
-                    <div className="flex items-center gap-4 mb-3">
-                      <span className="text-3xl font-bold text-gigatop-dust/10 font-mono">{step.num}</span>
-                      <h3 className="text-xl font-semibold">{step.title}</h3>
-                      <span className="ml-auto text-xs font-mono text-gigatop-sand/30 bg-gigatop-bg/50 px-2 py-1 rounded-md">
-                        {step.duration}
-                      </span>
-                    </div>
-                    <p className="text-gigatop-sand/60 leading-relaxed">{step.desc}</p>
-                  </div>
-                </motion.div>
+                {/* Content */}
+                <div>
+                  <h3 className="text-xl font-semibold text-[#FBF7F0] mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-[#E3D4C2]/45 leading-relaxed max-w-lg">
+                    {step.desc}
+                  </p>
+                </div>
 
-                {/* Dot on line */}
-                <div className={`absolute w-3 h-3 rounded-full bg-gigatop-clay top-8 ${
-                  i % 2 === 0
-                    ? 'left-4 -translate-x-1/2'
-                    : 'lg:left-auto lg:right-4 lg:translate-x-1/2'
-                }`}
-                style={{
-                  background: i === 0 ? 'var(--color-gigatop-clay)' :
-                              i === 1 ? 'var(--color-gigatop-terracotta)' :
-                              i === 2 ? 'var(--color-gigatop-apricot)' :
-                              'var(--color-gigatop-olive)',
-                }}
-                />
-              </motion.div>
-            ))}
-          </div>
+                {/* Duration */}
+                <div className="text-xs font-mono text-[#E3D4C2]/25 bg-[#0A0F0D]/50 px-3 py-2 rounded-md whitespace-nowrap">
+                  {step.duration}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* CTA under process */}
+        {/* CTA under process - NO eyebrow needed */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-center mt-20"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16"
         >
-          <div className="inline-flex items-center gap-3 text-gigatop-sand/40 text-sm">
-            <span>Bereit?</span>
-            <motion.div
-              className="w-8 h-px bg-gigatop-clay/40"
-              animate={{ scaleX: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <a href="#kontakt" className="text-gigatop-clay hover:text-gigatop-terracotta transition-colors font-medium">
-              Kontakt aufnehmen →
-            </a>
-          </div>
+          <a
+            href="#kontakt"
+            className="inline-flex items-center gap-3 text-[#B95F43] hover:text-[#C96F52] transition-colors font-medium"
+          >
+            <span>Kontakt aufnehmen</span>
+            <motion.span
+              className="inline-block"
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              →
+            </motion.span>
+          </a>
         </motion.div>
       </div>
     </section>

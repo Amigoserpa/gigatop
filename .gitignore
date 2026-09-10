@@ -1,16 +1,22 @@
-# Build artifacts
-dist/
-node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Environment
+# dependencies
+/node_modules/
+
+# production
+/dist/
+
+# misc
+.DS_Store
 .env.local
-.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
 
-# IDE
+# local editor
 .vscode/
 .idea/
 
-# OS
-.DS_Store
-Thumbs.db
-
+# build artifacts
+*.tsbuildinfo
